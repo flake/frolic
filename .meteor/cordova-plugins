@@ -1,0 +1,8 @@
+com.sebible.cordova.videosnapshot@https://github.com/sebible/cordova-videosnapshot.git#5622f3990715e86bfcc0dc6168a211822865ceed
+cordova-plugin-camera@1.2.0
+cordova-plugin-file@1.3.3
+cordova-plugin-file-transfer@0.5.0
+cordova-plugin-filepath@1.0.0
+cordova-plugin-splashscreen@1.0.0
+cordova-plugin-statusbar@0.1.10
+org.apache.cordova.videoeditor@https://github.com/jbavari/cordova-plugin-video-editor.git#c348dc19a8165e639488be3fcdf6884b62ea4fe7
