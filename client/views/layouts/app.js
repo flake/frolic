@@ -42,7 +42,7 @@ Template.appLayout.events({
       // $('#float_add').click();
     if(Meteor.isCordova){
       console.log("camroll initialized...");
-      navigator.camera.getPicture(camSuccess, camFail, {
+      navigator.camera.getPicture(camSuccess, handleFail, {
         // destinationType: Camera.DestinationType.FILE_URL,
         sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
         mediaType: Camera.MediaType.VIDEO
