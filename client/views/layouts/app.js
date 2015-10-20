@@ -21,15 +21,9 @@ Template.appLayout.helpers({
   vidsrc: function(){
     return Session.get('vidsrc');
   },
-  create: function(){
-
-  },
-  rendered: function(){
-
-  },
-  destroyed: function(){
-
-  },
+  vidsnaps: function(){
+    return Session.get('vidsnaps');
+  }
 });
 
 Template.appLayout.events({
@@ -64,7 +58,7 @@ Template.appLayout.events({
     //invokePlayer('');
     //var vid = document.querySelector('#add-video-player');
     var file = event.currentTarget.files[0];
-    console.log("input file: " + file);
+    console.log("input file: " + file.fullPath);
     //if(vid.canPlayType(file.type) != ''){
       processFile(file);
     //}else{
@@ -75,3 +69,9 @@ Template.appLayout.events({
     //window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, failrequestFileSystem);
   }
 });
+
+Template.appLayout.onRendered(function(){
+  Session.set('addVideoModal', false);
+  Session.set('vidsrc', '');
+  Session.set('vidsnaps', []);
+})

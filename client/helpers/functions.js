@@ -33,19 +33,9 @@ camSuccess = function(mediaURI){
   //mediaURI = mediaURI.replace("content", "file");
   // readFile(mediaURI);
   // console.log(Session.get('video_url'));
+  // window.resolveLocalFileSystemURL(mediaURI, vidFile, resFail);
 
    window.FilePath.resolveNativePath(mediaURI, pathSuccess, pathError);
-  // requestFileSystem(TEMPORARY, 0, function(fs){
-  //   var ft = new FileTransfer();
-  //   ft.download(mediaURI, fs.root.toURL() + "/frolic.mp4", function(entry){
-  //     var natURL = entry.toNativeURL();
-  //     console.log("filepath: "+ entry.fullPath);
-  //     console.log("toURL: "+ entry.toURL());
-  //     console.log("invoking native url: " + natURL);
-  //     invokePlayer("http://127.0.0.1:8080"+natURL);
-  //     //natURL.replace("file://", "http://127.0.0.1:8080/")
-  //   });
-  // });
   //  invokePlayer(mediaURI);
   // Session.set("vidsrc", mediaURI);
 }
@@ -56,10 +46,22 @@ camFail = function(message){
 
 pathSuccess = function(filepath){
   console.log("filepath success: " + filepath);
+  requestFileSystem(TEMPORARY, 0, function(fs){
+    var ft = new FileTransfer();
+    ft.download("file://"+filepath, fs.root.toURL() + "/frolic.mp4", function(entry){
+      var natURL = entry.toNativeURL();
+      console.log("filepath: "+ entry.fullPath);
+      // console.log("toURL: "+ entry.toURL());
+      console.log("invoking native url: " + natURL);
+      window.resolveLocalFileSystemURL(natURL, vidFile, resFail);
+    });
+  });
   // var ft = new FileTransfer();
   // ft.upload(filepath, encodeURI(''))
   // VideoPlayer.play("file://"+filepath);
-  invokePlayer("file://"+filepath);
+  //invokePlayer("file://"+filepath);
+  // window.resolveLocalFileSystemURL("file://"+filepath, vidFile, resFail);
+
   var options = {
     source: "file://"+filepath,
     countPerMinute: 5,
@@ -88,7 +90,8 @@ pathError = function(error){
 //VideoEditor transcode callbacks
 tranSuccess = function(result){
   console.log("transcoded video: " + result);
-  invokePlayer(result);
+  window.resolveLocalFileSystemURL("file://"+result, vidFile, resFail);
+  // invokePlayer(result);
 }
 
 tranError = function(error){
@@ -115,22 +118,23 @@ readAsData = function(input){
   }
 }
 
-readAsBuffer = function(input){
-  if(input.files && input.files[0]){
+readAsBuffer = function(file){
     var reader = new FileReader(),
-    file = input.files[0],
     mime = file.type;
+
+    // reader.onload = callback;
 
     reader.onload = function(e){
       console.log("buffer read");
       var blob = new Blob([e.target.result], {type: mime}),
           url = (URL || webkitURL).createObjectURL(blob);
-          invokePlayer(url);
-          //Session.set("vidsrc", url);
-          console.log("vidsrc set");
+
+          var vsnaps = Session.get('vidsnaps');
+          vsnaps.push(url);
+          Session.set('vidsnaps', vsnaps);
+          // console.log("vidsrc set");
     }
     reader.readAsArrayBuffer(file);
-  }
 }
 
 processFile = function(file){
@@ -148,8 +152,10 @@ processFile = function(file){
 
 snapSuccess = function(result){
   if(result && result.result){
+    Session.set('vidsnaps', []);
     for(var i in result.snapshots){
       var absfilepath = result.snapshots[i];
+      window.resolveLocalFileSystemURL("file://"+result.snapshots[i], resFile, resFail);
       console.log("img abspath: " + absfilepath);
       //set img
     }
@@ -157,6 +163,55 @@ snapSuccess = function(result){
 }
 snapFail = function(error){
   console.log("snap error: " + error);
+}
+
+vidFile = function(fileEntry){
+    fileEntry.file(function(file){
+      console.log("file Entry "+ file);
+      var reader = new FileReader();
+      reader.onloadend = function(){
+        console.log("file loaded "+this.result);
+        var fileURL = (URL || webkitURL).createObjectURL(new Blob([this.result], {type: file.type}));
+        invokePlayer(fileURL);
+      }
+      reader.readAsArrayBuffer(file);
+    });
+}
+
+handleError = function(err){
+  console.log("handleError " + err.code);
+}
+
+// vidFile = function(fileEntry){
+//   fileEntry.file(function(file){
+//     console.log("fileEntry file: " + JSON.stringify(file));
+//     var reader = new FileReader(),
+//     mime = file.type;
+//     console.log("file type: " + mime);
+//     // var blob = new Blob([file], {type: mime});
+//     // var fileURL = (URL || webkitURL).createObjectURL(file);
+//     // invokePlayer(fileURL);
+//
+//     reader.onload = function(e){
+//       console.log("vid buffer read " + e.target.result);
+//         var blob = new Blob([new Uint8Array(e.target.result)], {type: mime}),
+//             url = (URL || webkitURL).createObjectURL(blob);
+//          invokePlayer(url);
+//         // console.log("vidsrc set");
+//     }
+//     reader.readAsArrayBuffer(file);
+//   })
+// }
+
+resFile = function(fileEntry){
+  fileEntry.file(function(file){
+    readAsBuffer(file);
+  });
+}
+
+resFail = function(error){
+  console.log("FileSystem error");
+  console.dir(error);
 }
 
 //window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, failrequestFileSystem);

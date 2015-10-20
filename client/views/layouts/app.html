@@ -5,7 +5,7 @@
   <main>
     {{>Template.dynamic template=content}}
     <div>{{> React component=AddFloatBtn }}</div>
-    <div>{{> React component=AddVideoModal show=showVideoModal vidsrc=vidsrc }}</div>
+    <div>{{> React component=AddVideoModal show=showVideoModal vidsrc=vidsrc snaps=vidsnaps }}</div>
     <div><input type="file" name="float_add" id="float_add" accept="video/*" class="hidden-upload" /></div>
   </main>
 </template>

@@ -68,7 +68,11 @@ AddVideoModal = React.createClass({
                 <p className='vjs-no-js'>To view this video please enable JavaScript, and consider upgrading to a web browser that <a href='http://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a></p>
               </video>
               <div id="snap-shots">
-                
+                {
+                  this.props.snaps.map(function(src, i){
+                    return <img src={src} key={i} id="snapimg-{i}" width="72" height="60" className="vid-snaps"/>
+                  })
+                }
               </div>
             </CardMedia>
         </Dialog>
