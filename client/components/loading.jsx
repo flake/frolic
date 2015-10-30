@@ -1,4 +1,4 @@
-var {CircularProgress, LinearProgress} = mui;
+var {CircularProgress, LinearProgress} = MUI;
 Loading = React.createClass({
   propTypes: {
     overlay: React.PropTypes.bool,

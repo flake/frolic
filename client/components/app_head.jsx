@@ -1,3 +1,6 @@
+injectTapEventPlugin();
+
+ThemeManager = MUI.Styles.ThemeManager;
 appPalette = {
   primary1Color: "#1690DB",
   primary2Color: "#2173B3",
@@ -10,15 +13,13 @@ appPalette = {
   borderColor: '#e0e0e0',
 };
 
-ThemeManager = new mui.Styles.ThemeManager();
-ThemeManager.setTheme(ThemeManager.types.LIGHT);
-ThemeManager.setPalette(appPalette);
+lightTheme = ThemeManager.getMuiTheme(MUI.Styles.LightRawTheme);
+newTheme = ThemeManager.modifyRawThemePalette(lightTheme, appPalette);
+//ThemeManager.setTheme(ThemeManager.types.LIGHT);
+// ThemeManager.setPalette(appPalette);
 
-injectTapEventPlugin();
-
-var {AppBar, IconMenu, IconButton} = mui;
-//mui.Libs.Menu
-var MenuItem = mui.MenuItem;
+var {AppBar, IconMenu, IconButton} = MUI;
+var MenuItem = MUI.Libs.MenuItem;
 //mui.Libs.MenuDivider
 
 AppHead = React.createClass({
@@ -28,7 +29,7 @@ AppHead = React.createClass({
   },
   getChildContext: function(){
     return {
-      muiTheme: ThemeManager.getCurrentTheme()
+      muiTheme: newTheme
     };
   },
 

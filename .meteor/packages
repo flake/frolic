@@ -21,7 +21,6 @@ insecure                # Allow all DB writes from clients (for prototyping)
 
 react
 react-template-helper
-poetic:react-material-ui
 kadira:flow-router
 kadira:blaze-layout
 accounts-password
@@ -29,4 +28,4 @@ accounts-facebook
 aldeed:collection2
 natestrauser:videojs
 fortawesome:fontawesome
-poetic:react-autoform-material-ui
+izzilab:material-ui

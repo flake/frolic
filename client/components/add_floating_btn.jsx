@@ -1,4 +1,5 @@
-var { FloatingActionButton, FontIcon } = mui;
+var { FloatingActionButton, FontIcon } = MUI;
+
 AddFloatBtn = React.createClass({
   //IMPORTANT SET CHILD CONTEXT
   childContextTypes: {
@@ -6,7 +7,7 @@ AddFloatBtn = React.createClass({
   },
   getChildContext: function(){
     return {
-      muiTheme: ThemeManager.getCurrentTheme()
+      muiTheme: newTheme //ThemeManager.getMuiTheme(MUI.Styles.LightRawTheme)
     };
   },
 

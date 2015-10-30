@@ -1,4 +1,4 @@
-var { LeftNav, FlatButton, FontIcon } = mui;
+var { LeftNav, FlatButton, FontIcon } = MUI;
 
 SideNav = React.createClass({
   propTypes: {

@@ -22,7 +22,7 @@ Template.appLayout.helpers({
     return Session.get('vidsrc');
   },
   vidsnaps: function(){
-    return Session.get('vidsnaps');
+    return Session.get('vidsnaps') ? Session.get('vidsnaps'):[];
   }
 });
 

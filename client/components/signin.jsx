@@ -1,4 +1,4 @@
-var {Card, CardText, TextField, RaisedButton, FontIcon, FlatButton} = mui;
+var {Card, CardText, TextField, RaisedButton, FontIcon, FlatButton} = MUI;
 
 Signin = React.createClass({
 

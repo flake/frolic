@@ -1,6 +1,6 @@
 onDeviceReady = function(){
-  window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
-  window.requestFileSystem(window.TEMPORARY, 8 * 1024 * 1024 /*16MB*/ , handleInit, handleFail);
+  // window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
+  // window.requestFileSystem(window.TEMPORARY, 8 * 1024 * 1024 /*16MB*/ , handleInit, handleFail);
 
   console.log("Device ready: ", navigator.camera);
 }
@@ -43,22 +43,29 @@ camSuccess = function(mediaURI){
 
 pathSuccess = function(filepath){
   console.log("filepath success: " + filepath);
-  window.resolveLocalFileSystemURL("file://"+filepath, vidFile, handleFail);
-  // readFromFile("file://"+filepath);
-  // getFileObject("file://"+filepath, function (fileObject) {
-  //      console.log("fileObject string " + JSON.stringify(fileObject));
-  //      var fileURL = (URL || webkitURL).createObjectURL(fileObject);
-  //      invokePlayer(fileURL);
-  // });
-
-  // invokePlayer("http://127.0.0.1:8080/"+filepath);
-
+  transcodeVid("file://" + filepath);
   var options = {
     source: "file://"+filepath,
     countPerMinute: 5,
     timeStamp: true
   }
   window.sebible.videosnapshot.snapshot(snapSuccess, handleFail, options);
+}
+
+transcodeVid = function(file){
+  VideoEditor.transcodeVideo(
+    tranSuccess,
+    handleFail,
+    {
+      fileUri: file,
+      outputFileName: 'frolic-temp',
+      quality: VideoEditorOptions.Quality.MEDIUM_QUALITY,
+      outputFileType: VideoEditorOptions.OutputFileType.MPEG4,
+      optimizeForNetworkUse: VideoEditorOptions.OptimizeForNetworkUse.YES,
+      // duration: 60,
+      saveToLibrary: false
+    }
+  );
 }
 
 vidFile = function(fileEntry){

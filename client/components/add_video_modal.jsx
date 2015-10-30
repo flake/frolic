@@ -1,4 +1,4 @@
-var { AppCanvas, AppBar, CardMedia, IconButton, Dialog } = mui;
+var { AppCanvas, AppBar, CardMedia, IconButton, Dialog } = MUI;
 
 AddVideoModal = React.createClass({
   //IMPORTANT SET CHILD CONTEXT
@@ -7,7 +7,7 @@ AddVideoModal = React.createClass({
   },
   getChildContext: function(){
     return {
-      muiTheme: ThemeManager.getCurrentTheme()
+      muiTheme: newTheme //Manager.getMuiTheme(MUI.Styles.LightRawTheme)
     };
   },
   getInitialState: function(){
