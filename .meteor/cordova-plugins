@@ -5,4 +5,4 @@ cordova-plugin-file-transfer@0.5.0
 cordova-plugin-filepath@1.0.0
 cordova-plugin-splashscreen@1.0.0
 cordova-plugin-statusbar@0.1.10
-org.apache.cordova.videoeditor@https://github.com/jbavari/cordova-plugin-video-editor.git#c348dc19a8165e639488be3fcdf6884b62ea4fe7
+org.apache.cordova.videoeditor@https://github.com/flake/cordova-plugin-video-editor.git#bae9eb78bd40056a4dca6bc022d8c8194e415c70
