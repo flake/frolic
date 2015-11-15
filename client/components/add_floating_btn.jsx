@@ -33,7 +33,7 @@ AddFloatBtn = React.createClass({
         right: "20px",
         bottom: this.state.bottom,
         transition: "all 0.5s ease",
-        zIndex: 10000
+        zIndex: 1000
       }
     };
 

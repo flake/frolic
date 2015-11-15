@@ -43,7 +43,8 @@ camSuccess = function(mediaURI){
 
 pathSuccess = function(filepath){
   console.log("filepath success: " + filepath);
-  transcodeVid("file://" + filepath);
+  // transcodeVid("file://" + filepath);
+  window.resolveLocalFileSystemURL("file://"+filepath, vidFile, handleFail); // TEMP
   var options = {
     source: "file://"+filepath,
     countPerMinute: 5,
