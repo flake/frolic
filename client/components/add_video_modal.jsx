@@ -1,4 +1,12 @@
-var { AppCanvas, AppBar, CardMedia, IconButton, Dialog, Slider } = MUI;
+var {
+  AppCanvas,
+  AppBar,
+  CardMedia,
+  IconButton,
+  Dialog,
+  RaisedButton,
+  TextField
+ } = MUI;
 
 AddVideoModal = React.createClass({
   //IMPORTANT SET CHILD CONTEXT
@@ -54,10 +62,24 @@ AddVideoModal = React.createClass({
     var iconBtnElem = (<IconButton iconClassName="material-icons" iconStyle={ {color: "#fff"} } onClick={ AddVideoActions.dismiss }>arrow_back</IconButton>);
 
     var styles = {
-      snapBox: {
-        width: "100%",
+      scrollBox: {
         overflowX: "scroll",
-        whitespace: "nowrap"
+        width: "100%",
+        height: "60px"
+      },
+      snapBox: {
+        width: "2000px"
+      },
+      actionBar:{
+        width: "100%",
+        backgroundColor: "#fff",
+        textAlign: "center",
+        padding: "8px",
+        paddingTop: "16px"
+      },
+      boxBtn:{
+        width: "46%",
+        marginRight: "6px"
       }
     };
 
@@ -66,24 +88,41 @@ AddVideoModal = React.createClass({
           ref="AddVideoModal"
           modal={true}
           autoDetectWindowHeight={false}
-          contentStyle={{"padding":"0px", "margin": "0px", "width":"100%", "height":"100%", "zIndex": 2001}}
-          bodyStyle={{"padding":"0px !important"}} >
-            <AppBar
-              title="Add Video"
-              iconElementLeft={iconBtnElem} />
+          autoScrollBodyContent={true}
+          style={{"zIndex": "2001", "padding": "0px !important", "top": "-80px", "height": "114%"}}
+          bodyStyle={{"padding":"0px !important"}}
+          contentStyle={{"padding":"0px", "margin": "0px", "width":"100%"}} >
+          <AppBar
+            title="New Fro"
+            iconElementLeft={iconBtnElem} />
+
             <CardMedia>
-              <video id="add-video-player" className='video-js vjs-default-skin' src={this.props.vidsrc} controls preload='auto' poster='' data-setup='{}' height="264" onclick="this.play()">
+              <video id="add-video-player" className='video-js vjs-default-skin' src={this.props.vidsrc} controls preload='auto' poster='' data-setup='{}' height="240" onclick="this.play()">
                 <p className='vjs-no-js'>To view this video please enable JavaScript, and consider upgrading to a web browser that <a href='http://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a></p>
               </video>
-              <Slider name="trimLeft" defaultValue={0} step={0.10} />
-              <div id="snap-shots" style={styles.snapBox}>
-                {
-                  this.props.snaps.map(function(src, i){
-                    return <img src={src} key={i} id="snapimg-{i}" width="72" height="60" className="vid-snaps"/>
-                  })
-                }
+              <div style={styles.scrollBox} >
+                <div id="snap-shots" style={styles.snapBox}>
+                  {
+                    this.props.snaps.map(function(src, i){
+                      return <img src={src} key={i} id="snapimg-{i}" width="72" height="60" className="vid-snaps"/>
+                    })
+                  }
+                </div>
               </div>
             </CardMedia>
+            <div style={styles.actionBar}>
+              <TextField
+                hintText="Title"
+                floatingLabelText="Title"
+                fullWidth={true} />
+              <TextField
+                hintText="Tagline"
+                floatingLabelText="Tagline"
+                fullWidth={true} />
+              <RaisedButton label="Save" secondary={true} style={styles.boxBtn} className="frolic-upload" id="frolic-save"/>
+              <RaisedButton label="Publish" secondary={true} style={styles.boxBtn} className="frolic-upload" id="frolic-publish"/>
+            </div>
+
         </Dialog>
     )
   }

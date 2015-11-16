@@ -67,6 +67,33 @@ Template.appLayout.events({
     //readAsBuffer(event.currentTarget); // **TODO** assign worker
     //readAsData(event.currentTarget);
     //window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, failrequestFileSystem);
+  },
+
+  'click .frolic-upload': function(event, template){
+    var froScope = $(event.currentTarget).attr('id');
+    console.log("forlic clicked for upload: " + froScope);
+    var fsFile = new FS.File(Session.get('vidsrc'));
+    fsFile.owner = Meteor.userId();
+    Frolics.insert(fsFile, function (err, fileObj) {
+      if (err) throw err;
+      else {
+        Session.set('addVideoModal', false);
+        console.log("file upload success: "+fileObj);
+        var fro = {
+          vidId: fileObj._id
+          // filename:
+        }
+
+        Meteor.call('addFro', fro, function(error, froId){
+          if(error){
+            throwError(error.reason);
+            console.log("ERROR: "+error.message);
+          }else{
+            // clean up
+          }
+        })
+      }
+    });
   }
 });
 
