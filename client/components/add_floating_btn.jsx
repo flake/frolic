@@ -40,7 +40,7 @@ AddFloatBtn = React.createClass({
     return (
       <div style={styles.container}>
         <FloatingActionButton id="cam-roll">
-          <FontIcon className="material-icons">add</FontIcon>
+          <FontIcon className="material-icons">file_upload</FontIcon>
         </FloatingActionButton>
       </div>
     );

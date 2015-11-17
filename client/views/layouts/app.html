@@ -1,11 +1,9 @@
 <template name="appLayout">
-  <header>
-    {{> React component=AppHead title=title sideNav=sideNav }}
-  </header>
-  <main>
+  <nav class="fixed-nav-bar">{{> React component=AppHead title=title sideNav=sideNav }}</nav>
+  <div id="app-body">
     {{>Template.dynamic template=content}}
     <div>{{> React component=AddFloatBtn }}</div>
     <div>{{> React component=AddVideoModal show=showVideoModal vidsrc=vidsrc snaps=vidsnaps }}</div>
-    <div><input type="file" name="float_add" id="float_add" accept="video/*" class="hidden-upload" /></div>
-  </main>
+    <!-- <div><input type="file" name="float_add" id="float_add" accept="video/*" class="hidden-upload" /></div> -->
+  </div>
 </template>

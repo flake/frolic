@@ -70,19 +70,23 @@ Template.appLayout.events({
   },
 
   'click .frolic-upload': function(event, template){
-    var froScope = $(event.currentTarget).attr('id');
-    console.log("forlic clicked for upload: " + froScope);
+    var froPublish = ($(event.currentTarget).attr('id') === "frolic-publish") ? true : false;
+    console.log("forlic clicked for upload: " + froPublish);
+
     var fsFile = new FS.File(Session.get('vidsrc'));
     fsFile.owner = Meteor.userId();
     Frolics.insert(fsFile, function (err, fileObj) {
       if (err) throw err;
       else {
         Session.set('addVideoModal', false);
-        console.log("file upload success: "+fileObj);
+        console.log("file upload success: "+ JSON.toString(fileObj));
         var fro = {
-          vidId: fileObj._id
-          // filename:
+          fsId: fileObj._id,
+          title: template.find('#fro-title').value,
+          tagline: template.find('#fro-tagline').value
         }
+
+        console.log("fro obj: " + JSON.toString(fro));
 
         Meteor.call('addFro', fro, function(error, froId){
           if(error){
@@ -90,6 +94,7 @@ Template.appLayout.events({
             console.log("ERROR: "+error.message);
           }else{
             // clean up
+            console.log("fro add success... " + froId);
           }
         })
       }

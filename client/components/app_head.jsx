@@ -5,13 +5,19 @@ appPalette = {
   primary1Color: "#1690DB",
   primary2Color: "#2173B3",
   primary3Color: "#A9D2EB",
-  accent1Color: "#ED3B3B",
+  accent1Color: "#1690DB",
   accent2Color: "#ED2B2B",
   accent3Color: "#F58C8C",
   textColor: 'rgba(0, 0, 0, 0.87)',
   canvasColor: '#ffffff',
   borderColor: '#e0e0e0',
 };
+APP = {
+  primary: "#1690DB",
+  secondary: "#2173B3",
+  themeGrey: "#A3C3D6",
+  themeBg: "#C3D7E3"
+}
 
 lightTheme = ThemeManager.getMuiTheme(MUI.Styles.LightRawTheme);
 newTheme = ThemeManager.modifyRawThemePalette(lightTheme, appPalette);
@@ -19,7 +25,7 @@ newTheme = ThemeManager.modifyRawThemePalette(lightTheme, appPalette);
 // ThemeManager.setPalette(appPalette);
 
 var {AppBar, IconMenu, IconButton} = MUI;
-var MenuItem = MUI.Libs.MenuItem;
+MenuItem = MUI.Libs.MenuItem;
 //mui.Libs.MenuDivider
 
 AppHead = React.createClass({
@@ -37,7 +43,8 @@ AppHead = React.createClass({
       { route: 'channels', text: 'Channels'},
       { route: 'subscribes', text: 'Subscribes'},
       { route: 'help', text: 'Help'},
-      { route: 'feedback', text: 'Feedback'}
+      { route: 'feedback', text: 'Feedback'},
+      { route: 'logout', text: 'Logout'}
     ],
 
   render: function(){

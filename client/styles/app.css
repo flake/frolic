@@ -6,6 +6,36 @@ html, body {
 	font-family: Roboto, sans-serif;
 }
 
+.fixed-nav-bar{
+	position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1999;
+  width: 100%;
+}
+
+#app-body{
+	background-color: #C3D7E3;
+	position: relative;
+	top: 64px;
+}
+
+#space-bar{
+	margin: 8px;
+	margin-top: 0;
+}
+
+.header-right{
+	float: right;
+	color: rgba(0, 0, 0, 0.54);
+	font-size: 13px;
+	text-align: right;
+}
+.header-right i{
+	margin-left: 8px;
+	color: #1690DB;
+}
+
 .add-task-btn {
 	-webkit-transform: translate3d(0px, 0px, 1px);
 	-moz-transform: translate3d(0px, 0px, 1px);
@@ -30,4 +60,17 @@ html, body {
 	width: 0;
 	height: 0;
 	visibility: hidden;
+}
+
+.app-icon{
+	color: #1690DB !important;
+}
+
+.fro-item-box{
+	margin: 8px;
+}
+
+.fro-action{
+	min-width: 70px !important;
+	width: 80px !important;
 }

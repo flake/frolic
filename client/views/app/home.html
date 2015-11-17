@@ -1,3 +1,8 @@
 <template name="home">
-  <h1>Welcome to frolic!</h1>
+  <div id="space-bar">
+    {{> React component=SpaceBar user=currentUser}}
+  </div>
+  {{#each fros}}
+    {{> _fro}}
+  {{/each}}
 </template>

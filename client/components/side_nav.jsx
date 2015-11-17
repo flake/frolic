@@ -25,9 +25,20 @@ SideNav = React.createClass({
     }
   },
 
+  menuChange: function(event, selectedIndex, menuItem){
+    switch (menuItem.route) {
+      case "logout":
+        Meteor.logout();
+        FlowRouter.reload();
+        break;
+      default:
+        console.log("Sorry! No matches to switch...");
+    }
+  },
+
   render: function(){
     return (
-      <LeftNav ref="SideNav" header={ this.renderHeader() } menuItems={this.props.items} docked={false} />
+      <LeftNav ref="SideNav" header={ this.renderHeader() } menuItems={this.props.items} docked={false} onChange={this.menuChange}/>
     )
   },
 

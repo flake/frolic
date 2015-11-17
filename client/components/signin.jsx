@@ -8,7 +8,7 @@ Signin = React.createClass({
   },
   getChildContext: function(){
     return {
-      muiTheme: ThemeManager.getCurrentTheme()
+      muiTheme: newTheme
     };
   },
 

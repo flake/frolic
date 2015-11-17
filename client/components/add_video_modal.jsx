@@ -1,4 +1,4 @@
-var {
+ var {
   AppCanvas,
   AppBar,
   CardMedia,
@@ -114,11 +114,13 @@ AddVideoModal = React.createClass({
               <TextField
                 hintText="Title"
                 floatingLabelText="Title"
-                fullWidth={true} />
+                fullWidth={true}
+                id="fro-title" />
               <TextField
                 hintText="Tagline"
                 floatingLabelText="Tagline"
-                fullWidth={true} />
+                fullWidth={true}
+                id="fro-tagline" />
               <RaisedButton label="Save" secondary={true} style={styles.boxBtn} className="frolic-upload" id="frolic-save"/>
               <RaisedButton label="Publish" secondary={true} style={styles.boxBtn} className="frolic-upload" id="frolic-publish"/>
             </div>
