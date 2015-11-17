@@ -29,17 +29,7 @@ AddVideoModal = React.createClass({
     }else{
       this.refs.AddVideoModal.dismiss();
     }
-    // if(nextProps.vidsrc !== this.props.vidsrc){
-    //   console.log("vidsrc updated");
-    //   var myPlayer = videojs('add-video-player');
-    //   myPlayer.src(nextProps.vidsrc);
-    //   myPlayer.load();
-    // }
   },
-
-  /*AttachVideo: function(){
-    console.log(" ref called ", this);
-  }, */
 
 /*  componentDidMount: function(){
     //console.log("ref modal ",this.refs);
@@ -54,13 +44,7 @@ AddVideoModal = React.createClass({
     return videojs(video, {});
   }, */
 
-  componentWillRecieveProps: function(nextProps){
-
-  },
-
   render: function(){
-    var iconBtnElem = (<IconButton iconClassName="material-icons" iconStyle={ {color: "#fff"} } onClick={ AddVideoActions.dismiss }>arrow_back</IconButton>);
-
     var styles = {
       scrollBox: {
         overflowX: "scroll",
@@ -83,19 +67,20 @@ AddVideoModal = React.createClass({
       }
     };
 
+    var iconBtnElem = (<IconButton iconClassName="material-icons" iconStyle={ {color: "#fff"} } onClick={ AddVideoActions.dismiss }>arrow_back</IconButton>);
+    var headBar = (<AppBar title="New Fro" iconElementLeft={iconBtnElem} />);
+
     return (
         <Dialog
           ref="AddVideoModal"
+          title= {headBar}
           modal={true}
-          autoDetectWindowHeight={false}
+          autoDetectWindowHeight={true}
           autoScrollBodyContent={true}
           style={{"zIndex": "2001", "padding": "0px !important", "top": "-80px", "height": "114%"}}
           bodyStyle={{"padding":"0px !important"}}
           contentStyle={{"padding":"0px", "margin": "0px", "width":"100%"}} >
-          <AppBar
-            title="New Fro"
-            iconElementLeft={iconBtnElem} />
-
+          <div>
             <CardMedia>
               <video id="add-video-player" className='video-js vjs-default-skin' src={this.props.vidsrc} controls preload='auto' poster='' data-setup='{}' height="240" onclick="this.play()">
                 <p className='vjs-no-js'>To view this video please enable JavaScript, and consider upgrading to a web browser that <a href='http://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a></p>
@@ -124,7 +109,7 @@ AddVideoModal = React.createClass({
               <RaisedButton label="Save" secondary={true} style={styles.boxBtn} className="frolic-upload" id="frolic-save"/>
               <RaisedButton label="Publish" secondary={true} style={styles.boxBtn} className="frolic-upload" id="frolic-publish"/>
             </div>
-
+          </div>
         </Dialog>
     )
   }
