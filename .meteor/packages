@@ -23,7 +23,6 @@ kadira:blaze-layout
 accounts-password
 accounts-facebook
 aldeed:collection2
-natestrauser:videojs
 fortawesome:fontawesome
 izzilab:material-ui
 cfs:standard-packages
@@ -31,3 +30,9 @@ cfs:gridfs
 matb33:collection-hooks
 momentjs:moment
 dburles:collection-helpers
+natestrauser:videojs
+meteorhacks:npm
+
+
+npm-container
+cosmos:browserify

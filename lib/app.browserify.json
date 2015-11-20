@@ -1,0 +1,1 @@
+Video = require("react-html5video/dist/player.js");

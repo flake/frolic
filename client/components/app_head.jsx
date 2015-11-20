@@ -40,8 +40,8 @@ AppHead = React.createClass({
   },
 
   navItems: [
-      { route: 'channels', text: 'Channels'},
-      { route: 'subscribes', text: 'Subscribes'},
+      { route: 'screens', text: 'Screens'},
+      { route: 'circles', text: 'Circles'},
       { route: 'help', text: 'Help'},
       { route: 'feedback', text: 'Feedback'},
       { route: 'logout', text: 'Logout'}

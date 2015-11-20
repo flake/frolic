@@ -5,3 +5,7 @@ Meteor.publish("fros", function(){
 Meteor.publish('frolics', function(options){
 	return Frolics.find({}, options);
 });
+
+Meteor.publish('hearts', function(userId){
+  return Hearts.find({userId: userId});
+})

@@ -82,7 +82,7 @@ AddVideoModal = React.createClass({
           contentStyle={{"padding":"0px", "margin": "0px", "width":"100%"}} >
           <div>
             <CardMedia>
-              <video id="add-video-player" className='video-js vjs-default-skin' src={this.props.vidsrc} controls preload='auto' poster='' data-setup='{}' height="240" onclick="this.play()">
+              <video id="add-video-player" className='video-js vjs-default-skin' src={this.props.vidsrc} controls preload='auto' poster='' data-setup='{}' height="240">
                 <p className='vjs-no-js'>To view this video please enable JavaScript, and consider upgrading to a web browser that <a href='http://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a></p>
               </video>
               <div style={styles.scrollBox} >
@@ -102,8 +102,8 @@ AddVideoModal = React.createClass({
                 fullWidth={true}
                 id="fro-title" />
               <TextField
-                hintText="Tagline"
-                floatingLabelText="Tagline"
+                hintText="Channel"
+                floatingLabelText="Channel"
                 fullWidth={true}
                 id="fro-tagline" />
               <RaisedButton label="Save" secondary={true} style={styles.boxBtn} className="frolic-upload" id="frolic-save"/>
