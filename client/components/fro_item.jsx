@@ -15,6 +15,11 @@ var {
 var MenuItem = MUI.Libs.MenuItem;
 
 FroItem = React.createClass({
+  propTypes: {
+    frolic: React.PropTypes.object,
+    src: React.PropTypes.string,
+    hearted: React.PropTypes.string
+  },
   //IMPORTANT SET CHILD CONTEXT
   childContextTypes: {
     muiTheme: React.PropTypes.object
@@ -96,19 +101,19 @@ FroItem = React.createClass({
           </video>
         </CardMedia>
         <CardText style={styles.cardText}>
-          <div style={{"fontWeight": "900", "color": "#333"}}>{this.props.fro.title}</div>
+          <div style={{"fontWeight": "900", "color": "#333"}} className="invoke-frolic">{this.props.frolic.title}</div>
           <div style={{"display": "inline-block"}}>
-            <FontIcon className="fa fa-television" style={styles.channelIcon} ><span style={{"color": APP.secondary}}> {this.props.fro.channel}</span></FontIcon><br/>
+            <FontIcon className="fa fa-television" style={styles.channelIcon} ><span style={{"color": APP.secondary}}> {this.props.frolic.channel}</span></FontIcon><br/>
               <div>
-                <div className="stat-box"><FontIcon className="material-icons" style={{"color": "#666", "fontSize": "16px", "verticalAlign": "bottom"}}>visibility</FontIcon><span style={{"fontSize": "11px", "marginLeft": "4px"}}>{this.props.fro.views}</span></div>
-                <div className="stat-box"><FontIcon className="fa fa-heart" style={styles.fontIcon}><span style={{"fontSize": "11px", "marginLeft": "4px"}}>{this.props.fro.hearts}</span></FontIcon></div>
+                <div className="stat-box"><FontIcon className="material-icons" style={{"color": "#666", "fontSize": "16px", "verticalAlign": "bottom"}}>visibility</FontIcon><span style={{"fontSize": "11px", "marginLeft": "4px"}}>{this.props.frolic.views}</span></div>
+                <div className="stat-box"><FontIcon className="fa fa-heart" style={styles.fontIcon}><span style={{"fontSize": "11px", "marginLeft": "4px"}}>{this.props.frolic.hearts}</span></FontIcon></div>
               </div>
           </div>
           <div className="header-right">
             <CardHeader
-              title={this.props.fro.owner().profile.name}
+              title={this.props.frolic.owner().profile.name}
               titleStyle={styles.titleStyle}
-              subtitle={this.props.fro.datePublished()}
+              subtitle={this.props.frolic.datePublished()}
               subtitleStyle={styles.subtitleStyle}
               titleColor={APP.secondary}
               avatar={<Avatar backgroundColor={APP.themeGrey} style={styles.froAvatar}>A</Avatar>}
@@ -120,7 +125,7 @@ FroItem = React.createClass({
           <FlatButton secondary={true} label="" labelPosition="after" className="fro-action fro-heart">
             <FontIcon className={"fa fa-" + this.props.hearted + " app-icon"} />
           </FlatButton>
-          <FlatButton secondary={true} label="" labelPosition="after" className="fro-action">
+          <FlatButton secondary={true} label="" labelPosition="after" className="fro-action invoke-frolic">
             <FontIcon className="fa fa-commenting-o app-icon" />
           </FlatButton>
           <FlatButton secondary={true} label="" labelPosition="after" className="fro-action">

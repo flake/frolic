@@ -75,7 +75,7 @@ Template.appLayout.events({
 
     var fsFile = new FS.File(Session.get('vidsrc'));
     fsFile.owner = Meteor.userId();
-    Frolics.insert(fsFile, function (err, fileObj) {
+    FrolicsFS.insert(fsFile, function (err, fileObj) {
       if (err) throw err;
       else {
         Session.set('addVideoModal', false);

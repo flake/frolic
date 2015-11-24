@@ -1,9 +1,13 @@
-Meteor.publish("fros", function(){
-  return Fros.find();
+Meteor.publish("frolic", function(frolicId){
+  return Frolics.find(frolicId);
 });
 
-Meteor.publish('frolics', function(options){
-	return Frolics.find({}, options);
+Meteor.publish("frolics_home", function(){
+  return Frolics.find();
+});
+
+Meteor.publish('frolics_fs', function(options){
+	return FrolicsFS.find({}, options);
 });
 
 Meteor.publish('hearts', function(userId){

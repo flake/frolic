@@ -1,6 +1,9 @@
 var { Card } = MUI;
 
 SpaceBar = React.createClass({
+  propTypes: {
+    user: React.PropTypes.object
+  },
   //IMPORTANT SET CHILD CONTEXT
   childContextTypes: {
     muiTheme: React.PropTypes.object
