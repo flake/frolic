@@ -38,7 +38,7 @@ SideNav = React.createClass({
 
   render: function(){
     return (
-      <LeftNav ref="SideNav" header={ this.renderHeader() } menuItems={this.props.items} docked={false} onChange={this.menuChange}/>
+      <LeftNav ref="SideNav" header={ this.renderHeader() } menuItems={this.props.items} docked={false} onChange={this.menuChange} disableSwipeToOpen={true} openRight={true}/>
     )
   },
 

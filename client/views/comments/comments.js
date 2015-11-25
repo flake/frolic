@@ -32,6 +32,7 @@ Template.comments.events({
         console.log("insert comment failed. " + err);
       }else{
         template.find('#comment-text').value = '';
+        template.find('#comment-text').placeholder = 'Write a Comment...';
       }
     });
   }

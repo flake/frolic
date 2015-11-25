@@ -29,6 +29,11 @@ MenuItem = MUI.Libs.MenuItem;
 //mui.Libs.MenuDivider
 
 AppHead = React.createClass({
+  PropTypes: {
+    appTitle: React.PropTypes.string,
+    navIcons : React.PropTypes.Array
+  },
+
   //IMPORTANT SET CHILD CONTEXT
   childContextTypes: {
     muiTheme: React.PropTypes.object
@@ -39,7 +44,13 @@ AppHead = React.createClass({
     };
   },
 
+  // _handleLeftIconTap: function(event){
+  //   console.log("back btn event ");
+  //   FlowRouter.history.back();
+  // },
+
   navItems: [
+      { route: 'home', text: 'Home'},
       { route: 'screens', text: 'Screens'},
       { route: 'circles', text: 'Circles'},
       { route: 'help', text: 'Help'},
@@ -48,24 +59,28 @@ AppHead = React.createClass({
     ],
 
   render: function(){
-    var iconBtnElem = (<IconButton iconClassName="material-icons" iconStyle={ {color: "#fff"} }>more_vert</IconButton>);
+
+    var iconLeft = (<IconButton iconClassName="material-icons" id="navigation-back" iconStyle={{color: "#fff"}}>arrow_back</IconButton>);
+    var styles = {
+      navIcon: {
+        color: "#fff"
+      }
+    };
 
     return (
       <div>
         <AppBar
           title={this.props.appTitle}
-          onLeftIconButtonTouchTap={ SideNavActions.toggle }
+          iconElementLeft={iconLeft}
           iconElementRight={
-            <paper zDepth={0}>
-              <IconButton iconClassName="material-icons" iconStyle={ {color: "#fff"} }>search</IconButton>
-              <IconButton iconClassName="material-icons" iconStyle={ {color: "#fff"} } id="cam-record">videocam</IconButton>
-              <IconMenu iconButtonElement= {iconBtnElem} >
-                <MenuItem primaryText="Refresh" />
-                <MenuItem primaryText="Search" />
-                <MenuItem primaryText="Find friends" />
-                <MenuItem primaryText="Settings" />
-              </IconMenu>
-            </paper>
+            <div zDepth={0}>
+              {
+                this.props.navIcons.map(function(navicon, i){
+                  return <IconButton key={i} iconClassName={navicon.class} iconStyle={styles.navIcon} id={navicon.id}>{navicon.maticon}</IconButton>
+                })
+              }
+              <IconButton iconClassName="material-icons" iconStyle={{color: "#fff"}} id="navicon-right">menu</IconButton>
+            </div>
           } />
         <SideNav show={this.props.sideNav} items={ this.navItems } />
       </div>

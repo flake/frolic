@@ -94,7 +94,11 @@ html, body {
 	bottom: 8px;
 	width: 96%;
 	z-index: 1999;
+	min-height: 64px;
 }
+/*.material-icons.btn-nopad{
+	padding: 0 !important;
+}*/
 
 /* Vertical Scroll Setup */
 .vscroll-holder{
@@ -103,4 +107,13 @@ html, body {
 }
 .vscroll-container{
 	padding-bottom: 96px;
+}
+.nav-tabs{
+	color: #142E3D !important; /* 1D3747 072A40 */
+	text-shadow: 1px 0px 0px #9FB9C9;
+}
+.nav-tabs.tab-active{
+	color: #fff !important;
+	/*border-bottom: 2px solid #fff;*/
+  /*padding-bottom: 6px;*/
 }

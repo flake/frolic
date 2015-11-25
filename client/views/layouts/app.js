@@ -6,6 +6,9 @@ Template.appLayout.helpers({
   title: function(){
     return Session.get('appTitle');
   },
+  navIcons: function(){
+    return Session.get('navIcons');
+  },
   sideNav: function(){
     return Session.get('sideNav');
   },
@@ -27,7 +30,7 @@ Template.appLayout.helpers({
 });
 
 Template.appLayout.events({
-  "click #cam-record": function(event, template){
+  "click #frolic-videocam": function(event, template){
     // if(Meteor.isCordova){
     //   console.log("capture cam initialized...");
     //   navigator.device.capture.captureVideo(captureSuccess, captureError, {limit:1, duration: 60});
@@ -99,6 +102,23 @@ Template.appLayout.events({
         })
       }
     });
+  },
+
+  'click #navigation-back': function(event, template){
+    console.log("back btn event...");
+    history.back();
+  },
+
+  'click #navicon-right': function(event, template){
+    Session.set("sideNav", !Session.get("sideNav"));
+  },
+
+  'click .nav-tabs': function(event, template){
+    $(".nav-tabs").removeClass("tab-active");
+    $(event.target).addClass("tab-active");
+    var sindex = $('.nav-tabs').index(event.target);
+    Session.set('slideIndex', sindex);
+    // console.log("slideIndex from nav-tabs "+ sindex);
   }
 });
 

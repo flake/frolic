@@ -30,15 +30,15 @@ FroTabs = React.createClass({
     return { };
   },
 
-  componentDidMount: function(){
+  // componentDidMount: function(){
     // var index = this.refs.tabSlides.props.index;
     // console.log("tab ref child ");
     // console.log("tab ref " + $('.tab-slides')[index]);
     //
     // this.view = Blaze.render(Template.comments, $('.tab-slides')[index]);
 
-    console.log("fro_tabs prop: " + typeof(this.props.frolicId));
-  },
+    // console.log("fro_tabs prop: " + typeof(this.props.frolicId));
+  // },
   //
   // componentWillUnmount() {
   //   // Clean up Blaze view
@@ -47,20 +47,20 @@ FroTabs = React.createClass({
 
   _handleChangeIndex: function(index) {
     console.log("slide index: ", index);
-    Session.set('tabIndex', index+2)
-    // this.setState({
-    //   slideIndex: index,
-    // });
+    $(".nav-tabs").removeClass("tab-active");
+    $(".nav-tabs").eq(index).addClass("tab-active");
+
+    Session.set('tabIndex', index);
   },
 
-  _handleChangeTabs: function(index) {
-    console.log("tab index: ", index);
-    Session.set('slideIndex', index-2);
-    console.log("slide index: ", Session.get('slideIndex'));
-    // this.setState({
-    //   slideIndex: parseInt(value, 10),
-    // });
-  },
+  // _handleChangeTabs: function(index) {
+  //   console.log("tab index: ", index);
+  //   Session.set('slideIndex', index-2);
+  //   console.log("slide index: ", Session.get('slideIndex'));
+  //   // this.setState({
+  //   //   slideIndex: parseInt(value, 10),
+  //   // });
+  // },
 
   render: function(){
     var styles = {
@@ -78,17 +78,12 @@ FroTabs = React.createClass({
       },
       slide: {
         margin: "8px",
-        height: "306px"
+        height: "354px"
       }
     };
 
     return (
       <div>
-        <Tabs onChange={this._handleChangeTabs} value={""+this.props.tabIndex}>
-          <Tab label={<IconButton iconClassName="fa fa-film tab-icon"/>} value="2"/>
-          <Tab label={<IconButton iconClassName="fa fa-comments tab-icon"/>} value="3"/>
-          <Tab label={<IconButton iconClassName="fa fa-desktop tab-icon"/>} value="4"/>
-        </Tabs>
         <SwipeableViews index={this.props.slideIndex} onChangeIndex={this._handleChangeIndex} style={styles.container}>
           <div style={styles.slide} className="tab-slides">
             <h2 style={styles.headline}>Tabs with slide effect</h2>
@@ -106,3 +101,9 @@ FroTabs = React.createClass({
     );
   }
 });
+
+// <Tabs onChange={this._handleChangeTabs} value={""+this.props.tabIndex}>
+//   <Tab label={<IconButton iconClassName="fa fa-film tab-icon"/>} value="2"/>
+//   <Tab label={<IconButton iconClassName="fa fa-comments tab-icon"/>} value="3"/>
+//   <Tab label={<IconButton iconClassName="fa fa-desktop tab-icon"/>} value="4"/>
+// </Tabs>

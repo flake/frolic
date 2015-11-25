@@ -41,7 +41,8 @@ CommentItem = React.createClass({
       },
       container:{
         display: "inline-block",
-        verticalAlign: "top"
+        verticalAlign: "top",
+        width: "calc(100% - 40px)"
       },
       commentText:{
         marginLeft: "8px",
