@@ -86,6 +86,21 @@ html, body {
 	min-width: 48px;
 }
 .tab-icon{
-	color: #0A1A24 !important;
+	color: #1A3140 !important;
 	text-shadow: 0px 1px 0px rgba(255,255,255,.3);
+}
+.float-bottom{
+	position: fixed;
+	bottom: 8px;
+	width: 96%;
+	z-index: 1999;
+}
+
+/* Vertical Scroll Setup */
+.vscroll-holder{
+	overflow-y: scroll;
+	width: 100%;
+}
+.vscroll-container{
+	padding-bottom: 96px;
 }

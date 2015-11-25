@@ -1,15 +1,19 @@
 var { Tabs, Tab, IconButton, FontIcon } = MUI;
 
+const Comments = BlazeToReact('comments');
+
 FroTabs = React.createClass({
   propTypes: {
     tabIndex: React.PropTypes.number,
-    slideIndex: React.PropTypes.number
+    slideIndex: React.PropTypes.number,
+    frolicId: React.PropTypes.string
   },
 
   getDefaultProps: function(){
     return {
-      tabIndex: 1,
-      slideIndex: 1
+      tabIndex: 2,
+      slideIndex: 0,
+      frolic: ''
     };
   },
 
@@ -27,15 +31,19 @@ FroTabs = React.createClass({
   },
 
   componentDidMount: function(){
-    console.log("tab ref child " + this.props.children.toArray());
-    console.log("tab ref " + this.props.children.toArray());
-    // this.view = Blaze.render(Template.comments, $('#tab-comments')[0]);
-  },
+    // var index = this.refs.tabSlides.props.index;
+    // console.log("tab ref child ");
+    // console.log("tab ref " + $('.tab-slides')[index]);
+    //
+    // this.view = Blaze.render(Template.comments, $('.tab-slides')[index]);
 
-  componentWillUnmount() {
-    // Clean up Blaze view
-    Blaze.remove(this.view);
+    console.log("fro_tabs prop: " + typeof(this.props.frolicId));
   },
+  //
+  // componentWillUnmount() {
+  //   // Clean up Blaze view
+  //   // Blaze.remove(this.view);
+  // },
 
   _handleChangeIndex: function(index) {
     console.log("slide index: ", index);
@@ -47,7 +55,8 @@ FroTabs = React.createClass({
 
   _handleChangeTabs: function(index) {
     console.log("tab index: ", index);
-    Session.set('slideIndex', index-2)
+    Session.set('slideIndex', index-2);
+    console.log("slide index: ", Session.get('slideIndex'));
     // this.setState({
     //   slideIndex: parseInt(value, 10),
     // });
@@ -64,27 +73,31 @@ FroTabs = React.createClass({
         fontWeight: "normal",
         color: "#666"
       },
+      container: {
+        height: "100%"
+      },
       slide: {
-        padding: 10,
+        margin: "8px",
+        height: "306px"
       }
     };
 
     return (
       <div>
         <Tabs onChange={this._handleChangeTabs} value={""+this.props.tabIndex}>
-          <Tab label={<FontIcon className="fa fa-film tab-icon"/>} value="2"/>
-          <Tab label={<FontIcon className="fa fa-comments tab-icon"/>} value="3"/>
+          <Tab label={<IconButton iconClassName="fa fa-film tab-icon"/>} value="2"/>
+          <Tab label={<IconButton iconClassName="fa fa-comments tab-icon"/>} value="3"/>
           <Tab label={<IconButton iconClassName="fa fa-desktop tab-icon"/>} value="4"/>
         </Tabs>
-        <SwipeableViews index={this.props.slideIndex} onChangeIndex={this._handleChangeIndex}>
-          <div>
+        <SwipeableViews index={this.props.slideIndex} onChangeIndex={this._handleChangeIndex} style={styles.container}>
+          <div style={styles.slide} className="tab-slides">
             <h2 style={styles.headline}>Tabs with slide effect</h2>
             Swipe to see the next slide.<br />
           </div>
-          <div style={styles.slide} ref="tabComments">
-            <div id="tab-comments"></div>
+          <div style={styles.slide} className="tab-slides">
+            <Comments frolicId={this.props.frolicId}/>
           </div>
-          <div style={styles.slide}>
+          <div style={styles.slide} className="tab-slides">
             slide n°3
           </div>
         </SwipeableViews>

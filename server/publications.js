@@ -12,4 +12,12 @@ Meteor.publish('frolics_fs', function(options){
 
 Meteor.publish('hearts', function(userId){
   return Hearts.find({userId: userId});
-})
+});
+
+Meteor.publish('comments', function(frolicId){
+  return Comments.find({frolicId: frolicId});
+});
+
+Meteor.publish('profiles', function(){
+  return Meteor.users.find();
+});

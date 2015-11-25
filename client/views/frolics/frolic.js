@@ -13,7 +13,10 @@ Template.frolic.helpers({
     return FroScreen;
   },
   frolic: function(){
-    return Frolics.findOne(this.frolicId);
+    var frolic = Frolics.findOne(this.frolicId);
+    console.log("frolic object");
+    prettyJSON(frolic);
+    return frolic;
   },
   frolicFS: function(){
     console.log("Frolic Id: " + this.frolicId);

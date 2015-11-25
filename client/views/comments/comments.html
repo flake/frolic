@@ -1,6 +1,13 @@
 <template name="comments">
-  <h1>Comments</h1>
-  {{#each comments}}
-    {{> _comment}}
-  {{/each}}
+  <div class="vscroll-holder">
+    <div class="vscroll-container">
+      {{#each comments}}
+        {{> _comment}}
+      {{/each}}
+
+      <div class="float-bottom">
+        {{> React component=NewComment}}
+      </div>
+    </div>
+  </div>
 </template>
