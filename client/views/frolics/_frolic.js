@@ -25,7 +25,7 @@ Template._frolic.helpers({
 Template._frolic.events({
   'click .fro-heart': function(event, template){
     event.preventDefault();
-    // console.log("heart clicked... " + template.data._id);
+    console.log("heart clicked... " + template.data._id);
     Meteor.call("hearted", template.data._id);
   },
 

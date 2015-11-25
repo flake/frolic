@@ -103,7 +103,7 @@ FroItem = React.createClass({
         <CardText style={styles.cardText}>
           <div style={{"fontWeight": "900", "color": "#333"}} className="invoke-frolic">{this.props.frolic.title}</div>
           <div style={{"display": "inline-block"}}>
-            <FontIcon className="fa fa-television" style={styles.channelIcon} ><span style={{"color": APP.secondary}}> {this.props.frolic.channel}</span></FontIcon><br/>
+            <FontIcon className="fa fa-desktop" style={styles.channelIcon} ><span style={{"color": APP.secondary}}> {this.props.frolic.channel}</span></FontIcon><br/>
               <div>
                 <div className="stat-box"><FontIcon className="material-icons" style={{"color": "#666", "fontSize": "16px", "verticalAlign": "bottom"}}>visibility</FontIcon><span style={{"fontSize": "11px", "marginLeft": "4px"}}>{this.props.frolic.views}</span></div>
                 <div className="stat-box"><FontIcon className="fa fa-heart" style={styles.fontIcon}><span style={{"fontSize": "11px", "marginLeft": "4px"}}>{this.props.frolic.hearts}</span></FontIcon></div>

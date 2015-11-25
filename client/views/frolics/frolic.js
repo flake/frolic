@@ -19,7 +19,7 @@ Template.frolic.helpers({
     console.log("Frolic Id: " + this.frolicId);
     var frolic = Frolics.findOne(this.frolicId);
     if(frolic)
-      return FrolicsFS.findOne({_id: frolic.fsId});
+    return FrolicsFS.findOne({_id: frolic.fsId});
     else {
       return null;
     }
@@ -28,10 +28,10 @@ Template.frolic.helpers({
     return FroTabs;
   },
   tabIndex: function(){
-    return Session.get('tabIndex');
+    return parseInt(Session.get('tabIndex'));
   },
   slideIndex: function(){
-    return Session.get('slideIndex');
+    return parseInt(Session.get('slideIndex'));
   }
 });
 
@@ -42,6 +42,6 @@ Template.frolic.events({
 });
 
 Template.frolic.rendered = function(){
-  Session.set('tabIndex', "1");
-  Session.set('slideIndex', "1");
+  Session.set('tabIndex', 0);
+  Session.set('slideIndex', 0);
 }
