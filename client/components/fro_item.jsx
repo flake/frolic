@@ -86,12 +86,12 @@ FroItem = React.createClass({
 
     var iconBtnElem = (<IconButton iconClassName="material-icons" iconStyle={ {color: APP.primary} }>more_vert</IconButton>);
 
-    var dataSetup = {
-      controls: "true",
-      preload: "metadata",
-      poster: '',
-      class: 'flayer'
-    };
+    // var dataSetup = {
+    //   controls: "true",
+    //   preload: "metadata",
+    //   poster: "",
+    //   class: "flayer"
+    // };
 
     return (
       <Card>
@@ -101,7 +101,7 @@ FroItem = React.createClass({
           </video>
         </CardMedia>
         <CardText style={styles.cardText}>
-          <div style={{"fontWeight": "900", "color": "#333"}} className="invoke-frolic">{this.props.frolic.title}</div>
+          <div style={{"fontWeight": "900", "color": "#333"}} className="frolic-invoke" id="fi-froinfo" >{this.props.frolic.title}</div>
           <div style={{"display": "inline-block"}}>
             <FontIcon className="fa fa-desktop" style={styles.channelIcon} ><span style={{"color": APP.secondary}}> {this.props.frolic.channel}</span></FontIcon><br/>
               <div>
@@ -122,13 +122,13 @@ FroItem = React.createClass({
           </div>
         </CardText>
         <CardActions style={styles.actionBox}>
-          <FlatButton secondary={true} label="" labelPosition="after" className="fro-action fro-heart">
+          <FlatButton secondary={true} className="fro-action fro-heart">
             <FontIcon className={"fa fa-" + this.props.hearted + " app-icon"} />
           </FlatButton>
-          <FlatButton secondary={true} label="" labelPosition="after" className="fro-action invoke-frolic">
+          <FlatButton secondary={true} className="fro-action frolic-invoke" id="fi-comments">
             <FontIcon className="fa fa-commenting-o app-icon" />
           </FlatButton>
-          <FlatButton secondary={true} label="" labelPosition="after" className="fro-action">
+          <FlatButton secondary={true} className="fro-action">
             <FontIcon className="fa fa-share-alt app-icon" />
           </FlatButton>
           <IconMenu iconButtonElement= {iconBtnElem} openDirection="top-left" >

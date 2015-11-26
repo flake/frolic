@@ -25,13 +25,21 @@ Template._frolic.helpers({
 Template._frolic.events({
   'click .fro-heart': function(event, template){
     event.preventDefault();
-    console.log("heart clicked... " + template.data._id);
+    // console.log("heart clicked... " + template.data._id);
     Meteor.call("hearted", template.data._id);
   },
 
-  'click .invoke-frolic': function(event, template){
+  'click .frolic-invoke': function(event, template){
     event.preventDefault();
-    console.log("invoking frolic ... ");
+    var froTabs = ["fi-froinfo", "fi-comments"];
+    var fiTab = $(event.currentTarget).attr('id');
+    var ftIndex = froTabs.indexOf(fiTab);
+    // console.log("frolic tab: " + fiTab);
+    console.log("frolic tab index: " + ftIndex);
+
+    Session.set("slideIndex", ftIndex);
+    Session.set("tabIndex", ftIndex);
+
     FlowRouter.go('/frolic/'+template.data._id);
   }
   // "click .flayer": function(event, template){

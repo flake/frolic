@@ -50,8 +50,15 @@ Template.frolic.events({
 // }
 
 Template.frolic.onRendered(function(){
-  Session.set('tabIndex', 0);
-  Session.set('slideIndex', 0);
+  Session.setDefault('tabIndex', 0);
+  Session.setDefault('slideIndex', 0);
+
+  Tracker.autorun(function(){
+    var ftindex = Session.get('tabIndex');
+    var navTabs = $('.nav-tabs');
+    navTabs.removeClass("tab-active");
+    navTabs.eq(ftindex).addClass("tab-active");
+  });
 });
 
 Template.frolic.onCreated(function(){

@@ -1,6 +1,7 @@
 var { Tabs, Tab, IconButton, FontIcon } = MUI;
 
-const Comments = BlazeToReact('comments');
+// const Comments = BlazeToReact('comments');
+const VScroll = BlazeToReact('vscroll');
 
 FroTabs = React.createClass({
   propTypes: {
@@ -82,15 +83,16 @@ FroTabs = React.createClass({
       }
     };
 
+    var frodata = {frolicId: this.props.frolicId};
+
     return (
       <div>
         <SwipeableViews index={this.props.slideIndex} onChangeIndex={this._handleChangeIndex} style={styles.container}>
           <div style={styles.slide} className="tab-slides">
-            <h2 style={styles.headline}>Tabs with slide effect</h2>
-            Swipe to see the next slide.<br />
+            <VScroll page="_froinfo" data={frodata} />
           </div>
           <div style={styles.slide} className="tab-slides">
-            <Comments frolicId={this.props.frolicId}/>
+            <VScroll page="comments" data={frodata} />
           </div>
           <div style={styles.slide} className="tab-slides">
             slide n°3
@@ -101,6 +103,8 @@ FroTabs = React.createClass({
     );
   }
 });
+
+// <Comments frolicId={this.props.frolicId}/>
 
 // <Tabs onChange={this._handleChangeTabs} value={""+this.props.tabIndex}>
 //   <Tab label={<IconButton iconClassName="fa fa-film tab-icon"/>} value="2"/>
