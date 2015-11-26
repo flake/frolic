@@ -107,6 +107,8 @@ Template.appLayout.events({
   'click #navigation-back': function(event, template){
     console.log("back btn event...");
     history.back();
+    // FlowRouter.go('/');
+    // BackBehaviour.goBack();
   },
 
   'click #navicon-right': function(event, template){
@@ -126,4 +128,14 @@ Template.appLayout.onRendered(function(){
   Session.set('addVideoModal', false);
   Session.set('vidsrc', '');
   Session.set('vidsnaps', []);
-})
+});
+
+Template.appLayout.onCreated(function(){
+  var self = this;
+  console.log("app layout self: "+self.frolicId+" params: "+self.params);
+  self.autorun(function(){
+    self.subscribe("frolics_fs");
+    self.subscribe("hearts", Meteor.userId());
+    self.subscribe("profiles");
+  });
+});

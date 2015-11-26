@@ -31,6 +31,9 @@ SideNav = React.createClass({
         Meteor.logout();
         FlowRouter.reload();
         break;
+      case "home":
+        FlowRouter.go('/');
+        break;
       default:
         console.log("Sorry! No matches to switch...");
     }

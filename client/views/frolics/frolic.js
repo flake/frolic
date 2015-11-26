@@ -44,7 +44,22 @@ Template.frolic.events({
   }
 });
 
-Template.frolic.rendered = function(){
+// Template.frolic.rendered = function(){
+//   Session.set('tabIndex', 0);
+//   Session.set('slideIndex', 0);
+// }
+
+Template.frolic.onRendered(function(){
   Session.set('tabIndex', 0);
   Session.set('slideIndex', 0);
-}
+});
+
+Template.frolic.onCreated(function(){
+  var pdata = Template.parentData(0);
+  var self = this;
+  console.log("frolic on-created _id: "+pdata.frolicId);
+  self.autorun(function(){
+    self.subscribe("frolic", pdata.frolicId);
+    self.subscribe("comments", pdata.frolicId);
+  });
+});
