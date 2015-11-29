@@ -111,9 +111,11 @@ html, body {
 .nav-tabs{
 	color: #142E3D !important; /* 1D3747 072A40 */
 	text-shadow: 1px 0px 0px #9FB9C9;
+	opacity: 0.8;
 }
 .nav-tabs.tab-active{
 	color: #fff !important;
+	opacity: 1;
 	/*border-bottom: 2px solid #fff;*/
   /*padding-bottom: 6px;*/
 }

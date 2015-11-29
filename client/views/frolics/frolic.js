@@ -50,6 +50,7 @@ Template.frolic.events({
 // }
 
 Template.frolic.onRendered(function(){
+  console.log("frolic rendered...");
   Session.setDefault('tabIndex', 0);
   Session.setDefault('slideIndex', 0);
 
