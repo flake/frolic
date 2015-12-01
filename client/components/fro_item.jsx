@@ -40,16 +40,6 @@ FroItem = React.createClass({
 
   render: function(){
     var styles = {
-      froAvatar: {
-        width: "32px",
-        height: "32px",
-        lineHeight: "32px",
-        marginRight: "8px"
-      },
-      headerBox: {
-        padding: "0",
-        height: "36px"
-      },
       titleBox: {
         padding: "8px"
       },
@@ -68,10 +58,6 @@ FroItem = React.createClass({
       },
       actionBox: {
         paddingTop: "0"
-      },
-      channelIcon: {
-        fontSize: "14px",
-        marginTop: "8px"
       },
       fontIcon: {
         fontSize: "12px",
@@ -93,6 +79,8 @@ FroItem = React.createClass({
     //   class: "flayer"
     // };
 
+    var screenIcon = (<FontIcon className="fa fa-desktop" style={Styles.channelIcon} />);
+
     return (
       <Card>
         <CardMedia>
@@ -101,24 +89,23 @@ FroItem = React.createClass({
           </video>
         </CardMedia>
         <CardText style={styles.cardText}>
-          <div style={{"fontWeight": "900", "color": "#333"}} className="frolic-invoke" id="fi-froinfo" >{this.props.frolic.title}</div>
+          <div style={{"fontWeight": "900", "color": "#333", "paddingBottom": "8px"}} className="frolic-invoke" id="fi-froinfo" >{this.props.frolic.title}</div>
           <div style={{"display": "inline-block"}}>
-            <FontIcon className="fa fa-desktop" style={styles.channelIcon} ><span style={{"color": APP.secondary}}> {this.props.frolic.channel}</span></FontIcon><br/>
-              <div>
-                <div className="stat-box"><FontIcon className="material-icons" style={{"color": "#666", "fontSize": "16px", "verticalAlign": "bottom"}}>visibility</FontIcon><span style={{"fontSize": "11px", "marginLeft": "4px"}}>{this.props.frolic.views}</span></div>
-                <div className="stat-box"><FontIcon className="fa fa-heart" style={styles.fontIcon}><span style={{"fontSize": "11px", "marginLeft": "4px"}}>{this.props.frolic.hearts}</span></FontIcon></div>
-              </div>
-          </div>
-          <div className="header-right">
             <CardHeader
-              title={this.props.frolic.owner().profile.name}
+              title={this.props.frolic.channel}
               titleStyle={styles.titleStyle}
               subtitle={this.props.frolic.datePublished()}
               subtitleStyle={styles.subtitleStyle}
               titleColor={APP.secondary}
-              avatar={<Avatar backgroundColor={APP.themeGrey} style={styles.froAvatar}>A</Avatar>}
-              style={styles.headerBox} >
+              avatar={<Avatar backgroundColor={APP.themeGrey} style={Styles.froAvatar} icon={screenIcon} />}
+              style={Styles.headerBox} >
             </CardHeader>
+          </div>
+          <div className="header-right">
+            <div>
+              <div className="stat-box"><FontIcon className="material-icons" style={{"color": "#666", "fontSize": "16px", "verticalAlign": "bottom"}}>visibility</FontIcon><span style={{"fontSize": "11px", "marginLeft": "4px"}}>{this.props.frolic.views}</span></div>
+              <div className="stat-box"><FontIcon className="fa fa-heart" style={styles.fontIcon}><span style={{"fontSize": "11px", "marginLeft": "4px"}}>{this.props.frolic.hearts}</span></FontIcon></div>
+            </div>
           </div>
         </CardText>
         <CardActions style={styles.actionBox}>

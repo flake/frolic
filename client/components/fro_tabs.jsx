@@ -83,7 +83,6 @@ FroTabs = React.createClass({
             <VScroll page='comments' data={frodata} />
           </div>
           <div style={styles.slide} className="tab-slides">
-
           </div>
         </SwipeableViews>
       </div>

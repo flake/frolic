@@ -81,7 +81,7 @@ html, body {
 	color: #666;
 }
 .stat-box{
-	display: inline-block;
+	display: block;
 	margin-right: 8px;
 	min-width: 48px;
 }
@@ -118,4 +118,8 @@ html, body {
 	opacity: 1;
 	/*border-bottom: 2px solid #fff;*/
   /*padding-bottom: 6px;*/
+}
+
+.inline-div{
+	display: inline-block !important;
 }
