@@ -1,3 +1,9 @@
 <template name="_froinfo">
-  <h2>This is _fro info {{frolicId}}</h2>
+  <div class="vscroll-holder">
+    <div class="vscroll-container">
+      <div class="frolic-title">
+        {{> React component=FroInfo frolic=frolic}}
+      </div>
+    </div>
+  </div>
 </template>

@@ -11,7 +11,7 @@ Template.comments.helpers({
   },
 
   comments: function(){
-    console.log("HELPER comments frolicId "+this.frolicId);
+    console.log("HELPER comments frolicId "+ this.frolicId);
     return Comments.find({frolicId: this.frolicId});
   },
   NewComment: function(){
@@ -39,5 +39,5 @@ Template.comments.events({
 });
 
 Template.comments.rendered = function(){
-  console.log("Comments rendered...");
+  console.log("Comments rendered... " + this.frolicId);
 }

@@ -117,14 +117,14 @@ Template.appLayout.events({
 
   'click .nav-tabs': function(event, template){
     var navTabs = $('.nav-tabs');
-    var sindex = navTabs.index(event.target);
+    var sindex = parseInt(navTabs.index(event.target));
     Session.set('slideIndex', sindex);
-    Session.set('tabIndex', sindex);
+    // Session.set('tabIndex', sindex);
 
     navTabs.removeClass("tab-active");
     navTabs.eq(sindex).addClass("tab-active");
 
-    // console.log("slideIndex from nav-tabs "+ sindex);
+    console.log("slideIndex from nav-tabs "+ sindex);
   }
 });
 

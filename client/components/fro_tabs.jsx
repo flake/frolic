@@ -1,20 +1,21 @@
 var { Tabs, Tab, IconButton, FontIcon } = MUI;
 
+// const FrInfo = BlazeToReact('_froinfo');
 // const Comments = BlazeToReact('comments');
 const VScroll = BlazeToReact('vscroll');
 
 FroTabs = React.createClass({
   propTypes: {
-    tabIndex: React.PropTypes.number,
     slideIndex: React.PropTypes.number,
+    frolic: React.PropTypes.object,
     frolicId: React.PropTypes.string
   },
 
   getDefaultProps: function(){
     return {
-      tabIndex: 2,
       slideIndex: 0,
-      frolic: ''
+      frolic: {},
+      frolicId: ''
     };
   },
 
@@ -31,27 +32,12 @@ FroTabs = React.createClass({
     return { };
   },
 
-  // componentDidMount: function(){
-    // var index = this.refs.tabSlides.props.index;
-    // console.log("tab ref child ");
-    // console.log("tab ref " + $('.tab-slides')[index]);
-    //
-    // this.view = Blaze.render(Template.comments, $('.tab-slides')[index]);
-
-    // console.log("fro_tabs prop: " + typeof(this.props.frolicId));
-  // },
-  //
-  // componentWillUnmount() {
-  //   // Clean up Blaze view
-  //   // Blaze.remove(this.view);
-  // },
-
   _handleChangeIndex: function(index) {
     console.log("slide index: ", index);
     $(".nav-tabs").removeClass("tab-active");
     $(".nav-tabs").eq(index).addClass("tab-active");
 
-    Session.set('tabIndex', index);
+    // Session.set('tabIndex', index);
   },
 
   // _handleChangeTabs: function(index) {
@@ -84,23 +70,24 @@ FroTabs = React.createClass({
     };
 
     var frodata = {frolicId: this.props.frolicId};
+    console.log("frodata " + frodata);
+    prettyJSON(frodata);
 
     return (
       <div>
-        <SwipeableViews index={this.props.slideIndex} onChangeIndex={this._handleChangeIndex} style={styles.container}>
+        <SwipeableViews index={this.props.slideIndex} onChangeIndex={this._handleChangeIndex} style={styles.container} resistance={true}>
           <div style={styles.slide} className="tab-slides">
-            <VScroll page="_froinfo" data={frodata} />
+            <FroInfo frolic={this.props.frolic}/>
           </div>
           <div style={styles.slide} className="tab-slides">
-            <VScroll page="comments" data={frodata} />
+            <VScroll page='comments' data={frodata} />
           </div>
           <div style={styles.slide} className="tab-slides">
-            slide n°3
+
           </div>
         </SwipeableViews>
-        <div ref="testDiv" id="test-div"></div>
       </div>
-    );
+    )
   }
 });
 

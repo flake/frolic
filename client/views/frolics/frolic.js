@@ -12,11 +12,12 @@ Template.frolic.helpers({
   FroScreen: function(){
     return FroScreen;
   },
-  frolic: function(){
-    var frolic = Frolics.findOne(this.frolicId);
-    console.log("frolic object");
-    prettyJSON(frolic);
-    return frolic;
+  frolicDoc: function(){
+    // console.log("frolic doc Id: " + this.frolicId);
+    // var frolic = Frolics.findOne(this.frolicId);
+    // console.log("frolic object " + typeof(frolic));
+    // prettyJSON(frolic);
+    return Frolics.findOne(this.frolicId);
   },
   frolicFS: function(){
     console.log("Frolic Id: " + this.frolicId);
@@ -51,11 +52,11 @@ Template.frolic.events({
 
 Template.frolic.onRendered(function(){
   console.log("frolic rendered...");
-  Session.setDefault('tabIndex', 0);
+  // Session.setDefault('tabIndex', 0);
   Session.setDefault('slideIndex', 0);
 
   Tracker.autorun(function(){
-    var ftindex = Session.get('tabIndex');
+    var ftindex = Session.get('slideIndex');
     var navTabs = $('.nav-tabs');
     navTabs.removeClass("tab-active");
     navTabs.eq(ftindex).addClass("tab-active");
