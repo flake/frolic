@@ -5,6 +5,12 @@ Meteor.startup(function(){
   Session.set("sideNav", false);
 
   document.addEventListener("deviceready", onDeviceReady, false);
+
+  Tracker.autorun(function(){
+    if(!Meteor.userId() && Session.get('loggedIn')){
+      FlowRouter.go(FlowRouter.path('login'));
+    }
+  });
   // window.onpopstate = function(){
   //   if(history.state && history.state.initial === true){
   //     //navigator.app.exitApp();

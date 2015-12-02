@@ -24,7 +24,7 @@ newTheme = ThemeManager.modifyRawThemePalette(lightTheme, appPalette);
 //ThemeManager.setTheme(ThemeManager.types.LIGHT);
 // ThemeManager.setPalette(appPalette);
 
-var {AppBar, IconMenu, IconButton} = MUI;
+var {AppBar, IconMenu, IconButton, FontIcon} = MUI;
 MenuItem = MUI.Libs.MenuItem;
 //mui.Libs.MenuDivider
 
@@ -66,7 +66,7 @@ AppHead = React.createClass({
         color: "#fff"
       }
     };
-
+    
     return (
       <div>
         <AppBar

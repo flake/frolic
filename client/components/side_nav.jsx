@@ -1,4 +1,5 @@
 var { LeftNav, FlatButton, FontIcon } = MUI;
+var MenuItem = MUI.Libs.MenuItem;
 
 SideNav = React.createClass({
   propTypes: {
@@ -41,8 +42,33 @@ SideNav = React.createClass({
   },
 
   render: function(){
+
+    // <MenuItem index={0} primaryText="Home" leftIcon={<FontIcon className="fa fa-home" />} />
+    // <MenuItem index={1} primaryText="Screens" leftIcon={<FontIcon className="fa fa-tv" />} />
+    // <MenuItem index={2} primaryText="Circles" leftIcon={<FontIcon className="fa fa-sun-o" />} />
+    // <MenuItem index={3} primaryText="Help" leftIcon={<FontIcon className="fa fa-question" />} />
+    // <MenuItem index={4} primaryText="Feedback" leftIcon={<FontIcon className="fa fa-angelist" />} />
+    // <MenuItem index={5} primaryText="Logout" leftIcon={<FontIcon className="fa fa-power-off" />} />
+
+    var navMenuItems = [
+      (<MenuItem index={0} primaryText="Home" leftIcon={<FontIcon className="fa fa-home" />} />),
+      (<MenuItem index={1} primaryText="Screens" leftIcon={<FontIcon className="fa fa-tv" />} />),
+      (<MenuItem index={2} primaryText="Circles" leftIcon={<FontIcon className="fa fa-sun-o" />} />),
+      (<MenuItem index={3} primaryText="Help" leftIcon={<FontIcon className="fa fa-question" />} />),
+      (<MenuItem index={4} primaryText="Feedback" leftIcon={<FontIcon className="fa fa-angelist" />} />),
+      (<MenuItem index={5} primaryText="Logout" leftIcon={<FontIcon className="fa fa-power-off" />} />)
+    ];
+
     return (
-      <LeftNav ref="SideNav" header={ this.renderHeader() } menuItems={this.props.items} docked={false} onChange={this.menuChange} disableSwipeToOpen={true} openRight={true}/>
+      <LeftNav
+        ref="SideNav"
+        header={ this.renderHeader() }
+        docked={false}
+        onChange={this.menuChange}
+        disableSwipeToOpen={true}
+        openRight={true}
+        menuItems= { navMenuItems }
+        />
     )
   },
 
