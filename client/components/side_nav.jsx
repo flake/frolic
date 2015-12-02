@@ -29,6 +29,7 @@ SideNav = React.createClass({
     switch (menuItem.route) {
       case "logout":
         Meteor.logout();
+        FlowRouter.go('/');
         FlowRouter.reload();
         break;
       case "home":

@@ -30,23 +30,123 @@ Signup = React.createClass({
         if(error){
           console.log("signup error");
         }else{
-          FlowRouter.go('/');
+          FlowRouter.reload();
         }
       });
   },
 
   render: function(){
+
+    var styles = {
+      connectIcon: {
+        height: '100%',
+        display: 'inline-block',
+        verticalAlign: 'middle',
+        paddingLeft: '12px',
+        lineHeight: '36px',
+        color: '#fff',
+        minWidth: "24px"
+      },
+      emailSignup: {
+        width: "100%",
+        backgroundColor: APP.primary,
+        color: "#fff",
+        borderRadius: "2px",
+        textAlign: "left",
+        paddingLeft: "8px",
+        marginBottom: "8px"
+      },
+      facebookSignup: {
+        width: "48%",
+        backgroundImage: "linear-gradient(#2953ad, #234ca2)",
+        color: "#fff",
+        borderRadius: "2px",
+        textAlign: "left",
+        paddingLeft: "8px",
+        marginBottom: "8px"
+      },
+      twitterSignup: {
+        width: "48%",
+        backgroundColor: "#55acee",
+        color: "#fff",
+        borderRadius: "2px",
+        textAlign: "left",
+        paddingLeft: "8px",
+        marginBottom: "8px",
+        marginLeft: "10px"
+      },
+      googleSignup: {
+        width: "48%",
+        backgroundColor: "#dd4b39",
+        color: "#fff",
+        borderRadius: "2px",
+        textAlign: "left",
+        paddingLeft: "8px",
+        marginBottom: "8px"
+      },
+      labelStyle: {
+        textTransform: "none",
+        paddingLeft: "8%",
+        verticalAlign: "middle"
+      }
+    };
+
     return (
-      <Card>
-        <CardText>
+      <div style={{padding: "16px"}}>
+        <CardText style={{backgroundColor: "#fff"}}>
           <form>
-            <TextField hintText="Firstname Lastname" fullWidth={true} ref="fullname"/>
-            <TextField hintText="Email" fullWidth={true} ref="emailphn"/>
+            <TextField hintText="Full name" fullWidth={true} ref="fullname"/>
+            <TextField hintText="Email or Phone" fullWidth={true} ref="emailphn"/>
             <TextField hintText="Password" type="password" fullWidth={true} ref="password"/>
             <RaisedButton label="Sign Up" secondary={true} fullWidth={true} onClick={this.handleSubmit}/>
           </form>
         </CardText>
-      </Card>
+
+        <CardText style={{backgroundColor: "#fff"}}>
+          <FlatButton
+            label="Facebook"
+            labelStyle={styles.labelStyle}
+            labelPosition="after"
+            secondary={true}
+            fullWidth={true}
+            style={styles.facebookSignup}
+            onClick={this.handleFacebook} >
+            <FontIcon className="fa fa-facebook" style={styles.connectIcon} />
+          </FlatButton>
+          <FlatButton
+            label="Twitter"
+            labelStyle={styles.labelStyle}
+            labelPosition="after"
+            secondary={true}
+            fullWidth={true}
+            style={styles.twitterSignup}
+            onClick={this.handleTwitter} >
+            <FontIcon className="fa fa-twitter" style={styles.connectIcon} />
+          </FlatButton>
+          <FlatButton
+            label="Google"
+            labelStyle={styles.labelStyle}
+            labelPosition="after"
+            secondary={true}
+            fullWidth={true}
+            style={styles.googleSignup}
+            onClick={this.handleTwitter} >
+            <FontIcon className="fa fa-google" style={styles.connectIcon} />
+          </FlatButton>
+        </CardText>
+      </div>
     );
   }
-})
+});
+
+
+// <FlatButton
+//   label="Sign up with Email"
+//   labelStyle={styles.labelStyle}
+//   labelPosition="after"
+//   secondary={true}
+//   fullWidth={true}
+//   style={styles.emailSignup}
+//   onClick={this.handleEmail} >
+//   <FontIcon className="fa fa-envelope" style={styles.connectIcon} />
+// </FlatButton>

@@ -1,5 +1,8 @@
 <template name="signin">
-  <div id="">
+  <nav class="fixed-nav-bar">
+    {{> React component=AppHead appTitle=title navIcons=navicons }}
+  </nav>
+  <div id="login-div">
     {{> React component=Signin}}
   </div>
 </template>

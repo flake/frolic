@@ -1,5 +1,12 @@
 <template name="signup">
-  <div id="">
+  <div id="welcome-screen">
+    <div id="welcome-logo">frolic</div>
+    <div id="welcome-tagline">Empower yourself</div>
+  </div>
+  <div id="login-btn">
+    {{> React component=LoginBtn}}
+  </div>
+  <div>
     {{> React component=Signup}}
   </div>
 </template>

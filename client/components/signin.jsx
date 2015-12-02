@@ -38,19 +38,20 @@ Signin = React.createClass({
     return (
       <Card>
         <CardText>
-          <RaisedButton secondary={true} labelPosition="after" label="Signin with facebook" fullWidth={true} backgroundColor="#2953ad" onClick={this.facebookLogin}>
-            <FontIcon className="fa fa-facebook-square" color={"#ffffff"}/>
-          </RaisedButton>
-        </CardText>
-        <CardText>
           <TextField hintText="Email" fullWidth={true} ref="email"/>
           <TextField hintText="Password" type="password" fullWidth={true} ref="password"/>
           <RaisedButton label="Login" secondary={true} fullWidth={true} onClick={this.passwordLogin} />
         </CardText>
         <CardText>
-          No account yet, <FlatButton linkButton={true} href="/signup" label="Signup" secondary={true} />
+          Forgot Password?
         </CardText>
       </Card>
     );
   }
-})
+});
+
+// <CardText>
+//   <RaisedButton secondary={true} labelPosition="after" label="Signin with facebook" fullWidth={true} backgroundColor="#2953ad" onClick={this.facebookLogin}>
+//     <FontIcon className="fa fa-facebook-square" color={"#ffffff"}/>
+//   </RaisedButton>
+// </CardText>

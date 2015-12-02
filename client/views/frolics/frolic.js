@@ -36,6 +36,11 @@ Template.frolic.helpers({
   },
   slideIndex: function(){
     return parseInt(Session.get('slideIndex'));
+  },
+  heartedClass: function(){
+    var frolic = Frolics.findOne(this.frolicId);
+    console.log("frolic hearted... " + frolic.isHearted());
+    return frolic.isHearted() ? "heart" : "heart-o";
   }
 });
 

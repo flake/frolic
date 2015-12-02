@@ -6,6 +6,14 @@ html, body {
 	font-family: Roboto, sans-serif;
 }
 
+html{
+	min-height: 100%;
+}
+
+body{
+	height: 100%;
+}
+
 .fixed-nav-bar{
 	position: fixed;
   top: 0;
@@ -19,6 +27,10 @@ html, body {
 	position: relative;
 	top: 64px;
 	color: #333;
+}
+
+#welcome-layout{
+	background-color: #1690db;
 }
 
 #space-bar{
@@ -120,6 +132,32 @@ html, body {
   /*padding-bottom: 6px;*/
 }
 
-.inline-div{
+.frolic-stats{
 	display: inline-block !important;
+	min-width: 42%;
+	padding-left: 8px;
+}
+
+#welcome-screen{
+	padding: 28% 0;
+	text-align: center;
+	color: #fff;
+}
+#welcome-logo{
+	font-weight: 600;
+	font-size: 40px;
+}
+#welcome-tagline{
+	font-size: 14px;
+}
+
+#login-btn{
+	position: absolute;
+	top: 16px;
+	right: 0;
+}
+#login-div{
+	position: absolute;
+	top: 30%;
+	padding: 16px;
 }

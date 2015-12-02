@@ -8,7 +8,8 @@ FroTabs = React.createClass({
   propTypes: {
     slideIndex: React.PropTypes.number,
     frolic: React.PropTypes.object,
-    frolicId: React.PropTypes.string
+    frolicId: React.PropTypes.string,
+    hearted: React.PropTypes.string
   },
 
   getDefaultProps: function(){
@@ -70,14 +71,15 @@ FroTabs = React.createClass({
     };
 
     var frodata = {frolicId: this.props.frolicId};
-    console.log("frodata " + frodata);
-    prettyJSON(frodata);
+    // console.log("frodata " + frodata);
+    // prettyJSON(frodata);
+    console.log("hearted... " + this.props.hearted);
 
     return (
       <div>
         <SwipeableViews index={this.props.slideIndex} onChangeIndex={this._handleChangeIndex} style={styles.container} resistance={true}>
           <div style={styles.slide} className="tab-slides">
-            <FroInfo frolic={this.props.frolic}/>
+            <FroInfo frolic={this.props.frolic} hearted={this.props.hearted}/>
           </div>
           <div style={styles.slide} className="tab-slides">
             <VScroll page='comments' data={frodata} />
