@@ -1,4 +1,11 @@
-var { LeftNav, FlatButton, FontIcon } = MUI;
+var {
+  Avatar,
+  LeftNav,
+  FlatButton,
+  FontIcon,
+  List,
+  ListItem
+} = MUI;
 var MenuItem = MUI.Libs.MenuItem;
 
 SideNav = React.createClass({
@@ -26,37 +33,55 @@ SideNav = React.createClass({
     }
   },
 
-  menuChange: function(event, selectedIndex, menuItem){
-    switch (menuItem.route) {
-      case "logout":
-        Meteor.logout();
+  menuChange: function(index){
+    // var eout = $(event.target).parent().attr('data-reactid');
+    console.log("menuChange selected index " + index);
+    // prettyJSON(event.target);
+
+    switch (index) {
+      case 0:
         FlowRouter.go('/');
-        FlowRouter.reload();
         break;
-      case "home":
-        FlowRouter.go('/');
+      case 1:
+        FlowRouter.go('/screens');
+        break;
+      case 2:
+        FlowRouter.go('/circels');
+        break;
+      case 3:
+        FlowRouter.go('/feedback');
+        break;
+      case 4:
+        FlowRouter.go('/help');
+        break;
+      case 5:
+        FlowRouter.go('/logout');
         break;
       default:
         console.log("Sorry! No matches to switch...");
     }
+
+    Session.set('sideNav', false);
   },
 
   render: function(){
 
-    // <MenuItem index={0} primaryText="Home" leftIcon={<FontIcon className="fa fa-home" />} />
-    // <MenuItem index={1} primaryText="Screens" leftIcon={<FontIcon className="fa fa-tv" />} />
-    // <MenuItem index={2} primaryText="Circles" leftIcon={<FontIcon className="fa fa-sun-o" />} />
-    // <MenuItem index={3} primaryText="Help" leftIcon={<FontIcon className="fa fa-question" />} />
-    // <MenuItem index={4} primaryText="Feedback" leftIcon={<FontIcon className="fa fa-angelist" />} />
-    // <MenuItem index={5} primaryText="Logout" leftIcon={<FontIcon className="fa fa-power-off" />} />
+    // <MenuItem value="0" primaryText="Home" leftIcon={<FontIcon className="fa fa-home snav-icon" />} onTouchTap={this.menuChange} />
+    // <MenuItem value="1" primaryText="Screens" leftIcon={<FontIcon className="fa fa-tv snav-icon" />} onTouchTap={this.menuChange} />
+    // <MenuItem value="2" primaryText="Circles" leftIcon={<FontIcon className="fa fa-sun-o snav-icon" />} />
+    // <MenuItem value="3" primaryText="Help" leftIcon={<FontIcon className="fa fa-question snav-icon" />} />
+    // <MenuItem value="4" primaryText="Feedback" leftIcon={<FontIcon className="fa fa-angellist snav-icon" />} />
+    // <MenuItem value="5" primaryText="Logout" leftIcon={<FontIcon className="fa fa-power-off snav-icon" />} />
 
-    var navMenuItems = [
-      (<MenuItem index={0} primaryText="Home" leftIcon={<FontIcon className="fa fa-home" />} />),
-      (<MenuItem index={1} primaryText="Screens" leftIcon={<FontIcon className="fa fa-tv" />} />),
-      (<MenuItem index={2} primaryText="Circles" leftIcon={<FontIcon className="fa fa-sun-o" />} />),
-      (<MenuItem index={3} primaryText="Help" leftIcon={<FontIcon className="fa fa-question" />} />),
-      (<MenuItem index={4} primaryText="Feedback" leftIcon={<FontIcon className="fa fa-angelist" />} />),
-      (<MenuItem index={5} primaryText="Logout" leftIcon={<FontIcon className="fa fa-power-off" />} />)
+    var navList = [
+      { 'label' : "Home", 'class': "fa fa-home snav-icon" },
+      { 'label' : "Screens", 'class': "fa fa-tv snav-icon" },
+      { 'label' : "Circles", 'class': "fa fa-sun-o snav-icon" },
+      { 'label' : "Messages", 'class': "fa fa-envelope snav-icon" },
+      { 'label' : "Settings", 'class': "fa fa-gear snav-icon" },
+      { 'label' : "Feedback", 'class': "fa fa-angellist snav-icon" },
+      { 'label' : "Help & Support", 'class': "fa fa-question snav-icon" },
+      { 'label' : "Logout", 'class': "fa fa-power-off snav-icon" }
     ];
 
     return (
@@ -64,11 +89,22 @@ SideNav = React.createClass({
         ref="SideNav"
         header={ this.renderHeader() }
         docked={false}
-        onChange={this.menuChange}
         disableSwipeToOpen={true}
         openRight={true}
-        menuItems= { navMenuItems }
-        />
+      >
+        <List>
+          {
+            navList.map(function(item, i){
+              return <ListItem
+                        leftIcon={<FontIcon className={item.class} />}
+                        primaryText={item.label}
+                        key={i}
+                        onTouchTap={() => this.menuChange(i)}
+                      />
+                  }, this)
+          }
+        </List>
+      </LeftNav>
     )
   },
 
@@ -77,9 +113,10 @@ SideNav = React.createClass({
       headerContainer: {
         backgroundColor: "#1690DB",
         width: "100%",
-        minHeight: "64px",
+        minHeight: "128px",
         overflow: "hidden",
         color: "#fff",
+        textAlign: "center",
         boxShadow: "0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24)"
       },
       headerTitle: {
@@ -97,6 +134,9 @@ SideNav = React.createClass({
         display: "block",
         textAlign: "center",
         color: "#ddd"
+      },
+      sidenavAvatar: {
+        marginTop: "8%"
       }
     };
 
@@ -109,10 +149,48 @@ SideNav = React.createClass({
 
     return (
       <div>
-        <div style={ styles.headerContainer }>
-          <h2 style={ styles.headerTitle }>frolic</h2>
+        <div style={ styles.headerContainer } id="sidenav-header">
+          <Avatar
+            src="img/fravatar.jpg"
+            size={56}
+            style={styles.sidenavAvatar} />
+          <div>{Meteor.user().profile.name}</div>
         </div>
       </div>
     );
   }
 })
+
+
+
+
+// <ListItem
+//   leftIcon={<FontIcon className="fa fa-home snav-icon" />}
+//   primaryText="Home"
+//   onTouchTap={() => this.menuChange(0)}
+// />
+// <ListItem
+//   leftIcon={<FontIcon className="fa fa-tv snav-icon" />}
+//   primaryText="Screens"
+//   onTouchTap={() => this.menuChange(1)}
+// />
+// <ListItem
+//   leftIcon={<FontIcon className="fa fa-sun-o snav-icon" />}
+//   primaryText="Circles"
+//   onTouchTap={() => this.menuChange(2)}
+// />
+// <ListItem
+//   leftIcon={<FontIcon className="fa fa-angellist snav-icon" />}
+//   primaryText="Feedback"
+//   onTouchTap={() => this.menuChange(3)}
+// />
+// <ListItem
+//   leftIcon={<FontIcon className="fa fa-question snav-icon" />}
+//   primaryText="Help"
+//   onTouchTap={() => this.menuChange(4)}
+// />
+// <ListItem
+//   leftIcon={<FontIcon className="fa fa-power-off snav-icon" />}
+//   primaryText="Logout"
+//   onTouchTap={() => this.menuChange(5)}
+// />

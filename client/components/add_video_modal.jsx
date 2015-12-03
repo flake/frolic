@@ -22,14 +22,14 @@ AddVideoModal = React.createClass({
     return { }
   },
 
-  componentWillUpdate: function(nextProps, nextState){
-    //this.refs.vidsrc.src = nextProps.src;
-    if(nextProps.show == true){
-      this.refs.AddVideoModal.show();
-    }else{
-      this.refs.AddVideoModal.dismiss();
-    }
-  },
+  // componentWillUpdate: function(nextProps, nextState){
+  //   //this.refs.vidsrc.src = nextProps.src;
+  //   if(nextProps.show == true){
+  //     this.refs.AddVideoModal.show();
+  //   }else{
+  //     this.refs.AddVideoModal.dismiss();
+  //   }
+  // },
 
 /*  componentDidMount: function(){
     //console.log("ref modal ",this.refs);
@@ -79,7 +79,8 @@ AddVideoModal = React.createClass({
           autoScrollBodyContent={true}
           style={{"zIndex": "2001", "padding": "0px !important", "top": "-80px", "height": "114%"}}
           bodyStyle={{"padding":"0px !important"}}
-          contentStyle={{"padding":"0px", "margin": "0px", "width":"100%"}} >
+          contentStyle={{"padding":"0px", "margin": "0px", "width":"100%"}}
+          open={this.props.show} >
           <div>
             <CardMedia>
               <video id="add-video-player" className='video-js vjs-default-skin' src={this.props.vidsrc} controls preload='auto' poster='' data-setup='{}' height="240">

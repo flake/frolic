@@ -161,3 +161,13 @@ body{
 	top: 30%;
 	padding: 16px;
 }
+.snav-icon{
+	color: #1690DB !important;
+}
+
+#sidenav-header::after{
+	content: "";
+	background: url('img/fravatar.jpg');
+	background-repeat: "no-repeat";
+	background-size: "100% auto";
+}
