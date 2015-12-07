@@ -23,7 +23,7 @@ Template.frolic.helpers({
     console.log("Frolic Id: " + this.frolicId);
     var frolic = Frolics.findOne(this.frolicId);
     if(frolic)
-    return FrolicsFS.findOne({_id: frolic.fsId});
+      return FrolicsFS.findOne({_id: frolic.fsId});
     else {
       return null;
     }

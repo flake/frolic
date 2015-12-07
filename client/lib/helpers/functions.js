@@ -178,3 +178,10 @@ var getFileObject = function(filePathOrUrl, cb) {
           cb(blobToFile(blob, 'frolic.mp4'));
        });
 };
+
+captalize = function(string){
+  string = string.toLowerCase().replace(/\b[a-z]/g, function(letter){
+    return letter.toUpperCase();
+  });
+  return string;
+};

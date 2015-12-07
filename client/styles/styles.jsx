@@ -1,4 +1,11 @@
 Styles = {
+  flatBtnIcon:{
+    display: 'inline-block',
+    verticalAlign: 'middle',
+    paddingLeft: '12px',
+    lineHeight: '36px',
+    color: APP.primary
+  },
   headerBox: {
     padding: "0",
     height: "36px"

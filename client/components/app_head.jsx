@@ -44,29 +44,44 @@ AppHead = React.createClass({
     };
   },
 
+  getDefaultProps: function(){
+    return {
+      appTitle: 'frolic',
+      navIcons: [
+        {"id": "frolic-search", "class": "material-icons", "maticon": "search"},
+        {"id": "frolic-notify", "class": "material-icons", "maticon": "notifications"},
+        {"id": "frolic-videocam", "class": "material-icons", "maticon": "videocam"},
+      ]
+    };
+  },
+
   // _handleLeftIconTap: function(event){
   //   console.log("back btn event ");
   //   FlowRouter.history.back();
   // },
 
-  navItems: [
-      { route: 'home', text: 'Home'},
-      { route: 'screens', text: 'Screens'},
-      { route: 'circles', text: 'Circles'},
-      { route: 'help', text: 'Help'},
-      { route: 'feedback', text: 'Feedback'},
-      { route: 'logout', text: 'Logout'}
-    ],
+  // navItems: [
+  //     { route: 'home', text: 'Home'},
+  //     { route: 'screens', text: 'Screens'},
+  //     { route: 'circles', text: 'Circles'},
+  //     { route: 'help', text: 'Help'},
+  //     { route: 'feedback', text: 'Feedback'},
+  //     { route: 'logout', text: 'Logout'}
+  //   ],
 
   render: function(){
-
-    var iconLeft = (<IconButton iconClassName="material-icons" id="navigation-back" iconStyle={{color: "#fff"}}>arrow_back</IconButton>);
     var styles = {
       navIcon: {
         color: "#fff"
       }
     };
-    
+
+    var iconLeft = (<IconButton iconClassName="material-icons" id="navigation-back" iconStyle={{color: "#fff"}}>arrow_back</IconButton>);
+    var curRoute = FlowRouter.current();
+    if(curRoute.route.path === '/'){
+      iconLeft = (<div></div>);
+    };
+
     return (
       <div>
         <AppBar
@@ -79,10 +94,22 @@ AppHead = React.createClass({
                   return <IconButton key={i} iconClassName={navicon.class} iconStyle={styles.navIcon} id={navicon.id}>{navicon.maticon}</IconButton>
                 })
               }
-              <IconButton iconClassName="material-icons" iconStyle={{color: "#fff"}} id="navicon-right">menu</IconButton>
+              {
+                (() => {
+                  if(this.props.hasSideNav){
+                    return <IconButton iconClassName="material-icons" iconStyle={{color: "#fff"}} id="navicon-right">menu</IconButton>
+                  }
+                })()
+              }
             </div>
           } />
-        <SideNav show={this.props.sideNav} items={ this.navItems } />
+        {
+          (() => {
+            if(this.props.hasSideNav){
+              return <SideNav show={this.props.sideNav} />
+            }
+          })()
+        }
       </div>
     )
   }

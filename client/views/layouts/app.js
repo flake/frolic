@@ -129,9 +129,12 @@ Template.appLayout.events({
 });
 
 Template.appLayout.onRendered(function(){
-  Session.set('addVideoModal', false);
-  Session.set('vidsrc', '');
-  Session.set('vidsnaps', []);
+  devHeight = $(window).innerHeight();
+  $('#app-body').css('min-height', devHeight);
+
+  Session.setDefault('addVideoModal', false);
+  Session.setDefault('vidsrc', '');
+  Session.setDefault('vidsnaps', []);
 });
 
 Template.appLayout.onCreated(function(){

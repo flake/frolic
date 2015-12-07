@@ -40,7 +40,11 @@ Signin = React.createClass({
         <CardText>
           <TextField hintText="Email" fullWidth={true} ref="email"/>
           <TextField hintText="Password" type="password" fullWidth={true} ref="password"/>
-          <RaisedButton label="Login" secondary={true} fullWidth={true} onClick={this.passwordLogin} />
+          <RaisedButton
+            label="Login"
+            secondary={true}
+            fullWidth={true}
+            onClick={this.passwordLogin} />
         </CardText>
         <CardText>
           Forgot Password?
