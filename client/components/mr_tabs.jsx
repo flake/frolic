@@ -4,20 +4,19 @@ var {
   IconButton
 } = MUI;
 
-MrTabs: React.creatClass({
+MrTabs = React.createClass({
   propTypes:{
-    // tempaltes = { 'title': 'tab title', }
-    templates: React.PropTypes.Array
+    views: React.PropTypes.Array
   },
 
   getDefaultProps: function(){
     return {
-      templates: [
+      views: [
         {'name': 'tabInfo', 'title': 'Info', 'iconClass': 'material-icons', 'maticon': 'info_outline', 'data': {}},
         {'name': 'tabInfo', 'title': 'Info', 'iconClass': 'material-icons', 'maticon': 'info_outline', 'data': {}},
         {'name': 'tabInfo', 'title': 'Info', 'iconClass': 'material-icons', 'maticon': 'info_outline', 'data': {}}
       ]
-    }
+    };
   },
 
   //IMPORTANT SET CHILD CONTEXT

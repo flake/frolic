@@ -175,3 +175,24 @@ body{
 	background-repeat: "no-repeat";
 	background-size: "100% auto";
 }
+
+/* FroMini thumb list Container */
+#fromini-thumbs{
+	height: 100%;
+	padding: 8px;
+	padding-right: 0;
+}
+
+.fromini{
+	display: inline-block;
+	width: 48%;
+}
+
+.mini-header{
+	display: inline-block !important;
+}
+.minifro-action{
+	display: inline-block !important;
+	margin: 0;
+	margin-right: 0 !important;
+}

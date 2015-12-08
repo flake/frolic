@@ -38,6 +38,11 @@ FroItem = React.createClass({
     videojs(this.refs.flayer).paused() ? videojs(this.refs.flayer).play() : videojs(this.refs.flayer).pause();
   },
 
+  _handleScreen: function(){
+    console.log("screen clicked...");
+    FlowRouter.go('/screen/' + this.props.frolic.screenId);
+  },
+
   render: function(){
     var styles = {
       titleBox: {
@@ -84,28 +89,26 @@ FroItem = React.createClass({
     return (
       <Card>
         <CardMedia>
-          <video src={this.props.src} className='video-js vjs-default-skin flayer' controls preload="metadata" poster="" height="194" >
+          <video src={this.props.src} className='video-js vjs-default-skin flayer' controls preload="metadata" poster="" height="192" >
             <p className='vjs-no-js'>To play this video, you need HTML5 supportted browser</p>
           </video>
         </CardMedia>
         <CardText style={styles.cardText}>
           <div style={{"fontWeight": "900", "color": "#333", "paddingBottom": "8px"}} className="frolic-invoke" id="fi-froinfo" >{this.props.frolic.title}</div>
-          <div style={{"display": "inline-block"}}>
+          <div style={{"display": "inline-block"}} >
             <CardHeader
-              title={this.props.frolic.channel}
+              title={this.props.frolic.screen}
               titleStyle={styles.titleStyle}
               subtitle={this.props.frolic.datePublished()}
               subtitleStyle={styles.subtitleStyle}
               titleColor={APP.secondary}
               avatar={<Avatar backgroundColor={APP.themeGrey} style={Styles.froAvatar} icon={screenIcon} />}
-              style={Styles.headerBox} >
-            </CardHeader>
+              style={Styles.headerBox}
+              onClick={this._handleScreen} />
           </div>
           <div className="header-right">
-            <div>
               <div className="stat-box"><FontIcon className="material-icons" style={{"color": "#666", "fontSize": "16px", "verticalAlign": "bottom"}}>visibility</FontIcon><span style={{"fontSize": "11px", "marginLeft": "4px"}}>{this.props.frolic.views}</span></div>
               <div className="stat-box"><FontIcon className="fa fa-heart" style={styles.fontIcon}><span style={{"fontSize": "11px", "marginLeft": "4px"}}>{this.props.frolic.hearts}</span></FontIcon></div>
-            </div>
           </div>
         </CardText>
         <CardActions style={styles.actionBox}>

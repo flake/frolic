@@ -10,6 +10,8 @@ var {
   FontIcon
 } = MUI;
 
+injectTapEventPlugin();
+
 ScreenForm = React.createClass({
   propTypes: {
     action: React.PropTypes.string,
@@ -39,7 +41,7 @@ ScreenForm = React.createClass({
     // var fileUploadDom = React.findDOMNode(this.refs.fileUpload).click();
     // fileUploadDom.click();
 
-    React.findDOMNode(this.refs.fileUpload).click();
+    ReactDOM.findDOMNode(this.refs.fileUpload).click();
   },
 
   render: function(){
@@ -51,6 +53,10 @@ ScreenForm = React.createClass({
       },
       formListItem: {
         paddingLeft: "48px"
+      },
+      formTitle: {
+        fontSize: "16px",
+        fontWeight: "800"
       },
       screenForm: {
         margin: "8px"
@@ -72,12 +78,14 @@ ScreenForm = React.createClass({
     return (
       <List
         subheader={captalize(this.props.action) + " Screen"}
-        style={styles.formList} >
+        style={styles.formList}
+        subheaderStyle={styles.formTitle} >
         <ListItem
           primaryText={
             <TextField
               hintText="Title"
-              fullWidth={true} />
+              fullWidth={true}
+              id="screen-title" />
           }
           disabled={true}
           style={styles.formListItem}
@@ -117,7 +125,8 @@ ScreenForm = React.createClass({
             <RaisedButton
               label={formActLabel}
               secondary={true}
-              fullWidth={true} />
+              fullWidth={true}
+              id="screen-submit" />
           }
           disabled={true} />
       </List>

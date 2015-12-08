@@ -42,6 +42,7 @@ Template._frolic.events({
 
     FlowRouter.go('/frolic/'+template.data._id);
   }
+
   // "click .flayer": function(event, template){
   //   console.log("flayer one clicked...");
   //   var flayer = videojs(event.currentTarget);

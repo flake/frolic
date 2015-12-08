@@ -9,20 +9,41 @@ Template.screen.helpers({
   destroyed: function(){
      console.log("screen distroyed...");
   },
+  ProfileCover: function(){
+    return ProfileCover;
+  },
   screen: function(){
     return Screens.findOne(this.screenId);
   },
   screenFS: function(){
     var screen = Screens.findOne(this.screenId);
     if(screen)
-      return ScreenFS.findOne({_id: screen.cover_photo});
+      return ScreensFS.findOne({_id: screen.cover_photo});
     else {
       return null;
     }
 
+  },
+
+  FroMini: function(){
+    return FroMini;
+  },
+  frolic: function(){
+    return Frolics.findOne({screenId: this.screenId});
   }
 });
 
 Template.screen.events({
   // events
+});
+
+Template.screen.onCreated(function(){
+  var pdata = Template.parentData(0);
+  var self = this;
+  // console.log("screen template parent Id " + pdata.screenId);
+  self.autorun(function(){
+    self.subscribe("screen", pdata.screenId);
+    self.subscribe("screen_fs", pdata.screenId);
+    self.subscribe("frolics_screen", pdata.screenId);
+  });
 });
