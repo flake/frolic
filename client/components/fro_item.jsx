@@ -107,8 +107,20 @@ FroItem = React.createClass({
               onClick={this._handleScreen} />
           </div>
           <div className="header-right">
-              <div className="stat-box"><FontIcon className="material-icons" style={{"color": "#666", "fontSize": "16px", "verticalAlign": "bottom"}}>visibility</FontIcon><span style={{"fontSize": "11px", "marginLeft": "4px"}}>{this.props.frolic.views}</span></div>
-              <div className="stat-box"><FontIcon className="fa fa-heart" style={styles.fontIcon}><span style={{"fontSize": "11px", "marginLeft": "4px"}}>{this.props.frolic.hearts}</span></FontIcon></div>
+              <div className="stat-box">
+                <FontIcon
+                  className="fa fa-play-circle"
+                  style={styles.fontIcon}>
+                  <span style={{"fontSize": "11px", "marginLeft": "4px"}}>{this.props.frolic.views}</span>
+                </FontIcon>
+              </div>
+              <div className="stat-box">
+                <FontIcon
+                  className="fa fa-heart"
+                  style={styles.fontIcon}>
+                  <span style={{"fontSize": "11px", "marginLeft": "4px"}}>{this.props.frolic.hearts}</span>
+                </FontIcon>
+              </div>
           </div>
         </CardText>
         <CardActions style={styles.actionBox}>

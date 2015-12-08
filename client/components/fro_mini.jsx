@@ -31,6 +31,11 @@ FroMini = React.createClass({
     return { }
   },
 
+  _handleTouch: function(){
+    console.log("mini fro card touched...");
+    FlowRouter.go("/frolic/"+this.props.frolic._id);
+  },
+
   render: function(){
 
     var styles = {
@@ -52,14 +57,6 @@ FroMini = React.createClass({
         padding: "8px",
         paddingBottom: "0"
       },
-      fontIcon: {
-        fontSize: "12px",
-        color: "#666",
-        marginRight: "6px",
-        minWidth: "48px"
-      },
-      miniCard: {
-      },
       frominiThumb: {
         height: "96px"
       },
@@ -68,27 +65,38 @@ FroMini = React.createClass({
         fontSize: "11px"
       },
       miniAvatar: {
-        marginRight: "2px",
+        marginRight: "4px",
         verticalAlign: "middle"
       },
-      miniActions: {
-        paddingTop: "0"
-      },
       miniHeader:{
-        display: "inline-block",
-        margin: 0
+        padding: "8px",
+        paddingTop: "0",
+        height: "32px"
       },
       miniStatIcon:{
-        color: "#666",
-        fontSize: "12px",
-        verticalAlign: "bottom",
-        width: "32px",
+        color: APP.themeGrey,
+        fontSize: "9px",
+        width: "48px",
         overflow: "hidden",
-        display: "inline-block"
+        display: "inline-block",
+        marginRight: "2px"
       },
       miniStats: {
-        fontSize: "11px",
-        marginLeft: "4px"
+        fontSize: "9px",
+        marginLeft: "4px",
+        color: "#666"
+      },
+      miniFroStats: {
+        fontSize: "8px"
+      },
+      miniFroTitle: {
+        fontWeight: "800",
+        color: "#444",
+        paddingBottom: "8px",
+        fontSize: "12px",
+        lineHeight: "1em",
+        height: "1.6em",
+        overflow: "hidden"
       }
     };
 
@@ -96,7 +104,7 @@ FroMini = React.createClass({
     var miniFroStats = (
       <div>
         <FontIcon
-          className="fa fa-eye"
+          className="fa fa-play-circle"
           style={styles.miniStatIcon}>
           <span style={styles.miniStats}>
             {this.props.frolic.views}
@@ -117,23 +125,25 @@ FroMini = React.createClass({
         backgroundColor={APP.themeGrey}
         style={styles.miniAvatar}
         icon={screenIcon}
-        size={20} />
+        size={21} />
     );
 
     return (
-      <Card style={styles.miniCard}>
+      <Card style={styles.miniCard} onTouchTap={this._handleTouch}>
         <CardMedia>
           <img src="/img/fravatar.jpg" style={styles.frominiThumb}/>
         </CardMedia>
         <CardText style={styles.cardText}>
-          <div style={{"fontWeight": "900", "color": "#333", "paddingBottom": "8px"}} className="frolic-invoke" id="fi-froinfo" >{this.props.frolic.title}</div>
+          <div style={styles.miniFroTitle} >{this.props.frolic.title}</div>
         </CardText>
         <CardHeader
           title={this.props.frolic.screen}
           titleStyle={styles.titleStyle}
           subtitle={miniFroStats}
+          subtitleStyle={styles.miniFroStats}
           titleColor={APP.secondary}
-          avatar={miniAvatar} />
+          avatar={miniAvatar}
+          style={styles.miniHeader} />
       </Card>
     )
   }

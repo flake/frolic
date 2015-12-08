@@ -28,8 +28,8 @@ Template.screen.helpers({
   FroMini: function(){
     return FroMini;
   },
-  frolic: function(){
-    return Frolics.findOne({screenId: this.screenId});
+  frolics: function(){
+    return Frolics.find({screenId: this.screenId});
   }
 });
 
@@ -38,6 +38,7 @@ Template.screen.events({
 });
 
 Template.screen.onCreated(function(){
+  Session.set('appTitle', "Screen");
   var pdata = Template.parentData(0);
   var self = this;
   // console.log("screen template parent Id " + pdata.screenId);

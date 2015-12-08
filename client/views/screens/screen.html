@@ -3,17 +3,15 @@
     {{> React component=ProfileCover cover=screen mediaURL=screenFS.url}}
   </div>
   <div id="fromini-thumbs">
-    <div class="fromini">
-      {{> React component=FroMini frolic=frolic}}
-    </div>
-    <div class="fromini">
-      {{> React component=FroMini frolic=frolic}}
-    </div>
-    <div class="fromini">
-      {{> React component=FroMini frolic=frolic}}
-    </div>
-    <div class="fromini">
-      {{> React component=FroMini frolic=frolic}}
-    </div>
+    {{#each frolics}}
+      <div class="fromini">
+        {{> React component=FroMini frolic=this}}
+      </div>
+    {{/each}}
+    {{#each frolics}}
+      <div class="fromini">
+        {{> React component=FroMini frolic=this}}
+      </div>
+    {{/each}}
   </div>
 </template>
