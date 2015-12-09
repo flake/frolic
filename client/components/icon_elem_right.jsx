@@ -18,8 +18,8 @@
 //
 // IconElemRight = React.createClass({
 //   PropTypes : {
-//     maticons : React.PropTypes.Array,
-//     navIds : React.PropTypes.Array
+//     maticons : React.PropTypes.array,
+//     navIds : React.PropTypes.array
 //   },
 //
 //   getDefaultProps: function(){

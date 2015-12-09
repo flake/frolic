@@ -1,5 +1,5 @@
 
-Template.frolic.helpers({
+Template.fro.helpers({
   create: function(){
 
   },
@@ -12,18 +12,18 @@ Template.frolic.helpers({
   FroScreen: function(){
     return FroScreen;
   },
-  frolicDoc: function(){
+  froDoc: function(){
     // console.log("frolic doc Id: " + this.frolicId);
     // var frolic = Frolics.findOne(this.frolicId);
     // console.log("frolic object " + typeof(frolic));
     // prettyJSON(frolic);
-    return Frolics.findOne(this.frolicId);
+    return Fros.findOne(this.froId);
   },
   frolicFS: function(){
-    console.log("Frolic Id: " + this.frolicId);
-    var frolic = Frolics.findOne(this.frolicId);
-    if(frolic)
-      return FrolicsFS.findOne({_id: frolic.fsId});
+    console.log("Frolic Id: " + this.froId);
+    var fro = Fro.findOne(this.froId);
+    if(fro)
+      return FrolicsFS.findOne({_id: fro.fsId});
     else {
       return null;
     }
@@ -38,13 +38,13 @@ Template.frolic.helpers({
     return parseInt(Session.get('slideIndex'));
   },
   heartedClass: function(){
-    var frolic = Frolics.findOne(this.frolicId);
-    console.log("frolic hearted... " + frolic.isHearted());
-    return frolic.isHearted() ? "heart" : "heart-o";
+    var fro = Fros.findOne(this.froId);
+    console.log("fro hearted... " + fro.isHearted());
+    return fro.isHearted() ? "heart" : "heart-o";
   }
 });
 
-Template.frolic.events({
+Template.fro.events({
   "click #foo": function(event, template){
 
   }
@@ -55,8 +55,8 @@ Template.frolic.events({
 //   Session.set('slideIndex', 0);
 // }
 
-Template.frolic.onRendered(function(){
-  console.log("frolic rendered...");
+Template.fro.onRendered(function(){
+  console.log("fro rendered...");
   // Session.setDefault('tabIndex', 0);
   Session.setDefault('slideIndex', 0);
 
@@ -68,12 +68,12 @@ Template.frolic.onRendered(function(){
   });
 });
 
-Template.frolic.onCreated(function(){
+Template.fro.onCreated(function(){
   var pdata = Template.parentData(0);
   var self = this;
-  console.log("frolic on-created _id: "+pdata.frolicId);
+  console.log("fro on-created _id: "+pdata.froId);
   self.autorun(function(){
-    self.subscribe("frolic", pdata.frolicId);
-    self.subscribe("comments", pdata.frolicId);
+    self.subscribe("fro", pdata.froId);
+    self.subscribe("comments", pdata.froId);
   });
 });

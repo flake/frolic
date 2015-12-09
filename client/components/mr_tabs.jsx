@@ -6,7 +6,7 @@ var {
 
 MrTabs = React.createClass({
   propTypes:{
-    views: React.PropTypes.Array
+    views: React.PropTypes.array
   },
 
   getDefaultProps: function(){

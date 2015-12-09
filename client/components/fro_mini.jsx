@@ -10,11 +10,11 @@ var {
 
 FroMini = React.createClass({
   propTypes: {
-    frolic: React.PropTypes.object
+    fro: React.PropTypes.object
   },
   getDefaultProps: function(){
     return {
-      frolic: {}
+      fro: {}
     }
   },
 
@@ -33,7 +33,7 @@ FroMini = React.createClass({
 
   _handleTouch: function(){
     console.log("mini fro card touched...");
-    FlowRouter.go("/frolic/"+this.props.frolic._id);
+    FlowRouter.go("/fro/"+this.props.fro._id);
   },
 
   render: function(){
@@ -76,7 +76,7 @@ FroMini = React.createClass({
       miniStatIcon:{
         color: APP.themeGrey,
         fontSize: "9px",
-        width: "48px",
+        width: "32px",
         overflow: "hidden",
         display: "inline-block",
         marginRight: "2px"
@@ -97,6 +97,9 @@ FroMini = React.createClass({
         lineHeight: "1em",
         height: "1.6em",
         overflow: "hidden"
+      },
+      miniActions: {
+        paddingBottom: 0
       }
     };
 
@@ -107,14 +110,14 @@ FroMini = React.createClass({
           className="fa fa-play-circle"
           style={styles.miniStatIcon}>
           <span style={styles.miniStats}>
-            {this.props.frolic.views}
+            {this.props.fro.views}
           </span>
         </FontIcon>
         <FontIcon
           className="fa fa-heart"
           style={styles.miniStatIcon}>
           <span style={styles.miniStats}>
-            {this.props.frolic.hearts}
+            {this.props.fro.hearts}
           </span>
         </FontIcon>
       </div>
@@ -134,49 +137,51 @@ FroMini = React.createClass({
           <img src="/img/fravatar.jpg" style={styles.frominiThumb}/>
         </CardMedia>
         <CardText style={styles.cardText}>
-          <div style={styles.miniFroTitle} >{this.props.frolic.title}</div>
+          <div style={styles.miniFroTitle} >{this.props.fro.title}</div>
         </CardText>
-        <CardHeader
-          title={this.props.frolic.screen}
-          titleStyle={styles.titleStyle}
-          subtitle={miniFroStats}
-          subtitleStyle={styles.miniFroStats}
-          titleColor={APP.secondary}
-          avatar={miniAvatar}
-          style={styles.miniHeader} />
+        <CardActions style={styles.miniActions}>
+          <div className="minifro-action mini-avatar-space">
+            <div className="mini-header">
+              <Avatar
+                backgroundColor={APP.themeGrey}
+                style={styles.miniAvatar}
+                icon={screenIcon}
+                size={21} />
+            </div>
+            <div className="mini-header" style={styles.titleStyle}>{this.props.fro.screen}</div>
+          </div>
+          <div className="minifro-action mini-stat-right">
+            <FontIcon
+              className="fa fa-play-circle"
+              style={styles.miniStatIcon}>
+              <span style={styles.miniStats}>
+                {this.props.fro.views}
+              </span>
+            </FontIcon>
+            <FontIcon
+              className="fa fa-heart"
+              style={styles.miniStatIcon}>
+              <span style={styles.miniStats}>
+                {this.props.fro.hearts}
+              </span>
+            </FontIcon>
+          </div>
+        </CardActions>
       </Card>
     )
   }
 });
 
-// <CardActions style={styles.miniActions}>
-//   <div className="minifro-action" >
-//     <div className="mini-header">
-//       <Avatar
-//         backgroundColor={APP.themeGrey}
-//         style={styles.miniAvatar}
-//         icon={screenIcon}
-//         size={20} />
-//     </div>
-//     <div className="mini-header" style={styles.titleStyle}>{this.props.frolic.screen}</div>
-//   </div>
-//   <div className="minifro-action" style={{"float": "right !important"}}>
-//     <FontIcon
-//       className="fa fa-eye"
-//       style={styles.miniStatIcon}>
-//       <span style={styles.miniStats}>
-//         {this.props.frolic.views}
-//       </span>
-//     </FontIcon>
-//     <FontIcon
-//       className="fa fa-heart"
-//       style={styles.miniStatIcon}>
-//       <span style={styles.miniStats}>
-//         {this.props.frolic.hearts}
-//       </span>
-//     </FontIcon>
-//   </div>
-// </CardActions>
+
+        // <CardHeader
+        //   title={this.props.fro.screen}
+        //   titleStyle={styles.titleStyle}
+        //   subtitle={miniFroStats}
+        //   subtitleStyle={styles.miniFroStats}
+        //   titleColor={APP.secondary}
+        //   avatar={miniAvatar}
+        //   style={styles.miniHeader} />
+
 
 // <div style={{"display": "inline-block"}}>
 //

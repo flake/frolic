@@ -1,5 +1,5 @@
 
-Template._frolic.helpers({
+Template._fro.helpers({
   create: function(){
 
   },
@@ -22,7 +22,7 @@ Template._frolic.helpers({
   }
 });
 
-Template._frolic.events({
+Template._fro.events({
   'click .fro-heart': function(event, template){
     event.preventDefault();
     // console.log("heart clicked... " + template.data._id);
@@ -40,7 +40,7 @@ Template._frolic.events({
     Session.set("slideIndex", ftIndex);
     Session.set("tabIndex", ftIndex);
 
-    FlowRouter.go('/frolic/'+template.data._id);
+    FlowRouter.go('/fro/'+template.data._id);
   }
 
   // "click .flayer": function(event, template){

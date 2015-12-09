@@ -1,7 +1,7 @@
 Template.home.helpers({
-  frolics: function(){
+  fros: function(){
     // console.log("Frolics count: " + Frolics.find().count());
-    return Frolics.find({}, {sort: {createdAt: -1}});
+    return Fros.find({}, {sort: {createdAt: -1}});
   },
   SpaceBar: function(){
     return SpaceBar;
@@ -14,6 +14,6 @@ Template.home.helpers({
 Template.home.onCreated(function(){
   var self = this;
   self.autorun(function(){
-    self.subscribe("frolics_home");
+    self.subscribe("fros_home");
   });
 });

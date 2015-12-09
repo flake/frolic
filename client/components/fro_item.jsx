@@ -16,7 +16,7 @@ var MenuItem = MUI.Libs.MenuItem;
 
 FroItem = React.createClass({
   propTypes: {
-    frolic: React.PropTypes.object,
+    fro: React.PropTypes.object,
     src: React.PropTypes.string,
     hearted: React.PropTypes.string
   },
@@ -40,7 +40,7 @@ FroItem = React.createClass({
 
   _handleScreen: function(){
     console.log("screen clicked...");
-    FlowRouter.go('/screen/' + this.props.frolic.screenId);
+    FlowRouter.go('/screen/' + this.props.fro.screenId);
   },
 
   render: function(){
@@ -94,12 +94,12 @@ FroItem = React.createClass({
           </video>
         </CardMedia>
         <CardText style={styles.cardText}>
-          <div style={{"fontWeight": "900", "color": "#333", "paddingBottom": "8px"}} className="frolic-invoke" id="fi-froinfo" >{this.props.frolic.title}</div>
+          <div style={{"fontWeight": "900", "color": "#333", "paddingBottom": "8px"}} className="frolic-invoke" id="fi-froinfo" >{this.props.fro.title}</div>
           <div style={{"display": "inline-block"}} >
             <CardHeader
-              title={this.props.frolic.screen}
+              title={this.props.fro.screen}
               titleStyle={styles.titleStyle}
-              subtitle={this.props.frolic.datePublished()}
+              subtitle={this.props.fro.datePublished()}
               subtitleStyle={styles.subtitleStyle}
               titleColor={APP.secondary}
               avatar={<Avatar backgroundColor={APP.themeGrey} style={Styles.froAvatar} icon={screenIcon} />}
@@ -111,14 +111,14 @@ FroItem = React.createClass({
                 <FontIcon
                   className="fa fa-play-circle"
                   style={styles.fontIcon}>
-                  <span style={{"fontSize": "11px", "marginLeft": "4px"}}>{this.props.frolic.views}</span>
+                  <span style={{"fontSize": "11px", "marginLeft": "4px"}}>{this.props.fro.views}</span>
                 </FontIcon>
               </div>
               <div className="stat-box">
                 <FontIcon
                   className="fa fa-heart"
                   style={styles.fontIcon}>
-                  <span style={{"fontSize": "11px", "marginLeft": "4px"}}>{this.props.frolic.hearts}</span>
+                  <span style={{"fontSize": "11px", "marginLeft": "4px"}}>{this.props.fro.hearts}</span>
                 </FontIcon>
               </div>
           </div>

@@ -11,8 +11,8 @@ Template.comments.helpers({
   },
 
   comments: function(){
-    console.log("HELPER comments frolicId "+ this.frolicId);
-    return Comments.find({frolicId: this.frolicId});
+    console.log("HELPER comments froId "+ this.froId);
+    return Comments.find({froId: this.froId});
   },
   NewComment: function(){
     return NewComment;
@@ -23,7 +23,7 @@ Template.comments.events({
   "click #add-comment": function(event, template){
     var comment = {
       "content": template.find('#comment-text').value,
-      "frolicId": template.data.frolicId
+      "froId": template.data.froId
     };
     prettyJSON(comment);
 
@@ -39,5 +39,5 @@ Template.comments.events({
 });
 
 Template.comments.rendered = function(){
-  console.log("Comments rendered... " + this.frolicId);
+  console.log("Comments rendered... " + this.froId);
 }

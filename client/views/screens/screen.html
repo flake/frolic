@@ -1,17 +1,8 @@
 <template name="screen">
-  <div>
+  <div class="cover-fixed">
     {{> React component=ProfileCover cover=screen mediaURL=screenFS.url}}
   </div>
-  <div id="fromini-thumbs">
-    {{#each frolics}}
-      <div class="fromini">
-        {{> React component=FroMini frolic=this}}
-      </div>
-    {{/each}}
-    {{#each frolics}}
-      <div class="fromini">
-        {{> React component=FroMini frolic=this}}
-      </div>
-    {{/each}}
+  <div class="cover-views">
+    {{> React component=SwipeSlides views=swipeViews}}
   </div>
 </template>

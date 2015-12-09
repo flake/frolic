@@ -1,25 +1,25 @@
-Meteor.publish("frolic", function(frolicId){
-  return Frolics.find(frolicId);
+Meteor.publish("fro", function(froId){
+  return Fros.find(froId);
 });
 
-Meteor.publish("frolics_screen", function(screenId){
-  return Frolics.find({screenId: screenId});
+Meteor.publish("fros_screen", function(screenId){
+  return Fros.find({screenId: screenId});
 });
 
-Meteor.publish("frolics_home", function(){
-  return Frolics.find(); //**TODO**
+Meteor.publish("fros_home", function(){
+  return Fros.find(); //**TODO**
 });
 
-Meteor.publish('frolics_fs', function(options){
-	return FrolicsFS.find({}, options);
+Meteor.publish('fros_fs', function(options){
+	return FrosFS.find({}, options);
 });
 
 Meteor.publish('hearts', function(userId){
   return Hearts.find({userId: userId});
 });
 
-Meteor.publish('comments', function(frolicId){
-  return Comments.find({frolicId: frolicId});
+Meteor.publish('comments', function(froId){
+  return Comments.find({froId: froId});
 });
 
 Meteor.publish('profiles', function(){

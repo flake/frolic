@@ -7,16 +7,16 @@ const VScroll = BlazeToReact('vscroll');
 FroTabs = React.createClass({
   propTypes: {
     slideIndex: React.PropTypes.number,
-    frolic: React.PropTypes.object,
-    frolicId: React.PropTypes.string,
+    fro: React.PropTypes.object,
+    froId: React.PropTypes.string,
     hearted: React.PropTypes.string
   },
 
   getDefaultProps: function(){
     return {
       slideIndex: 0,
-      frolic: {},
-      frolicId: ''
+      fro: {},
+      froId: ''
     };
   },
 
@@ -70,7 +70,7 @@ FroTabs = React.createClass({
       }
     };
 
-    var frodata = {frolicId: this.props.frolicId};
+    var frodata = {froId: this.props.froId};
     // console.log("frodata " + frodata);
     // prettyJSON(frodata);
     console.log("hearted... " + this.props.hearted);
@@ -79,7 +79,7 @@ FroTabs = React.createClass({
       <div>
         <SwipeableViews index={this.props.slideIndex} onChangeIndex={this._handleChangeIndex} style={styles.container} resistance={true}>
           <div style={styles.slide} className="tab-slides">
-            <FroInfo frolic={this.props.frolic} hearted={this.props.hearted}/>
+            <FroInfo fro={this.props.fro} hearted={this.props.hearted}/>
           </div>
           <div style={styles.slide} className="tab-slides">
             <VScroll page='comments' data={frodata} />
@@ -92,7 +92,7 @@ FroTabs = React.createClass({
   }
 });
 
-// <Comments frolicId={this.props.frolicId}/>
+// <Comments froId={this.props.froId}/>
 
 // <Tabs onChange={this._handleChangeTabs} value={""+this.props.tabIndex}>
 //   <Tab label={<IconButton iconClassName="fa fa-film tab-icon"/>} value="2"/>

@@ -91,13 +91,13 @@ Template.appLayout.events({
 
         console.log("fro obj: " + JSON.toString(fro));
 
-        Meteor.call('addFro', fro, function(error, frolicId){
+        Meteor.call('addFro', fro, function(error, froId){
           if(error){
             throwError(error.reason);
             console.log("ERROR: "+error.message);
           }else{
             // clean up
-            console.log("fro add success... " + frolicId);
+            console.log("fro add success... " + froId);
           }
         })
       }

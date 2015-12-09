@@ -12,9 +12,9 @@ Template._froinfo.helpers({
   FroInfo: function(){
     return FroInfo;
   },
-  frolic: function(){
-    console.log("frolic Id from _froInfo " + this.frolicId);
-    return Frolics.findOne(this.frolicId);
+  fro: function(){
+    console.log("fro Id from _froInfo " + this.froId);
+    return Fros.findOne(this.froId);
   }
 });
 

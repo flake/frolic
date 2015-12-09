@@ -31,7 +31,7 @@ MenuItem = MUI.Libs.MenuItem;
 AppHead = React.createClass({
   PropTypes: {
     appTitle: React.PropTypes.string,
-    navIcons : React.PropTypes.Array
+    navIcons : React.PropTypes.array
   },
 
   //IMPORTANT SET CHILD CONTEXT

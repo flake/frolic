@@ -24,13 +24,20 @@ Template.screen.helpers({
     }
 
   },
-
-  FroMini: function(){
-    return FroMini;
+  SwipeSlides: function(){
+    return SwipeSlides;
   },
-  frolics: function(){
-    return Frolics.find({screenId: this.screenId});
+  swipeViews: function(){
+    return [
+      {'template': 'screenProfile', data: {screenId: this.screenId}},
+      {'template': 'froList', 'data': {froQuery: {screenId: this.screenId}}},
+      {'template': 'froList', 'data': {froQuery: {userId: "cdQQJ2b9mEZ3mTYi5"}}}
+    ];
   }
+
+  // frolics: function(){
+  //   return Frolics.find({screenId: this.screenId});
+  // }
 });
 
 Template.screen.events({
@@ -45,6 +52,6 @@ Template.screen.onCreated(function(){
   self.autorun(function(){
     self.subscribe("screen", pdata.screenId);
     self.subscribe("screen_fs", pdata.screenId);
-    self.subscribe("frolics_screen", pdata.screenId);
+    self.subscribe("fros_screen", pdata.screenId);
   });
 });

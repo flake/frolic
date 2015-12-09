@@ -1,0 +1,9 @@
+<template name="froList">
+  <div id="fromini-thumbs">
+    {{#each fros}}
+      <div class="fromini">
+        {{> React component=FroMini fro=this}}
+      </div>
+    {{/each}}
+  </div>
+</template>

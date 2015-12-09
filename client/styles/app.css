@@ -196,3 +196,23 @@ body{
 	margin: 0;
 	margin-right: 0 !important;
 }
+.mini-avatar-space{
+	width: 48%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+.mini-stat-right{
+	float: right;
+}
+
+.cover-fixed{
+	position: fixed;
+	top: 64px;
+	left: 0;
+	width: 100%;
+}
+.cover-views{
+	position: relative;
+	top: 252px;
+	left: 0;
+}
