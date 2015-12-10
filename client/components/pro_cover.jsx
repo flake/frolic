@@ -1,6 +1,6 @@
-var { CardMedia, CardTitle } = MUI;
+var { CardMedia, CardTitle, Avatar, ListItem, IconButton } = MUI;
 
-ProfileCover = React.createClass({
+ProCover = React.createClass({
   propTypes: {
     cover: React.PropTypes.object,
     mediaURL: React.PropTypes.string
@@ -35,6 +35,9 @@ ProfileCover = React.createClass({
       img: {
         height: "100%",
         width: "100%"
+      },
+      followIbtn: {
+
       }
     };
 
@@ -45,9 +48,33 @@ ProfileCover = React.createClass({
         style={{padding: "8px", paddingTop: "0"}}
       />);
 
+    var avatar = (
+      <Avatar
+        src={this.props.cover.avatar_photo}
+        size={56}
+        style={styles.avatar}
+      />);
+
+    var rightIconBtn = (
+      <IconButton
+        iconClassName="material-icons"
+        style={styles.followIbtn}
+      >screen_share</IconButton>
+    );
+
+    var overCard = (
+      <ListItem
+        primaryText={this.props.cover.title}
+        secondaryText={this.props.cover.owner_name}
+        leftAvatar={avatar}
+        rightIconButton={rightIconBtn}
+        disabled={true}
+      />
+    );
+
     return (
       <CardMedia
-        overlay={overlay}
+        overlay={overCard}
         mediaStyle={styles.cover}
       >
         <img src={this.props.mediaURL} style={styles.img}/>

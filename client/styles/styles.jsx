@@ -55,5 +55,14 @@ Styles = {
   listIconRight: {
     color: "#1690db",
     fontSize: "32px"
+  },
+  connectIcon: {
+    height: '100%',
+    display: 'inline-block',
+    verticalAlign: 'middle',
+    paddingLeft: '12px',
+    lineHeight: '36px',
+    color: '#fff',
+    minWidth: "24px"
   }
 }

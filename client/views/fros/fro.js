@@ -21,7 +21,7 @@ Template.fro.helpers({
   },
   frolicFS: function(){
     console.log("Frolic Id: " + this.froId);
-    var fro = Fro.findOne(this.froId);
+    var fro = Fros.findOne(this.froId);
     if(fro)
       return FrolicsFS.findOne({_id: fro.fsId});
     else {

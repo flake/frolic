@@ -11,7 +11,7 @@ Meteor.publish("fros_home", function(){
 });
 
 Meteor.publish('fros_fs', function(options){
-	return FrosFS.find({}, options);
+	return FrolicsFS.find({}, options);
 });
 
 Meteor.publish('hearts', function(userId){
@@ -23,7 +23,7 @@ Meteor.publish('comments', function(froId){
 });
 
 Meteor.publish('profiles', function(){
-  return Meteor.users.find();
+  return Meteor.users.find({}, {profile : 1});
 });
 
 Meteor.publish('screen', function(screenId){

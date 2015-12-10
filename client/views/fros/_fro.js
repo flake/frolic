@@ -13,7 +13,7 @@ Template._fro.helpers({
   },
   video: function(){
     var vid = FrolicsFS.findOne({_id: this.fsId});
-    // console.log("vid obj " + vid);
+    console.log("vid obj " + vid);
     return vid;
   },
   heartClass: function(){

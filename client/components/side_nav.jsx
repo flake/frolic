@@ -143,9 +143,9 @@ SideNav = React.createClass({
         <div style={ styles.headerContainer } id="sidenav-header">
           <Avatar
             src="img/fravatar.jpg"
-            size={56}
+            size={48}
             style={styles.sidenavAvatar} />
-          <div>{Meteor.user().profile.name}</div>
+          <div>{this.data.currentUser.profile.name}</div>
         </div>
       </div>
     );

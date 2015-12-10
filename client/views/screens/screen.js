@@ -9,8 +9,8 @@ Template.screen.helpers({
   destroyed: function(){
      console.log("screen distroyed...");
   },
-  ProfileCover: function(){
-    return ProfileCover;
+  ProCover: function(){
+    return ProCover;
   },
   screen: function(){
     return Screens.findOne(this.screenId);
@@ -31,7 +31,7 @@ Template.screen.helpers({
     return [
       {'template': 'screenProfile', data: {screenId: this.screenId}},
       {'template': 'froList', 'data': {froQuery: {screenId: this.screenId}}},
-      {'template': 'froList', 'data': {froQuery: {userId: "cdQQJ2b9mEZ3mTYi5"}}}
+      {'template': 'usersList', 'data': {usersQuery: usersQuery}}
     ];
   }
 

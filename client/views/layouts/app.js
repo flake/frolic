@@ -141,7 +141,7 @@ Template.appLayout.onCreated(function(){
   Session.setDefault('appTitle', 'frolic');
   var self = this;
   self.autorun(function(){
-    self.subscribe("frolics_fs");
+    self.subscribe("fros_fs");
     self.subscribe("hearts", Meteor.userId());
     self.subscribe("profiles");
   });

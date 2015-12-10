@@ -38,15 +38,6 @@ Signup = React.createClass({
   render: function(){
 
     var styles = {
-      connectIcon: {
-        height: '100%',
-        display: 'inline-block',
-        verticalAlign: 'middle',
-        paddingLeft: '12px',
-        lineHeight: '36px',
-        color: '#fff',
-        minWidth: "24px"
-      },
       emailSignup: {
         width: "100%",
         backgroundColor: APP.primary,
@@ -111,7 +102,7 @@ Signup = React.createClass({
             fullWidth={true}
             style={styles.facebookSignup}
             onClick={this.handleFacebook} >
-            <FontIcon className="fa fa-facebook" style={styles.connectIcon} />
+            <FontIcon className="fa fa-facebook" style={Styles.connectIcon} />
           </FlatButton>
           <FlatButton
             label="Twitter"
@@ -121,7 +112,7 @@ Signup = React.createClass({
             fullWidth={true}
             style={styles.twitterSignup}
             onClick={this.handleTwitter} >
-            <FontIcon className="fa fa-twitter" style={styles.connectIcon} />
+            <FontIcon className="fa fa-twitter" style={Styles.connectIcon} />
           </FlatButton>
           <FlatButton
             label="Google"
@@ -131,7 +122,7 @@ Signup = React.createClass({
             fullWidth={true}
             style={styles.googleSignup}
             onClick={this.handleTwitter} >
-            <FontIcon className="fa fa-google" style={styles.connectIcon} />
+            <FontIcon className="fa fa-google" style={Styles.connectIcon} />
           </FlatButton>
         </CardText>
       </div>
@@ -148,5 +139,5 @@ Signup = React.createClass({
 //   fullWidth={true}
 //   style={styles.emailSignup}
 //   onClick={this.handleEmail} >
-//   <FontIcon className="fa fa-envelope" style={styles.connectIcon} />
+//   <FontIcon className="fa fa-envelope" style={Styles.connectIcon} />
 // </FlatButton>

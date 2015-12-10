@@ -14,6 +14,10 @@ body{
 	height: 100%;
 }
 
+.padding-8{
+	padding: 8px !important;
+}
+
 .fixed-nav-bar{
 	position: fixed;
   top: 0;
@@ -176,6 +180,11 @@ body{
 	background-size: "100% auto";
 }
 
+.procard-litem{
+	width: 49.2%;
+	display: inline-block;
+}
+
 /* FroMini thumb list Container */
 #fromini-thumbs{
 	height: 100%;
@@ -215,4 +224,7 @@ body{
 	position: relative;
 	top: 252px;
 	left: 0;
+}
+.pro-circle-btn{
+	border-radius: 27px !important;
 }
