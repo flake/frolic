@@ -84,7 +84,7 @@ FroItem = React.createClass({
     //   class: "flayer"
     // };
 
-    var screenIcon = (<FontIcon className="fa fa-desktop" style={Styles.channelIcon} />);
+    var screenIcon = (<FontIcon className="fa fa-film" style={Styles.channelIcon} />);
 
     return (
       <Card>

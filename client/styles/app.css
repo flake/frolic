@@ -14,6 +14,10 @@ body{
 	height: 100%;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
 .padding-8{
 	padding: 8px !important;
 }
@@ -103,7 +107,10 @@ body{
 }
 .tab-icon{
 	color: #1A3140 !important;
-	text-shadow: 0px 1px 0px rgba(255,255,255,.3);
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, .4);
+}
+.slidetab-ficon{
+	font-size: 21px !important;
 }
 .float-bottom{
 	position: fixed;
@@ -219,6 +226,7 @@ body{
 	top: 64px;
 	left: 0;
 	width: 100%;
+	z-index: 999;
 }
 .cover-views{
 	position: relative;
@@ -227,4 +235,23 @@ body{
 }
 .pro-circle-btn{
 	border-radius: 27px !important;
+}
+.circle-btn{
+	border-radius: 18px !important;
+	line-height: 28px !important;
+	height: 28px !important;
+	border: 1px solid #66a8cc !important;
+	width: 96px !important;
+	margin: 0 16px !important;
+}
+.btn-shadow{
+	box-shadow: 6px 6px 16px rgba(0, 0, 0, 0.4);
+}
+.pro-stats{
+	display: inline-block;
+	margin: 0 16px;
+}
+.demo-temp{
+	height: 400px;
+	widht: 100%;
 }

@@ -64,5 +64,13 @@ Styles = {
     lineHeight: '36px',
     color: '#fff',
     minWidth: "24px"
+  },
+  tabIcon: {
+    height: '100%',
+    display: 'inline-block',
+    verticalAlign: 'middle',
+    lineHeight: '24px',
+    color: 'rgba(255, 255, 255, 0.6)',
+    minWidth: "24px"
   }
 }

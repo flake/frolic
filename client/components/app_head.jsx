@@ -16,7 +16,8 @@ APP = {
   primary: "#1690DB",
   secondary: "#2173B3",
   themeGrey: "#A3C3D6",
-  themeBg: "#C3D7E3"
+  themeBg: "#C3D7E3",
+  themeLite: "#D4EEFF"
 }
 
 lightTheme = ThemeManager.getMuiTheme(MUI.Styles.LightRawTheme);

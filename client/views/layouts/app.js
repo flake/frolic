@@ -145,4 +145,6 @@ Template.appLayout.onCreated(function(){
     self.subscribe("hearts", Meteor.userId());
     self.subscribe("profiles");
   });
+  Session.set("win-height", $(window).height());
+  Session.set("win-width", $(window).width());
 });

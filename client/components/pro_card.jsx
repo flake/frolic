@@ -74,9 +74,6 @@ ProCard = React.createClass({
       }
     };
 
-    var avatar = (
-      );
-
     return (
       <Card style={styles.proCard}>
         <Avatar

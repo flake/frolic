@@ -12,7 +12,10 @@ UserCard = React.createClass({
   },
   getDefaultProps: function(){
     return {
-      user: {}
+      user: {
+        avatar: "/img/fravatar.jpg",
+        profile: { name : "Developers", title: "Ninjas of Avatar Labs"}
+      }
     }
   },
 
@@ -42,20 +45,25 @@ UserCard = React.createClass({
       },
       circleIcon: {
         color: "#fff",
-        top: "4px",
-        left: "-1px"
-      },
-      circleBtn: {
         background: APP.primary,
-        color: "#fff",
+        border: "2px solid " + APP.primary,
         borderRadius: "24px",
-        width: "40px",
-        height: "40px",
-        padding: "0",
-        marginRight: "8px",
-        top: "14px"
+        top: "-6px",
+        left: "-6px",
+        padding: "4px"
       }
+      // circleBtn: {
+      //   color: "#fff",
+      //   padding: "0",
+      //   marginRight: "8px",
+      //   top: "14px"
+      // }
     };
+
+    // background: APP.primary,
+    // borderRadius: "24px",
+    // width: "40px",
+    // height: "40px",
 
     var avatar = (
       <Avatar

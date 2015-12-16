@@ -103,7 +103,7 @@ FroMini = React.createClass({
       }
     };
 
-    var screenIcon = (<FontIcon className="fa fa-desktop" style={styles.miniIcon} />);
+    var screenIcon = (<FontIcon className="fa fa-film" style={styles.miniIcon} />);
     var miniFroStats = (
       <div>
         <FontIcon

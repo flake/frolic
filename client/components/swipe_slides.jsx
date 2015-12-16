@@ -26,7 +26,26 @@ SwipeSlides = React.createClass({
   },
 
   _handleChangeSlide: function(index){
-    console.log("slide changed index: " + index);
+    Session.set("slideIndex", index);
+
+    var stabs = $('.sliding-tab');
+    var tabCount = stabs.length;
+
+    if(tabCount){
+      var offset = $(stabs[index]).offset();
+      var width = $(window).width();
+      var tabWidth = width / tabCount;
+      var hidRight = (offset.left + tabWidth) > width;
+      var hidLeft = offset.left < 0;
+
+      console.log("handle change slide " + offset.left);
+      if(hidRight || hidLeft){
+        console.log("animating tabs...");
+        $('#tabs-scroll').animate({
+          scrollLeft: offset.left
+        }, 500);
+      }
+    }
   },
 
   render: function(){

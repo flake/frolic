@@ -43,11 +43,14 @@ SideNav = React.createClass({
 
   menuChange: function(navItem){
     console.log("menuChange selected index " + navItem.index);
-
+    Session.set('sideNav', false);
     if(navItem.route){
       FlowRouter.go(navItem.route);
     }
+  },
 
+  _handleSideHeader: function(){
+    FlowRouter.go('/profile/'+this.data.currentUser._id);
     Session.set('sideNav', false);
   },
 
@@ -56,9 +59,9 @@ SideNav = React.createClass({
 
     var navList = [
       { 'label' : "Home", 'class': "fa fa-home snav-icon", 'route': "/" },
-      { 'label' : "Notifications", 'class': "fa fa-bell snav-icon", 'route': "/notifications"},
+      { 'label' : "Notifications", 'class': "fa fa-bell-o snav-icon", 'route': "/notifications"},
       { 'label' : "Messages", 'class': "fa fa-envelope snav-icon", 'route': "/messages" },
-      { 'label' : "Screens", 'class': "fa fa-tv snav-icon", 'route': "/screens"},
+      { 'label' : "Screens", 'class': "fa fa-film snav-icon", 'route': "/screens"},
       { 'label' : "Circles", 'class': "fa fa-sun-o snav-icon", 'route': "/circles" },
       { 'label' : "Settings", 'class': "fa fa-gear snav-icon", 'route': "/settings" },
       { 'label' : "Feedback", 'class': "fa fa-angellist snav-icon", 'route': "/feedback" },
@@ -68,8 +71,16 @@ SideNav = React.createClass({
 
     var styles = {
       navItem: {
-        fontSize: "14px",
-        lineHeight: "14px"
+        fontSize: "12px",
+        fontWeight: "600",
+        textTransform: "uppercase",
+        lineHeight: "14px",
+        color: "#fff",
+        textShadow: "1px 1px 1px rgba(0, 0, 0, 0.4)"
+      },
+      snavIcon: {
+        color: "#0E496E !important",
+        textShadow: "1px 1px 1px rgba(0, 0, 0, 0.4)"
       }
     };
 
@@ -80,12 +91,13 @@ SideNav = React.createClass({
         docked={false}
         disableSwipeToOpen={true}
         openRight={true}
+        style={{"backgroundColor": APP.primary}}
       >
-        <List>
+        <List style={{"backgroundColor": APP.primary}}>
           {
             navList.map(function(item, i){
               return <ListItem
-                        leftIcon={<FontIcon className={item.class} />}
+                        leftIcon={<FontIcon className={item.class} style={styles.snavIcon}/>}
                         primaryText={item.label}
                         key={i}
                         onTouchTap={() => this.menuChange({'route': item.route, 'index': i})}
@@ -128,6 +140,18 @@ SideNav = React.createClass({
       },
       sidenavAvatar: {
         marginTop: "8%"
+      },
+      proTitle: {
+        fontWeight: "normal",
+        fontSize: "12px",
+        color: APP.themeLite,
+        textShadow: "0px 1px 0px rgba(0, 0, 0, 0.4)"
+      },
+      proName: {
+        fontWeight: "600",
+        fontSize: "14px",
+        color: "#fff",
+        textShadow: "1px 1px 1px rgba(0, 0, 0, 0.4)"
       }
     };
 
@@ -140,12 +164,13 @@ SideNav = React.createClass({
 
     return (
       <div>
-        <div style={ styles.headerContainer } id="sidenav-header">
+        <div style={ styles.headerContainer } id="sidenav-header" onClick={this._handleSideHeader}>
           <Avatar
-            src="img/fravatar.jpg"
+            src={this.data.currentUser.avatar}
             size={48}
             style={styles.sidenavAvatar} />
-          <div>{this.data.currentUser.profile.name}</div>
+          <div style={styles.proName}>{this.data.currentUser.profile.name}</div>
+          <div style={styles.proTitle}>{this.data.currentUser.profile.title}</div>
         </div>
       </div>
     );
@@ -154,7 +179,7 @@ SideNav = React.createClass({
 
 
 // <MenuItem value="0" primaryText="Home" leftIcon={<FontIcon className="fa fa-home snav-icon" />} onTouchTap={this.menuChange} />
-// <MenuItem value="1" primaryText="Screens" leftIcon={<FontIcon className="fa fa-tv snav-icon" />} onTouchTap={this.menuChange} />
+// <MenuItem value="1" primaryText="Screens" leftIcon={<FontIcon className="fa fa-film snav-icon" />} onTouchTap={this.menuChange} />
 // <MenuItem value="2" primaryText="Circles" leftIcon={<FontIcon className="fa fa-sun-o snav-icon" />} />
 // <MenuItem value="3" primaryText="Help" leftIcon={<FontIcon className="fa fa-question snav-icon" />} />
 // <MenuItem value="4" primaryText="Feedback" leftIcon={<FontIcon className="fa fa-angellist snav-icon" />} />
@@ -191,7 +216,7 @@ SideNav = React.createClass({
 //   onTouchTap={() => this.menuChange(0)}
 // />
 // <ListItem
-//   leftIcon={<FontIcon className="fa fa-tv snav-icon" />}
+//   leftIcon={<FontIcon className="fa fa-film snav-icon" />}
 //   primaryText="Screens"
 //   onTouchTap={() => this.menuChange(1)}
 // />

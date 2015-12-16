@@ -47,7 +47,7 @@ FroInfo = React.createClass({
       }
     };
 
-    var screenIcon = (<FontIcon className="fa fa-desktop"/>);
+    var screenIcon = (<FontIcon className="fa fa-film"/>);
     var froAvatar = (<Avatar backgroundColor={APP.themeGrey} icon={screenIcon} style={{borderRadius: "3px"}} />);
     var followScreen = (<IconButton iconClassName="material-icons" iconStyle={Styles.listIconRight}>add_to_queue</IconButton>);
 

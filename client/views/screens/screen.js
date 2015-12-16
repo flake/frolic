@@ -30,8 +30,8 @@ Template.screen.helpers({
   swipeViews: function(){
     return [
       {'template': 'screenProfile', data: {screenId: this.screenId}},
-      {'template': 'froList', 'data': {froQuery: {screenId: this.screenId}}},
-      {'template': 'usersList', 'data': {usersQuery: usersQuery}}
+      {'template': 'froList', 'data': {context: "screen_fros", screenId: this.screenId}},
+      {'template': 'usersList', 'data': {context: "screen_followers", screenId: this.screenId}}
     ];
   }
 

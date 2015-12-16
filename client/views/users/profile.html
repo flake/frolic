@@ -1,0 +1,13 @@
+<template name="profile">
+  <div class="cover-fixed">
+    <div>
+      {{> React component=ProHead user=user}}
+    </div>
+    <div>
+      {{> React component=SlideTabs index=slideIndex tabs=slideTabs}}
+    </div>
+  </div>
+  <div class="cover-views">
+    {{> React component=SwipeSlides views=slideViews index=slideIndex}}
+  </div>
+</template>
