@@ -40,7 +40,13 @@ Meteor.publish('profiles', function(){
 });
 
 Meteor.publish('screen', function(screenId){
-  return Screens.find(screenId);
+  var screen = Screens.findOne(screenId);
+  var userId = screen ? screen.creator_id : null;
+
+  return [
+    Screens.find(screenId),
+    Meteor.users.find(userId)
+  ];
 });
 
 Meteor.publish('user_screens', function(userId){

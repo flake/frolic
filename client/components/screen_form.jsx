@@ -96,6 +96,24 @@ ScreenForm = React.createClass({
               card_membership
             </FontIcon>
           } />
+          <ListItem
+            primaryText={
+              <TextField
+                hintText="Description"
+                fullWidth={true}
+                multiLine={true}
+                rowsMax={12}
+                id="screen-desc" />
+            }
+            disabled={true}
+            style={styles.formListItem}
+            leftIcon={
+              <FontIcon
+                className="material-icons"
+                style={Styles.flatBtnIcon} >
+                description
+              </FontIcon>
+            } />
         <ListItem
           primaryText={
             <FlatButton

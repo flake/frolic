@@ -43,10 +43,6 @@ SlideTabs = React.createClass({
     Session.set("slideIndex", index);
   },
 
-  _handleActive: function(){
-    console.log("On Active Tab " + this.target);
-  },
-
   render: function(){
     var tabWidth = "" + Session.get('win-width')/3;
 
@@ -67,7 +63,8 @@ SlideTabs = React.createClass({
         height: '100%',
         display: 'inline-block',
         verticalAlign: 'middle',
-        lineHeight: '24px',
+        fontSize: "22px",
+        lineHeight: '22px',
         color: "inherit",
         minWidth: "24px"
       }
@@ -99,8 +96,7 @@ SlideTabs = React.createClass({
                   value={""+index}
                   width={"" + tabWidth}
                   key={index}
-                  className="sliding-tab"
-                  onActive={this._handleActive}/>
+                  className="sliding-tab" />
               )
             })
           }

@@ -1,14 +1,5 @@
 
 Template.screen.helpers({
-  create: function(){
-     console.log("screen created...");
-  },
-  rendered: function(){
-     console.log("screen rendered...");
-  },
-  destroyed: function(){
-     console.log("screen distroyed...");
-  },
   ProCover: function(){
     return ProCover;
   },
@@ -24,13 +15,26 @@ Template.screen.helpers({
     }
 
   },
+  screenIndex: function(){
+    return parseInt(Session.get('slideIndex'));
+  },
+  SlideTabs: function(){
+    return SlideTabs;
+  },
   SwipeSlides: function(){
     return SwipeSlides;
   },
-  swipeViews: function(){
+  slideTabs: function(){
     return [
-      {'template': 'screenProfile', data: {screenId: this.screenId}},
+      {'title': 'Fros', 'iconClass': 'fa fa-video-camera slidetab-ficon', 'maticon': ''},
+      {'title': 'Info', 'iconClass': 'material-icons', 'maticon': 'info_outline'},
+      {'title': 'Followers', 'iconClass': 'fa fa-users slidetab-ficon', 'maticon': ''}
+    ]
+  },
+  slideViews: function(){
+    return [
       {'template': 'froList', 'data': {context: "screen_fros", screenId: this.screenId}},
+      {'template': 'screenProfile', data: {screenId: this.screenId}},
       {'template': 'usersList', 'data': {context: "screen_followers", screenId: this.screenId}}
     ];
   }
@@ -46,6 +50,7 @@ Template.screen.events({
 
 Template.screen.onCreated(function(){
   Session.set('appTitle', "Screen");
+  Session.set('slideIndex', 0);
   var pdata = Template.parentData(0);
   var self = this;
   // console.log("screen template parent Id " + pdata.screenId);

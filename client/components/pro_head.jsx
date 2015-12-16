@@ -65,6 +65,12 @@ ProHead = React.createClass({
         color: APP.primary,
         top: "4px"
       },
+      circleBtn: {
+        borderRadius: '18px',
+        lineHeight: "28px",
+      	height: "28px",
+      	border: "1px solid #66a8cc"
+      },
       circleBtnLabel: {
         fontSize: "12px",
         padding: 0,

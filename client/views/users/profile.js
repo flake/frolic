@@ -14,18 +14,18 @@ Template.profile.helpers({
   },
   slideTabs: function(){
     return [
-      {'title': 'Info', 'iconClass': 'material-icons', 'maticon': 'person'},
       {'title': 'Fros', 'iconClass': 'fa fa-heart slidetab-ficon', 'maticon': ''},
       {'title': 'Screens', 'iconClass': 'fa fa-film slidetab-ficon', 'maticon': ''},
+      {'title': 'Info', 'iconClass': 'material-icons', 'maticon': 'info_outline'},
       {'title': 'Circle', 'iconClass': 'material-icons', 'maticon': 'account_circle'}
     ]
   },
   slideViews: function(){
     return [
-      {'template': 'demo', 'data': {demoText: "slide 01"}},
       {'template': 'froList', 'data': {context: "hearted_fros", userId: this.userId}},
       {'template': 'userScreens', 'data': {userId: this.userId}},
-      {'template': 'demo', 'data': {demoText: "slide 04"}}
+      {'template': 'demo', 'data': {demoText: "slide info"}},
+      {'template': 'demo', 'data': {demoText: "slide circle"}}
     ]
   },
   slideIndex: function(){
@@ -42,11 +42,12 @@ Template.profile.onCreated(function(){
     self.subscribe("hearted_fros", pdata.userId);
     self.subscribe("user_screens", pdata.userId);
   });
-  Session.setDefault("slideIndex", 0);
+  // console.log("TEMPLATE Created - profile ");
+  Session.set("slideIndex", 0);
 });
 
 Template.profile.onRendered(function(){
   var vtop = Session.get('win-width') * 2/3 + 48;
-  console.log("profile vtop " + vtop);
+  // console.log("profile vtop " + vtop);
   this.$('.cover-views').css("top", vtop);
 });

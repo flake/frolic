@@ -29,11 +29,12 @@ Template.screenForm.events({
 
     ScreensFS.insert(ifile, function(err, fileObj){
       if(err){
-        console.log("FS Error: ScreenFS insert failed: " + err);
+        console.log("FS Error: ScreensFS insert failed: " + err);
       }else{
         if(Session.get('screen-fsid')){
           // **TODO** verify
-          ScreenFS.remove(Session.get('screen-fsid'));
+          console.log("previous fs record exists... " + Session.get('screen-fsid'));
+          ScreensFS.remove(Session.get('screen-fsid'));
         }
         Session.set("screen-fsid", fileObj._id);
       }
@@ -45,18 +46,22 @@ Template.screenForm.events({
 
     var screen = {
       title: template.find('#screen-title').value,
+      description: template.find('#screen-desc').value,
       cover_photo: Session.get('screen-fsid')
     };
 
-    Meteor.call('addScreen', screen, function(err){
+    Meteor.call('addScreen', screen, function(err, response){
       if(err){
         console.log("Error adding new Screen: " + err);
       }else{
-        console.log("Screen added success...");
+        console.log("Screen added success... " + response);
 
-        //clean up
+        //form clean up
         template.find('#screen-title').value = '';
+        template.find('#screen-desc').value = '';
         Session.set('screen-fsid', null);
+
+        FlowRouter.go('/screen/'+response);
       }
     });
   }

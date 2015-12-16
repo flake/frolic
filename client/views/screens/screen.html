@@ -1,8 +1,13 @@
 <template name="screen">
   <div class="cover-fixed">
-    {{> React component=ProCover cover=screen mediaURL=screenFS.url}}
+    <div>
+      {{> React component=ProCover cover=screen mediaURL=screenFS.url}}
+    </div>
+    <div>
+      {{> React component=SlideTabs index=screenIndex tabs=slideTabs}}
+    </div>
   </div>
   <div class="cover-views">
-    {{> React component=SwipeSlides views=swipeViews}}
+    {{> React component=SwipeSlides views=slideViews index=screenIndex}}
   </div>
 </template>

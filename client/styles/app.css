@@ -110,7 +110,7 @@ body{
 	text-shadow: 1px 1px 1px rgba(0, 0, 0, .4);
 }
 .slidetab-ficon{
-	font-size: 21px !important;
+	font-size: 16px !important;
 }
 .float-bottom{
 	position: fixed;
@@ -193,7 +193,7 @@ body{
 }
 
 /* FroMini thumb list Container */
-#fromini-thumbs{
+.fromini-thumbs{
 	height: 100%;
 	padding: 8px;
 	padding-right: 0;
@@ -241,11 +241,16 @@ body{
 	line-height: 28px !important;
 	height: 28px !important;
 	border: 1px solid #66a8cc !important;
-	width: 96px !important;
 	margin: 0 16px !important;
+	width: 96px !important;
 }
 .btn-shadow{
 	box-shadow: 6px 6px 16px rgba(0, 0, 0, 0.4);
+}
+.follow-raised{
+	/*border-radius: 18px !important;*/
+	/*line-height: 28px !important;*/
+	/*height: 28px !important;*/
 }
 .pro-stats{
 	display: inline-block;
@@ -254,4 +259,13 @@ body{
 .demo-temp{
 	height: 400px;
 	widht: 100%;
+}
+.screen-stats{
+	display: inline-block;
+	font-size: 11px;
+	color: #666;
+	width: 28%;
+}
+.screen-stats > i{
+	color: #48A1D9;
 }

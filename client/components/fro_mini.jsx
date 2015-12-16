@@ -74,7 +74,7 @@ FroMini = React.createClass({
         height: "32px"
       },
       miniStatIcon:{
-        color: APP.themeGrey,
+        color: APP.secondary,
         fontSize: "9px",
         width: "32px",
         overflow: "hidden",

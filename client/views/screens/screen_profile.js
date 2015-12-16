@@ -1,14 +1,5 @@
 
 Template.screenProfile.helpers({
-  create: function(){
-
-  },
-  rendered: function(){
-
-  },
-  destroyed: function(){
-
-  },
   UserCard: function(){
     return UserCard;
   },
