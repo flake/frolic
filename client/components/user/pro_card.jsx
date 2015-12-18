@@ -41,8 +41,8 @@ ProCard = React.createClass({
         paddingTop: "16px"
       },
       proText: {
-        paddingTop: 0,
-        paddingBottom: "8px"
+        padding: "8px",
+        paddingTop: 0
       },
       proConnBtn: {
         height: "24px",
@@ -65,12 +65,16 @@ ProCard = React.createClass({
       proName: {
         fontWeight: "600",
         fontSize: "14px",
-        color: "#444"
+        color: "#444",
+        whiteSpace: "nowrap",
+        overflow: "hidden"
       },
       proLine: {
         fontWeight: "normal",
         fontSize: "12px",
-        color: "#666"
+        color: "#666",
+        whiteSpace: "nowrap",
+        overflow: "hidden"
       }
     };
 

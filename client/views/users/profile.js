@@ -16,15 +16,15 @@ Template.profile.helpers({
     return [
       {'title': 'Fros', 'iconClass': 'fa fa-heart slidetab-ficon', 'maticon': ''},
       {'title': 'Screens', 'iconClass': 'fa fa-film slidetab-ficon', 'maticon': ''},
-      {'title': 'Info', 'iconClass': 'material-icons', 'maticon': 'info_outline'},
+      {'title': 'Following', 'iconClass': 'material-icons', 'maticon': 'screen_share'},
       {'title': 'Circle', 'iconClass': 'material-icons', 'maticon': 'account_circle'}
     ]
   },
   slideViews: function(){
     return [
       {'template': 'froList', 'data': {context: "hearted_fros", userId: this.userId}},
-      {'template': 'userScreens', 'data': {userId: this.userId}},
-      {'template': 'demo', 'data': {demoText: "slide info"}},
+      {'template': 'userScreens', 'data': {context: "self", userId: this.userId}},
+      {'template': 'userScreens', 'data': {context: "following", userId: this.userId}},
       {'template': 'demo', 'data': {demoText: "slide circle"}}
     ]
   },

@@ -49,17 +49,23 @@ Meteor.publish('profiles', function(){
 Meteor.publish('screen', function(screenId){
   var screen = Screens.findOne(screenId);
   var userId = screen ? screen.creator_id : null;
+  var follCurs = Followers.find({screen_id: screenId});
 
   return [
     Screens.find(screenId),
     Meteor.users.find(userId),
-    ScreensFS.find({_id: {$in: [screen.cover_photo, screen.avatar_photo]}})
+    ScreensFS.find({_id: {$in: [screen.cover_photo, screen.avatar_photo]}}),
+    follCurs
   ];
 });
 
 Meteor.publish('user_screens', function(userId){
+  var follCurs = Followers.find({user_id: userId});
+  var screenIds = follCurs.map(function(f){return f.screen_id});
+
   return [
-    Screens.find({creator_id: userId}),
+    follCurs,
+    Screens.find({$or: [{_id: {$in: screenIds}}, {creator_id: userId}]}),
     ScreensFS.find()
   ];
 });

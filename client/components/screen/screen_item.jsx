@@ -34,7 +34,9 @@ ScreenItem = React.createClass({
     };
   },
   getInitialState: function(){
-    return { }
+    return {
+      follow: false
+    }
   },
 
   _handleScreen: function(event){
@@ -115,28 +117,39 @@ ScreenItem = React.createClass({
       },
       screenOverlay: {
         paddingTop: "0 !important",
-        textAlign: "right"
+        textAlign: "right",
+        minHeight: "40px"
       }
     };
 
+    var followLabel = this.props.screen.isFollower() ? "Un Follow" : "Follow";
+    var followIcon = this.props.screen.isFollower() ? "stop_screen_share" : "screen_share";
     var screenOverlay = (
       <div>
         <Avatar
           src={this.props.screen.avatar()}
           style={styles.screenAvatar}
           size={34} />
-        <RaisedButton
-          secondary={true}
-          label="Follow"
-          labelPosition="after"
-          style={styles.followRaised}
-          labelStyle={styles.followLabel}
-          className="follow-raised"
-          onTouchTap={this._handleFollow} >
-          <FontIcon
-            style={styles.followIcon}
-            className="material-icons">screen_share</FontIcon>
-        </RaisedButton>
+        {
+          (() => {
+            if(!this.props.screen.isOwner()){
+              return (
+                <RaisedButton
+                  secondary={true}
+                  label={followLabel}
+                  labelPosition="after"
+                  style={styles.followRaised}
+                  labelStyle={styles.followLabel}
+                  className="follow-raised"
+                  onTouchTap={this._handleFollow} >
+                  <FontIcon
+                    style={styles.followIcon}
+                    className="material-icons">{followIcon}</FontIcon>
+                </RaisedButton>
+              )
+            }
+          })()
+        }
       </div>
   );
 

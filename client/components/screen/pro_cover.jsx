@@ -35,8 +35,13 @@ ProCover = React.createClass({
     return { }
   },
 
-  _handleFollow: function(){
-
+  _handleFollow: function(event){
+    console.log("screen page follow tap ");
+    if(this.props.screen.isFollower()){
+      Meteor.call('unfollow', this.props.screen._id, function(){});
+    }else{
+      Meteor.call('followScreen', this.props.screen._id, function(){});
+    }
   },
 
   render: function(){
@@ -66,13 +71,14 @@ ProCover = React.createClass({
       },
       followRaised: {
         // borderRadius: "18px",
-      	lineHeight: "24px",
-      	height: "24px",
+      	lineHeight: "28px",
+      	height: "28px",
         minWidth: "64px",
-      	width: "72px",
+      	width: "88px",
       	margin: "8px",
         backgroundColor: APP.primary,
-        top: '4px'
+        top: '4px',
+        padding: "0 4px"
       },
       followLabel: {
         fontSize: "10px",
@@ -97,19 +103,32 @@ ProCover = React.createClass({
         style={styles.avatar}
       />);
 
+    var followLabel = this.props.screen.isFollower() ? "Un Follow" : "Follow";
+    var followIcon = this.props.screen.isFollower() ? "stop_screen_share" : "screen_share";
+    console.log("pro cover follow label: %s & icon: %s ", followLabel, followIcon);
     var rightIconBtn = (
-      <RaisedButton
-        secondary={true}
-        label="Follow"
-        labelPosition="after"
-        style={styles.followRaised}
-        labelStyle={styles.followLabel}
-        className="follow-raised"
-        onTouchTap={this._handleFollow} >
-        <FontIcon
-          style={styles.followIcon}
-          className="material-icons">screen_share</FontIcon>
-      </RaisedButton>
+      <div style={{"top": "0px"}}>
+        {
+          (() => {
+            if(!this.props.screen.isOwner()){
+              return (
+                <RaisedButton
+                  secondary={true}
+                  label={followLabel}
+                  labelPosition="after"
+                  style={styles.followRaised}
+                  labelStyle={styles.followLabel}
+                  className="follow-raised"
+                  onTouchTap={this._handleFollow} >
+                  <FontIcon
+                    style={styles.followIcon}
+                    className="material-icons">{followIcon}</FontIcon>
+                </RaisedButton>
+              );
+            }
+          })()
+        }
+      </div>
     );
 
     var description = (

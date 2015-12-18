@@ -147,7 +147,7 @@ FroMini = React.createClass({
                 style={styles.miniAvatar}
                 size={21} />
             </div>
-            <div className="mini-header" style={styles.titleStyle}>{this.props.fro.screen}</div>
+            <div className="mini-header" style={styles.titleStyle}>{this.props.fro.screenDoc().title}</div>
           </div>
           <div className="minifro-action mini-stat-right">
             <FontIcon
