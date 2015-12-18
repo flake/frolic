@@ -34,7 +34,7 @@ Template.screen.helpers({
   slideViews: function(){
     return [
       {'template': 'froList', 'data': {context: "screen_fros", screenId: this.screenId}},
-      {'template': 'screenProfile', data: {screenId: this.screenId}},
+      {'template': 'screenProfile', 'data': {screenId: this.screenId}},
       {'template': 'usersList', 'data': {context: "screen_followers", screenId: this.screenId}}
     ];
   }
@@ -56,7 +56,8 @@ Template.screen.onCreated(function(){
   // console.log("screen template parent Id " + pdata.screenId);
   self.autorun(function(){
     self.subscribe("screen", pdata.screenId);
-    self.subscribe("screen_fs", pdata.screenId);
+    // self.subscribe("screen_fs", pdata.screenId);
     self.subscribe("fros_screen", pdata.screenId);
+    self.subscribe("profiles");
   });
 });

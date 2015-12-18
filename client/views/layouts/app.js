@@ -105,7 +105,7 @@ Template.appLayout.events({
   },
 
   'click #navigation-back': function(event, template){
-    console.log("back btn event...");
+    // console.log("back btn event...");
     history.back();
     // FlowRouter.go('/');
     // BackBehaviour.goBack();
@@ -124,13 +124,13 @@ Template.appLayout.events({
     navTabs.removeClass("tab-active");
     navTabs.eq(sindex).addClass("tab-active");
 
-    console.log("slideIndex from nav-tabs "+ sindex);
+    // console.log("slideIndex from nav-tabs "+ sindex);
   }
 });
 
 Template.appLayout.onRendered(function(){
-  devHeight = $(window).innerHeight();
-  $('#app-body').css('min-height', devHeight);
+  // devHeight = $(window).innerHeight();
+  // $('#app-body').css('min-height', devHeight);
 
   Session.setDefault('addVideoModal', false);
   Session.setDefault('vidsrc', '');
@@ -138,7 +138,7 @@ Template.appLayout.onRendered(function(){
 });
 
 Template.appLayout.onCreated(function(){
-  Session.setDefault('appTitle', 'frolic');
+  Session.set('appTitle', 'frolic');
   var self = this;
   self.autorun(function(){
     self.subscribe("fros_fs");

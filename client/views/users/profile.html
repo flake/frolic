@@ -1,8 +1,14 @@
 <template name="profile">
   <div class="cover-fixed">
+    {{#if Template.subscriptionsReady}}
     <div>
       {{> React component=ProHead user=user}}
     </div>
+    {{else}}
+    <div>
+      {{> React component=Loading}}
+    </div>
+    {{/if}}
     <div>
       {{> React component=SlideTabs index=slideIndex tabs=slideTabs}}
     </div>

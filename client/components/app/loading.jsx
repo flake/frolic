@@ -11,7 +11,7 @@ Loading = React.createClass({
   getDefaultProps: function(){
     return {
       overlay: false,
-      circular: false,
+      circular: true,
       size: 1
     }
   },

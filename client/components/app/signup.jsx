@@ -17,22 +17,14 @@ Signup = React.createClass({
     var email = this.refs.emailphn.getValue();
     var password = this.refs.password.getValue();
 
-    Accounts.createUser({
-				email: email,
-				password: password,
-				profile: {
-					name: fullname,
-					dob: '',
-					gender: '',
-					location: '',
-				}
-			}, function(error){
-        if(error){
-          console.log("signup error");
-        }else{
-          FlowRouter.reload();
-        }
-      });
+    Meteor.call("newUser", email, password, {fullname: fullname}, function(error, result){
+      if(error){
+        console.log("new user error ", error);
+      }
+      if(result){
+         console.log("new user result ", result);
+      }
+    });
   },
 
   render: function(){
@@ -84,12 +76,38 @@ Signup = React.createClass({
 
     return (
       <div style={{padding: "16px"}}>
-        <CardText style={{backgroundColor: "#fff"}}>
+        <CardText style={{backgroundColor: APP.primary}}>
           <form>
-            <TextField hintText="Full name" fullWidth={true} ref="fullname"/>
-            <TextField hintText="Email or Phone" fullWidth={true} ref="emailphn"/>
-            <TextField hintText="Password" type="password" fullWidth={true} ref="password"/>
-            <RaisedButton label="Sign Up" secondary={true} fullWidth={true} onClick={this.handleSubmit}/>
+            <TextField
+              hintText="Full name"
+              fullWidth={true}
+              inputStyle={{"color": "#fff"}}
+              hintStyle={{"color": "rgba(255, 255, 255, 0.4)"}}
+              underlineStyle={{"borderColor": "rgba(255, 255, 255, 0.4)"}}
+              underlineFocusStyle={{"borderColor": "#f9f9f9"}}
+              ref="fullname"/>
+            <TextField
+              hintText="Email or Phone"
+              fullWidth={true}
+              inputStyle={{"color": "#fff"}}
+              hintStyle={{"color": "rgba(255, 255, 255, 0.4)"}}
+              underlineStyle={{"borderColor": "rgba(255, 255, 255, 0.4)"}}
+              underlineFocusStyle={{"borderColor": "#f9f9f9"}}
+              ref="emailphn"/>
+            <TextField
+              hintText="Password"
+              type="password"
+              fullWidth={true}
+              inputStyle={{"color": "#fff"}}
+              hintStyle={{"color": "rgba(255, 255, 255, 0.4)"}}
+              underlineStyle={{"borderColor": "rgba(255, 255, 255, 0.4)"}}
+              underlineFocusStyle={{"borderColor": "#f9f9f9"}}
+              ref="password"/>
+            <RaisedButton
+              label="Sign Up"
+              primary={true}
+              fullWidth={true}
+              onClick={this.handleSubmit}/>
           </form>
         </CardText>
 

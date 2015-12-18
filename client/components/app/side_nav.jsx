@@ -36,13 +36,15 @@ SideNav = React.createClass({
   // componentWillMount: function(){},
 
   componentWillUpdate: function(nextProps, nextState){
+    console.log("sidenav updated...");
     if(nextProps.show != this.props.show){
+      console.log("sidenav toggle...");
       this.refs.SideNav.toggle();
     }
   },
 
   menuChange: function(navItem){
-    console.log("menuChange selected index " + navItem.index);
+    // console.log("menuChange selected index " + navItem.index);
     Session.set('sideNav', false);
     if(navItem.route){
       FlowRouter.go(navItem.route);

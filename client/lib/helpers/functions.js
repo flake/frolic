@@ -185,3 +185,18 @@ captalize = function(string){
   });
   return string;
 };
+
+readURL = function(input, callback){
+    if(input.files && input.files[0]){
+        var reader = new FileReader();
+        var file = input.files[0];
+
+        reader.onload = function(e){
+          var res = e.target.result;
+            Session.set('img_src', res);
+            callback(res);
+        }
+
+        reader.readAsDataURL(file);
+    }
+}

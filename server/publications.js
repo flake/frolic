@@ -7,7 +7,14 @@ Meteor.publish("fros_screen", function(screenId){
 });
 
 Meteor.publish("fros_home", function(){
-  return Fros.find(); //**TODO**
+  var froCurs = Fros.find(); //**TODO**
+  var screenIds = froCurs.map(function(f){return f.screenId});
+
+  return [
+    froCurs,
+    Screens.find({_id: {$in: screenIds}}),
+    ScreensFS.find()
+  ];
 });
 
 Meteor.publish('fros_fs', function(options){
@@ -15,12 +22,12 @@ Meteor.publish('fros_fs', function(options){
 });
 
 Meteor.publish('hearted_fros', function(userId){
-  var hfros = Hearts.find({userId: userId});
-  var froIds = hfros.map(function(f){ return f.froId; });
-  return [
-    Hearts.find({userId: userId}),
-    Fros.find({_id: {$in: froIds}})
-  ];
+  var hcurs = Hearts.find({userId: userId, valid:true});
+  var froIds = hcurs.map(function(f){ return f.froId; });
+  var fcurs = Fros.find({_id: {$in: froIds}});
+  var screenIds = fcurs.map(function(f){ return f.screenId});
+  var scurs = Screens.find({_id: {$in: screenIds}});
+  return [ hcurs, fcurs, scurs ];
 });
 
 Meteor.publish('hearts', function(userId){
@@ -45,7 +52,8 @@ Meteor.publish('screen', function(screenId){
 
   return [
     Screens.find(screenId),
-    Meteor.users.find(userId)
+    Meteor.users.find(userId),
+    ScreensFS.find({_id: {$in: [screen.cover_photo, screen.avatar_photo]}})
   ];
 });
 
@@ -56,12 +64,12 @@ Meteor.publish('user_screens', function(userId){
   ];
 });
 
-Meteor.publish('screen_fs', function(screenId){
-  var screen = Screens.findOne(screenId);
-  if(!screen){
-    console.log("[PUBLISH] Screen not Found!");
-    return;
-  }
-
-  return ScreensFS.find({_id:screen.cover_photo});
-});
+// Meteor.publish('screen_fs', function(screenId){
+//   var screen = Screens.findOne(screenId);
+//   if(!screen){
+//     console.log("[PUBLISH] Screen not Found!");
+//     return;
+//   }
+//
+//   return ScreensFS.find({_id:screen.cover_photo});
+// });

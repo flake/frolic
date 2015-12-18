@@ -18,7 +18,7 @@ Template.screenForm.helpers({
       return Screens.findOne(this.screenId);
     }
 
-    return null;
+    return undefined;
   }
 });
 
@@ -37,6 +37,7 @@ Template.screenForm.events({
           ScreensFS.remove(Session.get('screen-fsid'));
         }
         Session.set("screen-fsid", fileObj._id);
+        // Session.set("upload-url", fileObj.url());
       }
     });
   },
@@ -47,7 +48,8 @@ Template.screenForm.events({
     var screen = {
       title: template.find('#screen-title').value,
       description: template.find('#screen-desc').value,
-      cover_photo: Session.get('screen-fsid')
+      cover_photo: Session.get('screen-fsid'),
+      avatar_photo: Session.get('avatar-fsid')
     };
 
     Meteor.call('addScreen', screen, function(err, response){
@@ -68,5 +70,6 @@ Template.screenForm.events({
 });
 
 Template.screenForm.onCreated(function(){
-  Session.setDefault('screen-fsid', null);
+  Session.set('screen-fsid', undefined);
+  Session.set('avatar-fsid', undefined);
 });

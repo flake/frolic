@@ -18,7 +18,8 @@ ScreenItem = React.createClass({
         plays: 604,
         fros: 234,
         followers: 843,
-        cover: () => { return { url : () => {return "/img/froscreen.png";}};}
+        cover: () => { return "/img/froscreen.png";},
+        avatar: () => {return "/img/froscreen.png";}
       }
     }
   },
@@ -66,7 +67,8 @@ ScreenItem = React.createClass({
         fontSize: "12px",
         lineHeight: "1em",
         height: "14px",
-        overflow: "hidden"
+        overflow: "hidden",
+        whiteSpace: "nowrap"
       },
       screenDesc: {
         fontWeight: "normal",
@@ -74,13 +76,11 @@ ScreenItem = React.createClass({
         fontSize: "12px",
         lineHeight: "1em",
         height: "13px",
-        overflow: "hidden"
+        overflow: "hidden",
+        whiteSpace: "nowrap"
       },
       screenImg: {
-        height: "96px"
-      },
-      screenAvatar:{
-        borderRadius: "6px"
+        height: Session.get('win-width')*(96/360)
       },
       cardStats:{
         padding: "4px 8px"
@@ -88,7 +88,7 @@ ScreenItem = React.createClass({
       followIcon: {
         fontSize: "16px",
         color: "#fff",
-        top: "4px"
+        top: "3px"
       },
       followRaised: {
         // borderRadius: "18px",
@@ -103,7 +103,15 @@ ScreenItem = React.createClass({
         fontSize: "10px",
         fontWeight: "600",
         padding: "0",
-        paddingLeft: "6px"
+        paddingLeft: "6px",
+        top: "-1px"
+      },
+      screenAvatar:{
+        borderRadius: "18px",
+        position: "absolute",
+        top: "-12px",
+        left: "8px",
+        border: "2px solid #fff"
       },
       screenOverlay: {
         paddingTop: "0 !important",
@@ -111,26 +119,25 @@ ScreenItem = React.createClass({
       }
     };
 
-    var screenAvatar = (
-      <Avatar
-        src={this.props.screen.cover().url()}
-        style={styles.screenAvatar}
-        size={64} />
-    );
-
     var screenOverlay = (
-      <RaisedButton
-        secondary={true}
-        label="Follow"
-        labelPosition="after"
-        style={styles.followRaised}
-        labelStyle={styles.followLabel}
-        className="follow-raised"
-        onTouchTap={this._handleFollow} >
-        <FontIcon
-          style={styles.followIcon}
-          className="material-icons">screen_share</FontIcon>
-      </RaisedButton>
+      <div>
+        <Avatar
+          src={this.props.screen.avatar()}
+          style={styles.screenAvatar}
+          size={34} />
+        <RaisedButton
+          secondary={true}
+          label="Follow"
+          labelPosition="after"
+          style={styles.followRaised}
+          labelStyle={styles.followLabel}
+          className="follow-raised"
+          onTouchTap={this._handleFollow} >
+          <FontIcon
+            style={styles.followIcon}
+            className="material-icons">screen_share</FontIcon>
+        </RaisedButton>
+      </div>
   );
 
 
@@ -141,7 +148,7 @@ ScreenItem = React.createClass({
           overlay={screenOverlay}
           overlayContentStyle={styles.screenOverlay} >
           <img
-            src={""+this.props.screen.cover().url()}
+            src={""+this.props.screen.cover()}
             style={styles.screenImg}/>
         </CardMedia>
         <CardText style={styles.cardText}>

@@ -12,6 +12,7 @@ html{
 
 body{
 	height: 100%;
+	background-color: #C3D7E3;
 }
 
 ::-webkit-scrollbar {
@@ -20,6 +21,9 @@ body{
 
 .padding-8{
 	padding: 8px !important;
+}
+.margin-8{
+	margin: 8px !important;
 }
 
 .fixed-nav-bar{
@@ -93,7 +97,7 @@ body{
 
 .fro-action{
 	min-width: 24% !important;
-	width: 24% !important;
+	width: 25% !important;
 }
 
 .date-light{
@@ -232,6 +236,7 @@ body{
 	position: relative;
 	top: 252px;
 	left: 0;
+	background-color: #c3d7e3;
 }
 .pro-circle-btn{
 	border-radius: 27px !important;

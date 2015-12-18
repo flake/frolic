@@ -1,14 +1,24 @@
-var { CardMedia, CardTitle, Avatar, ListItem, IconButton } = MUI;
+var {
+  CardMedia,
+  CardTitle,
+  Avatar,
+  ListItem,
+  RaisedButton,
+  FontIcon
+} = MUI;
 
 ProCover = React.createClass({
   propTypes: {
-    cover: React.PropTypes.object,
-    mediaURL: React.PropTypes.string
+    screen: React.PropTypes.object
   },
   getDefaultProps: function(){
     return {
-      cover: {},
-      mediaURL: '/img/fravatar.jpg'
+      screen: {
+        title: 'Set Title',
+        description: 'Description ...',
+        cover: () => {return '/img/froscreen.png';},
+        avatar: () => {return '/img/froscreen.png';}
+      }
     }
   },
 
@@ -25,6 +35,10 @@ ProCover = React.createClass({
     return { }
   },
 
+  _handleFollow: function(){
+
+  },
+
   render: function(){
 
     var styles = {
@@ -32,43 +46,85 @@ ProCover = React.createClass({
         height: "204px",
         maxHeight: "204px"
       },
+      avatar: {
+        border: "2px solid " + APP.themeLite,
+        top: '-36px',
+        left: "8px"
+      },
       img: {
         height: "100%",
         width: "100%"
       },
-      followIbtn: {
-
+      listInnerDiv:{
+        color: "#fff",
+        padding: '8px 72px'
+      },
+      followIcon: {
+        fontSize: "16px",
+        color: "#fff",
+        top: "3px"
+      },
+      followRaised: {
+        // borderRadius: "18px",
+      	lineHeight: "24px",
+      	height: "24px",
+        minWidth: "64px",
+      	width: "72px",
+      	margin: "8px",
+        backgroundColor: APP.primary,
+        top: '4px'
+      },
+      followLabel: {
+        fontSize: "10px",
+        fontWeight: "600",
+        padding: "0",
+        paddingLeft: "6px",
+        top: "-1px"
       }
     };
 
-    var overlay = (
-      <CardTitle
-        title={this.props.cover.title}
-        subtitle={this.props.cover.owner_name}
-        style={{padding: "8px", paddingTop: "0"}}
-      />);
+    // var overlay = (
+    //   <CardTitle
+    //     title={this.props.screen.title}
+    //     subtitle={this.props.screen.description}
+    //     style={{padding: "8px", paddingTop: "0"}}
+    //   />);
 
     var avatar = (
       <Avatar
-        src={this.props.cover.avatar_photo}
+        src={this.props.screen.avatar()}
         size={56}
         style={styles.avatar}
       />);
 
     var rightIconBtn = (
-      <IconButton
-        iconClassName="material-icons"
-        style={styles.followIbtn}
-      >screen_share</IconButton>
+      <RaisedButton
+        secondary={true}
+        label="Follow"
+        labelPosition="after"
+        style={styles.followRaised}
+        labelStyle={styles.followLabel}
+        className="follow-raised"
+        onTouchTap={this._handleFollow} >
+        <FontIcon
+          style={styles.followIcon}
+          className="material-icons">screen_share</FontIcon>
+      </RaisedButton>
+    );
+
+    var description = (
+      <div style={{"color": "#fff"}}>{this.props.screen.description}</div>
     );
 
     var overCard = (
       <ListItem
-        primaryText={this.props.cover.title}
-        secondaryText={this.props.cover.owner_name}
+        primaryText={this.props.screen.title}
+        secondaryText={description}
         leftAvatar={avatar}
         rightIconButton={rightIconBtn}
         disabled={true}
+        innerDivStyle={styles.listInnerDiv}
+        style={{"color": "#fff"}}
       />
     );
 
@@ -77,7 +133,7 @@ ProCover = React.createClass({
         overlay={overCard}
         mediaStyle={styles.cover}
       >
-        <img src={this.props.mediaURL} style={styles.img}/>
+        <img src={this.props.screen.cover()} style={styles.img}/>
       </CardMedia>
     )
   }

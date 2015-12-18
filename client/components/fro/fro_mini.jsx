@@ -107,7 +107,7 @@ FroMini = React.createClass({
     var miniFroStats = (
       <div>
         <FontIcon
-          className="fa fa-play-circle"
+          className="fa fa-play"
           style={styles.miniStatIcon}>
           <span style={styles.miniStats}>
             {this.props.fro.views}
@@ -143,16 +143,15 @@ FroMini = React.createClass({
           <div className="minifro-action mini-avatar-space">
             <div className="mini-header">
               <Avatar
-                backgroundColor={APP.themeGrey}
+                src={this.props.fro.screenDoc().avatar()}
                 style={styles.miniAvatar}
-                icon={screenIcon}
                 size={21} />
             </div>
             <div className="mini-header" style={styles.titleStyle}>{this.props.fro.screen}</div>
           </div>
           <div className="minifro-action mini-stat-right">
             <FontIcon
-              className="fa fa-play-circle"
+              className="fa fa-play"
               style={styles.miniStatIcon}>
               <span style={styles.miniStats}>
                 {this.props.fro.views}

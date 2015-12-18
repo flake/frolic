@@ -5,8 +5,10 @@ Template.userScreens.helpers({
     return Screens.find({creator_id: this.userId});
   },
   screensPlaying: function(){
-    // var screens = Screens.find({"members.user_id": this.userId}, {members:{$elemMatch: {"user_id": this.userId}}});
-    return [];
+    var membs = Members.find({user_id: this.userId});
+    var screenIds = membs.map(function(m){return m.screen_id;});
+    // {"members.user_id": this.userId}, {members:{$elemMatch: {"user_id": this.userId}}}
+    return Screens.find({_id: {$in: screenIds}});
   }
 });
 

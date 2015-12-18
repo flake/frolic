@@ -69,6 +69,10 @@ FroItem = React.createClass({
         color: "#666",
         marginRight: "6px",
         minWidth: "48px"
+      },
+      screenAvatar: {
+        marginRight: "8px",
+        borderRadius: "24px"
       }
       // titleThemed:{
       //   color: "#1690DB !important"
@@ -97,12 +101,16 @@ FroItem = React.createClass({
           <div style={{"fontWeight": "900", "color": "#333", "paddingBottom": "8px"}} className="frolic-invoke" id="fi-froinfo" >{this.props.fro.title}</div>
           <div style={{"display": "inline-block"}} >
             <CardHeader
-              title={this.props.fro.screen}
+              title={this.props.fro.screenDoc().title}
               titleStyle={styles.titleStyle}
               subtitle={this.props.fro.datePublished()}
               subtitleStyle={styles.subtitleStyle}
               titleColor={APP.secondary}
-              avatar={<Avatar backgroundColor={APP.themeGrey} style={Styles.froAvatar} icon={screenIcon} />}
+              avatar={
+                <Avatar
+                  src={this.props.fro.screenDoc().avatar()}
+                  size={36}
+                  style={styles.screenAvatar} />}
               style={Styles.headerBox}
               onClick={this._handleScreen} />
           </div>
