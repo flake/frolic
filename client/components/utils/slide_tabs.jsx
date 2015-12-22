@@ -44,7 +44,7 @@ SlideTabs = React.createClass({
   },
 
   render: function(){
-    var tabWidth = "" + Session.get('win-width')/3;
+    var tabWidth = "" + $(window).width() / 3;
 
     var styles = {
       container: {

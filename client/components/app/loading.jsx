@@ -15,6 +15,15 @@ Loading = React.createClass({
       size: 1
     }
   },
+  //IMPORTANT SET CHILD CONTEXT
+  childContextTypes: {
+    muiTheme: React.PropTypes.object
+  },
+  getChildContext: function(){
+    return {
+      muiTheme: newTheme
+    };
+  },
   render: function(){
     var styles = {
       container: {

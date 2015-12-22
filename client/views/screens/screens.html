@@ -1,5 +1,19 @@
 <template name="screens">
-  <div>
-    {{> userScreens sdata}}
+  <div class="cover-fixed">
+    {{#if Template.subscriptionsReady}}
+    <div>
+      {{> React component=ScreensPanel}}
+    </div>
+    {{else}}
+    <div>
+      {{> React component=Loading}}
+    </div>
+    {{/if}}
+    <div>
+      {{> React component=SlideTabs index=slideIndex tabs=slideTabs}}
+    </div>
+  </div>
+  <div class="cover-views">
+    {{> React component=SwipeSlides views=slideViews index=slideIndex}}
   </div>
 </template>

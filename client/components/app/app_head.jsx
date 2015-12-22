@@ -1,5 +1,13 @@
 injectTapEventPlugin();
 
+APP = {
+  primary: "#1690DB",
+  secondary: "#48A1D9",
+  themeGrey: "#A3C3D6",
+  themeBg: "#C3D7E3",
+  themeLite: "#D4EEFF"
+}
+
 ThemeManager = MUI.Styles.ThemeManager;
 appPalette = {
   primary1Color: "#1690DB",
@@ -12,13 +20,6 @@ appPalette = {
   canvasColor: '#ffffff',
   borderColor: '#e0e0e0',
 };
-APP = {
-  primary: "#1690DB",
-  secondary: "#48A1D9",
-  themeGrey: "#A3C3D6",
-  themeBg: "#C3D7E3",
-  themeLite: "#D4EEFF"
-}
 
 lightTheme = ThemeManager.getMuiTheme(MUI.Styles.LightRawTheme);
 newTheme = ThemeManager.modifyRawThemePalette(lightTheme, appPalette);

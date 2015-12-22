@@ -1,14 +1,5 @@
 
 Template.proCard.helpers({
-  create: function(){
-
-  },
-  rendered: function(){
-
-  },
-  destroyed: function(){
-
-  },
   ProCard: function(){
     return ProCard;
   }

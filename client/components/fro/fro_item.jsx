@@ -117,7 +117,7 @@ FroItem = React.createClass({
           <div className="header-right">
               <div className="stat-box">
                 <FontIcon
-                  className="fa fa-play-circle"
+                  className="fa fa-play"
                   style={styles.fontIcon}>
                   <span style={{"fontSize": "11px", "marginLeft": "4px"}}>{this.props.fro.views}</span>
                 </FontIcon>

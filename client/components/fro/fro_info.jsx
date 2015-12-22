@@ -55,7 +55,7 @@ FroInfo = React.createClass({
       <List subheader={this.props.fro.title} subheaderStyle={styles.froTitle}>
         <ListItem disabled={true} style={{"padding" : "8px"}}>
           <div className="frolic-stats">
-            <FontIcon className="material-icons" style={styles.fontIcon}>visibility</FontIcon><span style={{"fontSize": "16px", "marginLeft": "4px"}}>{this.props.fro.views}</span>
+            <FontIcon className="fa fa-play" style={styles.fontIcon}></FontIcon><span style={{"fontSize": "16px", "marginLeft": "4px"}}>{this.props.fro.views}</span>
           </div>
           <div className="frolic-stats">
             <FontIcon className={"fa fa-" + this.props.hearted } style={styles.fontIcon}></FontIcon><span style={{"fontSize": "16px"}}>{this.props.fro.hearts}</span>

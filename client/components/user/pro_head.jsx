@@ -35,8 +35,8 @@ ProHead = React.createClass({
 
     var styles = {
       proHead: {
-        height: Session.get("win-width")*2/3,
-        width: Session.get("win-width"),
+        height: $(window).width() * 2/3,
+        width: $(window).width(),
         backgroundColor: APP.primary,
         textAlign: "center"
       },

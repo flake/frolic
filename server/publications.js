@@ -64,7 +64,7 @@ Meteor.publish('user_screens', function(userId){
   var screenIds = follCurs.map(function(f){return f.screen_id});
 
   return [
-    follCurs,
+    Followers.find({$or: [{user_id: userId},{screen_id: {$in: screenIds}, user_id: this.userId}]}),
     Screens.find({$or: [{_id: {$in: screenIds}}, {creator_id: userId}]}),
     ScreensFS.find()
   ];

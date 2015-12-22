@@ -47,7 +47,7 @@ Template.profile.onCreated(function(){
 });
 
 Template.profile.onRendered(function(){
-  var vtop = Session.get('win-width') * 2/3 + 48;
+  var vtop = $(window).width() * 2/3 + 48;
   // console.log("profile vtop " + vtop);
   this.$('.cover-views').css("top", vtop);
   Session.set('appTitle', "Profile");

@@ -46,6 +46,19 @@ ScreenItem = React.createClass({
   _handleFollow: function(event){
     event.stopPropagation();
     console.log("screen follow tap...");
+    if(this.props.screen.isFollower()){
+      Meteor.call('unfollow', this.props.screen._id, function(err){
+        if(err){
+          console.log("screen unfollow error ", err);
+        }
+      });
+    }else{
+      Meteor.call('followScreen', this.props.screen._id, function(err){
+        if(err){
+          console.log("screen follow error ", err);
+        }
+      });
+    }
   },
 
   render: function(){
@@ -82,7 +95,7 @@ ScreenItem = React.createClass({
         whiteSpace: "nowrap"
       },
       screenImg: {
-        height: Session.get('win-width')*(96/360)
+        height: $(window).width() * (96/360)
       },
       cardStats:{
         padding: "4px 8px"
@@ -97,8 +110,9 @@ ScreenItem = React.createClass({
       	lineHeight: "24px",
       	height: "24px",
         minWidth: "64px",
-      	width: "72px",
+      	width: "88px",
       	margin: "8px",
+        padding: "0 4px",
         backgroundColor: APP.primary
       },
       followLabel: {
@@ -124,6 +138,7 @@ ScreenItem = React.createClass({
 
     var followLabel = this.props.screen.isFollower() ? "Un Follow" : "Follow";
     var followIcon = this.props.screen.isFollower() ? "stop_screen_share" : "screen_share";
+    // console.log("screen item %s follow label: %s & icon: %s ", this.props.screen.title, followLabel, followIcon);
     var screenOverlay = (
       <div>
         <Avatar

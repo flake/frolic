@@ -26,7 +26,18 @@ ProCard = React.createClass({
     };
   },
   getInitialState: function(){
-    return { }
+    return {};
+  },
+
+  _handleCircle: function(event){
+    event.stopPropagation();
+    console.log("add to circle handle event " + event.target);
+    
+  },
+
+  _handleUser: function(event){
+    // console.log("user card handle event " + event.target);
+    FlowRouter.go('/profile/' + this.props.user._id);
   },
 
   render: function(){
@@ -79,7 +90,9 @@ ProCard = React.createClass({
     };
 
     return (
-      <Card style={styles.proCard}>
+      <Card
+        style={styles.proCard}
+        onTouchTap={this._handleUser}>
         <Avatar
           src={""+this.props.user.avatar}
           size={56}
@@ -99,6 +112,7 @@ ProCard = React.createClass({
               labelPosition="after"
               style={styles.proConnBtn}
               labelStyle={styles.proBtnLabel}
+              onTouchTap={this._handleCircle}
               className="pro-circle-btn">
               <FontIcon
                 style={styles.proConnIcon}
