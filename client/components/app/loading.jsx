@@ -38,7 +38,7 @@ Loading = React.createClass({
         top: 0,
         left: 0,
         background: "rgba(255, 255, 255, 0.8) !important",
-        zIndex: 9999
+        zIndex: 98
       }
     };
 

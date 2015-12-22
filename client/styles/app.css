@@ -30,7 +30,7 @@ body{
 	position: fixed;
   top: 0;
   left: 0;
-  z-index: 1999;
+  z-index: 99;
   width: 100%;
 }
 
@@ -120,7 +120,7 @@ body{
 	position: fixed;
 	bottom: 8px;
 	width: 96%;
-	z-index: 1999;
+	z-index: 99;
 	min-height: 64px;
 }
 /*.material-icons.btn-nopad{
@@ -230,7 +230,7 @@ body{
 	top: 64px;
 	left: 0;
 	width: 100%;
-	z-index: 999;
+	z-index: 90;
 }
 .cover-views{
 	position: relative;
