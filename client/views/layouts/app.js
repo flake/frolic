@@ -6,15 +6,12 @@ Template.appLayout.helpers({
   title: function(){
     return Session.get('appTitle');
   },
-  navIcons: function(){
-    return Session.get('navIcons');
-  },
   sideNav: function(){
     return Session.get('sideNav');
   },
-  AddFloatBtn: function(){
-    return AddFloatBtn;
-  },
+  // AddFloatBtn: function(){
+  //   return AddFloatBtn;
+  // },
   AddVideoModal: function(){
     return AddVideoModal;
   },
@@ -26,11 +23,23 @@ Template.appLayout.helpers({
   },
   vidsnaps: function(){
     return Session.get('vidsnaps') ? Session.get('vidsnaps'):[];
+  },
+  FroPop: function(){
+    return FroPop;
+  },
+  OptsModal: function(){
+    return OptsModal;
+  },
+  optsOpen: function(){
+    Session.setDefault('optsOpen', false);
+    return Session.get('optsOpen');
   }
 });
 
 Template.appLayout.events({
   "click #frolic-videocam": function(event, template){
+    Session.set('optsOpen', true);
+    console.log("frolic event : " + $(event.currentTarget).attr('id'));
     // if(Meteor.isCordova){
     //   console.log("capture cam initialized...");
     //   navigator.device.capture.captureVideo(captureSuccess, captureError, {limit:1, duration: 60});
@@ -38,7 +47,6 @@ Template.appLayout.events({
     //   console.log("camrec clicked");
     //   invokePlayer("/skirtups.mp4");
     // }
-    invokePlayer("/catrev.mp4");
   },
 
   "click #cam-roll": function(event, template){
@@ -139,6 +147,7 @@ Template.appLayout.onRendered(function(){
 
 Template.appLayout.onCreated(function(){
   Session.set('appTitle', 'frolic');
+  Session.set('optsOpen', false);
   var self = this;
   self.autorun(function(){
     self.subscribe("fros_fs");

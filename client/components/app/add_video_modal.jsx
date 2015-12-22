@@ -9,6 +9,14 @@
  } = MUI;
 
 AddVideoModal = React.createClass({
+  propTypes: {
+    open: React.PropTypes.bool
+  },
+  getDefaultProps: function(){
+    return {
+      open: false
+    };
+  },
   //IMPORTANT SET CHILD CONTEXT
   childContextTypes: {
     muiTheme: React.PropTypes.object
@@ -80,7 +88,7 @@ AddVideoModal = React.createClass({
           style={{"zIndex": "101", "padding": "0px !important", "top": "-80px", "height": "114%"}}
           bodyStyle={{"padding":"0px !important"}}
           contentStyle={{"padding":"0px", "margin": "0px", "width":"100%"}}
-          open={this.props.show} >
+          open={this.props.open} >
           <div>
             <CardMedia>
               <video id="add-video-player" className='video-js vjs-default-skin' src={this.props.vidsrc} controls preload='auto' poster='' data-setup='{}' height="240">

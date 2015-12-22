@@ -33,17 +33,9 @@ MenuItem = MUI.Libs.MenuItem;
 AppHead = React.createClass({
   PropTypes: {
     appTitle: React.PropTypes.string,
-    navIcons : React.PropTypes.array
-  },
-
-  //IMPORTANT SET CHILD CONTEXT
-  childContextTypes: {
-    muiTheme: React.PropTypes.object
-  },
-  getChildContext: function(){
-    return {
-      muiTheme: newTheme
-    };
+    navIcons : React.PropTypes.array,
+    hasSideNav: React.PropTypes.bool,
+    sideNav: React.PropTypes.bool
   },
 
   getDefaultProps: function(){
@@ -53,7 +45,19 @@ AppHead = React.createClass({
         {"id": "frolic-search", "class": "material-icons", "maticon": "search"},
         {"id": "frolic-notify", "class": "material-icons", "maticon": "notifications"},
         {"id": "frolic-videocam", "class": "material-icons", "maticon": "videocam"},
-      ]
+      ],
+      hasSideNav: true,
+      sideNav: false
+    };
+  },
+
+  //IMPORTANT SET CHILD CONTEXT
+  childContextTypes: {
+    muiTheme: React.PropTypes.object
+  },
+  getChildContext: function(){
+    return {
+      muiTheme: newTheme
     };
   },
 
@@ -93,7 +97,7 @@ AppHead = React.createClass({
             <div zDepth={0}>
               {
                 this.props.navIcons.map(function(navicon, i){
-                  return <IconButton key={i} iconClassName={navicon.class} iconStyle={styles.navIcon} id={navicon.id}>{navicon.maticon}</IconButton>
+                  return <IconButton key={i} iconClassName={navicon.class} iconStyle={styles.navIcon} id={navicon.id} >{navicon.maticon}</IconButton>
                 })
               }
               {
