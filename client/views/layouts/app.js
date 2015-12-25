@@ -39,47 +39,8 @@ Template.appLayout.helpers({
 Template.appLayout.events({
   "click #frolic-videocam": function(event, template){
     Session.set('optsOpen', true);
-    console.log("frolic event : " + $(event.currentTarget).attr('id'));
-    // if(Meteor.isCordova){
-    //   console.log("capture cam initialized...");
-    //   navigator.device.capture.captureVideo(captureSuccess, captureError, {limit:1, duration: 60});
-    // }else{
-    //   console.log("camrec clicked");
-    //   invokePlayer("/skirtups.mp4");
-    // }
+    // console.log("frolic event : " + $(event.currentTarget).attr('id'));
   },
-
-  "click #cam-roll": function(event, template){
-      // $('#float_add').click();
-    if(Meteor.isCordova){
-      console.log("camroll initialized...");
-      navigator.camera.getPicture(camSuccess, handleFail, {
-        // destinationType: Camera.DestinationType.FILE_URL,
-        sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-        mediaType: Camera.MediaType.VIDEO
-      });
-    }else{
-      console.log("camroll clicked");
-      invokePlayer("/catrev.mp4");
-    }
-  },
-
-  'change #float_add': function(event, template){
-    console.log("camroll change...");
-    //invokePlayer('');
-    //var vid = document.querySelector('#add-video-player');
-    var file = event.currentTarget.files[0];
-    console.log("input file: " + file.fullPath);
-    //if(vid.canPlayType(file.type) != ''){
-      processFile(file);
-    //}else{
-      // console.log("This video file format is not supported");
-    // }
-    //readAsBuffer(event.currentTarget); // **TODO** assign worker
-    //readAsData(event.currentTarget);
-    //window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, failrequestFileSystem);
-  },
-
   'click .frolic-upload': function(event, template){
     var froPublish = ($(event.currentTarget).attr('id') === "frolic-publish") ? true : false;
     console.log("forlic clicked for upload: " + froPublish);
@@ -113,10 +74,7 @@ Template.appLayout.events({
   },
 
   'click #navigation-back': function(event, template){
-    // console.log("back btn event...");
     history.back();
-    // FlowRouter.go('/');
-    // BackBehaviour.goBack();
   },
 
   'click #navicon-right': function(event, template){
@@ -128,18 +86,13 @@ Template.appLayout.events({
     var sindex = parseInt(navTabs.index(event.target));
     Session.set('slideIndex', sindex);
     // Session.set('tabIndex', sindex);
-
     navTabs.removeClass("tab-active");
     navTabs.eq(sindex).addClass("tab-active");
-
     // console.log("slideIndex from nav-tabs "+ sindex);
   }
 });
 
 Template.appLayout.onRendered(function(){
-  // devHeight = $(window).innerHeight();
-  // $('#app-body').css('min-height', devHeight);
-
   Session.setDefault('addVideoModal', false);
   Session.setDefault('vidsrc', '');
   Session.setDefault('vidsnaps', []);

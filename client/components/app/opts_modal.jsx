@@ -31,6 +31,17 @@ OptsModal = React.createClass({
     Session.set('optsOpen', false);
   },
 
+  _handleRecord: function(event){
+    Session.set('optsOpen', false);
+    FroActions.record();
+  },
+
+  _handleUpload: function(event){
+    Session.set('optsOpen', false);
+    FlowRouter.go('/fro/new');
+    FroActions.upload();
+  },
+
   render: function(){
     var styles = {
       optsBody: {
@@ -69,17 +80,18 @@ OptsModal = React.createClass({
         open={this.props.open}
         actions={customActions}
         bodyStyle={styles.optsBody} >
-        <List subheader="NEW FRO">
+        <List subheader="NEW FRO" key={0}>
           <ListItem
             leftAvatar={
               <Avatar
                 icon={<FontIcon className="material-icons" style={styles.modalIcon}>videocam</FontIcon>}
                 color="#fff"
-                backgroundColor={APP.primary}
+                backgroundColor="#ED2B2B"
                 style={styles.modalAvatar} />}
             primaryText="RECORD"
             innerDivStyle={styles.modalText}
-            style={styles.modalItem} />
+            style={styles.modalItem}
+            onTouchTap={this._handleRecord} />
           <ListItem
             leftAvatar={
               <Avatar
@@ -89,7 +101,8 @@ OptsModal = React.createClass({
                 style={styles.modalAvatar} />}
             primaryText="UPLOAD"
             innerDivStyle={styles.modalText}
-            style={styles.modalItem}z />
+            style={styles.modalItem}
+            onTouchTap={this._handleUpload} />
         </List>
       </Dialog>
     )

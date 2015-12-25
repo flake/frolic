@@ -38,5 +38,5 @@ Template.screens.onCreated(function(){
 });
 
 Template.screens.onRendered(function(){
-  $('.cover-views').css('top', "192px");
+  $('.cover-views').css('top', "208px");
 });
