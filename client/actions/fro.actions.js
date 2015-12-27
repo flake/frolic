@@ -6,6 +6,7 @@ FroActions = {
     }
   },
   upload: function(){
+    console.log("I am upload action...");
     if(Meteor.isCordova){
       console.log("upload from gallery initialized...");
       navigator.camera.getPicture(camSuccess, handleFail, {

@@ -1,8 +1,11 @@
+
 onDeviceReady = function(){
   console.log("Device ready: Capture ", navigator.device.capture);
   console.log("Device ready: Camera ", navigator.camera);
   console.log("Device ready: File ", cordova.file);
   console.log("Device ready: File-Transfer ", FileTransfer);
+
+  outFilePath = '';
 }
 
 //cordova-plugin-media-capture callbacks
@@ -16,13 +19,101 @@ captureSuccess = function(mediaFiles){
 // cordova-plugin-camera callbacks
 camSuccess = function(mediaURI){
   console.log("FILE_URI " + mediaURI);
+  transStart = new Date();
   window.FilePath.resolveNativePath(mediaURI, pathSuccess, handleFail);
 }
 
 pathSuccess = function(filepath){
   console.log("filepath success: " + filepath);
-  transcodeVid("file://" + filepath);
-  // window.resolveLocalFileSystemURL("file://"+filepath, vidFile, handleFail); // TEMP
+
+  ffmpegTrans(filepath);
+  // froSnaps(filepath);
+}
+
+ffmpegTrans = function(filepath){
+  var outPath = cordova.file.applicationStorageDirectory;
+  var outFile = 'frolic.mp4';
+  createOutputFile(outPath, outFile, function(fileEntry){
+    if(!fileEntry){
+      console.log("Error creating file");
+      return;
+    }
+
+    var outFilePath = fileEntry.toURL().replace('file://', '');
+
+    // '-vf', 'scale=-1:480',
+    // '-b:a', '128k',
+    // '-profile:', 'main',
+
+    var cmd = [
+      '-y',
+      -'r:v', '128'
+      '-i', filepath,
+      '-codec:v', 'libx264',
+      '-preset', 'ultrafast',
+      '-b:v', '144k',
+      '-maxrate', '400k',
+      '-bufsize', '1000k',
+      '-crf', '32',
+      '-vf', "scale='min(iw,640)':-1",
+      '-threads', '0',
+      '-codec:a', 'copy',
+      '-frames:v', '24',
+      outFilePath ];
+
+    FroTrans.ffmpeg(froSuccess, froFail, {
+      cmd: cmd,
+      out: outFilePath
+    });
+
+  });
+}
+
+froSuccess = function(froPath){
+  console.log("FroTrans success: ", froPath);
+
+  transEnd = new Date();
+  var labs = (transEnd.getTime() - transStart.getTime()) / 1000;
+  console.log("FroTrans run: ", labs);
+
+  window.resolveLocalFileSystemURL("file://"+froPath, vidFile, handleFail);
+}
+
+froFail = function(error){
+  console.log("FroTrans error ", error);
+  FroTrans.showToast("Fro Trans failed!", 0);
+}
+
+// this helper function creates a file at a provided path using the cordova-file plugin
+// you can pass cordova.file.cacheDirectory, cordova.file.externalRootDirectory, etc.
+function createOutputFile(path, fileName, cb) {
+  window.requestFileSystem(window.PERSISTENT, 16*1024*1024,
+      function(fs) {
+          window.resolveLocalFileSystemURL(path,
+              function(dirEntry) {
+                  dirEntry.getFile(fileName, { create: true, exclusive: false }, function(fileEntry) {
+                      console.log('successfully created file');
+                      return cb(fileEntry);
+                  }, function(err) {
+                      console.log('error creating file, err: ' + err);
+                      return cb(null);
+                  });
+              },
+              function(err) {
+                  console.log('error finding specified path, err: ' + err);
+                  return cb(null);
+              }
+          );
+      },
+      function(err) {
+          console.log('error accessing file system, err: ' + err);
+          return cb(null);
+      }
+  );
+}
+
+
+froSnaps = function(filepath){
   var options = {
     source: "file://"+filepath,
     count: 5,
@@ -30,43 +121,6 @@ pathSuccess = function(filepath){
   }
   window.sebible.videosnapshot.snapshot(snapSuccess, handleFail, options);
 }
-
-transcodeVid = function(file){
-  VideoEditor.transcodeVideo(
-    tranSuccess,
-    handleFail,
-    {
-      fileUri: file,
-      outputFileName: 'frolic-temp',
-      quality: VideoEditorOptions.Quality.MEDIUM_QUALITY,
-      outputFileType: VideoEditorOptions.OutputFileType.MPEG4,
-      optimizeForNetworkUse: VideoEditorOptions.OptimizeForNetworkUse.YES,
-      // duration: 60,
-      saveToLibrary: false
-    }
-  );
-}
-
-//VideoEditor transcode callbacks
-tranSuccess = function(result){
-  console.log("transcoded video: " + result);
-  window.resolveLocalFileSystemURL("file://"+result, vidFile, handleFail);
-  // invokePlayer(result);
-}
-
-vidFile = function(fileEntry){
-    fileEntry.file(function(file){
-      console.log("file Entry "+ file);
-      var reader = new FileReader();
-      reader.onloadend = function(){
-        console.log("file loaded "+this.result);
-        // var fileURL = (URL || webkitURL).createObjectURL(new Blob([this.result], {type: file.type}));
-        invokePlayer(this.result);
-      }
-      reader.readAsDataURL(file);
-    });
-}
-
 snapSuccess = function(result){
   if(result && result.result){
     Session.set('vidsnaps', []);
@@ -77,6 +131,28 @@ snapSuccess = function(result){
     }
   }
 }
+
+//VideoEditor transcode callbacks
+tranSuccess = function(result){
+  console.log("transcoded video: " + result);
+  // window.resolveLocalFileSystemURL("file://"+result, vidFile, handleFail);
+  // invokePlayer(result);
+}
+
+vidFile = function(fileEntry){
+    fileEntry.file(function(fileObj){
+      console.log("FroTrans out size: "+ fileObj.size);
+      var reader = new FileReader();
+      reader.onloadend = function(){
+        console.log("file loaded "+this.result);
+        // var fileURL = (URL || webkitURL).createObjectURL(new Blob([this.result], {type: file.type}));
+        invokePlayer(this.result);
+      }
+      reader.readAsDataURL(fileObj);
+    });
+}
+
+
 
 resFile = function(fileEntry){
   fileEntry.file(function(file){

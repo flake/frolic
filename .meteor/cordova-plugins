@@ -1,3 +1,4 @@
+com.flake.frotrans@file://../frotrans/
 com.sebible.cordova.videosnapshot@https://github.com/sebible/cordova-videosnapshot.git#5622f3990715e86bfcc0dc6168a211822865ceed
 cordova-plugin-camera@1.2.0
 cordova-plugin-file@3.0.0
@@ -6,4 +7,3 @@ cordova-plugin-filepath@1.0.0
 cordova-plugin-media-capture@1.1.0
 cordova-plugin-splashscreen@1.0.0
 cordova-plugin-statusbar@0.1.10
-org.apache.cordova.videoeditor@https://github.com/flake/cordova-plugin-video-editor.git#bae9eb78bd40056a4dca6bc022d8c8194e415c70

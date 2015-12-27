@@ -32,13 +32,16 @@ OptsModal = React.createClass({
   },
 
   _handleRecord: function(event){
+    event.preventDefault();
     Session.set('optsOpen', false);
     FroActions.record();
   },
 
   _handleUpload: function(event){
+    event.preventDefault();
     Session.set('optsOpen', false);
     FlowRouter.go('/fro/new');
+    // console.log("I came here...");
     FroActions.upload();
   },
 
@@ -64,6 +67,9 @@ OptsModal = React.createClass({
       modalAvatar: {
         top: 0,
         left: 0
+      },
+      optsDialog:{
+        zIndex: "100"
       }
     };
 
@@ -79,7 +85,8 @@ OptsModal = React.createClass({
         modal={true}
         open={this.props.open}
         actions={customActions}
-        bodyStyle={styles.optsBody} >
+        bodyStyle={styles.optsBody}
+        style={styles.optsDialog} >
         <List subheader="NEW FRO" key={0}>
           <ListItem
             leftAvatar={
