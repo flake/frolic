@@ -40,7 +40,7 @@ OptsModal = React.createClass({
   _handleUpload: function(event){
     event.preventDefault();
     Session.set('optsOpen', false);
-    FlowRouter.go('/fro/new');
+    // FlowRouter.go('/fro/new');
     // console.log("I came here...");
     FroActions.upload();
   },

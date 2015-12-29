@@ -1,4 +1,4 @@
-com.flake.frotrans@file://../frotrans/
+com.flake.frotrans@file://../frotrans
 com.sebible.cordova.videosnapshot@https://github.com/sebible/cordova-videosnapshot.git#5622f3990715e86bfcc0dc6168a211822865ceed
 cordova-plugin-camera@1.2.0
 cordova-plugin-file@3.0.0

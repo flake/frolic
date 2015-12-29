@@ -25,8 +25,10 @@ camSuccess = function(mediaURI){
 
 pathSuccess = function(filepath){
   console.log("filepath success: " + filepath);
+  FroTrans.showToast("I am there!", 0);
+  FroTrans.open(filepath);
 
-  ffmpegTrans(filepath);
+  // ffmpegTrans(filepath);
   // froSnaps(filepath);
 }
 
@@ -44,28 +46,32 @@ ffmpegTrans = function(filepath){
     // '-vf', 'scale=-1:480',
     // '-b:a', '128k',
     // '-profile:', 'main',
+    // '-frames:v', '24',
+    // '-maxrate', '128k',
+    // '-bufsize', '1000k'
+    // '-vf', 'fps=fps=128',
+    // '-codec:a', 'cop
 
     var cmd = [
       '-y',
-      -'r:v', '128'
       '-i', filepath,
       '-codec:v', 'libx264',
       '-preset', 'ultrafast',
-      '-b:v', '144k',
-      '-maxrate', '400k',
-      '-bufsize', '1000k',
+      '-b:v', '96k',
+      '-maxrate', '128k',
+      '-bufsize', '256k',
       '-crf', '32',
-      '-vf', "scale='min(iw,640)':-1",
+      '-vf', "scale=-1:'min(ih,240)'",
       '-threads', '0',
       '-codec:a', 'copy',
-      '-frames:v', '24',
+      '-r', '24',
+      '-b:a', '24k',
       outFilePath ];
 
     FroTrans.ffmpeg(froSuccess, froFail, {
       cmd: cmd,
       out: outFilePath
     });
-
   });
 }
 
@@ -76,7 +82,23 @@ froSuccess = function(froPath){
   var labs = (transEnd.getTime() - transStart.getTime()) / 1000;
   console.log("FroTrans run: ", labs);
 
-  window.resolveLocalFileSystemURL("file://"+froPath, vidFile, handleFail);
+  var cmd = ['-i', froPath];
+  // FroTrans.ffmpeg(function(){}, function(){}, {cmd:cmd});
+
+  window.resolveLocalFileSystemURL("file://"+froPath, froReady, handleFail);
+}
+
+froReady = function(fileEntry){
+    fileEntry.file(function(fileObj){
+      console.log("FroTrans fro size: "+ (fileObj.size)/1024);
+      var reader = new FileReader();
+      reader.onloadend = function(){
+        console.log("file loaded "+this.result);
+        // var fileURL = (URL || webkitURL).createObjectURL(new Blob([this.result], {type: file.type}));
+        invokePlayer(this.result);
+      }
+      reader.readAsDataURL(fileObj);
+    });
 }
 
 froFail = function(error){
@@ -138,21 +160,6 @@ tranSuccess = function(result){
   // window.resolveLocalFileSystemURL("file://"+result, vidFile, handleFail);
   // invokePlayer(result);
 }
-
-vidFile = function(fileEntry){
-    fileEntry.file(function(fileObj){
-      console.log("FroTrans out size: "+ fileObj.size);
-      var reader = new FileReader();
-      reader.onloadend = function(){
-        console.log("file loaded "+this.result);
-        // var fileURL = (URL || webkitURL).createObjectURL(new Blob([this.result], {type: file.type}));
-        invokePlayer(this.result);
-      }
-      reader.readAsDataURL(fileObj);
-    });
-}
-
-
 
 resFile = function(fileEntry){
   fileEntry.file(function(file){
