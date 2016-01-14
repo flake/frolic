@@ -38,7 +38,8 @@ Template.appLayout.helpers({
 
 Template.appLayout.events({
   "click #frolic-videocam": function(event, template){
-    Session.set('optsOpen', true);
+    FroTrans.open("");
+    // Session.set('optsOpen', true);
     // console.log("frolic event : " + $(event.currentTarget).attr('id'));
   },
   'click .frolic-upload': function(event, template){

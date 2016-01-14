@@ -1,7 +1,7 @@
 
 onDeviceReady = function(){
-  console.log("Device ready: Capture ", navigator.device.capture);
-  console.log("Device ready: Camera ", navigator.camera);
+  // console.log("Device ready: Capture ", navigator.device.capture);
+  // console.log("Device ready: Camera ", navigator.camera);
   console.log("Device ready: File ", cordova.file);
   console.log("Device ready: File-Transfer ", FileTransfer);
 

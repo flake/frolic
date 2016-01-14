@@ -155,7 +155,7 @@
       }
     },
     "react": {
-      "version": "0.14.3",
+      "version": "0.14.6",
       "dependencies": {
         "envify": {
           "version": "3.4.0",
@@ -185,7 +185,7 @@
           }
         },
         "fbjs": {
-          "version": "0.3.2",
+          "version": "0.6.1",
           "dependencies": {
             "core-js": {
               "version": "1.2.6"
@@ -217,10 +217,10 @@
       }
     },
     "react-addons-pure-render-mixin": {
-      "version": "0.14.3"
+      "version": "0.14.6"
     },
     "react-dom": {
-      "version": "0.14.3"
+      "version": "0.14.6"
     },
     "react-motion": {
       "version": "0.3.1",
