@@ -1,14 +1,14 @@
 
 Template.froNew.helpers({
-  FroEditor: function(){
-    return FroEditor;
+  FroNew: function(){
+    return FroNew;
   },
   frosrc: function(){
-    return Session.get('vidsrc');
-  },
-  snaps: function(){
-    return Session.get('vidsnaps') ? Session.get('vidsnaps'):[];
+    return Session.get('newFro');
   }
+  // snaps: function(){
+  //   return Session.get('vidsnaps') ? Session.get('vidsnaps'):[];
+  // }
 });
 
 Template.froNew.events({

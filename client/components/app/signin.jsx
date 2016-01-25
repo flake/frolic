@@ -28,8 +28,9 @@ Signin = React.createClass({
       if(error){
         console.log("login error ", error);
       }else{
-        FlowRouter.go('/');
-        FlowRouter.reload();
+        console.log("login success " + Meteor.userId());
+        // FlowRouter.go('/');
+        // FlowRouter.reload();
       }
     })
   },

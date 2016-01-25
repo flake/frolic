@@ -6,7 +6,7 @@ var {
   Slider
 } = MUI;
 
-FroEditor = React.createClass({
+FroNew = React.createClass({
   propTypes: {
     frosrc: React.PropTypes.string
   },

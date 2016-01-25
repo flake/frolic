@@ -38,7 +38,11 @@ Template.appLayout.helpers({
 
 Template.appLayout.events({
   "click #frolic-videocam": function(event, template){
-    FroTrans.open("");
+    // if(Meteor.isCordova){
+    //   FroTrans.open(froSuccess, froFail, "");
+    // }
+    var froPath = "/storage/emulated/0/frolic/frolic.mp4";
+    froSuccess(froPath);
     // Session.set('optsOpen', true);
     // console.log("frolic event : " + $(event.currentTarget).attr('id'));
   },
@@ -104,6 +108,7 @@ Template.appLayout.onCreated(function(){
   Session.set('optsOpen', false);
   var self = this;
   self.autorun(function(){
+    self.subscribe("profile", Meteor.userId());
     self.subscribe("fros_fs");
     self.subscribe("hearts", Meteor.userId());
     self.subscribe("profiles");

@@ -8,6 +8,14 @@ onDeviceReady = function(){
   outFilePath = '';
 }
 
+// froSuccess = function(froPath){
+//   console.log("froSuccess " + froPath);
+// }
+//
+// froFail = function(error){
+//   console.log("froFail " + error);
+// }
+
 //cordova-plugin-media-capture callbacks
 captureSuccess = function(mediaFiles){
   if(mediaFiles.length > 0){
@@ -76,13 +84,14 @@ ffmpegTrans = function(filepath){
 }
 
 froSuccess = function(froPath){
+  // froPath = "/storage/emulated/0/frolic/frolic.mp4";
   console.log("FroTrans success: ", froPath);
 
-  transEnd = new Date();
-  var labs = (transEnd.getTime() - transStart.getTime()) / 1000;
-  console.log("FroTrans run: ", labs);
+  // transEnd = new Date();
+  // var labs = (transEnd.getTime() - transStart.getTime()) / 1000;
+  // console.log("FroTrans run: ", labs);
 
-  var cmd = ['-i', froPath];
+  // var cmd = ['-i', froPath];
   // FroTrans.ffmpeg(function(){}, function(){}, {cmd:cmd});
 
   window.resolveLocalFileSystemURL("file://"+froPath, froReady, handleFail);
@@ -93,9 +102,11 @@ froReady = function(fileEntry){
       console.log("FroTrans fro size: "+ (fileObj.size)/1024);
       var reader = new FileReader();
       reader.onloadend = function(){
-        console.log("file loaded "+this.result);
+        console.log("file loaded " + this.result);
         // var fileURL = (URL || webkitURL).createObjectURL(new Blob([this.result], {type: file.type}));
-        invokePlayer(this.result);
+        // invokePlayer(this.result);
+        Session.set('newFro', this.result);
+        FlowRouter.go('/fro/new');
       }
       reader.readAsDataURL(fileObj);
     });

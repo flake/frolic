@@ -3,6 +3,6 @@ Accounts.onLogin(function(){
   if(redirect && redirect !== '/login')
     FlowRouter.go(redirect);
 
-  Meteor.logoutOtherClients();
+  // Meteor.logoutOtherClients();
   Session.set('loggedIn', true);
 });
