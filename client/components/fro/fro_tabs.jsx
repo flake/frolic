@@ -66,7 +66,7 @@ FroTabs = React.createClass({
       },
       slide: {
         margin: "8px",
-        height: "365px"
+        height: "292px"
       }
     };
 

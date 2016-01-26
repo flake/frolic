@@ -1,0 +1,11 @@
+<template name="notify">
+  {{#each notifys}}
+    {{> _notify}}
+  {{/each}}
+</template>
+
+<template name="_notify">
+  <div>
+    {{> React component=NotifyItem fromUser=fromUser notify=notify}}
+  </div>
+</template>

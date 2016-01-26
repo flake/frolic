@@ -32,6 +32,7 @@ Signup = React.createClass({
       }
       if(result){
          console.log("new user result ", result);
+         FlowRouter.go('/');
       }
     });
   },

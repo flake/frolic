@@ -47,11 +47,15 @@ FroInfo = React.createClass({
       }
     };
 
-    var screenIcon = (<FontIcon className="fa fa-film"/>);
-    var froAvatar = (<Avatar backgroundColor={APP.themeGrey} icon={screenIcon} style={{borderRadius: "3px"}} />);
-    var followScreen = (<IconButton iconClassName="material-icons" iconStyle={Styles.listIconRight}>add_to_queue</IconButton>);
+    // var screenIcon = (<FontIcon className="fa fa-film"/>);
+    var froAvatar = (
+      <Avatar
+        src={this.props.fro.screenDoc().avatar()}
+        size={48} />);
+    var followScreen = (<IconButton iconClassName="material-icons" iconStyle={Styles.listIconRight}>screen_share</IconButton>);
 
     return (
+      <div>
       <List subheader={this.props.fro.title} subheaderStyle={styles.froTitle}>
         <ListItem disabled={true} style={{"padding" : "8px"}}>
           <div className="frolic-stats">
@@ -61,17 +65,17 @@ FroInfo = React.createClass({
             <FontIcon className={"fa fa-" + this.props.hearted } style={styles.fontIcon}></FontIcon><span style={{"fontSize": "16px"}}>{this.props.fro.hearts}</span>
           </div>
         </ListItem>
-        <Divider inset={true} />
-        <ListItem leftAvatar={froAvatar} rightIconButton={followScreen}  disabled={true}>
-          {this.props.fro.channel}
+        <ListItem disabled={true} leftAvatar={froAvatar} rightIconButton={followScreen}>
+          {this.props.fro.screenDoc().title}
         </ListItem>
-        <Divider inset={true} />
-        <ListItem>
-          {this.props.description} blah blah ...
+        <ListItem disabled={true}>
+          {this.props.fro.description}
         </ListItem>
-        <Divider inset={true} />
-
       </List>
+      <div style={{"paddingTop": "4px"}}>
+        <UserCard user={this.props.fro.owner()} />
+      </div>
+      </div>
     )
   }
 })

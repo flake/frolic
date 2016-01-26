@@ -9,6 +9,9 @@ Template.appLayout.helpers({
   sideNav: function(){
     return Session.get('sideNav');
   },
+  notifyCount: function(){
+    return Notifications.find({userId: Meteor.userId(), read: false}).count();
+  },
   // AddFloatBtn: function(){
   //   return AddFloatBtn;
   // },
@@ -47,6 +50,10 @@ Template.appLayout.events({
     // console.log("frolic event : " + $(event.currentTarget).attr('id'));
   },
 
+  "click #frolic-notify": function(event, template){
+    FlowRouter.go('/notify');
+  },
+
   'click #navigation-back': function(event, template){
     history.back();
   },
@@ -78,8 +85,10 @@ Template.appLayout.onCreated(function(){
   // Session.set('optsOpen', false);
   var self = this;
   self.autorun(function(){
+    self.subscribe("profile", Meteor.userId());
     self.subscribe("fros_fs");
     self.subscribe("hearts", Meteor.userId());
     self.subscribe("profiles");
+    self.subscribe("notifications");
   });
 });

@@ -26,7 +26,13 @@ newTheme = ThemeManager.modifyRawThemePalette(lightTheme, appPalette);
 //ThemeManager.setTheme(ThemeManager.types.LIGHT);
 // ThemeManager.setPalette(appPalette);
 
-var {AppBar, IconMenu, IconButton, FontIcon} = MUI;
+var {
+  AppBar,
+  IconMenu,
+  IconButton,
+  FontIcon,
+  Badge
+} = MUI;
 MenuItem = MUI.Libs.MenuItem;
 //mui.Libs.MenuDivider
 
@@ -35,7 +41,8 @@ AppHead = React.createClass({
     appTitle: React.PropTypes.string,
     navIcons : React.PropTypes.array,
     hasSideNav: React.PropTypes.bool,
-    sideNav: React.PropTypes.bool
+    sideNav: React.PropTypes.bool,
+    notify: React.PropTypes.number
   },
 
   getDefaultProps: function(){
@@ -47,7 +54,8 @@ AppHead = React.createClass({
         {"id": "frolic-videocam", "class": "material-icons", "maticon": "videocam"}
       ],
       hasSideNav: true,
-      sideNav: false
+      sideNav: false,
+      notify: 0
     };
   },
 
@@ -82,7 +90,18 @@ AppHead = React.createClass({
       },
       navPaper: {
         marginRight: "16px"
-      }
+      },
+      badge:{
+        padding: "0"
+      },
+      badgeCount: {
+        color: "#fff",
+        backgroundColor: "#ED2B2B",
+        borderRadius: "4px",
+        width: "18px",
+        right: "6px"
+      },
+
     };
 
     // <IconButton iconClassName="material-icons" iconStyle={{color: "#fff"}} id="navicon-right">menu</IconButton>
@@ -113,8 +132,11 @@ AppHead = React.createClass({
             <div zDepth={0}>
               {
                 this.props.navIcons.map(function(navicon, i){
+                  if(navicon.id === "frolic-notify" && this.props.notify > 0){
+                    return <Badge style={styles.badge} badgeStyle={styles.badgeCount} badgeContent={this.props.notify} ><IconButton key={i} iconClassName={navicon.class} iconStyle={styles.navIcon} id={navicon.id} >{navicon.maticon}</IconButton></Badge>
+                  }
                   return <IconButton key={i} iconClassName={navicon.class} iconStyle={styles.navIcon} id={navicon.id} >{navicon.maticon}</IconButton>
-                })
+                }, this)
               }
               {
                 (() => {

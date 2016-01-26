@@ -1,5 +1,9 @@
 Meteor.publish("fro", function(froId){
-  return Fros.find(froId);
+  var fro = Fros.find(froId);
+  return [
+    fro,
+    Hearts.find({froId: fro._id, userId: this.userId})
+  ];
 });
 
 Meteor.publish("fros_screen", function(screenId){
@@ -59,6 +63,15 @@ Meteor.publish('screen', function(screenId){
   ];
 });
 
+Meteor.publish('fro_screen', function(froId){
+  var fro = Fros.findOne(froId);
+  var screen = Screens.findOne(fro.screenId);
+  return [
+    Screens.find(screen._id),
+    ScreensFS.find({_id: {$in: [screen.cover_photo, screen.avatar_photo]}})
+  ];
+});
+
 Meteor.publish('user_screens', function(userId){
   var follCurs = Followers.find({user_id: userId});
   var screenIds = follCurs.map(function(f){return f.screen_id});
@@ -68,6 +81,10 @@ Meteor.publish('user_screens', function(userId){
     Screens.find({$or: [{_id: {$in: screenIds}}, {creator_id: userId}]}),
     ScreensFS.find()
   ];
+});
+
+Meteor.publish("notifications", function(){
+  return Notifications.find({userId: this.userId});
 });
 
 // Meteor.publish('screen_fs', function(screenId){

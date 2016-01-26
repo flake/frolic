@@ -69,12 +69,13 @@ ProHead = React.createClass({
         borderRadius: '18px',
         lineHeight: "28px",
       	height: "28px",
-      	border: "1px solid #66a8cc"
+      	border: "1px solid #66a8cc",
+        backgroundColor: "#fff"
       },
       circleBtnLabel: {
         fontSize: "12px",
         padding: 0,
-        paddingLeft: "4px"
+        paddingLeft: "4px",
       },
       msgLabel: {
         color: "#fff",

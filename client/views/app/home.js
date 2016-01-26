@@ -9,6 +9,7 @@ Template.home.helpers({
 });
 
 Template.home.onRendered(function(){
+  Session.set('appTitle', "frolic");
   // console.log("Current user " + Meteor.user());
 });
 

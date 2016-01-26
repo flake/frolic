@@ -240,6 +240,12 @@ body{
 	left: 0;
 	background-color: #c3d7e3;
 }
+.fro-views{
+	position: relative;
+	top: 192px;
+	left: 0;
+	background-color: #c3d7e3;
+}
 .pro-circle-btn{
 	border-radius: 27px !important;
 }
@@ -276,3 +282,8 @@ body{
 .screen-stats > i{
 	color: #48A1D9;
 }
+
+.notify-unread{
+	background-color: "#C3D7E3";
+}
+.notify-read{}

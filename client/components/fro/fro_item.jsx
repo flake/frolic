@@ -53,6 +53,13 @@ FroItem = React.createClass({
         fontWeight: "500",
         paddingBottom: "0"
       },
+      froDesc:{
+        "fontWeight": "500",
+        "color": "#666",
+        lineHeight: "1em",
+        height: "1.6em",
+        overflow: "hidden"
+      },
       subtitleStyle:{
         fontSize: "12px",
         marginTop: "2px"
@@ -66,9 +73,9 @@ FroItem = React.createClass({
       },
       fontIcon: {
         fontSize: "12px",
-        color: "#666",
-        marginRight: "6px",
-        minWidth: "48px"
+        color: APP.secondary,
+        width: "12px",
+        textAlign: "center"
       },
       screenAvatar: {
         marginRight: "8px",
@@ -98,7 +105,10 @@ FroItem = React.createClass({
           </video>
         </CardMedia>
         <CardText style={styles.cardText}>
-          <div style={{"fontWeight": "900", "color": "#333", "paddingBottom": "8px"}} className="frolic-invoke" id="fi-froinfo" >{this.props.fro.title}</div>
+          <div id="fi-froinfo">
+            <div style={{"fontWeight": "900", "color": "#444"}} className="frolic-invoke" >{this.props.fro.title}</div>
+            <div style={styles.froDesc} className="frolic-invoke" >{this.props.fro.description}</div>
+          </div>
           <div style={{"display": "inline-block"}} >
             <CardHeader
               title={this.props.fro.screenDoc().title}
@@ -119,15 +129,15 @@ FroItem = React.createClass({
                 <FontIcon
                   className="fa fa-play"
                   style={styles.fontIcon}>
-                  <span style={{"fontSize": "11px", "marginLeft": "4px"}}>{this.props.fro.views}</span>
                 </FontIcon>
+                <span style={{"fontSize": "11px", "marginLeft": "4px"}}>{this.props.fro.views}</span>
               </div>
               <div className="stat-box">
                 <FontIcon
                   className="fa fa-heart"
                   style={styles.fontIcon}>
-                  <span style={{"fontSize": "11px", "marginLeft": "4px"}}>{this.props.fro.hearts}</span>
                 </FontIcon>
+                <span style={{"fontSize": "11px", "marginLeft": "4px"}}>{this.props.fro.hearts}</span>
               </div>
           </div>
         </CardText>

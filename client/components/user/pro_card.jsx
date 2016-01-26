@@ -32,7 +32,7 @@ ProCard = React.createClass({
   _handleCircle: function(event){
     event.stopPropagation();
     console.log("add to circle handle event " + event.target);
-    
+
   },
 
   _handleUser: function(event){
@@ -71,7 +71,8 @@ ProCard = React.createClass({
       proBtnLabel: {
         fontSize: "12px",
         padding: 0,
-        paddingLeft: "2px"
+        paddingLeft: "2px",
+        color: "#fff"
       },
       proName: {
         fontWeight: "600",

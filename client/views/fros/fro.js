@@ -74,6 +74,7 @@ Template.fro.onCreated(function(){
   console.log("fro on-created _id: "+pdata.froId);
   self.autorun(function(){
     self.subscribe("fro", pdata.froId);
+    self.subscribe("fro_screen", pdata.froId);
     self.subscribe("comments", pdata.froId);
   });
 });
