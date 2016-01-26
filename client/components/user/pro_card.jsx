@@ -100,7 +100,7 @@ ProCard = React.createClass({
         />
         <CardText style={styles.proText}>
           <div style={styles.proName}>
-            {this.props.user.profile.name}
+            {this.props.user.profile.fullname}
           </div>
           <div style={styles.proLine}>
             {this.props.user.profile.title}

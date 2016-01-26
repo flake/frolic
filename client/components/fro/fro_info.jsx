@@ -2,7 +2,7 @@ var {
   IconButton,
   List,
   ListItem,
-  ListDivider,
+  Divider,
   Avatar,
   FontIcon
 } = MUI;
@@ -61,15 +61,15 @@ FroInfo = React.createClass({
             <FontIcon className={"fa fa-" + this.props.hearted } style={styles.fontIcon}></FontIcon><span style={{"fontSize": "16px"}}>{this.props.fro.hearts}</span>
           </div>
         </ListItem>
-        <ListDivider inset={true} />
+        <Divider inset={true} />
         <ListItem leftAvatar={froAvatar} rightIconButton={followScreen}  disabled={true}>
           {this.props.fro.channel}
         </ListItem>
-        <ListDivider inset={true} />
+        <Divider inset={true} />
         <ListItem>
           {this.props.description} blah blah ...
         </ListItem>
-        <ListDivider inset={true} />
+        <Divider inset={true} />
 
       </List>
     )

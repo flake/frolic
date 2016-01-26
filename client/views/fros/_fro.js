@@ -17,7 +17,7 @@ Template._fro.helpers({
     return vid;
   },
   heartClass: function(){
-    // console.log("heartClass log: " + this.owner().profile.name);
+    // console.log("heartClass log: " + this.owner().profile.fullname);
     return this.isHearted() ? "heart" : "heart-o";
   }
 });

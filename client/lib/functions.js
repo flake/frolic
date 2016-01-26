@@ -29,6 +29,20 @@ invokePlayer = function(vidfile){
   // Session.set("addVideoModal", true);
 }
 
+uploadFro = function(froData){
+
+  var fsFile = new FS.File(froData);
+  fsFile.owner = Meteor.userId();
+  FrolicsFS.insert(fsFile, function (err, fileObj) {
+    if (err) throw err;
+    else {
+      Session.set('newFro', fileObj._id);
+      FlowRouter.go('/fro/new');
+      console.log("file upload success: "+ JSON.toString(fileObj));
+    }
+  });
+}
+
 processFile = function(file){
   var fileURL = (URL || webkitURL).createObjectURL(file);
   var options = {

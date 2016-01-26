@@ -44,7 +44,7 @@ AppHead = React.createClass({
       navIcons: [
         {"id": "frolic-search", "class": "material-icons", "maticon": "search"},
         {"id": "frolic-notify", "class": "material-icons", "maticon": "notifications"},
-        {"id": "frolic-videocam", "class": "material-icons", "maticon": "videocam"},
+        {"id": "frolic-videocam", "class": "material-icons", "maticon": "videocam"}
       ],
       hasSideNav: true,
       sideNav: false
@@ -79,10 +79,26 @@ AppHead = React.createClass({
     var styles = {
       navIcon: {
         color: "#fff"
+      },
+      navPaper: {
+        marginRight: "16px"
       }
     };
 
+    // <IconButton iconClassName="material-icons" iconStyle={{color: "#fff"}} id="navicon-right">menu</IconButton>
+
     var iconLeft = (<IconButton iconClassName="material-icons" id="navigation-back" iconStyle={{color: "#fff"}}>arrow_back</IconButton>);
+
+    // var iconRight = (
+    //   <div zDepth={0} style={styles.navPaper}>
+    //     {
+    //       this.props.navIcons.map(function(navicon, i){
+    //         return <IconButton key={i} iconClassName={navicon.class} iconStyle={styles.navIcon} id={navicon.id} >{navicon.maticon}</IconButton>
+    //       })
+    //     }
+    //   </div>
+    // );
+
     var curRoute = FlowRouter.current();
     if(curRoute.route.path === '/'){
       iconLeft = (<div></div>);
@@ -120,3 +136,20 @@ AppHead = React.createClass({
     )
   }
 })
+
+
+// {
+//   (() => {
+//     if(this.props.SideNav){
+//       return <IconButton iconClassName="material-icons" iconStyle={{color: "#fff"}} id="navicon-right">menu</IconButton>
+//     }
+//   })()
+// }
+
+// {
+//   (() => {
+//     if(this.props.SideNav){
+//       return <SideNav show={this.props.sideNav} />
+//     }
+//   })()
+// }

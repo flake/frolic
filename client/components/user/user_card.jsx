@@ -83,7 +83,7 @@ UserCard = React.createClass({
     return (
       <Card>
         <ListItem
-          primaryText={this.props.user.profile.name}
+          primaryText={this.props.user.profile.fullname}
           secondaryText={this.props.user.profile.title}
           leftAvatar={avatar}
           rightIconButton={rightIconBtn}

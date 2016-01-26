@@ -3,17 +3,20 @@ var {
   IconButton,
   RaisedButton,
   TextField,
-  Slider
+  Slider,
+  DropDownMenu,
+  MenuItem
 } = MUI;
 
 FroNew = React.createClass({
   propTypes: {
-    frosrc: React.PropTypes.string
+    frosrc: React.PropTypes.string,
+    screens: React.PropTypes.array
   },
   getDefaultProps: function(){
     return {
-      frosrc: ''
-      // snaps: []
+      frosrc: '',
+      screens: []
     }
   },
   //IMPORTANT SET CHILD CONTEXT
@@ -26,19 +29,26 @@ FroNew = React.createClass({
     };
   },
   getInitialState: function(){
+    var value = 0;
+    if(this.props.screens[0]){
+      value = this.props.screens[0]._id;
+    }
     return {
-      seekValue: 0
+      value: value
     }
   },
 
-  _handleSeek(event, value){
-    this.setState({seekValue: value});
+  _handleScreens(event, index, value){
+    this.setState({value: value});
   },
 
   render: function(){
     // var snapsCount = this.props.snaps.length;
 
     var styles = {
+      screensMenu:{
+        width: "100%"
+      },
       scrollBox: {
         overflowX: "scroll",
         width: "100%",
@@ -55,7 +65,9 @@ FroNew = React.createClass({
       },
       boxBtn:{
         width: "46%",
-        marginRight: "6px"
+        marginRight: "6px",
+        marginTop: "8px",
+        marginBottom: "8px"
       },
       froSnap:{
         border: "1px solid " + APP.themeBg
@@ -67,12 +79,6 @@ FroNew = React.createClass({
 
     return (
       <div>
-        <CardMedia>
-          <video className='video-js vjs-default-skin' src={this.props.frosrc} controls preload='auto' poster='' data-setup='{}' height="240">
-            <p className='vjs-no-js'>Video Not Supportted</p>
-          </video>
-        </CardMedia>
-
         <div style={styles.actionBar}>
           <TextField
             hintText="Title"
@@ -80,10 +86,22 @@ FroNew = React.createClass({
             fullWidth={true}
             id="fro-title" />
           <TextField
-            hintText="Screen"
-            floatingLabelText="Screen"
+            hintText="Description"
+            floatingLabelText="Description"
             fullWidth={true}
-            id="fro-tagline" />
+            id="fro-desc" />
+          <DropDownMenu
+            maxHeight={200}
+            autoWidth={false}
+            value={this.state.value}
+            onChange={this._handleScreens}
+            style={styles.screensMenu}>
+            {
+              this.props.screens.map(function(screen, i){
+                return <MenuItem value={screen._id} key={i} primaryText={screen.title} />
+              })
+            }
+          </DropDownMenu>
           <RaisedButton
             label="Save"
             secondary={true}
@@ -96,11 +114,24 @@ FroNew = React.createClass({
             style={styles.boxBtn}
             className="frolic-upload"
             id="frolic-publish" />
+          <input type="hidden" value={this.state.value} id="fro-screen" />
         </div>
       </div>
     )
   }
 });
+
+// <TextField
+//   hintText="Screen"
+//   floatingLabelText="Screen"
+//   fullWidth={true}
+//   id="fro-screen" />
+
+// <CardMedia>
+//   <video className='video-js vjs-default-skin' src={this.props.frosrc} controls preload='auto' poster='' data-setup='{}' height="240">
+//     <p className='vjs-no-js'>Video Not Supportted</p>
+//   </video>
+// </CardMedia>
 
 // <Slider
 //   name="froseek-up"

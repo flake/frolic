@@ -5,15 +5,17 @@ Template.home.helpers({
   },
   SpaceBar: function(){
     return SpaceBar;
-  },
-  rendered: function(){
-
   }
+});
+
+Template.home.onRendered(function(){
+  // console.log("Current user " + Meteor.user());
 });
 
 Template.home.onCreated(function(){
   var self = this;
   self.autorun(function(){
+    self.subscribe("profile", Meteor.userId());
     self.subscribe("fros_home");
   });
 });

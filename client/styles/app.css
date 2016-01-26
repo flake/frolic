@@ -29,7 +29,7 @@ body{
 .fixed-nav-bar{
 	position: fixed;
   top: 0;
-  left: 0;
+	left: 0;
   z-index: 99;
   width: 100%;
 }
@@ -183,7 +183,7 @@ body{
 	font-size: 18px !important;
 	width: 18px !important;
 	height: 18px !important;
-	margin-top: 2px !important;
+	margin-top: 14px !important;
 }
 
 #sidenav-header::after{

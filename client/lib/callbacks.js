@@ -105,8 +105,7 @@ froReady = function(fileEntry){
         console.log("file loaded " + this.result);
         // var fileURL = (URL || webkitURL).createObjectURL(new Blob([this.result], {type: file.type}));
         // invokePlayer(this.result);
-        Session.set('newFro', this.result);
-        FlowRouter.go('/fro/new');
+        uploadFro(this.result);
       }
       reader.readAsDataURL(fileObj);
     });
@@ -195,9 +194,9 @@ snapBuffer = function(file){
 
 handleFail = function(e) {
   switch (e.code) {
-    case CaptureError.CAPTURE_NO_MEDIA_FILES:
-      console.log('CaptureError');
-      break;
+    // case CaptureError.CAPTURE_NO_MEDIA_FILES:
+    //   console.log('CaptureError');
+    //   break;
     case FileError.QUOTA_EXCEEDED_ERR:
       console.log('QUOTA_EXCEEDED_ERR');
       break;

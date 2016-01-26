@@ -1,7 +1,7 @@
 var {
   List,
   ListItem,
-  ListDivider,
+  Divider,
   Card,
   CardText,
   CardMedia,
@@ -230,7 +230,7 @@ ScreenForm = React.createClass({
             </FontIcon>
           }
           style={styles.formListItem} />
-        <ListDivider />
+        <Divider />
         <ListItem
           primaryText={
             <div>

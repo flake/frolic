@@ -54,7 +54,7 @@ CommentItem = React.createClass({
       <Card style={styles.commentBox} >
         <Avatar backgroundColor={APP.themeGrey} style={Styles.froAvatar}>A</Avatar>
         <div style={styles.container}>
-          <span style={styles.titleStyle}>{this.props.comment.author().profile.name}</span>
+          <span style={styles.titleStyle}>{this.props.comment.author().profile.fullname}</span>
           <span style={styles.commentText}>{this.props.comment.content}</span>
           <div style={styles.subtitleStyle}>{this.props.comment.datePublished()}</div>
         </div>

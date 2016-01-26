@@ -12,15 +12,6 @@ Signin = React.createClass({
     };
   },
 
-  facebookLogin: function(){
-    Meteor.loginWithFacebook({ requestPermissions: ['email', 'public_profile', 'user_friends']},
-			function(err){
-				if(err){
-					return console.log(err);
-				}
-			});
-  },
-
   passwordLogin: function(){
     var email = this.refs.email.getValue();
     var password = this.refs.password.getValue();
@@ -29,7 +20,7 @@ Signin = React.createClass({
         console.log("login error ", error);
       }else{
         console.log("login success " + Meteor.userId());
-        // FlowRouter.go('/');
+        FlowRouter.go('/');
         // FlowRouter.reload();
       }
     })

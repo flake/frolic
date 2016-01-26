@@ -153,7 +153,7 @@ FroItem = React.createClass({
 })
 
 // <CardHeader
-//   title={this.props.fro.owner().profile.name}
+//   title={this.props.fro.owner().profile.fullname}
 //   subtitle={this.props.fro.datePublished()}
 //   titleColor={APP.secondary}
 //   avatar={<Avatar backgroundColor={APP.themeGrey}>A</Avatar>}

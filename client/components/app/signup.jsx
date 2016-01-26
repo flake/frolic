@@ -12,6 +12,15 @@ Signup = React.createClass({
     };
   },
 
+  facebookLogin: function(){
+    Meteor.loginWithFacebook({ requestPermissions: ['email', 'public_profile', 'user_friends']},
+			function(err){
+				if(err){
+					return console.log(err);
+				}
+			});
+  },
+
   handleSubmit: function(event){
     var fullname = this.refs.fullname.getValue();
     var email = this.refs.emailphn.getValue();
