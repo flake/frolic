@@ -38,6 +38,11 @@ Template.comments.events({
   }
 });
 
-Template.comments.rendered = function(){
-  console.log("Comments rendered... " + this.froId);
-}
+Template.comments.onCreated(function(){
+  var pdata = Template.parentData(0);
+  var self = this;
+
+  self.autorun(function(){
+    self.subscribe("comments", pdata.froId);
+  });
+});

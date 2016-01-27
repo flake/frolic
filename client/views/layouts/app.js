@@ -41,13 +41,11 @@ Template.appLayout.helpers({
 
 Template.appLayout.events({
   "click #frolic-videocam": function(event, template){
-    // if(Meteor.isCordova){
-    //   FroTrans.open(froSuccess, froFail, "");
-    // }
-    var froPath = "/storage/emulated/0/frolic/frolic.mp4";
-    froSuccess(froPath);
-    // Session.set('optsOpen', true);
-    // console.log("frolic event : " + $(event.currentTarget).attr('id'));
+    if(Meteor.isCordova){
+      FroTrans.open(froSuccess, froFail, "");
+    }
+    // var froPath = "/storage/emulated/0/frolic/frolic.mp4";
+    // froSuccess(froPath);
   },
 
   "click #frolic-notify": function(event, template){

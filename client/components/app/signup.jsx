@@ -12,7 +12,7 @@ Signup = React.createClass({
     };
   },
 
-  facebookLogin: function(){
+  handleFacebook: function(){
     Meteor.loginWithFacebook({ requestPermissions: ['email', 'public_profile', 'user_friends']},
 			function(err){
 				if(err){
@@ -21,20 +21,52 @@ Signup = React.createClass({
 			});
   },
 
+  handleGoogle: function(){
+    Meteor.loginWithGoogle({
+        requestPermissions: ['email', 'profile', 'https://www.google.com/m8/feeds'],
+        requestOfflineToken: true,
+        forceApprovalPrompt: true },
+        function(err){
+          if(err)
+            return console.log(err);
+        }
+    );
+  },
+
   handleSubmit: function(event){
     var fullname = this.refs.fullname.getValue();
     var email = this.refs.emailphn.getValue();
     var password = this.refs.password.getValue();
 
-    Meteor.call("newUser", email, password, {fullname: fullname}, function(error, result){
+    var userId = Accounts.createUser({
+      email: email,
+      password: password,
+      profile: {fullname: fullname}
+    }, function(error){
       if(error){
-        console.log("new user error ", error);
-      }
-      if(result){
-         console.log("new user result ", result);
-         FlowRouter.go('/');
+        console.log("Error Signup");
+        if(error.error === "email"){
+          console.log("Error email " +error.reason);
+          Dialogs.alert("Email " + error.reason);
+        }
+      }else{
+        //send verification
+        console.log("Signup success");
+        FlowRouter.go('/');
+        FlowRouter.reload();
       }
     });
+
+    // Meteor.call("newUser", email, password, {fullname: fullname}, function(error, result){
+    //   if(error){
+    //     console.log("new user error ", error);
+    //   }
+    //   if(result){
+    //      console.log("new user result ", result);
+    //      FlowRouter.go('/');
+    //      FlowRouter.reload();
+    //   }
+    // });
   },
 
   render: function(){
@@ -42,12 +74,16 @@ Signup = React.createClass({
     var styles = {
       emailSignup: {
         width: "100%",
-        backgroundColor: APP.primary,
-        color: "#fff",
-        borderRadius: "2px",
-        textAlign: "left",
-        paddingLeft: "8px",
-        marginBottom: "8px"
+        backgroundColor: "#fff",
+        color: APP.primary,
+        borderRadius: "2px"
+      },
+      emailLabel: {
+        textTransform: "uppercase",
+        paddingLeft: "8%",
+        verticalAlign: "middle",
+        color: APP.primary,
+        textShadow: "2px 2px 2px rgba(0, 0, 0, 0.4)"
       },
       facebookSignup: {
         width: "48%",
@@ -55,8 +91,16 @@ Signup = React.createClass({
         color: "#fff",
         borderRadius: "2px",
         textAlign: "left",
+        paddingLeft: "8px"
+      },
+      googleSignup: {
+        width: "48%",
+        backgroundColor: "#dd4b39",
+        color: "#fff",
+        borderRadius: "2px",
+        textAlign: "left",
         paddingLeft: "8px",
-        marginBottom: "8px"
+        marginLeft: "8px"
       },
       twitterSignup: {
         width: "48%",
@@ -67,15 +111,6 @@ Signup = React.createClass({
         paddingLeft: "8px",
         marginBottom: "8px",
         marginLeft: "10px"
-      },
-      googleSignup: {
-        width: "48%",
-        backgroundColor: "#dd4b39",
-        color: "#fff",
-        borderRadius: "2px",
-        textAlign: "left",
-        paddingLeft: "8px",
-        marginBottom: "8px"
       },
       labelStyle: {
         textTransform: "none",
@@ -115,13 +150,14 @@ Signup = React.createClass({
               ref="password"/>
             <RaisedButton
               label="Sign Up"
-              primary={true}
+              labelStyle={styles.emailLabel}
               fullWidth={true}
+              style={styles.emailSignup}
               onClick={this.handleSubmit}/>
           </form>
         </CardText>
 
-        <CardText style={{backgroundColor: "#fff"}}>
+        <CardText style={{"padding": "8px 16px"}}>
           <FlatButton
             label="Facebook"
             labelStyle={styles.labelStyle}
@@ -133,23 +169,13 @@ Signup = React.createClass({
             <FontIcon className="fa fa-facebook" style={Styles.connectIcon} />
           </FlatButton>
           <FlatButton
-            label="Twitter"
-            labelStyle={styles.labelStyle}
-            labelPosition="after"
-            secondary={true}
-            fullWidth={true}
-            style={styles.twitterSignup}
-            onClick={this.handleTwitter} >
-            <FontIcon className="fa fa-twitter" style={Styles.connectIcon} />
-          </FlatButton>
-          <FlatButton
             label="Google"
             labelStyle={styles.labelStyle}
             labelPosition="after"
             secondary={true}
             fullWidth={true}
             style={styles.googleSignup}
-            onClick={this.handleTwitter} >
+            onClick={this.handleGoogle} >
             <FontIcon className="fa fa-google" style={Styles.connectIcon} />
           </FlatButton>
         </CardText>
@@ -158,6 +184,17 @@ Signup = React.createClass({
   }
 });
 
+
+// <FlatButton
+//   label="Twitter"
+//   labelStyle={styles.labelStyle}
+//   labelPosition="after"
+//   secondary={true}
+//   fullWidth={true}
+//   style={styles.twitterSignup}
+//   onClick={this.handleTwitter} >
+//   <FontIcon className="fa fa-twitter" style={Styles.connectIcon} />
+// </FlatButton>
 
 // <FlatButton
 //   label="Sign up with Email"

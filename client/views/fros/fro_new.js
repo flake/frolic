@@ -7,7 +7,7 @@ Template.froNew.helpers({
     return FroNew;
   },
   frosrc: function(){
-    return Session.get('newFro');
+    return FrolicsFS.findOne(Session.get('newFro')).url();
   },
   screens: function(){
     return Screens.find({creator_id: Meteor.userId()}).fetch();
@@ -44,6 +44,7 @@ Template.froNew.events({
 Template.froNew.onCreated(function(){
   var self = this;
   self.autorun(function(){
-    self.subscribe("user_screens", Meteor.userId()) ;
+    self.subscribe("user_screens", Meteor.userId());
+    self.subscribe("fro_fs", Session.get('froNew'));
   });
 });

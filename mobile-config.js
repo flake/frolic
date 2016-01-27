@@ -3,7 +3,7 @@ App.info({
   description: 'A moment of joy',
   author: 'Rajasekhar',
   website: '',
-  version: '0.0.1'
+  version: '0.1.1'
 });
 
 App.icons({

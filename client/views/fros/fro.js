@@ -1,14 +1,5 @@
 
 Template.fro.helpers({
-  create: function(){
-
-  },
-  rendered: function(){
-  },
-  destroyed: function(){
-
-  },
-
   FroScreen: function(){
     return FroScreen;
   },
@@ -44,12 +35,6 @@ Template.fro.helpers({
   }
 });
 
-Template.fro.events({
-  "click #foo": function(event, template){
-
-  }
-});
-
 // Template.frolic.rendered = function(){
 //   Session.set('tabIndex', 0);
 //   Session.set('slideIndex', 0);
@@ -73,8 +58,9 @@ Template.fro.onCreated(function(){
   var self = this;
   console.log("fro on-created _id: "+pdata.froId);
   self.autorun(function(){
-    self.subscribe("fro", pdata.froId);
+    self.subscribe("fro_heart", pdata.froId);
     self.subscribe("fro_screen", pdata.froId);
-    self.subscribe("comments", pdata.froId);
+    self.subscribe("fro", pdata.froId);
+    // self.subscribe("comments", pdata.froId);
   });
 });

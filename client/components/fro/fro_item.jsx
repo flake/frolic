@@ -100,9 +100,10 @@ FroItem = React.createClass({
     return (
       <Card>
         <CardMedia>
-          <video src={this.props.src} className='video-js vjs-default-skin flayer' controls preload="metadata" poster="" height="192" >
+          <video src={this.props.src} className='video-js vjs-default-skin flayer' controls preload="metadata" poster="" height="192" data-setup="{'controlBar': {'muteToggle': false, 'fullscreenToggle': false}}" >
             <p className='vjs-no-js'>To play this video, you need HTML5 supportted browser</p>
           </video>
+          <div class="my-video-overlay"></div>
         </CardMedia>
         <CardText style={styles.cardText}>
           <div id="fi-froinfo">

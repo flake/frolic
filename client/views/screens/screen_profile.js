@@ -18,11 +18,11 @@ Template.screenProfile.events({
 });
 
 Template.screenProfile.onCreated(function(){
-  // var pdata = Template.parentData(0);
-  // var self = this;
-  //
-  // self.autorun(function(){
-  //   self.subscribe("screen", pdata.screenId);
-  //   self.subscribe("profiles");
-  // });
+  var pdata = Template.parentData(0);
+  var self = this;
+
+  self.autorun(function(){
+    self.subscribe("screen", pdata.screenId);
+    // self.subscribe("profile");
+  });
 });
