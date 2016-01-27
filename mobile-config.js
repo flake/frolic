@@ -3,7 +3,14 @@ App.info({
   description: 'A moment of joy',
   author: 'Rajasekhar',
   website: '',
-  version: '0.1.2'
+  version: '0.0.1'
+});
+
+App.icons({
+  'android_ldpi' : 'resources/icons/fro_ldpi.png',
+  'android_mdpi' : 'resources/icons/fro_mdpi.png',
+  'android_hdpi' : 'resources/icons/fro_hdpi.png',
+  'android_xhdpi' : 'resources/icons/fro_xhdpi.png'
 });
 
 App.accessRule("*://meteor.local/*");
