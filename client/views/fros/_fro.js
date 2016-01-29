@@ -12,7 +12,7 @@ Template._fro.helpers({
     return FroItem;
   },
   video: function(){
-    var vid = FrolicsFS.findOne({_id: this.fsId});
+    var vid = FroFS.findOne({_id: this.fsId});
     // console.log("vid obj " + vid);
     return vid;
   },

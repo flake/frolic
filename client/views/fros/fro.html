@@ -1,8 +1,17 @@
 <template name="fro">
-  <div>
-    {{> React component=FroScreen src=frolicFS.url}}
-  </div>
-  <div>
-    {{> React component=FroTabs slideIndex=slideIndex fro=froDoc froId=froId hearted=heartedClass}}
-  </div>
+  {{#if Template.subscriptionsReady}}
+    <div>
+      {{> React component=FroScreen src=frolicFS.url}}
+    </div>
+    <div>
+      {{> React component=SlideTabs index=slideIndex tabs=froTabs}}
+    </div>
+    <div class="fro-views">
+      {{> React component=SwipeSlides views=froViews index=slideIndex}}
+    </div>
+  {{else}}
+    <div>
+      {{> React component=Loading}}
+    </div>
+  {{/if}}
 </template>

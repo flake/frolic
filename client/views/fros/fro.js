@@ -14,14 +14,15 @@ Template.fro.helpers({
     console.log("Frolic Id: " + this.froId);
     var fro = Fros.findOne(this.froId);
     if(fro)
-      return FrolicsFS.findOne({_id: fro.fsId});
+      return FroFS.findOne({_id: fro.fsId});
     else {
       return null;
     }
   },
-  FroTabs: function(){
-    return FroTabs;
-  },
+  // FroTabs: function(){
+  //   return FroTabs;
+  // },
+
   tabIndex: function(){
     return parseInt(Session.get('tabIndex'));
   },
@@ -32,6 +33,22 @@ Template.fro.helpers({
     var fro = Fros.findOne(this.froId);
     console.log("fro hearted... " + fro.isHearted());
     return fro.isHearted() ? "heart" : "heart-o";
+  },
+  SwipeSlides: function(){
+    return SwipeSlides;
+  },
+  froTabs: function(){
+    // {'title': '', 'iconClass': 'fa fa-users slidetab-ficon', 'maticon': ''}
+    return [
+      {'title': 'Info', 'iconClass': 'material-icons', 'maticon': 'info_outline'},
+      {'title': 'Comments', 'iconClass': 'fa fa-commenting-o slidetab-ficon', 'maticon': ''}
+    ]
+  },
+  froViews: function(){
+    return [
+      {'template': '_froInfo', 'data': {fro: Fros.findOne(this.froId)}},
+      {'template': 'comments', 'data': {froId: this.froId}}
+    ]
   }
 });
 

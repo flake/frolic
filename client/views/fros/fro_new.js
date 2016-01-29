@@ -7,7 +7,7 @@ Template.froNew.helpers({
     return FroNew;
   },
   frosrc: function(){
-    return FrolicsFS.findOne(Session.get('newFro')).url();
+    return FroFS.findOne(Session.get('newFro')).url();
   },
   screens: function(){
     return Screens.find({creator_id: Meteor.userId()}).fetch();

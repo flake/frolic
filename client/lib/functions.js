@@ -30,11 +30,12 @@ invokePlayer = function(vidfile){
 }
 
 uploadFro = function(froData){
-
   var fsFile = new FS.File(froData);
   fsFile.owner = Meteor.userId();
-  FrolicsFS.insert(fsFile, function (err, fileObj) {
-    if (err) throw err;
+  FroFS.insert(fsFile, function (err, fileObj) {
+    if (err){
+      console.log("FroFS failed!");
+    }
     else {
       Session.set('newFro', fileObj._id);
       FlowRouter.go('/fro/new');
