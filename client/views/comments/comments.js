@@ -1,15 +1,5 @@
 
 Template.comments.helpers({
-  create: function(){
-
-  },
-  rendered: function(){
-
-  },
-  destroyed: function(){
-
-  },
-
   comments: function(){
     console.log("HELPER comments froId "+ this.froId);
     return Comments.find({froId: this.froId});

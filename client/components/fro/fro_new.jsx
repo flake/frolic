@@ -10,12 +10,10 @@ var {
 
 FroNew = React.createClass({
   propTypes: {
-    frosrc: React.PropTypes.string,
     screens: React.PropTypes.array
   },
   getDefaultProps: function(){
     return {
-      frosrc: '',
       screens: []
     }
   },

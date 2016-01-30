@@ -6,8 +6,19 @@ Template.froNew.helpers({
   FroNew: function(){
     return FroNew;
   },
-  frosrc: function(){
-    return FroFS.findOne(Session.get('newFro')).url();
+  froSrc: function(){
+    var froFS = FroFS.findOne(Session.get('newFro'));
+    if(froFS)
+      return froFS.url();
+
+    return null;
+  },
+  thumbSrc: function(){
+    var thmFS = FroFS.findOne(Session.get('newThumb'));
+    if(thmFS)
+      return thmFS.url();
+
+    return null;
   },
   screens: function(){
     return Screens.find({creator_id: Meteor.userId()}).fetch();
@@ -45,6 +56,7 @@ Template.froNew.onCreated(function(){
   var self = this;
   self.autorun(function(){
     self.subscribe("user_screens", Meteor.userId());
-    self.subscribe("fro_fs", Session.get('froNew'));
+    self.subscribe("fro_fs", Session.get('newFro'));
+    self.subscribe("thumb_fs", Session.get('newThumb'));
   });
 });

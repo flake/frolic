@@ -61,7 +61,7 @@ SideNav = React.createClass({
 
     var navList = [
       { 'label' : "Home", 'class': "fa fa-home snav-icon", 'route': "/" },
-      { 'label' : "Notifications", 'class': "fa fa-bell-o snav-icon", 'route': "/notifications"},
+      { 'label' : "Notifications", 'class': "fa fa-bell-o snav-icon", 'route': "/notify"},
       { 'label' : "Messages", 'class': "fa fa-envelope snav-icon", 'route': "/messages" },
       { 'label' : "Screens", 'class': "fa fa-film snav-icon", 'route': "/screens"},
       { 'label' : "Circles", 'class': "fa fa-sun-o snav-icon", 'route': "/circles" },

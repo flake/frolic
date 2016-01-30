@@ -54,3 +54,10 @@ Template._fro.events({
   //   flayer.paused() ? flayer.play() : flayer.pause();
   // }
 });
+
+Template._fro.onCreated(function(){
+  var self = this;
+  self.autorun(function(){
+    self.subscribe("fro", this._id);
+  });
+});

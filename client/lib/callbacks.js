@@ -17,9 +17,17 @@ pathSuccess = function(filepath){
   // froSnaps(filepath);
 }
 
-froSuccess = function(froPath){
-  console.log("FroTrans success: ", froPath);
-  window.resolveLocalFileSystemURL("file://"+froPath, froReady, handleFail);
+froSuccess = function(froRes){
+  Session.set('newFro', '');
+  Session.set('newThumb', '');
+  if(froRes.froPath){
+    window.resolveLocalFileSystemURL("file://"+froRes.froPath, froReady, handleFail);
+    console.log("FroTrans success - froPath: ", froRes.froPath);
+  }
+  if(froRes.thumbPath){
+    window.resolveLocalFileSystemURL("file://"+froRes.thumbPath, thumbReady, handleFail);
+    console.log("FroTrans success - thumbPath: ", froRes.thumbPath);
+  }
 }
 
 froReady = function(fileEntry){
@@ -27,10 +35,24 @@ froReady = function(fileEntry){
       console.log("FroTrans fro size: "+ (fileObj.size)/1024);
       var reader = new FileReader();
       reader.onloadend = function(){
-        console.log("file loaded " + this.result);
+        console.log("fro loaded " + this.result);
         // var fileURL = (URL || webkitURL).createObjectURL(new Blob([this.result], {type: file.type}));
         // invokePlayer(this.result);
         uploadFro(this.result);
+      }
+      reader.readAsDataURL(fileObj);
+    });
+}
+
+thumbReady = function(fileEntry){
+    fileEntry.file(function(fileObj){
+      console.log("FroTrans thumb size: "+ (fileObj.size)/1024);
+      var reader = new FileReader();
+      reader.onloadend = function(){
+        console.log("fro thumb loaded " + this.result);
+        // var fileURL = (URL || webkitURL).createObjectURL(new Blob([this.result], {type: file.type}));
+        // invokePlayer(this.result);
+        uploadThumb(this.result);
       }
       reader.readAsDataURL(fileObj);
     });

@@ -70,7 +70,7 @@ welcome.route('/fro/:froId', {
       {"id": "frolic-related", "class": "nav-tabs material-icons", "maticon": "party_mode"},
     ];
     // Session.set("navIcons", navIcons);
-    params.navicons = navIcons;
+    // params.navicons = navIcons;
     BlazeLayout.render('appLayout', {content: 'fro', params: params});
   }
 });

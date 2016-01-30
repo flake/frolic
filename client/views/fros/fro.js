@@ -3,11 +3,16 @@ Template.fro.helpers({
   FroScreen: function(){
     return FroScreen;
   },
+  NewComment: function(){
+    return NewComment;
+  },
+  SwipeSlides: function(){
+    return SwipeSlides;
+  },
+  SlideTabs: function(){
+    return SlideTabs;
+  },
   froDoc: function(){
-    // console.log("frolic doc Id: " + this.frolicId);
-    // var frolic = Frolics.findOne(this.frolicId);
-    // console.log("frolic object " + typeof(frolic));
-    // prettyJSON(frolic);
     return Fros.findOne(this.froId);
   },
   frolicFS: function(){
@@ -34,20 +39,21 @@ Template.fro.helpers({
     console.log("fro hearted... " + fro.isHearted());
     return fro.isHearted() ? "heart" : "heart-o";
   },
-  SwipeSlides: function(){
-    return SwipeSlides;
-  },
   froTabs: function(){
     // {'title': '', 'iconClass': 'fa fa-users slidetab-ficon', 'maticon': ''}
     return [
       {'title': 'Info', 'iconClass': 'material-icons', 'maticon': 'info_outline'},
-      {'title': 'Comments', 'iconClass': 'fa fa-commenting-o slidetab-ficon', 'maticon': ''}
+      {'title': 'Comments', 'iconClass': 'fa fa-commenting-o slidetab-ficon', 'maticon': ''},
+      {'title': 'Related', 'iconClass': 'fa fa-video-camera slidetab-ficon', 'maticon': ''}
     ]
   },
   froViews: function(){
+    var fro = Fros.findOne(this.froId);
+
     return [
-      {'template': '_froInfo', 'data': {fro: Fros.findOne(this.froId)}},
-      {'template': 'comments', 'data': {froId: this.froId}}
+      {'template': '_froinfo', 'data': {froId: this.froId}},
+      {'template': 'comments', 'data': {froId: this.froId}},
+      {'template': 'froList', 'data': {context: "screen_fros", screenId: fro.screenId}},
     ]
   }
 });

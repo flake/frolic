@@ -1,13 +1,18 @@
 <template name="fro">
   {{#if Template.subscriptionsReady}}
-    <div>
-      {{> React component=FroScreen src=frolicFS.url}}
+    <div class="cover-fixed">
+      <div>
+        {{> React component=FroScreen src=frolicFS.url}}
+      </div>
+      <div>
+        {{> React component=SlideTabs index=slideIndex tabs=froTabs}}
+      </div>
     </div>
-    <div>
-      {{> React component=SlideTabs index=slideIndex tabs=froTabs}}
-    </div>
-    <div class="fro-views">
+    <div class="cover-views">
       {{> React component=SwipeSlides views=froViews index=slideIndex}}
+    </div>
+    <div class="float-bottom">
+      {{> React component=NewComment}}
     </div>
   {{else}}
     <div>

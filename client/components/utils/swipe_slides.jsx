@@ -54,7 +54,7 @@ SwipeSlides = React.createClass({
         height: "100%"
       },
       slide: {
-        height: "365px"
+        // height: "365px"
       }
     };
 

@@ -29,6 +29,20 @@ invokePlayer = function(vidfile){
   // Session.set("addVideoModal", true);
 }
 
+uploadThumb = function(thumbData){
+  var fsFile = new FS.File(thumbData);
+  fsFile.owner = Meteor.userId();
+  ThumbFS.insert(fsFile, function (err, fileObj) {
+    if (err){
+      console.log("ThumbFS failed!");
+    }
+    else {
+      Session.set('newThumb', fileObj._id);
+      console.log("file upload success: "+ JSON.toString(fileObj));
+    }
+  });
+}
+
 uploadFro = function(froData){
   var fsFile = new FS.File(froData);
   fsFile.owner = Meteor.userId();
