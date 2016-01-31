@@ -21,7 +21,7 @@ react-template-helper
 kadira:flow-router
 kadira:blaze-layout
 accounts-password
-accounts-facebook
+#accounts-facebook
 aldeed:collection2
 fortawesome:fontawesome
 izzilab:material-ui
@@ -42,3 +42,7 @@ thereactivestack:blazetoreact
 check
 ejson
 hybrid:dialogs
+service-configuration
+#meteorhacks:kadira
+#particle4dev:cordova-fb
+hedcet:cordova-google-plus-native-sign-in

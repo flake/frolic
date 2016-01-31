@@ -12,7 +12,7 @@ Signup = React.createClass({
     };
   },
 
-  handleFacebook: function(){
+  _handleFacebook: function(){
     Meteor.loginWithFacebook({ requestPermissions: ['email', 'public_profile', 'user_friends']},
 			function(err){
 				if(err){
@@ -21,16 +21,20 @@ Signup = React.createClass({
 			});
   },
 
-  handleGoogle: function(){
-    Meteor.loginWithGoogle({
-        requestPermissions: ['email', 'profile', 'https://www.google.com/m8/feeds'],
-        requestOfflineToken: true,
-        forceApprovalPrompt: true },
-        function(err){
-          if(err)
-            return console.log(err);
-        }
-    );
+  _handleGoogle: function(){
+    Meteor.cordova_g_plus({
+        cordova_g_plus: true,
+        profile: ["email", "email_verified", "gender", "locale", "name", "picture"]
+      }, function(error) {
+            if (error) {
+                //error handling code
+                alert(error);
+            }else{
+              FlowRouter.reload();
+              console.log("google signup success " + Meteor.userId());
+              // alert("Signed up");
+            }
+    });
   },
 
   handleSubmit: function(event){
@@ -44,7 +48,7 @@ Signup = React.createClass({
       profile: {fullname: fullname}
     }, function(error){
       if(error){
-        console.log("Error Signup");
+        console.log("Error Signup " + error.error);
         if(error.error === "email"){
           console.log("Error email " +error.reason);
           Dialogs.alert("Email " + error.reason);
@@ -95,7 +99,7 @@ Signup = React.createClass({
       },
       googleSignup: {
         width: "48%",
-        backgroundColor: "#dd4b39",
+        backgroundColor: "#dc4e41", //#dd4b39
         color: "#fff",
         borderRadius: "2px",
         textAlign: "left",
@@ -165,7 +169,7 @@ Signup = React.createClass({
             secondary={true}
             fullWidth={true}
             style={styles.facebookSignup}
-            onClick={this.handleFacebook} >
+            onTouchTap={this._handleFacebook} >
             <FontIcon className="fa fa-facebook" style={Styles.connectIcon} />
           </FlatButton>
           <FlatButton
@@ -175,7 +179,7 @@ Signup = React.createClass({
             secondary={true}
             fullWidth={true}
             style={styles.googleSignup}
-            onClick={this.handleGoogle} >
+            onTouchTap={this._handleGoogle} >
             <FontIcon className="fa fa-google" style={Styles.connectIcon} />
           </FlatButton>
         </CardText>

@@ -11,11 +11,15 @@ Template._fro.helpers({
   FroItem: function(){
     return FroItem;
   },
-  video: function(){
+  froSrc: function(){
     var vid = FroFS.findOne({_id: this.fsId});
-    // console.log("vid obj " + vid);
-    return vid;
+    if(vid)
+      return vid.url();
+    return "";
   },
+  // thumbSrc: function(){
+  //   var thumb = ThumbFS.findOne(this.thumb_fs);
+  // }
   heartClass: function(){
     // console.log("heartClass log: " + this.owner().profile.fullname);
     return this.isHearted() ? "heart" : "heart-o";
@@ -56,8 +60,11 @@ Template._fro.events({
 });
 
 Template._fro.onCreated(function(){
+  var pdata = Template.parentData(0);
   var self = this;
   self.autorun(function(){
-    self.subscribe("fro", this._id);
+    // self.subscribe("fro", pdata._id);
+    self.subscribe("thumb_fs", pdata.thumb_fs);
+    self.subscribe("fro_fs", pdata.fsId);
   });
 });

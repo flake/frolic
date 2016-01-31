@@ -43,6 +43,39 @@ FroItem = React.createClass({
     FlowRouter.go('/screen/' + this.props.fro.screenId);
   },
 
+  _handleShare: function(){
+    console.log("social share handle... ");
+    var msg = 'Message via Apps from frolic';
+    var img = this.props.fro.thumbSrc(); /* img */
+    var url = "http://frolicplay.com/"+this.props.fro._id; /* url */
+    var whatsUp = function(){
+      console.log('share ok');
+    };
+    var whatsFail = function(errormsg){
+      alert(errormsg)
+    };
+    window.plugins.socialsharing.share(null, img, url, whatsUp, whatsFail);
+    // var message = {
+    //   subject: "Test Subject",
+    //   url: "http://www.frolicplay.com",
+    //   activityTypes: ["PostToWhatsapp"]
+    // };
+    // window.socialmessage.send(message);
+  },
+
+  _handleWhatsApp: function(){
+    var msg = 'Message via WhatsApp from frolic';
+    var img = this.props.fro.thumbSrc(); /* img */
+    var url = "http://frolicplay.com/"+this.props.fro._id; /* url */
+    var whatsUp = function(){
+      console.log('share ok');
+    };
+    var whatsFail = function(errormsg){
+      alert(errormsg)
+    };
+    window.plugins.socialsharing.shareViaWhatsApp(null, img, url, whatsUp, whatsFail);
+  },
+
   render: function(){
     var styles = {
       titleBox: {
@@ -69,6 +102,7 @@ FroItem = React.createClass({
         paddingBottom: "0"
       },
       actionBox: {
+        padding: "8px",
         paddingTop: "0"
       },
       fontIcon: {
@@ -80,6 +114,9 @@ FroItem = React.createClass({
       screenAvatar: {
         marginRight: "8px",
         borderRadius: "24px"
+      },
+      whatsAppIcon: {
+        color: "#43d854 !important"
       }
       // titleThemed:{
       //   color: "#1690DB !important"
@@ -99,18 +136,17 @@ FroItem = React.createClass({
 
     return (
       <Card>
-        <CardMedia>
+        <CardMedia style={{"backgroundColor":"#000"}}>
           <video
             src={this.props.src}
             className='video-js vjs-default-skin flayer'
             controls
             preload="metadata"
-            poster="/img/froscreen.png"
+            poster={this.props.fro.thumbSrc()}
             height="192"
-            data-setup="{'controlBar': {'muteToggle': false, 'fullscreenToggle': false}}" >
+            data-setup={{'controlBar': {'muteToggle': false, 'fullscreenToggle': false}}} >
             <p className='vjs-no-js'>To play this video, you need HTML5 supportted browser</p>
           </video>
-          <div class="overlay"></div>
         </CardMedia>
         <CardText style={styles.cardText}>
           <div id="fi-froinfo">
@@ -156,11 +192,17 @@ FroItem = React.createClass({
           <FlatButton secondary={true} className="fro-action frolic-invoke" id="fi-comments">
             <FontIcon className="fa fa-commenting-o app-icon" />
           </FlatButton>
-          <FlatButton secondary={true} className="fro-action">
-            <FontIcon className="fa fa-share-alt app-icon" />
+          <FlatButton secondary={true} className="fro-action"
+            onTouchTap={this._handleWhatsApp}>
+            <FontIcon className="fa fa-whatsapp app-icon" style={styles.whatsAppIcon} />
           </FlatButton>
-          <IconMenu iconButtonElement= {iconBtnElem} openDirection="top-left" >
-            <MenuItem primaryText="Add to List" />
+          <IconMenu iconButtonElement= {iconBtnElem} openDirection="top-right" >
+            <MenuItem
+              primaryText="Share via apps"
+              leftIcon={
+                <FontIcon className="fa fa-share-alt app-icon" />
+              }
+              onTouchTap={this._handleShare} />
             <MenuItem primaryText="Report or Block" />
             <MenuItem primaryText="Cancel" />
           </IconMenu>

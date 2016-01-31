@@ -14,7 +14,7 @@ Template.froNew.helpers({
     return null;
   },
   thumbSrc: function(){
-    var thmFS = FroFS.findOne(Session.get('newThumb'));
+    var thmFS = ThumbFS.findOne(Session.get('newThumb'));
     if(thmFS)
       return thmFS.url();
 
@@ -34,6 +34,7 @@ Template.froNew.events({
     console.log("forlic clicked for upload: " + froPublish);
     var fro = {
       fsId: Session.get('newFro'),
+      thumb_fs: Session.get('newThumb'),
       title: template.find('#fro-title').value,
       description: template.find('#fro-desc').value,
       screenId: template.find('#fro-screen').value

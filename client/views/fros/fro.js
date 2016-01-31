@@ -15,14 +15,17 @@ Template.fro.helpers({
   froDoc: function(){
     return Fros.findOne(this.froId);
   },
-  frolicFS: function(){
-    console.log("Frolic Id: " + this.froId);
+  froFS: function(){
+    // console.log("Frolic Id: " + this.froId);
+    var froFS = {};
     var fro = Fros.findOne(this.froId);
-    if(fro)
-      return FroFS.findOne({_id: fro.fsId});
-    else {
-      return null;
+
+    if(fro){
+      froFS.fro = FroFS.findOne(fro.fsId).url();
+      froFS.thumb = ThumbFS.findOne(fro.thumb_fs).url();
     }
+
+    return froFS;
   },
   // FroTabs: function(){
   //   return FroTabs;

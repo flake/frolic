@@ -134,7 +134,7 @@ FroMini = React.createClass({
     return (
       <Card style={styles.miniCard} onTouchTap={this._handleTouch}>
         <CardMedia>
-          <img src="/img/fravatar.jpg" style={styles.frominiThumb}/>
+          <img src={this.props.fro.thumbSrc()} style={styles.frominiThumb}/>
         </CardMedia>
         <CardText style={styles.cardText}>
           <div style={styles.miniFroTitle} >{this.props.fro.title}</div>

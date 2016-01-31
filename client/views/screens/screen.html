@@ -1,19 +1,19 @@
 <template name="screen">
-  <div class="cover-fixed">
-    {{#if Template.subscriptionsReady}}
+  {{#if Template.subscriptionsReady}}
+    <div class="cover-fixed">
       <div>
         {{> React component=ProCover screen=screen}}
       </div>
-    {{else}}
       <div>
-        {{> React component=Loading}}
+        {{> React component=SlideTabs index=screenIndex tabs=slideTabs}}
       </div>
-    {{/if}}
-    <div>
-      {{> React component=SlideTabs index=screenIndex tabs=slideTabs}}
     </div>
-  </div>
-  <div class="cover-views">
-    {{> React component=SwipeSlides views=slideViews index=screenIndex}}
-  </div>
+    <div class="cover-views">
+      {{> React component=SwipeSlides views=slideViews index=screenIndex}}
+    </div>
+  {{else}}
+    <div>
+      {{> React component=Loading}}
+    </div>
+  {{/if}}
 </template>

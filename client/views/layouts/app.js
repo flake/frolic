@@ -84,9 +84,9 @@ Template.appLayout.onCreated(function(){
   var self = this;
   self.autorun(function(){
     self.subscribe("profile", Meteor.userId());
-    self.subscribe("fros_fs");
     self.subscribe("hearts", Meteor.userId());
     self.subscribe("profiles");
     self.subscribe("notifications");
+    // self.subscribe("fros_fs");
   });
 });

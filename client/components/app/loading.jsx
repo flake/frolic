@@ -12,7 +12,7 @@ Loading = React.createClass({
     return {
       overlay: false,
       circular: true,
-      size: 1
+      size: 0.5
     }
   },
   //IMPORTANT SET CHILD CONTEXT
@@ -37,7 +37,7 @@ Loading = React.createClass({
         height: "100%",
         top: 0,
         left: 0,
-        background: "rgba(255, 255, 255, 0.8) !important",
+        background: "rgba(255, 255, 255, 0) !important",
         zIndex: 98
       }
     };

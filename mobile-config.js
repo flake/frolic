@@ -1,8 +1,9 @@
 App.info({
+  id: 'in.avatarlabs.frolicplay',
   name: 'frolic',
   description: 'A moment of joy',
   author: 'Rajasekhar',
-  website: '',
+  website: 'www.frolicplay.com',
   version: '0.1.1'
 });
 
@@ -14,8 +15,10 @@ App.icons({
 });
 
 App.accessRule("*://meteor.local/*");
+App.accessRule("whatsapp:*");
 App.accessRule("blob:*");
 App.accessRule("file://*");
-App.accessRule("*://127.0.0.1:8080/*");
-App.accessRule("https://fonts.googleapis.com/*");
-App.accessRule("*");
+// App.accessRule("*://127.0.0.1:8080/*");
+App.accessRule("*://fonts.googleapis.com/*");
+App.accessRule("*://fonts.gstatic.com/*");
+// App.accessRule("*");
