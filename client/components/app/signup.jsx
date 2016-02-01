@@ -45,7 +45,7 @@ Signup = React.createClass({
     var userId = Accounts.createUser({
       email: email,
       password: password,
-      profile: {fullname: fullname}
+      profile: {name: fullname}
     }, function(error){
       if(error){
         console.log("Error Signup " + error.error);

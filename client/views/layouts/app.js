@@ -75,7 +75,7 @@ Template.appLayout.onRendered(function(){
   // Session.setDefault('addVideoModal', false);
   // Session.setDefault('vidsrc', '');
   // Session.setDefault('vidsnaps', []);
-  console.log("Current User " + Meteor.user().profile.fullname);
+  // console.log("Current User " + Meteor.user().profile.name);
 });
 
 Template.appLayout.onCreated(function(){

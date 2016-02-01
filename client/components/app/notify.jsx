@@ -40,7 +40,7 @@ Notify = React.createClass({
       <Card>
         <ListItem
           leftAvatar={<Avatar src="/img/fravatar.jpg"/>}
-          primaryText={<div style={styles.notifyMsg}><span style={styles.fromUser}>{this.props.fromUser.profile.fullname}</span> {this.props.notify.message} </div>}
+          primaryText={<div style={styles.notifyMsg}><span style={styles.fromUser}>{this.props.fromUser.profile.name}</span> {this.props.notify.message} </div>}
           secondaryText={this.props.notify.when}
           onTouchTap={()=>{
             FlowRouter.go(this.props.notify.target);

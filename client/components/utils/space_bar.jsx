@@ -21,7 +21,7 @@ SpaceBar = React.createClass({
 
     return (
       <Card>
-        <h5>Hello {this.props.user.profile.fullname}!</h5>
+        <h5>Hello {this.props.user.profile.name}!</h5>
       </Card>
     )
   }

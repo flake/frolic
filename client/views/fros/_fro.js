@@ -21,7 +21,6 @@ Template._fro.helpers({
   //   var thumb = ThumbFS.findOne(this.thumb_fs);
   // }
   heartClass: function(){
-    // console.log("heartClass log: " + this.owner().profile.fullname);
     return this.isHearted() ? "heart" : "heart-o";
   }
 });
@@ -65,6 +64,6 @@ Template._fro.onCreated(function(){
   self.autorun(function(){
     // self.subscribe("fro", pdata._id);
     self.subscribe("thumb_fs", pdata.thumb_fs);
-    // self.subscribe("fro_fs", pdata.fsId);
+    self.subscribe("fro_fs", pdata.fsId);
   });
 });

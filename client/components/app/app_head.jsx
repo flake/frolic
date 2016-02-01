@@ -1,4 +1,4 @@
-injectTapEventPlugin();
+// injectTapEventPlugin();
 
 APP = {
   primary: "#1690DB",

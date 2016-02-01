@@ -155,7 +155,7 @@
       }
     },
     "react": {
-      "version": "0.14.6",
+      "version": "0.14.7",
       "dependencies": {
         "envify": {
           "version": "3.4.0",
@@ -217,10 +217,10 @@
       }
     },
     "react-addons-pure-render-mixin": {
-      "version": "0.14.6"
+      "version": "0.14.7"
     },
     "react-dom": {
-      "version": "0.14.6"
+      "version": "0.14.7"
     },
     "react-motion": {
       "version": "0.3.1",

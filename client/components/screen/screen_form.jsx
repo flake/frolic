@@ -12,7 +12,7 @@ var {
   Avatar
 } = MUI;
 
-injectTapEventPlugin();
+// injectTapEventPlugin();
 
 ScreenForm = React.createClass({
   propTypes: {

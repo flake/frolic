@@ -169,10 +169,10 @@ SideNav = React.createClass({
       <div>
         <div style={ styles.headerContainer } id="sidenav-header" onClick={this._handleSideHeader}>
           <Avatar
-            src={this.data.currentUser.avatar}
+            src={this.data.currentUser.picture}
             size={48}
             style={styles.sidenavAvatar} />
-          <div style={styles.proName}>{this.data.currentUser.profile.fullname}</div>
+          <div style={styles.proName}>{this.data.currentUser.profile.name}</div>
           <div style={styles.proTitle}>{this.data.currentUser.profile.title}</div>
         </div>
       </div>

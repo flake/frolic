@@ -1,15 +1,5 @@
 
 Template.screenForm.helpers({
-  create: function(){
-
-  },
-  rendered: function(){
-
-  },
-  destroyed: function(){
-
-  },
-
   ScreenForm: function(){
     return ScreenForm;
   },

@@ -35,7 +35,7 @@ FroItem = React.createClass({
 
   togglePlay: function(){
     console.log("flayer clicked...");
-    videojs(this.refs.flayer).paused() ? videojs(this.refs.flayer).play() : videojs(this.refs.flayer).pause();
+    // videojs(this.refs.flayer).paused() ? videojs(this.refs.flayer).play() : videojs(this.refs.flayer).pause();
   },
 
   _handleScreen: function(){
@@ -178,10 +178,9 @@ FroItem = React.createClass({
             src={this.props.src}
             className='video-js vjs-default-skin flayer'
             controls
-            preload="metadata"
+            preload="auto"
             poster={this.props.fro.thumbSrc()}
-            height="192"
-            data-setup={{'controlBar': {'muteToggle': false, 'fullscreenToggle': false}}} >
+            height="192" >
             <p className='vjs-no-js'>To play this video, you need HTML5 supportted browser</p>
           </video>
         </CardMedia>
@@ -191,7 +190,7 @@ FroItem = React.createClass({
               <div style={{"fontWeight": "900", "color": "#444"}} className="frolic-invoke" >{this.props.fro.title}</div>
               <div style={styles.froDesc} className="frolic-invoke" >{this.props.fro.description}</div>
             </div>
-            <div style={{"float": "right", "margin-right":"8px"}}>
+            <div style={{"float": "right", "marginRight":"8px"}}>
               <FontIcon
                 className={"fa fa-" + this.props.hearted + " app-icon fro-action fro-heart"}
                 style={styles.heartIcon} />
@@ -242,7 +241,7 @@ FroItem = React.createClass({
           <div className="stat-box">
             <IconMenu
               iconButtonElement={iconBtnElem}
-              anchorOrigin={{vertical:'middle', horizontal:"right"}}
+              anchorOrigin={{vertical:'center', horizontal:"right"}}
               targetOrigin={{vertical:'bottom', horizontal:"right"}}>
               <MenuItem
                 primaryText="Share via apps"
@@ -271,6 +270,8 @@ FroItem = React.createClass({
     )
   }
 })
+
+// data-setup={{'controlBar': {'muteToggle': false, 'fullscreenToggle': false}}}
 
 // <CardHeader
 //   title={this.props.fro.owner().profile.fullname}
