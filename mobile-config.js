@@ -25,7 +25,6 @@ App.launchScreens({
   'android_xhdpi_landscape': 'resources/splash/frolic_land_xhdpi.png'
 });
 
-
 App.accessRule("*://meteor.local/*");
 App.accessRule("whatsapp:*");
 App.accessRule("blob:*");
@@ -34,4 +33,7 @@ App.accessRule("file://*");
 App.accessRule("*://fonts.googleapis.com/*");
 App.accessRule("*://fonts.gstatic.com/*");
 App.accessRule("*://192.168.0.101:3000/*");
+App.accessRule("*://52.27.234.98/*");
+App.accessRule("*://www.frolicplay.com/*");
+App.accessRule("http:///*");
 App.accessRule("*");
