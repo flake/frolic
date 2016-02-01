@@ -5,7 +5,8 @@ APP = {
   secondary: "#48A1D9",
   themeGrey: "#A3C3D6",
   themeBg: "#C3D7E3",
-  themeLite: "#D4EEFF"
+  themeLite: "#D4EEFF",
+  themeRed: "#ED2B2B"
 }
 
 ThemeManager = MUI.Styles.ThemeManager;

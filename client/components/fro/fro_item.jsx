@@ -52,9 +52,9 @@ FroItem = React.createClass({
       console.log('share ok');
     };
     var whatsFail = function(errormsg){
-      alert(errormsg)
+      console.log(errormsg);
     };
-    window.plugins.socialsharing.share(null, img, url, whatsUp, whatsFail);
+    window.plugins.socialsharing.share(null, null, url, whatsUp, whatsFail);
     // var message = {
     //   subject: "Test Subject",
     //   url: "http://www.frolicplay.com",
@@ -71,7 +71,7 @@ FroItem = React.createClass({
       console.log('share ok');
     };
     var whatsFail = function(errormsg){
-      alert(errormsg)
+      console.log(errormsg);
     };
     window.plugins.socialsharing.shareViaWhatsApp(null, img, url, whatsUp, whatsFail);
   },
@@ -81,21 +81,33 @@ FroItem = React.createClass({
       titleBox: {
         padding: "8px"
       },
+      screenAvatar: {
+        marginRight: "8px",
+        borderRadius: "24px",
+        verticalAlign: "middle"
+      },
       titleStyle: {
         fontSize: "14px",
         fontWeight: "500",
-        paddingBottom: "0"
+        paddingBottom: "0",
+        color: APP.secondary,
+        display: "inline-block"
       },
       froDesc:{
         "fontWeight": "500",
         "color": "#666",
         lineHeight: "1em",
-        height: "1.6em",
         overflow: "hidden"
       },
       subtitleStyle:{
         fontSize: "12px",
         marginTop: "2px"
+      },
+      publishDate:{
+        fontSize: "12px",
+        marginTop: "2px",
+        float: "right",
+        color: "#9FB9C9"
       },
       cardText: {
         padding: "8px",
@@ -106,24 +118,49 @@ FroItem = React.createClass({
         paddingTop: "0"
       },
       fontIcon: {
-        fontSize: "12px",
+        fontSize: "18px",
         color: APP.secondary,
-        width: "12px",
+        width: "18px",
         textAlign: "center"
       },
-      screenAvatar: {
-        marginRight: "8px",
-        borderRadius: "24px"
-      },
       whatsAppIcon: {
-        color: "#43d854 !important"
+        color: "#43d854 !important",
+        width: "16px",
+        textAlign: "center"
+      },
+      heartIcon: {
+        fontSize: "24px",
+        textAlign: "center"
+      },
+      statIcon: {
+        fontSize: "14px",
+        color: APP.secondary,
+        textAlign: "center"
+      },
+      menuIcon: {
+        color: APP.primary,
+        fontSize: "18px",
+        padding: "8px 4px"
+      },
+      fontIcon: {
+        fontSize: "18px",
+        color: APP.secondary,
+        textAlign: "center"
+      },
+      menuItem:{
+        paddingLeft: "48px"
       }
       // titleThemed:{
       //   color: "#1690DB !important"
       // }
     };
 
-    var iconBtnElem = (<IconButton iconClassName="material-icons" iconStyle={ {color: APP.primary} }>more_vert</IconButton>);
+    var iconBtnElem = (
+      <IconButton
+        iconClassName="material-icons"
+        iconStyle={styles.menuIcon}
+        style={{"padding":"0", "width":"16px", "height":"8px"}}
+      >more_horiz</IconButton>);
 
     // var dataSetup = {
     //   controls: "true",
@@ -149,64 +186,87 @@ FroItem = React.createClass({
           </video>
         </CardMedia>
         <CardText style={styles.cardText}>
-          <div id="fi-froinfo">
-            <div style={{"fontWeight": "900", "color": "#444"}} className="frolic-invoke" >{this.props.fro.title}</div>
-            <div style={styles.froDesc} className="frolic-invoke" >{this.props.fro.description}</div>
+          <div>
+            <div id="fi-froinfo" style={{"display": "inline-block"}}>
+              <div style={{"fontWeight": "900", "color": "#444"}} className="frolic-invoke" >{this.props.fro.title}</div>
+              <div style={styles.froDesc} className="frolic-invoke" >{this.props.fro.description}</div>
+            </div>
+            <div style={{"float": "right", "margin-right":"8px"}}>
+              <FontIcon
+                className={"fa fa-" + this.props.hearted + " app-icon fro-action fro-heart"}
+                style={styles.heartIcon} />
+            </div>
           </div>
-          <div style={{"display": "inline-block"}} >
-            <CardHeader
-              title={this.props.fro.screenDoc().title}
-              titleStyle={styles.titleStyle}
-              subtitle={this.props.fro.datePublished()}
-              subtitleStyle={styles.subtitleStyle}
-              titleColor={APP.secondary}
-              avatar={
-                <Avatar
-                  src={this.props.fro.screenDoc().avatar()}
-                  size={36}
-                  style={styles.screenAvatar} />}
-              style={Styles.headerBox}
-              onClick={this._handleScreen} />
-          </div>
-          <div className="header-right">
-              <div className="stat-box">
-                <FontIcon
-                  className="fa fa-play"
-                  style={styles.fontIcon}>
-                </FontIcon>
-                <span style={{"fontSize": "11px", "marginLeft": "4px"}}>{this.props.fro.views}</span>
+          <div>
+            <div style={{"display": "inline-block"}} onTouchTap={this._handleScreen}>
+              <Avatar
+                src={this.props.fro.screenDoc().avatar()}
+                size={24}
+                style={styles.screenAvatar} />
+              <div style={styles.titleStyle}>
+                {this.props.fro.screenDoc().title}
               </div>
-              <div className="stat-box">
-                <FontIcon
-                  className="fa fa-heart"
-                  style={styles.fontIcon}>
-                </FontIcon>
-                <span style={{"fontSize": "11px", "marginLeft": "4px"}}>{this.props.fro.hearts}</span>
-              </div>
+            </div>
+            <div style={styles.publishDate}>
+              {this.props.fro.datePublished()}
+            </div>
           </div>
         </CardText>
-        <CardActions style={styles.actionBox}>
-          <FlatButton secondary={true} className="fro-action fro-heart">
-            <FontIcon className={"fa fa-" + this.props.hearted + " app-icon"} />
-          </FlatButton>
-          <FlatButton secondary={true} className="fro-action frolic-invoke" id="fi-comments">
-            <FontIcon className="fa fa-commenting-o app-icon" />
-          </FlatButton>
-          <FlatButton secondary={true} className="fro-action"
-            onTouchTap={this._handleWhatsApp}>
-            <FontIcon className="fa fa-whatsapp app-icon" style={styles.whatsAppIcon} />
-          </FlatButton>
-          <IconMenu iconButtonElement= {iconBtnElem} openDirection="top-right" >
-            <MenuItem
-              primaryText="Share via apps"
-              leftIcon={
-                <FontIcon className="fa fa-share-alt app-icon" />
-              }
-              onTouchTap={this._handleShare} />
-            <MenuItem primaryText="Report or Block" />
-            <MenuItem primaryText="Cancel" />
-          </IconMenu>
-        </CardActions>
+        <CardText style={styles.actionBox}>
+          <div className="stat-box">
+            <FontIcon
+              className="fa fa-play"
+              style={styles.statIcon}>
+            </FontIcon>
+            <span style={{"fontSize": "14px", "marginLeft": "4px"}}>{this.props.fro.views}</span>
+          </div>
+          <div className="stat-box">
+            <FontIcon
+              className="fa fa-heart"
+              style={styles.statIcon}>
+            </FontIcon>
+            <span style={{"fontSize": "14px", "marginLeft": "4px"}}>{this.props.fro.hearts}</span>
+          </div>
+          <div className="stat-box">
+            <FontIcon
+              className="fa fa-commenting-o app-icon fro-action frolic-invoke"
+              id="fa-comments"
+              style={styles.fontIcon} />
+          </div>
+          <div className="stat-box">
+            <img
+              src="/img/whats-app.png"
+              style={styles.whatsAppIcon}
+              onTouchTap={this._handleWhatsApp} />
+          </div>
+          <div className="stat-box">
+            <IconMenu
+              iconButtonElement={iconBtnElem}
+              anchorOrigin={{vertical:'middle', horizontal:"right"}}
+              targetOrigin={{vertical:'bottom', horizontal:"right"}}>
+              <MenuItem
+                primaryText="Share via apps"
+                leftIcon={
+                  <FontIcon
+                    className="fa fa-share-alt app-icon"
+                    style={styles.itemIcon} />
+                }
+                onTouchTap={this._handleShare}
+                innerDivStyle={styles.menuItem} />
+              <MenuItem
+                primaryText="Report or Block"
+                leftIcon={
+                  <FontIcon
+                    className="fa fa-flag" style={{"color": APP.themeRed}}
+                    style={styles.itemIcon} />
+                }
+                innerDivStyle={styles.menuItem} />
+              <MenuItem
+                primaryText="Cancel"
+                innerDivStyle={styles.menuItem} />
+            </IconMenu>
+          </div>
+        </CardText>
       </Card>
     )
   }

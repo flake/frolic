@@ -65,6 +65,6 @@ Template._fro.onCreated(function(){
   self.autorun(function(){
     // self.subscribe("fro", pdata._id);
     self.subscribe("thumb_fs", pdata.thumb_fs);
-    self.subscribe("fro_fs", pdata.fsId);
+    // self.subscribe("fro_fs", pdata.fsId);
   });
 });

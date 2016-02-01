@@ -107,7 +107,7 @@ body{
 	color: #666;
 }
 .stat-box{
-	display: block;
+	display: inline-block;
 	margin-right: 8px;
 	min-width: 48px;
 }

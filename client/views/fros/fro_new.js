@@ -57,7 +57,7 @@ Template.froNew.onCreated(function(){
   var self = this;
   self.autorun(function(){
     self.subscribe("user_screens", Meteor.userId());
-    self.subscribe("fro_fs", Session.get('newFro'));
+    // self.subscribe("fro_fs", Session.get('newFro'));
     self.subscribe("thumb_fs", Session.get('newThumb'));
   });
 });
