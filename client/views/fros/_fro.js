@@ -1,22 +1,14 @@
 
 Template._fro.helpers({
-  create: function(){
-
+  FroFeed: function(){
+    return FroFeed;
   },
-  rendered: function(){
-  },
-  destroyed: function(){
-
-  },
-  FroItem: function(){
-    return FroItem;
-  },
-  froSrc: function(){
-    var vid = FroFS.findOne({_id: this.fsId});
-    if(vid)
-      return vid.url();
-    return "";
-  },
+  // froSrc: function(){
+  //   var vid = FroFS.findOne({_id: this.fsId});
+  //   if(vid)
+  //     return vid.url();
+  //   return "";
+  // },
   // thumbSrc: function(){
   //   var thumb = ThumbFS.findOne(this.thumb_fs);
   // }
@@ -64,6 +56,6 @@ Template._fro.onCreated(function(){
   self.autorun(function(){
     // self.subscribe("fro", pdata._id);
     self.subscribe("thumb_fs", pdata.thumb_fs);
-    self.subscribe("fro_fs", pdata.fsId);
+    // self.subscribe("fro_fs", pdata.fsId);
   });
 });

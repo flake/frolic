@@ -3,6 +3,21 @@ Template.home.helpers({
     // console.log("Frolics count: " + Frolics.find().count());
     return Fros.find({}, {sort: {createdAt: -1}});
   },
+  FroScreen: function(){
+    return FroScreen;
+  },
+  froFS: function(){
+    // console.log("Frolic Id: " + this.froId);
+    var froFS = {};
+    var fro = Fros.findOne({}, {sort: {createdAt: -1}});
+
+    if(fro){
+      froFS.fro = FroFS.findOne(fro.fsId).url();
+      froFS.thumb = ThumbFS.findOne(fro.thumb_fs).url();
+    }
+
+    return froFS;
+  },
   SpaceBar: function(){
     return SpaceBar;
   }

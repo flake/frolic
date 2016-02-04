@@ -1,7 +1,7 @@
 <template name="_fro">
   {{#if Template.subscriptionsReady}}
     <div class="fro-item-box">
-      {{> React component=FroItem fro=this src=froSrc hearted=heartClass}}
+      {{> React component=FroFeed fro=this hearted=heartedClass}}
     </div>
   {{else}}
     <div>
@@ -9,3 +9,6 @@
     </div>
   {{/if}}
 </template>
+
+
+<!-- {{> React component=FroItem fro=this src=froSrc hearted=heartClass}} -->

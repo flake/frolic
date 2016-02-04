@@ -67,7 +67,8 @@ Template.fro.helpers({
 // }
 
 Template.fro.onRendered(function(){
-  console.log("fro rendered...");
+  // console.log("fro rendered...");
+  Session.set('appTitle', "frolic");
   // Session.setDefault('tabIndex', 0);
   Session.setDefault('slideIndex', 0);
 

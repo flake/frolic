@@ -30,10 +30,14 @@ App.accessRule("whatsapp:*");
 App.accessRule("blob:*");
 App.accessRule("file://*");
 // App.accessRule("*://127.0.0.1:8080/*");
+App.accessRule("*://www.googleapis.com/*");
 App.accessRule("*://fonts.googleapis.com/*");
 App.accessRule("*://fonts.gstatic.com/*");
-App.accessRule("*://192.168.0.101:3000/*");
+App.accessRule("*://192.168.0.105:3000/*");
 App.accessRule("*://52.27.234.98/*");
 App.accessRule("*://www.frolicplay.com/*");
-App.accessRule("http:///*");
+// App.accessRule("http:///*");
 App.accessRule("*");
+
+App.setPreference('android-minSdkVersion', '15');
+App.setPreference('android-targetSdkVersion', '23');

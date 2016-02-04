@@ -46,3 +46,5 @@ service-configuration
 #meteorhacks:kadira
 #particle4dev:cordova-fb
 hedcet:cordova-google-plus-native-sign-in
+webapp
+browser-policy

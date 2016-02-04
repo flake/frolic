@@ -1,8 +1,10 @@
 <template name="home">
-  <div id="space-bar">
-    {{> React component=SpaceBar user=currentUser}}
+  <div class="cover-fixed">
+    {{> React component=FroScreen src=froFS.fro thumb=froFS.thumb}}
   </div>
-  {{#each fros}}
-    {{> _fro}}
-  {{/each}}
+  <div class="cover-views">
+    {{#each fros}}
+      {{> _fro}}
+    {{/each}}
+  </div>
 </template>
