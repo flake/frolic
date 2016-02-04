@@ -148,7 +148,11 @@ FroFeed = React.createClass({
       },
       menuItem:{
         paddingLeft: "48px"
-      }
+      },
+      frominiThumb: {
+        width: "160px",
+        height: "90px"
+      },
       // titleThemed:{
       //   color: "#1690DB !important"
       // }
@@ -173,6 +177,9 @@ FroFeed = React.createClass({
     return (
       <Card>
         <CardText style={styles.cardText}>
+          <div style={{"display": "inline-block"}}>
+            <img src={this.props.fro.thumbSrc()} style={styles.frominiThumb}/>
+          </div>
           <div>
             <div id="fi-froinfo" style={{"display": "inline-block"}}>
               <div style={{"fontWeight": "900", "color": "#444"}} className="frolic-invoke" >{this.props.fro.title}</div>

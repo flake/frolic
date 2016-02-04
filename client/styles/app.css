@@ -253,6 +253,12 @@ body{
 	left: 0;
 	background-color: #c3d7e3;
 }
+.cover-views-notabs{
+	position: relative;
+	top: 196px;
+	left: 0;
+	background-color: #c3d7e3;
+}
 .fro-views{
 	background-color: #c3d7e3;
 }

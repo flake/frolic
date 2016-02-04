@@ -8,11 +8,15 @@ Template.home.helpers({
   },
   froFS: function(){
     // console.log("Frolic Id: " + this.froId);
-    var froFS = {};
+    var froFS = {
+      fro: null,
+      thumb: null
+    };
     var fro = Fros.findOne({}, {sort: {createdAt: -1}});
 
     if(fro){
-      froFS.fro = FroFS.findOne(fro.fsId).url();
+      var froFs = FroFS.findOne(fro.fsId)
+      froFS.fro = froFs.url();
       froFS.thumb = ThumbFS.findOne(fro.thumb_fs).url();
     }
 
