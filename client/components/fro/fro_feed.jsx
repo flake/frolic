@@ -78,6 +78,7 @@ FroFeed = React.createClass({
   _handleFro: function(froId){
     console.log("handleFro " + froId);
     Session.set("froPlay", froId);
+    Session.set("isPlaying", true);
   },
 
   render: function(){
@@ -86,6 +87,7 @@ FroFeed = React.createClass({
         padding: "8px"
       },
       headerBox: {
+        display: "block",
         height: "40px",
         padding: "0px"
       },
@@ -99,24 +101,30 @@ FroFeed = React.createClass({
         fontWeight: "500",
         paddingBottom: "0",
         color: APP.secondary,
-        display: "inline-block"
+        display: "inline-block",
+        maxWidth: "124px",
+        width: "124px",
+        whiteSpace: "nowrap",
+        overflow: "hidden",
+        verticalAlign: "middle"
       },
       froDesc:{
         "fontWeight": "500",
         "color": "#666",
         lineHeight: "1em",
+        whiteSpace: "nowrap",
         overflow: "hidden"
       },
       subtitleStyle:{
-        fontSize: "12px",
-        marginTop: "2px"
+        fontSize: "11px",
+        marginTop: "0px"
       },
-      publishDate:{
-        fontSize: "12px",
-        marginTop: "2px",
-        float: "right",
-        color: "#9FB9C9"
-      },
+      // publishDate:{
+      //   fontSize: "12px",
+      //   marginTop: "2px",
+      //   float: "right",
+      //   color: "#9FB9C9"
+      // },
       cardText: {
         padding: "8px",
         paddingBottom: "0"
@@ -196,16 +204,22 @@ FroFeed = React.createClass({
         position: "absolute",
         left: "15%",
         right: "15%",
-        top: "30%",
+        top: "27%",
         padding: "4px",
-        height: "21px",
-        lineHeight: "16px",
+        height: "24px",
+        lineHeight: "24px",
         textAlign: "center",
         overflow: "hidden",
         zIndex: 3
       },
       overIcon:{
-        color: "rgba(22,144,219,0.4)"
+        color: "rgba(22, 144, 219, 0.9)",
+        fontSize: "24px"
+      },
+      froHeart:{
+        "float": "right",
+        margin:"8px",
+        marginRight: "0px"
       }
 
       // titleThemed:{
@@ -261,12 +275,13 @@ FroFeed = React.createClass({
                   size={27}
                   style={styles.screenAvatar} />}
               style={styles.headerBox} >
+
+              <div style={styles.froHeart}>
+                <FontIcon
+                  className={"fa fa-" + this.props.hearted + " app-icon fro-action fro-heart"}
+                  style={styles.heartIcon} />
+              </div>
             </CardHeader>
-          </div>
-          <div style={{"float": "right", "margin":"8px"}}>
-            <FontIcon
-              className={"fa fa-" + this.props.hearted + " app-icon fro-action fro-heart"}
-              style={styles.heartIcon} />
           </div>
         </CardText>
         <CardText style={styles.actionBox}>

@@ -24,6 +24,9 @@ Template.home.helpers({
   },
   SpaceBar: function(){
     return SpaceBar;
+  },
+  isPlaying: function(){
+    return Session.get("isPlaying");
   }
 });
 
@@ -34,6 +37,7 @@ Template.home.onRendered(function(){
 
 Template.home.onCreated(function(){
   Session.set("froPlay", "");
+  Session.set("isPlaying", false);
   var self = this;
   self.autorun(function(){
     self.subscribe("profile", Meteor.userId());
