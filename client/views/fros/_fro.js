@@ -12,7 +12,7 @@ Template._fro.helpers({
   // thumbSrc: function(){
   //   var thumb = ThumbFS.findOne(this.thumb_fs);
   // }
-  heartClass: function(){
+  heartedClass: function(){
     return this.isHearted() ? "heart" : "heart-o";
   }
 });
@@ -54,8 +54,8 @@ Template._fro.onCreated(function(){
   var pdata = Template.parentData(0);
   var self = this;
   self.autorun(function(){
-    // self.subscribe("fro", pdata._id);
-    self.subscribe("thumb_fs", pdata.thumb_fs);
+    self.subscribe("fro", pdata._id);
+    // self.subscribe("thumb_fs", pdata.thumb_fs);
     // self.subscribe("fro_fs", pdata.fsId);
   });
 });

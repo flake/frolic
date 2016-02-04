@@ -26,7 +26,7 @@ aldeed:collection2
 fortawesome:fontawesome
 izzilab:material-ui
 cfs:standard-packages
-cfs:s3
+#cfs:s3
 cfs:gridfs
 matb33:collection-hooks
 momentjs:moment

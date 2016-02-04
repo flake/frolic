@@ -75,10 +75,19 @@ FroFeed = React.createClass({
     window.plugins.socialsharing.shareViaWhatsApp(null, img, url, whatsUp, whatsFail);
   },
 
+  _handleFro: function(froId){
+    console.log("handleFro " + froId);
+    Session.set("froPlay", froId);
+  },
+
   render: function(){
     var styles = {
       titleBox: {
         padding: "8px"
+      },
+      headerBox: {
+        height: "40px",
+        padding: "0px"
       },
       screenAvatar: {
         marginRight: "8px",
@@ -113,8 +122,7 @@ FroFeed = React.createClass({
         paddingBottom: "0"
       },
       actionBox: {
-        padding: "8px",
-        paddingTop: "0"
+        padding: "0 8px"
       },
       fontIcon: {
         fontSize: "18px",
@@ -150,9 +158,56 @@ FroFeed = React.createClass({
         paddingLeft: "48px"
       },
       frominiThumb: {
-        width: "160px",
-        height: "90px"
+        width: "128px",
+        height: "72px"
       },
+      Linear: {
+        display: "inline-block",
+        marginRight: "4px",
+        verticalAlign: "top"
+      },
+      froScreen:{
+        position: "relative",
+        width: "128px",
+        height: "72px"
+      },
+      froThumb:{
+        zIndex: 1,
+        width: "128px",
+        height: "72px"
+      },
+      overlay:{
+        position: "absolute",
+        left: "15%",
+        right: "15%",
+        bottom: "0",
+        padding: "4px",
+        height: "16px",
+        lineHeight: "16px",
+        textAlign: "center",
+        overflow: "hidden",
+        zIndex: 2,
+        backgroundColor: "#000",
+        "-ms-filter": "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)",
+        filter: "alpha(opacity=40)",
+        opacity: 0.4
+      },
+      froOver:{
+        position: "absolute",
+        left: "15%",
+        right: "15%",
+        top: "30%",
+        padding: "4px",
+        height: "21px",
+        lineHeight: "16px",
+        textAlign: "center",
+        overflow: "hidden",
+        zIndex: 3
+      },
+      overIcon:{
+        color: "rgba(22,144,219,0.4)"
+      }
+
       // titleThemed:{
       //   color: "#1690DB !important"
       // }
@@ -177,33 +232,41 @@ FroFeed = React.createClass({
     return (
       <Card>
         <CardText style={styles.cardText}>
-          <div style={{"display": "inline-block"}}>
-            <img src={this.props.fro.thumbSrc()} style={styles.frominiThumb}/>
-          </div>
-          <div>
-            <div id="fi-froinfo" style={{"display": "inline-block"}}>
-              <div style={{"fontWeight": "900", "color": "#444"}} className="frolic-invoke" >{this.props.fro.title}</div>
-              <div style={styles.froDesc} className="frolic-invoke" >{this.props.fro.description}</div>
-            </div>
-            <div style={{"float": "right", "marginRight":"8px"}}>
-              <FontIcon
-                className={"fa fa-" + this.props.hearted + " app-icon fro-action fro-heart"}
-                style={styles.heartIcon} />
-            </div>
-          </div>
-          <div>
-            <div style={{"display": "inline-block"}} onTouchTap={this._handleScreen}>
-              <Avatar
-                src={this.props.fro.screenDoc().avatar()}
-                size={24}
-                style={styles.screenAvatar} />
-              <div style={styles.titleStyle}>
-                {this.props.fro.screenDoc().title}
+          <div style={styles.Linear}>
+            <div style={styles.froScreen} onTouchTap={this._handleFro.bind(this, this.props.fro._id)}>
+              <img src={this.props.fro.thumbSrc()} style={styles.froThumb} alt="fro"/>
+              <div style={styles.froOver}>
+                <FontIcon
+                  className="fa fa-play"
+                  style={styles.overIcon}/>
               </div>
             </div>
-            <div style={styles.publishDate}>
-              {this.props.fro.datePublished()}
+          </div>
+          <div style={styles.Linear}>
+            <div>
+              <div id="fi-froinfo" style={{"display": "inline-block"}}>
+                <div style={{"fontWeight": "900", "color": "#444"}} className="frolic-invoke" >{this.props.fro.title}</div>
+                <div style={styles.froDesc} className="frolic-invoke" >{this.props.fro.description}</div>
+              </div>
             </div>
+            <CardHeader
+              title={this.props.fro.screenDoc().title}
+              subtitle={this.props.fro.datePublished()}
+              titleColor={APP.secondary}
+              titleStyle={styles.titleStyle}
+              subtitleStyle={styles.subtitleStyle}
+              avatar={
+                <Avatar
+                  src={this.props.fro.screenDoc().avatar()}
+                  size={27}
+                  style={styles.screenAvatar} />}
+              style={styles.headerBox} >
+            </CardHeader>
+          </div>
+          <div style={{"float": "right", "margin":"8px"}}>
+            <FontIcon
+              className={"fa fa-" + this.props.hearted + " app-icon fro-action fro-heart"}
+              style={styles.heartIcon} />
           </div>
         </CardText>
         <CardText style={styles.actionBox}>
@@ -236,6 +299,7 @@ FroFeed = React.createClass({
           <div className="stat-box">
             <IconMenu
               iconButtonElement={iconBtnElem}
+              style={{"height": "16px", "top": "-4px"}}
               anchorOrigin={{vertical:'center', horizontal:"right"}}
               targetOrigin={{vertical:'bottom', horizontal:"right"}}>
               <MenuItem
@@ -268,15 +332,17 @@ FroFeed = React.createClass({
 
 // data-setup={{'controlBar': {'muteToggle': false, 'fullscreenToggle': false}}}
 
-// <CardHeader
-//   title={this.props.fro.owner().profile.fullname}
-//   subtitle={this.props.fro.datePublished()}
-//   titleColor={APP.secondary}
-//   avatar={<Avatar backgroundColor={APP.themeGrey}>A</Avatar>}
-//   style={styles.headerBox} >
-//
-//   <div className="header-right">
-//     <div><span>12345</span><i className="fa fa-eye"></i></div>
-//     <div><span>1234</span><i className="fa fa-heart"></i></div>
+// <div>
+//   <div style={{"display": "inline-block"}} onTouchTap={this._handleScreen}>
+    // <Avatar
+    //   src={this.props.fro.screenDoc().avatar()}
+    //   size={24}
+    //   style={styles.screenAvatar} />
+//     <div style={styles.titleStyle}>
+//       {this.props.fro.screenDoc().title}
+//     </div>
 //   </div>
-// </CardHeader>
+//   <div style={styles.publishDate}>
+//     {this.props.fro.datePublished()}
+//   </div>
+// </div>

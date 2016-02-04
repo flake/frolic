@@ -110,6 +110,7 @@ body{
 	display: inline-block;
 	margin-right: 8px;
 	min-width: 48px;
+	vertical-align: middle;
 }
 .tab-icon{
 	color: #1A3140 !important;

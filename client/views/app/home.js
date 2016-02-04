@@ -12,10 +12,10 @@ Template.home.helpers({
       fro: null,
       thumb: null
     };
-    var fro = Fros.findOne({}, {sort: {createdAt: -1}});
+    var fro = Fros.findOne(Session.get("froPlay"));
 
     if(fro){
-      var froFs = FroFS.findOne(fro.fsId)
+      var froFs = FroFS.findOne(fro.fsId);
       froFS.fro = froFs.url();
       froFS.thumb = ThumbFS.findOne(fro.thumb_fs).url();
     }
@@ -33,6 +33,7 @@ Template.home.onRendered(function(){
 });
 
 Template.home.onCreated(function(){
+  Session.set("froPlay", "");
   var self = this;
   self.autorun(function(){
     self.subscribe("profile", Meteor.userId());
