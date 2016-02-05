@@ -14,6 +14,9 @@ Template._fro.helpers({
   // }
   heartedClass: function(){
     return this.isHearted() ? "heart" : "heart-o";
+  },
+  playSelect: function(){
+    return this._id === Session.get("froPlay");
   }
 });
 

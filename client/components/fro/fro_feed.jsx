@@ -17,7 +17,8 @@ var MenuItem = MUI.Libs.MenuItem;
 FroFeed = React.createClass({
   propTypes: {
     fro: React.PropTypes.object,
-    hearted: React.PropTypes.string
+    hearted: React.PropTypes.string,
+    play: React.PropTypes.bool
   },
   //IMPORTANT SET CHILD CONTEXT
   childContextTypes: {
@@ -29,7 +30,7 @@ FroFeed = React.createClass({
     };
   },
   getInitialState: function(){
-    return { }
+    return { };
   },
 
   togglePlay: function(){
@@ -82,7 +83,11 @@ FroFeed = React.createClass({
   },
 
   render: function(){
+    var froSelect = this.props.play ? "rgba(195,215,227, 0.4)" : "#FFFFFF";
     var styles = {
+      froCard: {
+        backgroundColor: froSelect
+      },
       titleBox: {
         padding: "8px"
       },
@@ -244,7 +249,7 @@ FroFeed = React.createClass({
     var screenIcon = (<FontIcon className="fa fa-film" style={Styles.channelIcon} />);
 
     return (
-      <Card>
+      <Card style={styles.froCard}>
         <CardText style={styles.cardText}>
           <div style={styles.Linear}>
             <div style={styles.froScreen} onTouchTap={this._handleFro.bind(this, this.props.fro._id)}>

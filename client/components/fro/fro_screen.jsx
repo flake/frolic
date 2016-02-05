@@ -7,7 +7,7 @@ FroScreen = React.createClass({
   propTypes: {
     src: React.PropTypes.string,
     thumb: React.PropTypes.string,
-    play: React.PropTypes.boolean
+    play: React.PropTypes.bool
   },
   getDefaultProps: function(){
     return {
@@ -30,7 +30,24 @@ FroScreen = React.createClass({
     return { }
   },
 
-  _handlePlayer: function(){
+  // componentDidUpdate: function(prevProps, prevState){
+  //   console.log("prevProps " + prettyJSON(prevProps));
+  //   console.log("thisProps " + prettyJSON(this.props));
+  //
+  //   if(prevProps.src != this.props.src){
+  //     var froPlayer = videojs('fro-player');
+  //     if(froPlayer.paused()){
+  //       froPlayer.play();
+  //     }
+  //     Session.set("isPlaying", true);
+  //   }
+  // },
+
+  _handlePlayer: function(event){
+    event.preventDefault();
+    event.stopPropagation();
+    console.log("handlePlayer");
+
     var froPlayer = videojs('fro-player');
     if(froPlayer.paused()){
       froPlayer.play();
@@ -39,6 +56,14 @@ FroScreen = React.createClass({
       froPlayer.pause();
       Session.set("isPlaying", false);
     }
+  },
+
+  _onLoad: function(){
+    console.log("video onLoad ");
+
+    var froPlayer = videojs('fro-player');
+    froPlayer.play();
+    Session.set("isPlaying", true);
   },
 
   render: function(){
@@ -76,17 +101,16 @@ FroScreen = React.createClass({
           id="fro-player"
           src={this.props.src}
           className='video-js vjs-default-skin vjs-big-play-centered flayer'
-          preload="metadata"
-          autoplay={true}
+          autoPlay={true}
+          preload="auto"
           poster={this.props.thumb}
           height="194"
-          onplay={this._onPlay}
-          onpause={this._onPause} >
+          loadstart={this._onLoad}>
           <p className='vjs-no-js'>To play this video, you need HTML5 supportted browser</p>
         </video>
         <div style={styles.froOverlay}>
           <div style={styles.overBtn}
-            onTouchTap={this._handlePlayer}>
+            onTouchTap={this._handlePlayer} >
             <FontIcon
               className="fa fa-play"
               style={styles.overIcon} />
@@ -96,3 +120,7 @@ FroScreen = React.createClass({
     )
   }
 });
+
+
+// onplay={this._onPlay}
+// onpause={this._onPause}

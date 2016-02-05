@@ -58,6 +58,12 @@ Template.fro.helpers({
       {'template': 'comments', 'data': {froId: this.froId}},
       {'template': 'froList', 'data': {context: "screen_fros", screenId: fro.screenId}},
     ]
+  },
+  isPlaying: function(){
+    return Session.get("isPlaying");
+  },
+  newComm: function(){
+    (Session.get('slideIndex') === 1) ? "block" : "none";  
   }
 });
 

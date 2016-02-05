@@ -2,7 +2,7 @@
   {{#if Template.subscriptionsReady}}
     <div class="cover-fixed">
       <div>
-        {{> React component=FroScreen src=froFS.fro thumb=froFS.thumb}}
+        {{> React component=FroScreen src=froFS.fro thumb=froFS.thumb play=isPlaying}}
       </div>
       <div>
         {{> React component=SlideTabs index=slideIndex tabs=froTabs}}
@@ -11,7 +11,7 @@
     <div class="cover-views">
       {{> React component=SwipeSlides views=froViews index=slideIndex}}
     </div>
-    <div class="float-bottom">
+    <div class="float-bottom" style="display: {{newComm}}">
       {{> React component=NewComment}}
     </div>
   {{else}}
