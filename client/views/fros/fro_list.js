@@ -1,14 +1,5 @@
 
 Template.froList.helpers({
-  create: function(){
-
-  },
-  rendered: function(){
-
-  },
-  destroyed: function(){
-
-  },
   FroMini: function(){
     return FroMini;
   },
@@ -29,11 +20,5 @@ Template.froList.helpers({
         console.log("No match for Fros");
     }
     return Fros.find(froQuery);
-  }
-});
-
-Template.froList.events({
-  "click #foo": function(event, template){
-
   }
 });

@@ -31,9 +31,9 @@ Template.fro.helpers({
   //   return FroTabs;
   // },
 
-  tabIndex: function(){
-    return parseInt(Session.get('tabIndex'));
-  },
+  // tabIndex: function(){
+  //   return parseInt(Session.get('tabIndex'));
+  // },
   slideIndex: function(){
     return parseInt(Session.get('slideIndex'));
   },
@@ -63,7 +63,7 @@ Template.fro.helpers({
     return Session.get("isPlaying");
   },
   newComm: function(){
-    (Session.get('slideIndex') === 1) ? "block" : "none";  
+    return (Session.get('slideIndex') === 1) ? "block" : "none";
   }
 });
 
@@ -87,6 +87,7 @@ Template.fro.onRendered(function(){
 });
 
 Template.fro.onCreated(function(){
+  // Session.set("isPlaying", false);
   var pdata = Template.parentData(0);
   var self = this;
   console.log("fro on-created _id: "+pdata.froId);

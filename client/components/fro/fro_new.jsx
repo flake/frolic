@@ -38,6 +38,10 @@ FroNew = React.createClass({
 
   _handleScreens(event, index, value){
     this.setState({value: value});
+    if(value === 0){
+      console.log("open new screen here... ");
+      Session.set('screenDialog', true);
+    }
   },
 
   render: function(){
@@ -99,13 +103,9 @@ FroNew = React.createClass({
                 return <MenuItem value={screen._id} key={i} primaryText={screen.title} />
               })
             }
+            <MenuItem value={0} key={this.props.screens.length} primaryText="New Screen" />
           </DropDownMenu>
-          <RaisedButton
-            label="Save"
-            secondary={true}
-            style={styles.boxBtn}
-            className="frolic-upload"
-            id="frolic-save" />
+
           <RaisedButton
             label="Publish"
             secondary={true}
@@ -118,6 +118,13 @@ FroNew = React.createClass({
     )
   }
 });
+
+// <RaisedButton
+//   label="Save"
+//   secondary={true}
+//   style={styles.boxBtn}
+//   className="frolic-upload"
+//   id="frolic-save" />
 
 // <TextField
 //   hintText="Screen"

@@ -3,6 +3,8 @@ var {
   FontIcon
 } = MUI;
 
+var froPlayer = null;
+
 FroScreen = React.createClass({
   propTypes: {
     src: React.PropTypes.string,
@@ -58,12 +60,39 @@ FroScreen = React.createClass({
     }
   },
 
-  _onLoad: function(){
-    console.log("video onLoad ");
-
-    var froPlayer = videojs('fro-player');
-    froPlayer.play();
+  _handlePlay: function(){
     Session.set("isPlaying", true);
+  },
+
+  _handlePause: function(){
+    Session.set("isPlaying", false);
+  },
+
+  // _onLoad: function(){
+  //   console.log("video onLoad ");
+  //   var froPlayer = videojs('fro-player');
+  //   froPlayer.play();
+  //   Session.set("isPlaying", true);
+  // },
+
+  componentWillUpdate: function(nextProps, nextState){
+    if(nextProps.src != this.props.src){
+      console.log("fro changed... ");
+      var froPlayer = videojs('fro-player');
+      froPlayer.load();
+      froPlayer.play();
+      Session.set("isPlaying", true);
+    }
+  },
+
+  componentWillUnmount: function(){
+    var froPlayer = videojs('fro-player');
+    if(!froPlayer.paused()){
+      froPlayer.pause();
+    }
+    setTimeout(function(){
+      froPlayer.dispose();
+    }, 0);
   },
 
   render: function(){
@@ -105,7 +134,8 @@ FroScreen = React.createClass({
           preload="auto"
           poster={this.props.thumb}
           height="194"
-          loadstart={this._onLoad}>
+          onPlay={this._handlePlay}
+          onPause={this._handlePause}>
           <p className='vjs-no-js'>To play this video, you need HTML5 supportted browser</p>
         </video>
         <div style={styles.froOverlay}>

@@ -29,14 +29,15 @@ Template._fro.events({
 
   'click .frolic-invoke': function(event, template){
     event.preventDefault();
-    var froTabs = ["fi-froinfo", "fi-comments"];
-    var fiTab = $(event.currentTarget).attr('id');
-    var ftIndex = froTabs.indexOf(fiTab);
+    // var froTabs = ["fi-froinfo", "fi-comments"];
+    // var fiTab = $(event.currentTarget).attr('id');
+    // var ftIndex = froTabs.indexOf(fiTab);
     // console.log("frolic tab: " + fiTab);
-    console.log("frolic tab index: " + ftIndex);
+    // console.log("frolic tab index: " + ftIndex);
 
-    Session.set("slideIndex", ftIndex);
-    Session.set("tabIndex", ftIndex);
+    Session.set("slideIndex", 0);
+    Session.set("froPlay", template.data._id);
+    // Session.set("tabIndex", ftIndex);
 
     FlowRouter.go('/fro/'+template.data._id);
   }

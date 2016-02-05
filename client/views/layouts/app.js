@@ -3,6 +3,9 @@ Template.appLayout.helpers({
   AppHead: function(){
     return AppHead;
   },
+  dialogView: function(){
+    return Session.get('dialogView');
+  },
   title: function(){
     return Session.get('appTitle');
   },

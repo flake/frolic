@@ -6,6 +6,12 @@ Template.froNew.helpers({
   FroNew: function(){
     return FroNew;
   },
+  ScreenDialog: function(){
+    return ScreenDialog;
+  },
+  dialogOpen: function(){
+    return Session.get('screenDialog');
+  },
   froSrc: function(){
     var froFS = FroFS.findOne(Session.get('newFro'));
     if(froFS)
@@ -21,7 +27,7 @@ Template.froNew.helpers({
     return null;
   },
   screens: function(){
-    return Screens.find({creator_id: Meteor.userId()}).fetch();
+    return Screens.find({creator_id: Meteor.userId()}, {sort: {createdAt: -1}}).fetch();
   }
   // snaps: function(){
   //   return Session.get('vidsnaps') ? Session.get('vidsnaps'):[];
@@ -44,20 +50,27 @@ Template.froNew.events({
 
     Meteor.call('addFro', fro, function(error, froId){
       if(error){
-        console.log("ERROR: "+error.message);
+        console.log("ERROR: addFro - "+error.message);
       }else{
+        Session.set('newFro', null);
         FlowRouter.go('/fro/'+froId);
-        console.log("fro add success... " + froId);
+        // console.log("fro add success... " + froId);
       }
     });
   }
 });
 
 Template.froNew.onCreated(function(){
+  Session.set('screenDialog', false);
   var self = this;
   self.autorun(function(){
     self.subscribe("user_screens", Meteor.userId());
     // self.subscribe("fro_fs", Session.get('newFro'));
     self.subscribe("thumb_fs", Session.get('newThumb'));
   });
+});
+
+Template.froNew.onDestroyed(function(){
+  Session.set('newFro', null);
+  Session.set('newThumb', null);
 });

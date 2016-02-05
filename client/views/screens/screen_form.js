@@ -52,8 +52,11 @@ Template.screenForm.events({
         template.find('#screen-title').value = '';
         template.find('#screen-desc').value = '';
         Session.set('screen-fsid', null);
-
-        FlowRouter.go('/screen/'+response);
+        if(Session.get('newFro')){
+          FlowRouter.go('/fro/new');
+        }else{
+          FlowRouter.go('/screen/'+response);
+        }
       }
     });
   }
