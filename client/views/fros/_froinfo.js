@@ -9,6 +9,6 @@ Template._froinfo.helpers({
   },
   heartClass: function(){
     var fro = Fros.findOne(this.froId);
-    return hrt = (fro && fro.isHearted) ? "heart" : "heart-o"; 
+    return hrt = fro.isHearted() ? "heart" : "heart-o"; 
   }
 });

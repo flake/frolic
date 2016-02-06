@@ -97,7 +97,7 @@ body{
 }
 
 .fro-item-box{
-	margin: 8px;
+	margin: 4px 8px;
 }
 
 .fro-action{
@@ -156,8 +156,13 @@ body{
 
 .frolic-stats{
 	display: inline-block !important;
-	min-width: 42%;
-	padding-left: 8px;
+	min-width: 42px;
+	vertical-align: middle;
+	/*padding-left: 8px;*/
+}
+.frolic-right{
+	float: right;
+	margin-top: 4px !important;
 }
 
 #welcome-screen{

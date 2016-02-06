@@ -68,6 +68,28 @@ Template.fro.helpers({
   }
 });
 
+Template.fro.events({
+  "click #add-comment": function(event, template){
+    console.log("Adding comment ...");
+
+    var comment = {
+      "content": template.find('#comment-text').value,
+      "froId": template.data.froId
+    };
+
+    Meteor.call("newComment", comment, function(err){
+      if(err){
+        console.log("insert comment failed. " + err);
+      }else{
+        template.find('#comment-text').value = '';
+        template.find('#comment-text').placeholder = 'Write a Comment...';
+        console.log("comment success!");
+      }
+    });
+    console.log(prettyJSON(comment));
+  }
+});
+
 // Template.frolic.rendered = function(){
 //   Session.set('tabIndex', 0);
 //   Session.set('slideIndex', 0);

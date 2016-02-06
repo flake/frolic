@@ -1,19 +1,45 @@
 FroActions = {
-  record: function(){
-    if(Meteor.isCordova){
-      console.log("capture cam initialized...");
-      navigator.device.capture.captureVideo(captureSuccess, handleFail, {limit:1, duration: 60});
-    }
+  whatsapp: function(fro){
+    var msg = 'a fro via frolic\n';
+    var img = fro.thumbSrc(); /* img */
+    var url = "http://frolicplay.com/" + fro._id; /* url */
+    var whatsUp = function(){
+      console.log('share ok');
+    };
+    var whatsFail = function(errormsg){
+      console.log(errormsg);
+    };
+    window.plugins.socialsharing.shareViaWhatsApp(msg, img, url, whatsUp, whatsFail);
   },
-  upload: function(){
-    console.log("I am upload action...");
-    if(Meteor.isCordova){
-      console.log("upload from gallery initialized...");
-      navigator.camera.getPicture(camSuccess, handleFail, {
-        // destinationType: Camera.DestinationType.FILE_URL,
-        sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-        mediaType: Camera.MediaType.VIDEO
-      });
-    }
+
+  nativeShare: function(fro){
+    // console.log("social share handle... ");
+    var msg = 'a fro via frolic\n';
+    var img = fro.thumbSrc(); /* img */
+    var url = "http://frolicplay.com/"+fro._id; /* url */
+    var whatsUp = function(){
+      console.log('share ok');
+    };
+    var whatsFail = function(errormsg){
+      console.log(errormsg);
+    };
+    window.plugins.socialsharing.share(null, null, url, whatsUp, whatsFail);
   }
+  // record: function(){
+  //   if(Meteor.isCordova){
+  //     console.log("capture cam initialized...");
+  //     navigator.device.capture.captureVideo(captureSuccess, handleFail, {limit:1, duration: 60});
+  //   }
+  // },
+  // upload: function(){
+  //   console.log("I am upload action...");
+  //   if(Meteor.isCordova){
+  //     console.log("upload from gallery initialized...");
+  //     navigator.camera.getPicture(camSuccess, handleFail, {
+  //       // destinationType: Camera.DestinationType.FILE_URL,
+  //       sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+  //       mediaType: Camera.MediaType.VIDEO
+  //     });
+  //   }
+  // }
 }

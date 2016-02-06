@@ -44,7 +44,11 @@ NewComment = React.createClass({
       <Card style={styles.commentCard}>
         <IconButton iconClassName="material-icons" style={{padding: "0"}} iconStyle={styles.iconBtn}>insert_comment</IconButton>
         <TextField hintText="Write a Comment..." id="comment-text" style={styles.commentText} multiLine={true}/>
-        <IconButton iconClassName="material-icons" id="add-comment" style={styles.addBtn} iconStyle={styles.iconBtn}>send</IconButton>
+        <IconButton
+          iconClassName="material-icons"
+          id="add-comment"
+          style={styles.addBtn}
+          iconStyle={styles.iconBtn}>send</IconButton>
       </Card>
     )
   }

@@ -1,7 +1,7 @@
 
 Template.screenProfile.helpers({
-  UserCard: function(){
-    return UserCard;
+  ProCard: function(){
+    return ProCard;
   },
   creator: function(){
     console.log("screen profile Id: " + this.screenId);

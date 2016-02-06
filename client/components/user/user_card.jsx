@@ -41,14 +41,14 @@ UserCard = React.createClass({
       },
       proItem: {
         backgroundColor: "#fff",
-        padding: "15px 48px 14px 64px"
+        padding: "15px 48px 36px 64px"
       },
       circleIcon: {
-        color: "#fff",
-        background: APP.primary,
+        color: APP.primary,
+        background: "#fff",
         border: "2px solid " + APP.primary,
         borderRadius: "24px",
-        top: "-6px",
+        top: "2px",
         left: "-6px",
         padding: "4px"
       }

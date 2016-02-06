@@ -6,6 +6,7 @@ var {
   CardTitle,
   CardActions,
   CardText,
+  Divider,
   FlatButton,
   FontIcon,
   IconButton,
@@ -33,28 +34,18 @@ FroFeed = React.createClass({
     return { };
   },
 
-  togglePlay: function(){
-    console.log("flayer clicked...");
-    // videojs(this.refs.flayer).paused() ? videojs(this.refs.flayer).play() : videojs(this.refs.flayer).pause();
-  },
+  // togglePlay: function(){
+  //   console.log("flayer clicked...");
+  //   // videojs(this.refs.flayer).paused() ? videojs(this.refs.flayer).play() : videojs(this.refs.flayer).pause();
+  // },
 
   _handleScreen: function(){
-    console.log("screen clicked...");
+    // console.log("screen clicked...");
     FlowRouter.go('/screen/' + this.props.fro.screenId);
   },
 
   _handleShare: function(){
-    console.log("social share handle... ");
-    var msg = 'Message via Apps from frolic';
-    var img = this.props.fro.thumbSrc(); /* img */
-    var url = "http://frolicplay.com/"+this.props.fro._id; /* url */
-    var whatsUp = function(){
-      console.log('share ok');
-    };
-    var whatsFail = function(errormsg){
-      console.log(errormsg);
-    };
-    window.plugins.socialsharing.share(null, null, url, whatsUp, whatsFail);
+    FroActions.nativeShare(this.props.fro);
     // var message = {
     //   subject: "Test Subject",
     //   url: "http://www.frolicplay.com",
@@ -64,16 +55,7 @@ FroFeed = React.createClass({
   },
 
   _handleWhatsApp: function(){
-    var msg = 'Message via WhatsApp from frolic';
-    var img = this.props.fro.thumbSrc(); /* img */
-    var url = "http://frolicplay.com/"+this.props.fro._id; /* url */
-    var whatsUp = function(){
-      console.log('share ok');
-    };
-    var whatsFail = function(errormsg){
-      console.log(errormsg);
-    };
-    window.plugins.socialsharing.shareViaWhatsApp(null, img, url, whatsUp, whatsFail);
+    FroActions.whatsapp(this.props.fro);
   },
 
   _handleFro: function(froId){
@@ -146,7 +128,8 @@ FroFeed = React.createClass({
       whatsAppIcon: {
         color: "#43d854 !important",
         width: "16px",
-        textAlign: "center"
+        textAlign: "center",
+        verticalAlign: "middle"
       },
       heartIcon: {
         fontSize: "24px",
@@ -223,8 +206,9 @@ FroFeed = React.createClass({
       },
       froHeart:{
         "float": "right",
-        margin:"8px",
-        marginRight: "0px"
+        marginTop: "12%",
+        // marginRight: "0px",
+        zIndex: 9
       }
 
       // titleThemed:{
@@ -279,16 +263,17 @@ FroFeed = React.createClass({
                   src={this.props.fro.screenDoc().avatar()}
                   size={27}
                   style={styles.screenAvatar} />}
-              style={styles.headerBox} >
-
-              <div style={styles.froHeart}>
-                <FontIcon
-                  className={"fa fa-" + this.props.hearted + " app-icon fro-action fro-heart"}
-                  style={styles.heartIcon} />
-              </div>
+              style={styles.headerBox}
+              onTouchTap={this._handleScreen} >
             </CardHeader>
           </div>
+          <div style={styles.froHeart}>
+            <FontIcon
+              className={"fa fa-" + this.props.hearted + " app-icon fro-action fro-heart"}
+              style={styles.heartIcon} />
+          </div>
         </CardText>
+        <Divider />
         <CardText style={styles.actionBox}>
           <div className="stat-box">
             <FontIcon

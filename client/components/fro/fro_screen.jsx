@@ -112,9 +112,9 @@ FroScreen = React.createClass({
       },
       overBtn: {
         backgroundColor: "rgba(22, 144, 219, 0.9)",
-        padding: "16px",
+        padding: "12px",
         border: "2px solid #FFF",
-        borderRadius: "6px",
+        borderRadius: "9px",
         width: "64px",
         textAlign: "center",
         position: "relative",
