@@ -21,8 +21,9 @@ SwipeSlides = React.createClass({
       muiTheme: newTheme //Manager.getMuiTheme(MUI.Styles.LightRawTheme)
     };
   },
-  getInitialState: function(){
-    return { };
+
+  componentDidUpdate: function(prevProps, prevState){
+    console.log("Swipes prevProps " + prevProps);
   },
 
   _handleChangeSlide: function(index){
@@ -63,7 +64,8 @@ SwipeSlides = React.createClass({
         <SwipeableViews
           index={this.props.index}
           onChangeIndex={this._handleChangeSlide}
-          style={styles.container}>
+          style={styles.container}
+          resistance={true}>
           {
             this.props.views.map(function(slide, index){
               return (

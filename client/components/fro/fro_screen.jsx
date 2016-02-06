@@ -98,6 +98,9 @@ FroScreen = React.createClass({
   render: function(){
     var display = this.props.play ? "none" : "block";
     var styles = {
+      froScreen: {
+        boxShadow: "0px 2px 2px rgba(22, 144, 219, 0.4)"
+      },
       froOverlay: {
         position: "absolute",
         width: "100%",
@@ -125,7 +128,7 @@ FroScreen = React.createClass({
     };
 
     return (
-      <CardMedia onTouchTap={this._handlePlayer}>
+      <CardMedia onTouchTap={this._handlePlayer} style={styles.froScreen}>
         <video
           id="fro-player"
           src={this.props.src}

@@ -9,7 +9,7 @@ var {
 
 FroInfo = React.createClass({
   PropTypes: {
-    froId: React.PropTypes.object,
+    fro: React.PropTypes.object,
     hearted: React.PropTypes.string
   },
 
@@ -44,6 +44,9 @@ FroInfo = React.createClass({
         fontSize: "16px",
         color: "#333",
         fontWeight: "600"
+      },
+      infoCard:{
+        padding: "8px"
       }
     };
 
@@ -55,27 +58,43 @@ FroInfo = React.createClass({
     var followScreen = (<IconButton iconClassName="material-icons" iconStyle={Styles.listIconRight}>screen_share</IconButton>);
 
     return (
-      <div>
-      <List subheader={this.props.fro.title} subheaderStyle={styles.froTitle}>
-        <ListItem disabled={true} style={{"padding" : "8px"}}>
-          <div className="frolic-stats">
-            <FontIcon className="fa fa-play" style={styles.fontIcon}></FontIcon><span style={{"fontSize": "16px", "marginLeft": "4px"}}>{this.props.fro.views}</span>
-          </div>
-          <div className="frolic-stats">
-            <FontIcon className={"fa fa-" + this.props.hearted } style={styles.fontIcon}></FontIcon><span style={{"fontSize": "16px"}}>{this.props.fro.hearts}</span>
-          </div>
-        </ListItem>
-        <ListItem disabled={true} leftAvatar={froAvatar} rightIconButton={followScreen}>
-          {this.props.fro.screenDoc().title}
-        </ListItem>
-        <ListItem disabled={true}>
-          {this.props.fro.description}
-        </ListItem>
-      </List>
-      <div style={{"paddingTop": "4px"}}>
-        <UserCard user={this.props.fro.owner()} />
-      </div>
-      </div>
+      <Card style={styles.infoCard}>
+        <div className="frolic-stats">
+          <FontIcon className="fa fa-play" style={styles.fontIcon}></FontIcon><span style={{"fontSize": "16px", "marginLeft": "4px"}}>{this.props.fro.views}</span>
+        </div>
+        <div className="frolic-stats">
+          <FontIcon className={"fa fa-" + this.props.hearted } style={styles.fontIcon}></FontIcon><span style={{"fontSize": "16px"}}>{this.props.fro.hearts}</span>
+        </div>
+      </Card>
+      <Card style={styles.infoCard}>
+        <cardText>
+          <div>{this.props.fro.title}</div>
+          <div>{this.props.fro.description}</div>
+        </cardText>
+      </Card>
+      <UserCard user={this.props.fro.owner()} />
     )
   }
-})
+});
+
+// <div>
+// <List subheader={this.props.fro.title} subheaderStyle={styles.froTitle}>
+//   <ListItem disabled={true} style={{"padding" : "8px"}}>
+//     <div className="frolic-stats">
+//       <FontIcon className="fa fa-play" style={styles.fontIcon}></FontIcon><span style={{"fontSize": "16px", "marginLeft": "4px"}}>{this.props.fro.views}</span>
+//     </div>
+//     <div className="frolic-stats">
+//       <FontIcon className={"fa fa-" + this.props.hearted } style={styles.fontIcon}></FontIcon><span style={{"fontSize": "16px"}}>{this.props.fro.hearts}</span>
+//     </div>
+//   </ListItem>
+//   <ListItem disabled={true} leftAvatar={froAvatar} rightIconButton={followScreen}>
+//     {this.props.fro.screenDoc().title}
+//   </ListItem>
+//   <ListItem disabled={true}>
+//     {this.props.fro.description}
+//   </ListItem>
+// </List>
+// <div style={{"paddingTop": "4px"}}>
+//   <UserCard user={this.props.fro.owner()} />
+// </div>
+// </div>

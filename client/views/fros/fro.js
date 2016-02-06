@@ -35,6 +35,7 @@ Template.fro.helpers({
   //   return parseInt(Session.get('tabIndex'));
   // },
   slideIndex: function(){
+    // console.log("parseInt(Session.get('slideIndex')) " + parseInt(Session.get('slideIndex')));
     return parseInt(Session.get('slideIndex'));
   },
   heartedClass: function(){
@@ -47,7 +48,7 @@ Template.fro.helpers({
     return [
       {'title': 'Info', 'iconClass': 'material-icons', 'maticon': 'info_outline'},
       {'title': 'Comments', 'iconClass': 'fa fa-commenting-o slidetab-ficon', 'maticon': ''},
-      {'title': 'Related', 'iconClass': 'fa fa-video-camera slidetab-ficon', 'maticon': ''}
+      {'title': 'Other', 'iconClass': 'fa fa-video-camera slidetab-ficon', 'maticon': ''}
     ]
   },
   froViews: function(){
@@ -76,7 +77,6 @@ Template.fro.onRendered(function(){
   // console.log("fro rendered...");
   Session.set('appTitle', "frolic");
   // Session.setDefault('tabIndex', 0);
-  Session.setDefault('slideIndex', 0);
 
   Tracker.autorun(function(){
     var ftindex = Session.get('slideIndex');
@@ -87,6 +87,7 @@ Template.fro.onRendered(function(){
 });
 
 Template.fro.onCreated(function(){
+  Session.set('slideIndex', 0);
   // Session.set("isPlaying", false);
   var pdata = Template.parentData(0);
   var self = this;

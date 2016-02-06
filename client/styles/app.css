@@ -22,6 +22,9 @@ body{
 .padding-8{
 	padding: 8px !important;
 }
+.pad-n-top{
+	padding: 0 8px 8px !important;
+}
 .margin-8{
 	margin: 8px !important;
 }
@@ -250,7 +253,7 @@ body{
 }
 .cover-views{
 	position: relative;
-	top: 252px;
+	top: 248px;
 	left: 0;
 	background-color: #c3d7e3;
 }

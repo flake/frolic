@@ -4,7 +4,7 @@ App.info({
   description: 'A moment of joy',
   author: 'Rajasekhar',
   website: 'www.frolicplay.com',
-  version: '0.2.1'
+  version: '0.2.2.1'
 });
 
 App.icons({
@@ -33,7 +33,7 @@ App.accessRule("file://*");
 App.accessRule("*://www.googleapis.com/*");
 App.accessRule("*://fonts.googleapis.com/*");
 App.accessRule("*://fonts.gstatic.com/*");
-App.accessRule("*://192.168.0.105:3000/*");
+App.accessRule("*://192.168.0.101:3000/*");
 App.accessRule("*://52.27.234.98/*");
 App.accessRule("*://www.frolicplay.com/*");
 // App.accessRule("http:///*");
