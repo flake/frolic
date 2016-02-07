@@ -68,16 +68,15 @@ ScreenForm = React.createClass({
       }
     });
     var ifile = event.target.files[0];
+    // var fsFile = new FS.File(ifile);
+    ifile.owner = Meteor.userId();
     console.log("handle upload file ", ifile);
-    ScreensFS.insert(ifile, function(err, fileObj){
+    ProFS.insert(ifile, function(err, fileObj){
       if(err){
-        console.log("FS Error: ScreensFS insert failed ", err);
+        console.log("FS Error: ProFS insert failed ", err);
       }else{
-        // if(Session.get('screen-fsid')){
-        //   ScreensFS.remove(Session.get('screen-fsid'));
-        // }
         Session.set(Session.get('file-context'), fileObj._id);
-        console.log("sessions " + Session.get(Session.get('file-context')));
+        // console.log("sessions " + Session.get(Session.get('file-context')));
       }
     });
   },

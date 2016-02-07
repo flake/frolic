@@ -22,9 +22,13 @@ SwipeSlides = React.createClass({
     };
   },
 
-  componentDidUpdate: function(prevProps, prevState){
-    console.log("Swipes prevProps " + prevProps);
+  getInitialState: function(){
+    return {};
   },
+
+  // componentDidUpdate: function(prevProps, prevState){
+  //   console.log("Swipes prevProps " + prevProps);
+  // },
 
   _handleChangeSlide: function(index){
     Session.set("slideIndex", index);
@@ -53,9 +57,6 @@ SwipeSlides = React.createClass({
     var styles = {
       container: {
         height: "100%"
-      },
-      slide: {
-        // height: "365px"
       }
     };
 

@@ -87,7 +87,8 @@ Signup = React.createClass({
         paddingLeft: "8%",
         verticalAlign: "middle",
         color: APP.primary,
-        textShadow: "2px 2px 2px rgba(0, 0, 0, 0.4)"
+        textShadow: "2px 2px 2px rgba(0, 0, 0, 0.4)",
+        marginTop: "8px"
       },
       facebookSignup: {
         width: "48%",

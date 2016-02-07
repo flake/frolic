@@ -15,7 +15,9 @@ Template._notify.helpers({
     },
     notify: function(){
       var notify = {
-        when: this.dateWhen()
+        _id: this._id,
+        when: this.dateWhen(),
+        read: this.read
       };
       if(this.verb === "commented"){
         notify.target = "/fro/"+this.sourceId;

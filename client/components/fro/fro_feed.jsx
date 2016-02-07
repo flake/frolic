@@ -273,7 +273,7 @@ FroFeed = React.createClass({
               style={styles.heartIcon} />
           </div>
         </CardText>
-        <Divider />
+
         <CardText style={styles.actionBox}>
           <div className="stat-box">
             <FontIcon

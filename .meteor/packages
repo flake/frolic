@@ -28,6 +28,7 @@ izzilab:material-ui
 cfs:standard-packages
 #cfs:s3
 cfs:gridfs
+cfs:graphicsmagick
 matb33:collection-hooks
 momentjs:moment
 dburles:collection-helpers

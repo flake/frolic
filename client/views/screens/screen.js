@@ -13,7 +13,6 @@ Template.screen.helpers({
     else {
       return null;
     }
-
   },
   screenIndex: function(){
     return parseInt(Session.get('slideIndex'));

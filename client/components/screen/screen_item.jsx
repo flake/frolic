@@ -15,9 +15,9 @@ ScreenItem = React.createClass({
   getDefaultProps: function(){
     return {
       screen: {
-        plays: 604,
-        fros: 234,
-        followers: 843,
+        plays: 0,
+        fros: 0,
+        followers: 0,
         cover: () => { return "/img/froscreen.png";},
         avatar: () => {return "/img/froscreen.png";}
       }

@@ -26,8 +26,17 @@ Notify = React.createClass({
     };
   },
 
+  _handleNotify: function(){
+    Meteor.call('notifyRead', this.props.notify._id, function(){});
+    FlowRouter.go(this.props.notify.target);
+  },
+
   render: function(){
+    var notifyRead = (this.props.notify.read) ? APP.themeBg : "#FFF";
     var styles = {
+      notifyItem: {
+        backgroundColor: notifyRead
+      },
       fromUser: {
         color: APP.secondary
       },
@@ -37,14 +46,12 @@ Notify = React.createClass({
     };
 
     return (
-      <Card>
+      <Card style={styles.notifyItem}>
         <ListItem
           leftAvatar={<Avatar src="/img/fravatar.jpg"/>}
           primaryText={<div style={styles.notifyMsg}><span style={styles.fromUser}>{this.props.fromUser.profile.name}</span> {this.props.notify.message} </div>}
           secondaryText={this.props.notify.when}
-          onTouchTap={()=>{
-            FlowRouter.go(this.props.notify.target);
-          }}/>
+          onTouchTap={this._handleNotify}/>
       </Card>
     )
   }

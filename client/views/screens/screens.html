@@ -1,19 +1,19 @@
 <template name="screens">
   <div class="cover-fixed">
-    {{#if Template.subscriptionsReady}}
     <div class="padding-8 app-bg">
       {{> React component=ScreensPanel}}
     </div>
-    {{else}}
-    <div>
-      {{> React component=Loading}}
-    </div>
-    {{/if}}
     <div>
       {{> React component=SlideTabs index=slideIndex tabs=slideTabs}}
     </div>
   </div>
-  <div class="cover-views">
-    {{> React component=SwipeSlides views=slideViews index=slideIndex}}
-  </div>
+  {{#if Template.subscriptionsReady}}
+    <div class="cover-views">
+      {{> React component=SwipeSlides views=slideViews index=slideIndex}}
+    </div>
+  {{else}}
+    <div>
+      {{> React component=Loading}}
+    </div>
+  {{/if}}
 </template>
