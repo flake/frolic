@@ -142,7 +142,7 @@ SideNav = React.createClass({
         color: "#ddd"
       },
       sidenavAvatar: {
-        marginTop: "8%"
+        marginTop: "12%"
       },
       proTitle: {
         fontWeight: "normal",
@@ -169,17 +169,18 @@ SideNav = React.createClass({
       <div>
         <div style={ styles.headerContainer } id="sidenav-header" onClick={this._handleSideHeader}>
           <Avatar
-            src={this.data.currentUser.picture}
-            size={48}
+            src={this.data.currentUser.avatar()}
+            size={64}
             style={styles.sidenavAvatar} />
           <div style={styles.proName}>{this.data.currentUser.profile.name}</div>
-          <div style={styles.proTitle}>{this.data.currentUser.profile.title}</div>
         </div>
       </div>
     );
   }
 })
 
+
+// <div style={styles.proTitle}>{this.data.currentUser.profile.title}</div>
 
 // <MenuItem value="0" primaryText="Home" leftIcon={<FontIcon className="fa fa-home snav-icon" />} onTouchTap={this.menuChange} />
 // <MenuItem value="1" primaryText="Screens" leftIcon={<FontIcon className="fa fa-film snav-icon" />} onTouchTap={this.menuChange} />

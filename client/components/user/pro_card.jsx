@@ -41,6 +41,7 @@ ProCard = React.createClass({
   },
 
   render: function(){
+    var userVisi = (this.props.user._id === Meteor.userId) ? "hidden" : "visible";
 
     var styles = {
       avatar: {
@@ -61,7 +62,8 @@ ProCard = React.createClass({
         width: "80px",
         margin: "8px 0",
         borderRadius: "27px",
-        backgroundColor: APP.primary
+        backgroundColor: APP.primary,
+        visibility: userVisi
       },
       proConnIcon: {
         fontSize: "18px",
@@ -95,7 +97,7 @@ ProCard = React.createClass({
         style={styles.proCard}
         onTouchTap={this._handleUser}>
         <Avatar
-          src={""+this.props.user.avatar}
+          src={""+this.props.user.avatar()}
           size={56}
           style={styles.avatar}
         />

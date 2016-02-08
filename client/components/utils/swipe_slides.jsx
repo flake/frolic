@@ -53,6 +53,10 @@ SwipeSlides = React.createClass({
     }
   },
 
+  componentDidMount: function(){
+    FroActions.renderSwipes();
+  },
+
   render: function(){
     var styles = {
       container: {

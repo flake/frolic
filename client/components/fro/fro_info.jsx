@@ -63,7 +63,8 @@ FroInfo = React.createClass({
       froDesc: {
         fontSize: "12px",
         color: "#666",
-        fontWeight: "500"
+        fontWeight: "500",
+        minHeight: "32px"
       },
       infoCard:{
         padding: "8px",
@@ -180,10 +181,10 @@ FroInfo = React.createClass({
           </cardText>
         </Card>
         <div>
-          <div className="frolic-stats">
+          <div className="fro-inline">
             <ScreenItem screen={this.props.fro.screenDoc()} />
           </div>
-          <div className="frolic-stats procard-litem" style={{"marginLeft":"5px !important"}}>
+          <div className="fro-inline procard-litem" style={{"marginLeft":"5px !important"}}>
             <ProCard user={this.props.fro.owner()} />
           </div>
         </div>

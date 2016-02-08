@@ -27,8 +27,7 @@ CommentItem = React.createClass({
     var styles = {
       commentBox: {
         padding: "8px",
-        height: "100%",
-        marginBottom: "6px"
+        height: "100%"
       },
       titleStyle: {
         fontSize: "14px",
@@ -42,7 +41,7 @@ CommentItem = React.createClass({
       container:{
         display: "inline-block",
         verticalAlign: "top",
-        width: "calc(100% - 40px)"
+        width: "calc(100% - 42px)"
       },
       commentText:{
         marginLeft: "8px",
@@ -52,7 +51,9 @@ CommentItem = React.createClass({
 
     return (
       <Card style={styles.commentBox} >
-        <Avatar backgroundColor={APP.themeGrey} style={Styles.froAvatar}>A</Avatar>
+        <Avatar
+          src={this.props.comment.author().avatar()}
+          style={Styles.froAvatar} />
         <div style={styles.container}>
           <span style={styles.titleStyle}>{this.props.comment.author().profile.name}</span>
           <span style={styles.commentText}>{this.props.comment.content}</span>

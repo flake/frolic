@@ -31,14 +31,46 @@ ProHead = React.createClass({
     return { }
   },
 
+  _handleAvatar: function(){
+    if(this.props.user._id !== Meteor.userId())
+      return;
+
+    ReactDOM.findDOMNode(this.refs.fileUpload).click();
+  },
+
+  _handleUpload: function(event){
+    if(this.props.user._id !== Meteor.userId())
+      return;
+
+    var self = this;
+    var ifile = event.target.files[0];
+    ifile.owner = Meteor.userId();
+
+    readURL(event.target, function(result){
+      ProFS.insert(ifile, function(err, fileObj){
+        if(err){
+          console.log("ProFS failed " + err);
+        }else{
+          Meteor.call("userAvatar", fileObj._id, function(){});
+        }
+      });
+    });
+  },
+
+  componentDidMount: function(){
+    FroActions.renderSwipes();
+  },
+
   render: function(){
+    var circleVisi = (this.props.user._id === Meteor.userId()) ? "none": "block";
 
     var styles = {
       proHead: {
-        height: $(window).width() * 2/3,
+        // height: $(window).width() * 2/3,
         width: $(window).width(),
         backgroundColor: APP.primary,
-        textAlign: "center"
+        textAlign: "center",
+        paddingBottom: "8px"
       },
       avatar: {
         marginTop: "6%",
@@ -92,9 +124,10 @@ ProHead = React.createClass({
     return (
       <Card style={styles.proHead}>
         <Avatar
-          src={this.props.user.avatar}
+          src={this.props.user.avatar()}
           size={64}
           style={styles.avatar}
+          onTouchTap={this._handleAvatar}
         />);
         <CardText style={styles.proText}>
           <div style={styles.proName}>
@@ -108,7 +141,7 @@ ProHead = React.createClass({
 
           <div className="pro-stats">
             <div style={styles.proName}>
-              436
+              {this.props.user.profile.plays}
             </div>
             <div style={styles.proLine}>
               <i className="fa fa-play" ></i>&nbsp;&nbsp;plays
@@ -116,7 +149,7 @@ ProHead = React.createClass({
           </div>
           <div className="pro-stats">
             <div style={styles.proName}>
-              136
+              {this.props.user.profile.screens}
             </div>
             <div style={styles.proLine}>
               <i className="fa fa-film" ></i>&nbsp;&nbsp;screens
@@ -124,14 +157,14 @@ ProHead = React.createClass({
           </div>
           <div className="pro-stats">
             <div style={styles.proName}>
-              836
+              {this.props.user.profile.circles}
             </div>
             <div style={styles.proLine}>
               <i className="fa fa-circle-o" ></i>&nbsp;&nbsp;circles
             </div>
           </div>
         </CardText>
-        <CardActions>
+        <CardActions style={{"display": circleVisi}}>
           <FlatButton
             secondary={true}
             label="Circle"
@@ -155,7 +188,23 @@ ProHead = React.createClass({
               className="fa fa-envelope" />
             </FlatButton>
         </CardActions>
+        <input
+          ref="fileUpload"
+          type="file"
+          style={{"display": "none"}}
+          onChange={this._handleUpload} />
       </Card>
     )
   }
 });
+
+
+// setTimeout(function(){
+  // var proFS = ProFS.findOne(fileObj._id);
+  // var fsUrl =  proFS.url();
+  // console.log("profile url " + fsUrl);
+  // var aurl = (proFS) ? proFS.url() : "/img/default_user.png";
+  // console.log("avatar url " + aurl);
+  // Meteor.call("userAvatar", fileObj._id, function(){});
+  // Dialogs.alert("upload success!");
+// }, 100);

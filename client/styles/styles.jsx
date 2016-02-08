@@ -15,7 +15,7 @@ Styles = {
     height: "32px",
     lineHeight: "32px",
     marginRight: "8px",
-    borderRadius: "3px"
+    borderRadius: "24px"
   },
   bigAvatar: {
     width: "56px",

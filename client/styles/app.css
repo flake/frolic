@@ -28,6 +28,9 @@ body{
 .margin-8{
 	margin: 8px !important;
 }
+.margin-fro{
+	margin: 4px 8px !important;
+}
 
 .fixed-nav-bar{
 	position: fixed;
@@ -173,7 +176,10 @@ body{
 	/*border-bottom: 2px solid #fff;*/
   /*padding-bottom: 6px;*/
 }
-
+.fro-inline{
+	display: inline-block !important;
+	vertical-align: top;
+}
 .frolic-stats{
 	display: inline-block !important;
 	min-width: 42px;
@@ -315,7 +321,7 @@ body{
 	margin: 0 16px;
 }
 .demo-temp{
-	height: 400px;
+	height: 100px;
 	widht: 100%;
 }
 .screen-stats{

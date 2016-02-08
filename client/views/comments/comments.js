@@ -5,7 +5,7 @@ Template.comments.helpers({
     return Comments.find({froId: this.froId});
   },
   empty: function(){
-    return Comments.findOne({froId: this.froId}) ? "false" : true;
+    return Comments.findOne({froId: this.froId}) ? false : true;
   }
 });
 

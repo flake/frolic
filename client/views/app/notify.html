@@ -1,7 +1,13 @@
 <template name="notify">
-  {{#each notifys}}
-    {{> _notify}}
-  {{/each}}
+  {{#if notifys.count}}
+    {{#each notifys}}
+      {{> _notify}}
+    {{/each}}
+  {{else}}
+    <div class="empty-view">
+      <i class="fa fa-bell"></i>
+    </div>
+  {{/if}}
 </template>
 
 <template name="_notify">

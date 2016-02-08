@@ -24,7 +24,13 @@ FroActions = {
       console.log(errormsg);
     };
     window.plugins.socialsharing.share(null, null, url, whatsUp, whatsFail);
+  },
+
+  renderSwipes: function(){
+    var vtop = $('.cover-fixed').height();
+    $('.cover-views').css("top", vtop);
   }
+
   // record: function(){
   //   if(Meteor.isCordova){
   //     console.log("capture cam initialized...");
