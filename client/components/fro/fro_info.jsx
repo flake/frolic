@@ -179,11 +179,11 @@ FroInfo = React.createClass({
             </div>
           </cardText>
         </Card>
-        <div className="frolic-stats">
-          <ScreenItem screen={this.props.fro.screenDoc()} />
-        </div>
         <div>
-          <div className="procard-litem" style={{"marginTop": "4px"}}>
+          <div className="frolic-stats">
+            <ScreenItem screen={this.props.fro.screenDoc()} />
+          </div>
+          <div className="frolic-stats procard-litem" style={{"marginLeft":"5px !important"}}>
             <ProCard user={this.props.fro.owner()} />
           </div>
         </div>

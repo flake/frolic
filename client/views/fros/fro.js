@@ -6,6 +6,9 @@ Template.fro.helpers({
   NewComment: function(){
     return NewComment;
   },
+  // Swipeables: function(){
+  //   return Swipeables;
+  // },
   SwipeSlides: function(){
     return SwipeSlides;
   },

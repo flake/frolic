@@ -6,6 +6,15 @@
         {{> _comment}}
       {{/each}}
     </div>
+    {{#if empty}}
+      {{> emptyIcon}}
+    {{/if}}
     <!-- </div>
   </div> -->
+</template>
+
+<template name="emptyIcon">
+  <div class="empty-view">
+    <i class="fa fa-commenting-o"></i>
+  </div>
 </template>

@@ -134,13 +134,33 @@ body{
 	padding: 0 !important;
 }*/
 
+.empty-view {
+  color: #9CACB5;
+  background-color: #C3D7E3;
+  text-align: center;
+  padding: 32px 0;
+  position: relative;
+  top: 36px;
+  left: 25%;
+  width: 50%;
+  border: 1px solid;
+  border-color: #C3D7E3 #C3D7E3 #C3D7E3;
+  font-weight: bold;
+  font-size: 16px;
+}
+.empty-view > i {
+	display: block;
+	margin: 0 auto 12px auto;
+	font-size: 60px;
+}
+
 /* Vertical Scroll Setup */
 .vscroll-holder{
 	overflow-y: scroll;
 	width: 100%;
 }
 .vscroll-container{
-	padding-bottom: 96px;
+	/*padding-bottom: 96px;*/
 }
 .nav-tabs{
 	color: #142E3D !important; /* 1D3747 072A40 */

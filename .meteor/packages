@@ -35,7 +35,6 @@ dburles:collection-helpers
 natestrauser:videojs
 meteorhacks:npm
 
-npm-container
 cosmos:browserify
 thereactivestack:blazetoreact
 
@@ -49,3 +48,9 @@ service-configuration
 hedcet:cordova-google-plus-native-sign-in
 webapp
 browser-policy
+mrt:smart-publish
+
+
+
+
+npm-container

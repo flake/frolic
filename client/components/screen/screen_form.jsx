@@ -57,28 +57,42 @@ ScreenForm = React.createClass({
 
   _handleUpload: function(event){
     var self = this;
+    var ifile = event.target.files[0];
+    ifile.owner = Meteor.userId();
+
     readURL(event.target, function(result){
       if(Session.get('file-context') === 'screen-fsid'){
         console.log("setting cover...");
         self.setState({cover: result});
+
+        ScreensFS.insert(ifile, function(err, fileObj){
+          if(err){
+            console.log("FS Error: ScreenFS insert failed ", err);
+            Dialogs.alert(err);
+          }else{
+            Session.set(Session.get('file-context'), fileObj._id);
+          }
+        });
       }
       if(Session.get('file-context') === 'avatar-fsid'){
         console.log("setting avatar...");
         self.setState({avatar: result});
+
+        ProFS.insert(ifile, function(err, fileObj){
+          if(err){
+            console.log("FS Error: ProFS insert failed ", err);
+          }else{
+            Session.set(Session.get('file-context'), fileObj._id);
+          }
+        });
       }
+      Dialogs.alert("upload success!");
     });
-    var ifile = event.target.files[0];
+
     // var fsFile = new FS.File(ifile);
-    ifile.owner = Meteor.userId();
-    console.log("handle upload file ", ifile);
-    ProFS.insert(ifile, function(err, fileObj){
-      if(err){
-        console.log("FS Error: ProFS insert failed ", err);
-      }else{
-        Session.set(Session.get('file-context'), fileObj._id);
-        // console.log("sessions " + Session.get(Session.get('file-context')));
-      }
-    });
+
+    // console.log("handle upload file ", ifile);
+
   },
 
   _handleTitleChange: function(event){

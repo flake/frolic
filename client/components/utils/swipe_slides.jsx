@@ -1,9 +1,9 @@
-const VScroll = BlazeToReact('vscroll');
+var VScroll = BlazeToReact('vscroll');
 
 SwipeSlides = React.createClass({
   propTypes: {
     index: React.PropTypes.number,
-    views: React.PropTypes.array
+    views: React.PropTypes.arrayOf(React.PropTypes.object)
   },
   getDefaultProps: function(){
     return {
@@ -19,18 +19,18 @@ SwipeSlides = React.createClass({
   getChildContext: function(){
     return {
       muiTheme: newTheme //Manager.getMuiTheme(MUI.Styles.LightRawTheme)
-    };
+    }
   },
 
-  getInitialState: function(){
-    return {};
-  },
+  // getInitialState: function(){
+  //   return {};
+  // },
 
   // componentDidUpdate: function(prevProps, prevState){
   //   console.log("Swipes prevProps " + prevProps);
   // },
 
-  _handleChangeSlide: function(index){
+  _handleChangeSlide: function(index, fromIndex){
     Session.set("slideIndex", index);
 
     var stabs = $('.sliding-tab');
@@ -60,24 +60,25 @@ SwipeSlides = React.createClass({
       }
     };
 
+    // style={styles.container}
+
     return (
       <div>
-        <SwipeableViews
-          index={this.props.index}
-          onChangeIndex={this._handleChangeSlide}
-          style={styles.container}
-          resistance={true}>
+        <ReactSwipe
+          slideToIndex={this.props.index}
+          continuous={false}
+          callback={this._handleChangeSlide} >
           {
             this.props.views.map(function(slide, index){
               return (
                 <div style={styles.slide} className="tab-slides" key={index}>
                   <VScroll page={slide.template} data={slide.data} />
                 </div>
-              )
+              );
             })
           }
-        </SwipeableViews>
+        </ReactSwipe>
       </div>
-    )
+    );
   }
 });

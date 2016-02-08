@@ -22,3 +22,11 @@ Template.froList.helpers({
     return Fros.find(froQuery);
   }
 });
+
+// Template.froList.onCreated(function(){
+//   var pdata = Template.parentDate(0);
+//   var self = this;
+//   self.autorun(function(){
+//     self.subscribe("")
+//   });
+// });

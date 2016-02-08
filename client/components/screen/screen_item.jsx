@@ -62,7 +62,9 @@ ScreenItem = React.createClass({
   },
 
   render: function(){
-    var mediaHeight = $(window).width() * 3/4;
+    var wid = $(window).width();
+    var mediaWidth = wid * 1/2;
+    var mediaHeight = wid * 3/4;
 
     var styles = {
       screenMedia: {
@@ -95,7 +97,7 @@ ScreenItem = React.createClass({
         whiteSpace: "nowrap"
       },
       screenImg: {
-        height: $(window).width() * (96/360)
+        height: $(window).width() * (80/360)
       },
       cardStats:{
         padding: "4px 8px"
@@ -171,7 +173,7 @@ ScreenItem = React.createClass({
 
 
     return (
-      <Card onTouchTap={this._handleScreen}>
+      <Card onTouchTap={this._handleScreen} style={{"maxWidth": "168px"}}>
         <CardMedia
           overlay={screenOverlay}
           overlayContentStyle={styles.screenOverlay} >
