@@ -5,7 +5,7 @@ Template.welcome.helpers({
   }
 });
 
-Template.name.events({
+Template.welcome.events({
   "click #foo": function(event, template){
 
   }

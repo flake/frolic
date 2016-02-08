@@ -132,9 +132,13 @@ passed.route('/help', {});
 passed.route('/logout', {
   name: 'logout',
   action: function(){
-    Meteor.logout(function(){
-      FlowRouter.go(FlowRouter.path('home'));
-    });
+    window.plugins.googleplus.logout(
+       function(msg) {
+           Meteor.logout();
+           FlowRouter.go(FlowRouter.path('home'));
+          //  alert(msg); // do something useful instead of alerting
+       }
+   );
   }
 });
 
