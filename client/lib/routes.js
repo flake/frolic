@@ -107,7 +107,12 @@ passed.route('/profile/:userId', {
 passed.route('/circles', {});
 passed.route('/messages', {});
 passed.route('/settings', {});
-passed.route('/feedback', {});
+passed.route('/feedback', {
+  name: 'feedback',
+  action: function(){
+    BlazeLayout.render('appLayout', {content: "feedback"});
+  }
+});
 passed.route('/help', {});
 
 passed.route('/logout', {
