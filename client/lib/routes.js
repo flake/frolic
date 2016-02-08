@@ -28,36 +28,36 @@ passed = FlowRouter.group({
   }]
 });
 
-FlowRouter.route('/', {
+// FlowRouter.route('/', {
+//   name: 'home',
+//   action: function(){
+//     if(!Meteor.user() && !Meteor.loggingIn()){
+//       BlazeLayout.render('welcomeLayout', {content: 'signup'});
+//     }else{
+//       // var params = { navicons : navIcons };
+//       BlazeLayout.render('appLayout', {content: 'home'});
+//     }
+//   }
+// });
+
+passed.route('/', {
   name: 'home',
   action: function(){
-    if(!Meteor.user() && !Meteor.loggingIn()){
-      BlazeLayout.render('welcomeLayout', {content: 'signup'});
-    }else{
-      // var params = { navicons : navIcons };
-      BlazeLayout.render('appLayout', {content: 'home'});
-    }
+    BlazeLayout.render('appLayout', {content: 'home'});
   }
 });
 
 welcome.route('/login', {
   name: 'login',
   action: function(){
-    BlazeLayout.render('welcomeLayout', {content: 'signin'});
+    BlazeLayout.render('welcomeLayout', {content: 'welcome'});
   }
 });
 
-passed.route('/notify', {
-  name: 'notify',
+welcome.route('/signup', {
+  name: 'signup',
   action: function(){
-    BlazeLayout.render('appLayout', {content: 'notify'});
-  }
-});
-
-passed.route('/fro/new', {
-  name: 'fornew',
-  action: function(){
-    BlazeLayout.render('appLayout', {content: 'froNew'});
+    BlazeLayout.render('welcomeLayout', {content: 'signup'});
   }
 });
 
@@ -72,6 +72,20 @@ welcome.route('/fro/:froId', {
     // Session.set("navIcons", navIcons);
     // params.navicons = navIcons;
     BlazeLayout.render('appLayout', {content: 'fro', params: params});
+  }
+});
+
+passed.route('/notify', {
+  name: 'notify',
+  action: function(){
+    BlazeLayout.render('appLayout', {content: 'notify'});
+  }
+});
+
+passed.route('/fro/new', {
+  name: 'fornew',
+  action: function(){
+    BlazeLayout.render('appLayout', {content: 'froNew'});
   }
 });
 
@@ -119,7 +133,7 @@ passed.route('/logout', {
   name: 'logout',
   action: function(){
     Meteor.logout(function(){
-      FlowRouter.go(FlowRouter.path('login'));
+      FlowRouter.go(FlowRouter.path('home'));
     });
   }
 });

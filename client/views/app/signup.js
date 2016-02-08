@@ -1,14 +1,5 @@
 
 Template.signup.helpers({
-  create: function(){
-
-  },
-  rendered: function(){
-
-  },
-  destroyed: function(){
-
-  },
   Signup: function(){
     return Signup;
   },

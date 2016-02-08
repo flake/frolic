@@ -3,6 +3,7 @@
 APP = {
   primary: "#1690DB",
   secondary: "#48A1D9",
+  paper: "#24242B",
   themeGrey: "#A3C3D6",
   themeBg: "#C3D7E3",
   themeLite: "#D4EEFF",

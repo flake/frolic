@@ -13,19 +13,25 @@ LoginBtn = React.createClass({
   },
 
   _handleLogin : function(){
-    console.log("login... ");
-    FlowRouter.go('/login');
+    // console.log("login... ");
+    FlowRouter.go('/signup');
   },
 
   render: function(){
+    var styles = {
+      signLabel: {
+        color: "#fff",
+        textShadow: "2px 2px 2px rgba(0, 0, 0, 0.4)"
+      }
+    };
 
     return (
       <div>
         <FlatButton
-          label="Login"
+          label="Signup"
           onClick={this._handleLogin}
           style={{backgroundColor: APP.primary}}
-          labelStyle={{color: "#fff"}}
+          labelStyle={styles.signLabel}
         />
       </div>
     )

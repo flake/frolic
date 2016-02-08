@@ -198,11 +198,11 @@ body{
 }
 #welcome-logo{
 	position: relative;
-	width: 256px;
+	width: 192px;
 }
 #welcome-inset{
 	position: absolute;
-	top: 94px;
+	top: 72px;
 	left: 36px;
 	width: 90%;
 	text-align: center;
@@ -210,10 +210,10 @@ body{
 }
 #welcome-title{
 	font-weight: 600;
-	font-size: 40px;
+	font-size: 32px;
 }
 #welcome-tagline{
-	font-size: 14px;
+	font-size: 11px;
 }
 
 #login-btn{

@@ -1,6 +1,13 @@
-var {Card, CardText, TextField, RaisedButton, FontIcon, FlatButton} = MUI;
+var {
+  Card,
+  CardText,
+  TextField,
+  RaisedButton,
+  FontIcon,
+  FlatButton
+} = MUI;
 
-Signup = React.createClass({
+Welcome = React.createClass({
 
   //IMPORTANT SET CHILD CONTEXT
   childContextTypes: {
@@ -38,39 +45,17 @@ Signup = React.createClass({
   },
 
   handleSubmit: function(event){
-    var fullname = this.refs.fullname.getValue();
-    var email = this.refs.emailphn.getValue();
+    var email = this.refs.email.getValue();
     var password = this.refs.password.getValue();
-
-    var userId = Accounts.createUser({
-      email: email,
-      password: password,
-      profile: {name: fullname}
-    }, function(error){
+    Meteor.loginWithPassword(email, password, function(error){
       if(error){
-        console.log("Error Signup " + error.error);
-        if(error.error === "email"){
-          console.log("Error email " +error.reason);
-          Dialogs.alert("Email " + error.reason);
-        }
+        console.log("login error ", error);
       }else{
-        //send verification
-        console.log("Signup success");
+        console.log("login success " + Meteor.userId());
         FlowRouter.go('/');
-        FlowRouter.reload();
+        // FlowRouter.reload();
       }
-    });
-
-    // Meteor.call("newUser", email, password, {fullname: fullname}, function(error, result){
-    //   if(error){
-    //     console.log("new user error ", error);
-    //   }
-    //   if(result){
-    //      console.log("new user result ", result);
-    //      FlowRouter.go('/');
-    //      FlowRouter.reload();
-    //   }
-    // });
+    })
   },
 
   render: function(){
@@ -91,7 +76,7 @@ Signup = React.createClass({
         marginTop: "8px"
       },
       facebookSignup: {
-        width: "48%",
+        width: "48.4%",
         backgroundImage: "linear-gradient(#2953ad, #234ca2)",
         color: "#fff",
         borderRadius: "2px",
@@ -122,16 +107,11 @@ Signup = React.createClass({
         paddingLeft: "8%",
         verticalAlign: "middle"
       },
-      signinMsg: {
+      signupMsg: {
         fontSize: "11px",
         color: APP.paper,
         display: "inline-block",
         verticalAlign: "middle"
-      },
-      loginBtn: {
-        textTransform: "uppercase",
-        color: "#fff",
-        textShadow: "2px 2px 2px rgba(0, 0, 0, 0.4)"
       }
     };
 
@@ -140,21 +120,13 @@ Signup = React.createClass({
         <CardText style={{backgroundColor: APP.primary}}>
           <form>
             <TextField
-              hintText="Full name"
+              hintText="Email"
               fullWidth={true}
               inputStyle={{"color": "#fff"}}
               hintStyle={{"color": "rgba(255, 255, 255, 0.4)"}}
               underlineStyle={{"borderColor": "rgba(255, 255, 255, 0.4)"}}
               underlineFocusStyle={{"borderColor": "#f9f9f9"}}
-              ref="fullname"/>
-            <TextField
-              hintText="Email or Phone"
-              fullWidth={true}
-              inputStyle={{"color": "#fff"}}
-              hintStyle={{"color": "rgba(255, 255, 255, 0.4)"}}
-              underlineStyle={{"borderColor": "rgba(255, 255, 255, 0.4)"}}
-              underlineFocusStyle={{"borderColor": "#f9f9f9"}}
-              ref="emailphn"/>
+              ref="email"/>
             <TextField
               hintText="Password"
               type="password"
@@ -165,7 +137,7 @@ Signup = React.createClass({
               underlineFocusStyle={{"borderColor": "#f9f9f9"}}
               ref="password"/>
             <RaisedButton
-              label="Sign Up"
+              label="Login"
               labelStyle={styles.emailLabel}
               fullWidth={true}
               style={styles.emailSignup}
@@ -196,32 +168,9 @@ Signup = React.createClass({
           </FlatButton>
         </CardText>
         <CardText style={{"textAlign": "right"}}>
-          <span style={styles.singinMsg}>Have an account?  </span><span style={styles.loginBtn} onTouchTap={() => {FlowRouter.go('/');}}>Login</span>
+          <span style={styles.singupMsg}>Create an account? </span><LoginBtn style={{"display": "inline-block"}}/>
         </CardText>
       </div>
     );
   }
 });
-
-
-// <FlatButton
-//   label="Twitter"
-//   labelStyle={styles.labelStyle}
-//   labelPosition="after"
-//   secondary={true}
-//   fullWidth={true}
-//   style={styles.twitterSignup}
-//   onClick={this.handleTwitter} >
-//   <FontIcon className="fa fa-twitter" style={Styles.connectIcon} />
-// </FlatButton>
-
-// <FlatButton
-//   label="Sign up with Email"
-//   labelStyle={styles.labelStyle}
-//   labelPosition="after"
-//   secondary={true}
-//   fullWidth={true}
-//   style={styles.emailSignup}
-//   onClick={this.handleEmail} >
-//   <FontIcon className="fa fa-envelope" style={Styles.connectIcon} />
-// </FlatButton>
