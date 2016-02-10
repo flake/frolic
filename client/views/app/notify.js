@@ -27,6 +27,10 @@ Template._notify.helpers({
         notify.target = "/fro/"+this.sourceId;
         notify.message = "hearted your fro";
       }
+      if(this.verb === "followed"){
+        notify.target = "/screen/"+this.sourceId,
+        notify.message = "followed your screen"
+      }
       return notify;
     }
 });

@@ -65,7 +65,6 @@ Template.froNew.events({
 
     // console.log("fro obj: " + prettyJSON(fro));
     FlowRouter.go("/loading");
-
     Meteor.call('addFro', fro, function(error, froId){
       if(error){
         console.log("ERROR: addFro - "+error.message);

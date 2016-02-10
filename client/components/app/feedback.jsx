@@ -15,6 +15,23 @@ Feedback = React.createClass({
     };
   },
 
+  _handleFeedback: function(){
+    var msg = this.refs.feedmsg.getValue();
+    var data = {
+      message: msg
+    };
+
+    Meteor.call("feedback", data, function(error){
+      console.log("feedback callback ");
+      if(error){
+        console.log("feedback error " + error);
+      }else{
+        Dialogs.alert("_/\\_ Thank You :)");
+        FlowRouter.go("/");
+      }
+    });
+  },
+
   render: function(){
     var styles = {
       feedBox: {
@@ -33,13 +50,13 @@ Feedback = React.createClass({
           multiLine={true}
           rows={6}
           fullWidth={true}
-          id="fro-feedmsg" />
+          ref="feedmsg" />
 
         <RaisedButton
           label="Send"
           secondary={true}
           style={styles.boxBtn}
-          id="fro-feedsend" />
+          onTouchTap={this._handleFeedback} />
       </Card>
     )
   }

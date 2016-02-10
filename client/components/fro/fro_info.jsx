@@ -181,7 +181,7 @@ FroInfo = React.createClass({
           </cardText>
         </Card>
         <div>
-          <div className="fro-inline">
+          <div className="fromini">
             <ScreenItem screen={this.props.fro.screenDoc()} />
           </div>
           <div className="fro-inline procard-litem" style={{"marginLeft":"5px !important"}}>

@@ -26,7 +26,9 @@ Template.froList.helpers({
 // Template.froList.onCreated(function(){
 //   var pdata = Template.parentDate(0);
 //   var self = this;
-//   self.autorun(function(){
-//     self.subscribe("")
-//   });
+//   if(pdata.context === 'hearted_fros'){
+//     self.autorun(function(){
+//       self.subscribe("hfro_fs", pdata.userId);
+//     });
+//   }
 // });

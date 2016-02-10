@@ -5,17 +5,20 @@ Template.feedback.helpers({
 });
 
 Template.feedback.events({
-  'click #fro-feedsend': function(event, template){
-    var msg = template.find('#fro-feedmsg');
-    var data = {
-      message: msg
-    };
-    Meteor.call("feedback", data, function(error){
-      if(!error){
-        Dialogs.alert("_/\_ Thank You :)");
-      }
-    });
-  }
+  // 'click #fro-feedsend': function(event, template){
+  //   var msg = template.find('#fro-feedmsg');
+  //   var data = {
+  //     message: msg
+  //   };
+  //   Meteor.call("feedback", data, function(error){
+  //     console.log("feedback callback ");
+  //     if(error){
+  //       console.log("feedback error " + error);
+  //     }else{
+  //       Dialogs.alert("_/\_ Thank You :)");
+  //     }
+  //   });
+  // }
 });
 
 Template.feedback.onCreated(function(){

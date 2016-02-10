@@ -51,6 +51,7 @@ ProHead = React.createClass({
         if(err){
           console.log("ProFS failed " + err);
         }else{
+          console.log("ProFS success " + fileObj._id);
           Meteor.call("userAvatar", fileObj._id, function(){});
         }
       });

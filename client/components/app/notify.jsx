@@ -48,7 +48,11 @@ Notify = React.createClass({
     return (
       <Card style={styles.notifyItem}>
         <ListItem
-          leftAvatar={<Avatar src="/img/fravatar.jpg"/>}
+          leftAvatar={
+            <Avatar
+              src={this.props.fromUser.avatar()}
+              size={48}/>
+          }
           primaryText={<div style={styles.notifyMsg}><span style={styles.fromUser}>{this.props.fromUser.profile.name}</span> {this.props.notify.message} </div>}
           secondaryText={this.props.notify.when}
           onTouchTap={this._handleNotify}/>
