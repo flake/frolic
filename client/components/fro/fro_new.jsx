@@ -81,39 +81,44 @@ FroNew = React.createClass({
 
     return (
       <div>
-        <div style={styles.actionBar}>
-          <TextField
-            hintText="Title"
-            floatingLabelText="Title"
-            fullWidth={true}
-            id="fro-title" />
-          <TextField
-            hintText="Description"
-            floatingLabelText="Description"
-            fullWidth={true}
-            id="fro-desc" />
-          <DropDownMenu
-            maxHeight={200}
-            autoWidth={false}
-            value={this.state.value}
-            onChange={this._handleScreens}
-            style={styles.screensMenu}>
-            {
-              this.props.screens.map(function(screen, i){
-                return <MenuItem value={screen._id} key={i} primaryText={screen.title} />
-              })
-            }
-            <MenuItem value={0} key={this.props.screens.length} primaryText="New Screen" />
-          </DropDownMenu>
+        <form id="fro-new-form" class="validate">
+          <div style={styles.actionBar}>
+            <TextField
+              hintText="Title"
+              floatingLabelText="Title"
+              fullWidth={true}
+              id="fro-title"
+              data-onblur
+              data-alphanumeric
+              data-msg="Title can only have [A-Z] [0-9] characters" />
+            <TextField
+              hintText="Description"
+              floatingLabelText="Description"
+              fullWidth={true}
+              id="fro-desc" />
+            <DropDownMenu
+              maxHeight={200}
+              autoWidth={false}
+              value={this.state.value}
+              onChange={this._handleScreens}
+              style={styles.screensMenu}>
+              {
+                this.props.screens.map(function(screen, i){
+                  return <MenuItem value={screen._id} key={i} primaryText={screen.title} />
+                })
+              }
+              <MenuItem value={0} key={this.props.screens.length} primaryText="New Screen" />
+            </DropDownMenu>
 
-          <RaisedButton
-            label="Publish"
-            secondary={true}
-            style={styles.boxBtn}
-            className="frolic-upload"
-            id="frolic-publish" />
-          <input type="hidden" value={this.state.value} id="fro-screen" />
-        </div>
+            <RaisedButton
+              label="Publish"
+              secondary={true}
+              style={styles.boxBtn}
+              className="frolic-upload"
+              id="frolic-publish" />
+            <input type="hidden" value={this.state.value} id="fro-screen" />
+          </div>
+        </form>
       </div>
     )
   }

@@ -20,6 +20,7 @@ pathSuccess = function(filepath){
 froSuccess = function(froRes){
   Session.set('newFro', '');
   Session.set('newThumb', '');
+  FlowRouter.go('/loading');
   if(froRes.froPath){
     window.resolveLocalFileSystemURL("file://"+froRes.froPath, froReady, handleFail);
     console.log("FroTrans success - froPath: ", froRes.froPath);

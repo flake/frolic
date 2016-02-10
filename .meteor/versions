@@ -56,9 +56,9 @@ ejson@1.0.7
 email@1.0.8
 es5-shim@4.1.14
 fastclick@1.0.7
+flake:login-cordova-google@0.1.1
 fortawesome:fontawesome@4.5.0
 geojson-utils@1.0.4
-hedcet:cordova-google-plus-native-sign-in@1.1.0
 hot-code-push@1.0.0
 html-tools@1.0.5
 htmljs@1.0.5
@@ -113,6 +113,7 @@ routepolicy@1.0.6
 service-configuration@1.0.5
 session@1.1.1
 sha@1.0.4
+skinnygeek1010:validate-form@0.4.0
 spacebars@1.0.7
 spacebars-compiler@1.0.7
 srp@1.0.4

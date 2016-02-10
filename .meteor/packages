@@ -20,8 +20,11 @@ react
 react-template-helper
 kadira:flow-router
 kadira:blaze-layout
+
 accounts-password
+flake:login-cordova-google
 #accounts-facebook
+
 aldeed:collection2
 fortawesome:fontawesome
 izzilab:material-ui
@@ -45,7 +48,7 @@ hybrid:dialogs
 service-configuration
 #meteorhacks:kadira
 #particle4dev:cordova-fb
-hedcet:cordova-google-plus-native-sign-in
+#hedcet:cordova-google-plus-native-sign-in
 webapp
 browser-policy
 mrt:smart-publish
@@ -54,3 +57,4 @@ mrt:smart-publish
 
 
 npm-container
+skinnygeek1010:validate-form

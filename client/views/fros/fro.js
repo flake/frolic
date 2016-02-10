@@ -117,10 +117,12 @@ Template.fro.onCreated(function(){
   var pdata = Template.parentData(0);
   var self = this;
   console.log("fro on-created _id: "+pdata.froId);
-  self.autorun(function(){
-    self.subscribe("fro_heart", pdata.froId);
-    self.subscribe("fro_screen", pdata.froId);
-    self.subscribe("fro", pdata.froId);
-    // self.subscribe("comments", pdata.froId);
-  });
+  if(pdata.froId !== "new"){
+    self.autorun(function(){
+      self.subscribe("fro_heart", pdata.froId);
+      self.subscribe("fro_screen", pdata.froId);
+      self.subscribe("fro", pdata.froId);
+      // self.subscribe("comments", pdata.froId);
+    });
+  }
 });

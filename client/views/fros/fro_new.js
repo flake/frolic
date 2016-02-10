@@ -38,15 +38,33 @@ Template.froNew.events({
   'click .frolic-upload': function(event, template){
     var froPublish = ($(event.currentTarget).attr('id') === "frolic-publish") ? true : false;
     console.log("forlic clicked for upload: " + froPublish);
+
+    if(template.find("#fro-title").value === ""){
+      Dialogs.alert("Give a title to your fro");
+      return;
+    }
+
+    var screenId = template.find('#fro-screen').value;
+    if((screenId === undefined) || (screenId === "0")){
+      Dialogs.alert("Add a screen to publish your fro.");
+      return;
+    }
+
+    // var isValid = ValidateForm.validate('#fro-new-form');
+    // if(!isValid){
+    //   return;
+    // }
+
     var fro = {
       fsId: Session.get('newFro'),
       thumb_fs: Session.get('newThumb'),
       title: template.find('#fro-title').value,
       description: template.find('#fro-desc').value,
-      screenId: template.find('#fro-screen').value
+      screenId: screenId
     }
 
-    console.log("fro obj: " + prettyJSON(fro));
+    // console.log("fro obj: " + prettyJSON(fro));
+    FlowRouter.go("/loading");
 
     Meteor.call('addFro', fro, function(error, froId){
       if(error){

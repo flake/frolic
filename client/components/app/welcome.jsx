@@ -29,8 +29,8 @@ Welcome = React.createClass({
   },
 
   _handleGoogle: function(){
-    Meteor.cordova_g_plus({
-        cordova_g_plus: true,
+    Meteor.loginCordovaGoogle({
+        cordova_google: true,
         profile: ["email", "email_verified", "gender", "locale", "name", "picture"]
       }, function(error) {
             if (error) {

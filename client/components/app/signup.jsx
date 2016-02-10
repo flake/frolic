@@ -1,4 +1,11 @@
-var {Card, CardText, TextField, RaisedButton, FontIcon, FlatButton} = MUI;
+var {
+  Card,
+  CardText,
+  TextField,
+  RaisedButton,
+  FontIcon,
+  FlatButton
+} = MUI;
 
 Signup = React.createClass({
 
@@ -10,31 +17,6 @@ Signup = React.createClass({
     return {
       muiTheme: newTheme
     };
-  },
-
-  _handleFacebook: function(){
-    Meteor.loginWithFacebook({ requestPermissions: ['email', 'public_profile', 'user_friends']},
-			function(err){
-				if(err){
-					return console.log(err);
-				}
-			});
-  },
-
-  _handleGoogle: function(){
-    Meteor.cordova_g_plus({
-        cordova_g_plus: true,
-        profile: ["email", "email_verified", "gender", "locale", "name", "picture"]
-      }, function(error) {
-            if (error) {
-                //error handling code
-                alert(error);
-            }else{
-              FlowRouter.reload();
-              console.log("google signup success " + Meteor.userId());
-              // alert("Signed up");
-            }
-    });
   },
 
   handleSubmit: function(event){
@@ -89,33 +71,6 @@ Signup = React.createClass({
         color: APP.primary,
         textShadow: "2px 2px 2px rgba(0, 0, 0, 0.4)",
         marginTop: "8px"
-      },
-      facebookSignup: {
-        width: "48%",
-        backgroundImage: "linear-gradient(#2953ad, #234ca2)",
-        color: "#fff",
-        borderRadius: "2px",
-        textAlign: "left",
-        paddingLeft: "8px"
-      },
-      googleSignup: {
-        width: "48%",
-        backgroundColor: "#dc4e41", //#dd4b39
-        color: "#fff",
-        borderRadius: "2px",
-        textAlign: "left",
-        paddingLeft: "8px",
-        marginLeft: "8px"
-      },
-      twitterSignup: {
-        width: "48%",
-        backgroundColor: "#55acee",
-        color: "#fff",
-        borderRadius: "2px",
-        textAlign: "left",
-        paddingLeft: "8px",
-        marginBottom: "8px",
-        marginLeft: "10px"
       },
       labelStyle: {
         textTransform: "none",
@@ -172,31 +127,8 @@ Signup = React.createClass({
               onClick={this.handleSubmit}/>
           </form>
         </CardText>
-
-        <CardText style={{"padding": "8px 16px"}}>
-          <FlatButton
-            label="Facebook"
-            labelStyle={styles.labelStyle}
-            labelPosition="after"
-            secondary={true}
-            fullWidth={true}
-            style={styles.facebookSignup}
-            onTouchTap={this._handleFacebook} >
-            <FontIcon className="fa fa-facebook" style={Styles.connectIcon} />
-          </FlatButton>
-          <FlatButton
-            label="Google"
-            labelStyle={styles.labelStyle}
-            labelPosition="after"
-            secondary={true}
-            fullWidth={true}
-            style={styles.googleSignup}
-            onTouchTap={this._handleGoogle} >
-            <FontIcon className="fa fa-google" style={Styles.connectIcon} />
-          </FlatButton>
-        </CardText>
         <CardText style={{"textAlign": "right"}}>
-          <span style={styles.singinMsg}>Have an account?  </span><span style={styles.loginBtn} onTouchTap={() => {FlowRouter.go('/');}}>Login</span>
+          <span style={styles.singinMsg}>Have an account?  </span><span style={styles.loginBtn} onTouchTap={() => {FlowRouter.go('/login');}}>Login</span>
         </CardText>
       </div>
     );

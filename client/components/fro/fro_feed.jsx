@@ -162,6 +162,11 @@ FroFeed = React.createClass({
         marginRight: "4px",
         verticalAlign: "top"
       },
+      froInfo: {
+        display: "inline-block",
+        width: "49%",
+        verticalAlign: "top"
+      },
       froScreen:{
         position: "relative",
         width: "128px",
@@ -245,7 +250,7 @@ FroFeed = React.createClass({
               </div>
             </div>
           </div>
-          <div style={styles.Linear}>
+          <div style={styles.froInfo}>
             <div>
               <div id="fi-froinfo" style={{"display": "inline-block"}}>
                 <div style={{"fontWeight": "900", "color": "#444"}} className="frolic-invoke" >{this.props.fro.title}</div>

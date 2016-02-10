@@ -47,6 +47,13 @@ passed.route('/', {
   }
 });
 
+passed.route('/loading', {
+  name: 'loading',
+  action: function(){
+    BlazeLayout.render('appLayout', {content: 'loading'});
+  }
+});
+
 welcome.route('/login', {
   name: 'login',
   action: function(){
@@ -58,6 +65,13 @@ welcome.route('/signup', {
   name: 'signup',
   action: function(){
     BlazeLayout.render('welcomeLayout', {content: 'signup'});
+  }
+});
+
+passed.route('/fro/new', {
+  name: 'fornew',
+  action: function(){
+    BlazeLayout.render('appLayout', {content: 'froNew'});
   }
 });
 
@@ -79,13 +93,6 @@ passed.route('/notify', {
   name: 'notify',
   action: function(){
     BlazeLayout.render('appLayout', {content: 'notify'});
-  }
-});
-
-passed.route('/fro/new', {
-  name: 'fornew',
-  action: function(){
-    BlazeLayout.render('appLayout', {content: 'froNew'});
   }
 });
 
@@ -134,8 +141,10 @@ passed.route('/logout', {
   action: function(){
     window.plugins.googleplus.logout(
        function(msg) {
-           Meteor.logout();
-           FlowRouter.go(FlowRouter.path('home'));
+           Meteor.logout(function(){
+             FlowRouter.go('/');
+             FlowRouter.reload();
+           });
           //  alert(msg); // do something useful instead of alerting
        }
    );

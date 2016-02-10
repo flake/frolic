@@ -11,6 +11,11 @@ Meteor.startup(function(){
       FlowRouter.go(FlowRouter.path('login'));
     }
   });
+
+  ValidateForm.config({
+    debug: true,
+    rootLayout: 'appLayout'
+  });
   // window.onpopstate = function(){
   //   if(history.state && history.state.initial === true){
   //     //navigator.app.exitApp();
