@@ -3,6 +3,7 @@ Meteor.startup(function(){
 
   // Session.set("appTitle", 'frolic');
   Session.set("sideNav", false);
+  Session.set("loggedIn", false);
 
   document.addEventListener("deviceready", onDeviceReady, false);
 
