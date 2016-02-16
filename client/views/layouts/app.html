@@ -1,10 +1,16 @@
 <template name="appLayout">
-  <nav class="fixed-nav-bar">
-    {{> React component=AppHead appTitle=title navIcons=params.navicons sideNav=sideNav notify=notifyCount}}
-  </nav>
-  <div id="app-body">
-    {{>Template.dynamic template=content data=params}}
-  </div>
+  {{#if Template.subscriptionsReady}}
+    <nav class="fixed-nav-bar">
+      {{> React component=AppHead appTitle=title navIcons=params.navicons sideNav=sideNav notify=notifyCount}}
+    </nav>
+    <div id="app-body">
+      {{>Template.dynamic template=content data=params}}
+    </div>
+  {{else}}
+    <div>
+      {{> React component=Loading}}
+    </div>
+  {{/if}}
 </template>
 
 <!-- <div>{{> React component=AddFloatBtn }}</div> -->
