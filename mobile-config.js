@@ -4,7 +4,7 @@ App.info({
   description: 'A moment of joy',
   author: 'Rajasekhar',
   website: 'www.frolicplay.com',
-  version: '0.3.5'
+  version: '0.3.6'
 });
 
 App.icons({
