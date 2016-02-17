@@ -62,6 +62,7 @@ FroFeed = React.createClass({
     console.log("handleFro " + froId);
     Session.set("froPlay", froId);
     Session.set("isPlaying", true);
+    Meteor.call("newPlay", froId);
   },
 
   render: function(){
