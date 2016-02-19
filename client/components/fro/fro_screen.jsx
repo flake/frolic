@@ -29,7 +29,9 @@ FroScreen = React.createClass({
     };
   },
   getInitialState: function(){
-    return { }
+    return {
+      played: false
+    }
   },
 
   // componentDidUpdate: function(prevProps, prevState){
@@ -82,6 +84,7 @@ FroScreen = React.createClass({
       froPlayer.load();
       froPlayer.play();
       Session.set("isPlaying", true);
+      this.setState({played: false});
     }
   },
 
@@ -93,6 +96,15 @@ FroScreen = React.createClass({
     setTimeout(function(){
       froPlayer.dispose();
     }, 0);
+  },
+
+  _handleTimeUpdate: function(e){
+    var froPlayer = videojs('fro-player');
+    if(froPlayer.currentTime() >= 6 && !this.state.played){
+      console.log("video viewed for morethan 6secs");
+      Meteor.call("newPlay", Session.get("froPlay"), function(e, r){});
+      this.setState({played: true});
+    }
   },
 
   render: function(){
@@ -127,6 +139,11 @@ FroScreen = React.createClass({
       }
     };
 
+    // $('#fro-player').on('timeupdate', function(){
+    //   console.log("videojs timeupdate " + this.currentTime);
+    //   // if(this.currentTime >= 6){}
+    // });
+
     return (
       <CardMedia onTouchTap={this._handlePlayer} style={styles.froScreen}>
         <video
@@ -138,7 +155,8 @@ FroScreen = React.createClass({
           poster={this.props.thumb}
           height="194"
           onPlay={this._handlePlay}
-          onPause={this._handlePause}>
+          onPause={this._handlePause}
+          onTimeUpdate={this._handleTimeUpdate}>
           <p className='vjs-no-js'>To play this video, you need HTML5 supportted browser</p>
         </video>
         <div style={styles.froOverlay}>

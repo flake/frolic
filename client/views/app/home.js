@@ -6,25 +6,22 @@ Template.home.helpers({
   FroScreen: function(){
     return FroScreen;
   },
-  froDoc: function(){
-    return Fros.findOne(Session.get("froPlay"));
+  froFS: function(){
+    // console.log("Frolic Id: " + this.froId);
+    var froFS = {
+      fro: null,
+      thumb: null
+    };
+    var fro = Fros.findOne(Session.get("froPlay"));
+
+    if(fro){
+      var froFs = FroFS.findOne(fro.fsId);
+      froFS.fro = froFs.url();
+      froFS.thumb = ThumbFS.findOne(fro.thumb_fs).url();
+    }
+
+    return froFS;
   },
-  // froFS: function(){
-  //   // console.log("Frolic Id: " + this.froId);
-  //   var froFS = {
-  //     fro: null,
-  //     thumb: null
-  //   };
-  //   var fro = Fros.findOne(Session.get("froPlay"));
-  //
-  //   if(fro){
-  //     var froFs = FroFS.findOne(fro.fsId);
-  //     froFS.fro = froFs.url();
-  //     froFS.thumb = ThumbFS.findOne(fro.thumb_fs).url();
-  //   }
-  //
-  //   return froFS;
-  // },
   // SpaceBar: function(){
   //   return SpaceBar;
   // },

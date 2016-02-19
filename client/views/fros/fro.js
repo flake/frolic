@@ -15,9 +15,9 @@ Template.fro.helpers({
   SlideTabs: function(){
     return SlideTabs;
   },
-  froDoc: function(){
-    return Fros.findOne(this.froId);
-  },
+  // froDoc: function(){
+  //   return Fros.findOne(this.froId);
+  // },
   froFS: function(){
     // console.log("Frolic Id: " + this.froId);
     var froFS = {};

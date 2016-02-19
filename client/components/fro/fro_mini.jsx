@@ -33,7 +33,7 @@ FroMini = React.createClass({
 
   _handleTouch: function(){
     // console.log("mini fro card touched...");
-    Meteor.call("newPlay", this.props.fro._id);
+    // Meteor.call("newPlay", this.props.fro._id, function(e, r){});
     FlowRouter.go("/fro/"+this.props.fro._id);
   },
 
