@@ -111,6 +111,14 @@ passed.route('/screen/:screenId', {
   }
 });
 
+passed.route('/screen/edit/:screenId', {
+  name: 'editScreen',
+  action: function(params){
+    Session.set('appTitle', 'Edit');
+    BlazeLayout.render('appLayout', {content: 'screenForm', params: params});
+  }
+});
+
 passed.route('/screens', {
   name: 'screens',
   action: function(){

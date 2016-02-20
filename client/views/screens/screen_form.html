@@ -1,5 +1,11 @@
 <template name="screenForm">
-  <div>
-    {{> React component=ScreenForm screen=screen}}
-  </div>
+  {{#if Template.subscriptionsReady}}
+    <div>
+      {{> React component=ScreenForm screen=screen action=action}}
+    </div>
+  {{else}}
+    <div>
+      {{> React component=Loading}}
+    </div>
+  {{/if}}
 </template>

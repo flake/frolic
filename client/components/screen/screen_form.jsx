@@ -147,6 +147,13 @@ ScreenForm = React.createClass({
         color: "#fff",
         padding: '8px 72px'
       },
+      flatBtnIcon:{
+        display: 'inline-block',
+        verticalAlign: 'middle',
+        lineHeight: '27px',
+        color: APP.primary,
+        top: '12px'
+      }
     };
 
     var formActLabel = "Add";
@@ -193,6 +200,7 @@ ScreenForm = React.createClass({
           primaryText={
             <TextField
               hintText="Title"
+              defaultValue={this.props.screen.title}
               fullWidth={true}
               onChange={this._handleTitleChange}
               id="screen-title" />
@@ -202,7 +210,7 @@ ScreenForm = React.createClass({
           leftIcon={
             <FontIcon
               className="material-icons"
-              style={Styles.flatBtnIcon} >
+              style={styles.flatBtnIcon} >
               card_membership
             </FontIcon>
           } />
@@ -210,6 +218,7 @@ ScreenForm = React.createClass({
           primaryText={
             <TextField
               hintText="Description"
+              defaultValue={this.props.screen.description}
               fullWidth={true}
               multiLine={true}
               rowsMax={12}
@@ -221,7 +230,7 @@ ScreenForm = React.createClass({
           leftIcon={
             <FontIcon
               className="material-icons"
-              style={Styles.flatBtnIcon} >
+              style={styles.flatBtnIcon} >
               description
             </FontIcon>
           } />
@@ -238,7 +247,7 @@ ScreenForm = React.createClass({
           leftIcon={
             <FontIcon
               className="material-icons"
-              style={Styles.flatBtnIcon} >
+              style={styles.flatBtnIcon} >
               file_upload
             </FontIcon>
           }
@@ -257,6 +266,10 @@ ScreenForm = React.createClass({
                 type="file"
                 style={{"display": "none"}}
                 onChange={this._handleUpload} />
+              <input
+                type="hidden"
+                id="screen-id"
+                value={this.props.screen._id} />
             </div>
           }
           disabled={true} />

@@ -4,17 +4,15 @@ Template.screenProfile.helpers({
     return ProCard;
   },
   creator: function(){
-    console.log("screen profile Id: " + this.screenId);
+    // console.log("screen profile Id: " + this.screenId);
     var screen = Screens.findOne(this.screenId);
-    console.log("screen creator " + prettyJSON(screen.creator()));
+    // console.log("screen creator " + prettyJSON(screen.creator()));
     return screen.creator();
   }
 });
 
 Template.screenProfile.events({
-  "click #foo": function(event, template){
-
-  }
+  //events
 });
 
 Template.screenProfile.onCreated(function(){

@@ -44,7 +44,10 @@ Template.screen.helpers({
 });
 
 Template.screen.events({
-  // events
+  'click #edit-screen': function(){
+    console.log("edit screen event");
+    FlowRouter.go('/screen/edit/'+this.screenId);
+  }
 });
 
 Template.screen.onCreated(function(){

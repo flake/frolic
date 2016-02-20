@@ -4,7 +4,8 @@ var {
   Avatar,
   ListItem,
   RaisedButton,
-  FontIcon
+  FontIcon,
+  IconButton
 } = MUI;
 
 ProCover = React.createClass({
@@ -36,12 +37,17 @@ ProCover = React.createClass({
   },
 
   _handleFollow: function(event){
-    console.log("screen page follow tap ");
+    // console.log("screen page follow tap ");
     if(this.props.screen.isFollower()){
       Meteor.call('unfollow', this.props.screen._id, function(){});
     }else{
       Meteor.call('followScreen', this.props.screen._id, function(){});
     }
+  },
+
+  _handleEdit: function(event){
+    console.log("handle Edit");
+    // FlowRouter.go('/screen/edit/' + this.props.screen._id);
   },
 
   render: function(){
@@ -86,6 +92,18 @@ ProCover = React.createClass({
         padding: "0",
         paddingLeft: "6px",
         top: "-1px"
+      },
+      editScreen:{
+        position: 'absolute',
+        top: 0,
+        right: 0,
+        margin: '8px',
+        padding: '8px'
+      },
+      editIcon:{
+        color: APP.themeBg,
+        zIndex: 89,
+        fontSize: "24px"
       }
     };
 
@@ -148,12 +166,34 @@ ProCover = React.createClass({
     );
 
     return (
-      <CardMedia
-        overlay={overCard}
-        mediaStyle={styles.cover}
-      >
-        <img src={this.props.screen.cover()} style={styles.img}/>
-      </CardMedia>
+      <div>
+        <CardMedia
+          overlay={overCard}
+          mediaStyle={styles.cover}
+          onTouchTap={this._handleEdit}
+        >
+          <img src={this.props.screen.cover()} style={styles.img}/>
+        </CardMedia>
+        {
+          (() => {
+            if(this.props.screen.isOwner()){
+              return (
+                <div style={styles.editScreen}>
+                  <i className="fa fa-gear"
+                    style={styles.editIcon}
+                    id="edit-screen" />
+                </div>
+              );
+            }
+          })()
+        }
+      </div>
     )
   }
 });
+
+// <IconButton
+//   iconClassName="fa fa-gear"
+//   iconStyle={styles.editIcon}
+//   onTouchTap={this._handleEdit}
+//   id='edit-screen' />

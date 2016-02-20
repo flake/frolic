@@ -5,10 +5,18 @@ Template.screenForm.helpers({
   },
   screen: function(){
     if(this.screenId){
-      return Screens.findOne(this.screenId);
+      var screen = Screens.findOne(this.screenId);
+      if(screen){
+        Session.set('screen-fsid', screen.cover_photo);
+        Session.set('avatar-fsid', screen.avatar_photo);
+        return screen;
+      }
     }
 
     return undefined;
+  },
+  action: function(){
+    return (this.screenId) ? 'edit' : 'new';
   }
 });
 
@@ -42,12 +50,17 @@ Template.screenForm.events({
       avatar_photo: Session.get('avatar-fsid')
     };
 
-    Meteor.call('addScreen', screen, function(err, response){
+    var sid = template.find('#screen-id').value;
+
+    if(sid !== ""){
+      screen._id = sid;
+    }
+
+    Meteor.call('saveScreen', screen, function(err, response){
       if(err){
         console.log("Error adding new Screen: " + err);
       }else{
         console.log("Screen added success... " + response);
-
         //form clean up
         template.find('#screen-title').value = '';
         template.find('#screen-desc').value = '';
@@ -65,4 +78,13 @@ Template.screenForm.events({
 Template.screenForm.onCreated(function(){
   Session.set('screen-fsid', undefined);
   Session.set('avatar-fsid', undefined);
+
+  var pdata = Template.parentData(0);
+  var self = this;
+
+  if(pdata){
+    self.autorun(function(){
+      self.subscribe("screen", pdata.screenId);
+    });
+  }
 });
