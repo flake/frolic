@@ -17,8 +17,8 @@ ProCover = React.createClass({
       screen: {
         title: 'Set Title',
         description: 'Description ...',
-        cover: () => {return '/img/froscreen.png';},
-        avatar: () => {return '/img/froscreen.png';}
+        cover: () => {return AIMG.cover;},
+        avatar: () => {return AIMG.cover;}
       }
     }
   },
@@ -55,7 +55,8 @@ ProCover = React.createClass({
     var styles = {
       cover: {
         height: "204px",
-        maxHeight: "204px"
+        maxHeight: "204px",
+        backgroundColor: "#000"
       },
       avatar: {
         border: "2px solid " + APP.themeLite,

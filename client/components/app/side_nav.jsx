@@ -12,7 +12,6 @@ SideNav = React.createClass({
   mixins: [ReactMeteorData],
 
   propTypes: {
-    selectedItem: React.PropTypes.object,
     items: React.PropTypes.array,
     show: React.PropTypes.bool
   },
@@ -24,7 +23,9 @@ SideNav = React.createClass({
     };
   },
   getInitialState: function(){
-    return {}
+    return {
+      open: false
+    }
   },
 
   getMeteorData() {
@@ -35,95 +36,38 @@ SideNav = React.createClass({
 
   // componentWillMount: function(){},
 
-  componentWillUpdate: function(nextProps, nextState){
-    console.log("sidenav updated...");
-    if(nextProps.show != this.props.show){
-      console.log("sidenav toggle...");
-      this.refs.SideNav.toggle();
-    }
-  },
+  // componentWillUpdate: function(nextProps, nextState){
+  //   if(nextProps.show != this.props.show){
+  //     console.log("sidenav updated...");
+  //     this.setState({open: this.props.show});
+  //   }
+  // },
 
   menuChange: function(navItem){
-    // console.log("menuChange selected index " + navItem.index);
+    console.log("menuChange selected index " + navItem.index);
+    // this.setState({open: false});
     Session.set('sideNav', false);
     if(navItem.route){
       FlowRouter.go(navItem.route);
     }
+    return true;
   },
 
   _handleSideHeader: function(){
-    FlowRouter.go('/profile/'+this.data.currentUser._id);
     Session.set('sideNav', false);
-  },
-
-  render: function(){
-    console.log("SideNav render...");
-
-    var navList = [
-      { 'label' : "Home", 'class': "fa fa-home snav-icon", 'route': "/" },
-      { 'label' : "Notifications", 'class': "fa fa-bell-o snav-icon", 'route': "/notify"},
-      { 'label' : "Messages", 'class': "fa fa-envelope snav-icon", 'route': "/" },
-      { 'label' : "Screens", 'class': "fa fa-film snav-icon", 'route': "/screens"},
-      { 'label' : "Circles", 'class': "fa fa-sun-o snav-icon", 'route': "/" },
-      { 'label' : "Settings", 'class': "fa fa-gear snav-icon", 'route': "/" },
-      { 'label' : "Feedback", 'class': "fa fa-angellist snav-icon", 'route': "/feedback" },
-      { 'label' : "Help & Support", 'class': "fa fa-question snav-icon", "route": "/" },
-      { 'label' : "Logout", 'class': "fa fa-power-off snav-icon", "route": "/logout" }
-    ];
-
-    var styles = {
-      navItem: {
-        fontSize: "12px",
-        fontWeight: "600",
-        textTransform: "uppercase",
-        lineHeight: "14px",
-        color: "#fff",
-        textShadow: "1px 1px 1px rgba(0, 0, 0, 0.4)"
-      },
-      snavIcon: {
-        color: "#0E496E !important",
-        textShadow: "1px 1px 1px rgba(0, 0, 0, 0.4)"
-      }
-    };
-
-    // header={ this.renderHeader() }
-    return (
-      <LeftNav
-        ref="SideNav"
-        header={ this.renderHeader() }
-        docked={false}
-        disableSwipeToOpen={true}
-        openRight={true}
-        style={{"backgroundColor": APP.primary}}
-      >
-        <List style={{"backgroundColor": APP.primary}}>
-          {
-            navList.map(function(item, i){
-              return <ListItem
-                        leftIcon={<FontIcon className={item.class} style={styles.snavIcon}/>}
-                        primaryText={item.label}
-                        key={i}
-                        onTouchTap={() => this.menuChange({'route': item.route, 'index': i})}
-                        style={styles.navItem}
-                        innerDivStyle={{paddingLeft: "48px"}}
-                      />
-                  }, this)
-          }
-        </List>
-      </LeftNav>
-    )
+    FlowRouter.go('/profile/'+this.data.currentUser._id);
   },
 
   renderHeader: function(){
     var styles = {
       headerContainer: {
-        backgroundColor: "#1690DB",
+        background: "url('"+AIMG.cover+"') no-repeat",
+        backgroundSize: "cover",
         width: "100%",
         minHeight: "128px",
         overflow: "hidden",
         color: "#fff",
-        textAlign: "center",
-        boxShadow: "0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24)"
+        textAlign: "center"
       },
       headerTitle: {
         paddingLeft: "20px"
@@ -158,16 +102,9 @@ SideNav = React.createClass({
       }
     };
 
-    var noItem = null;
-    if(this.props.items.length == 0){
-      noItem = (
-        <span style={ styles.noItem }>No Item here!</span>
-      );
-    }
-
     return (
       <div>
-        <div style={ styles.headerContainer } id="sidenav-header" onClick={this._handleSideHeader}>
+        <div style={ styles.headerContainer } onClick={this._handleSideHeader}>
           <Avatar
             src={this.data.currentUser.avatar()}
             size={64}
@@ -176,6 +113,68 @@ SideNav = React.createClass({
         </div>
       </div>
     );
+  },
+
+  render: function(){
+    console.log("SideNav render...");
+    var navList = [
+      { 'label' : "Home", 'class': "fa fa-home snav-icon", 'route': "/" },
+      { 'label' : "Notifications", 'class': "fa fa-bell-o snav-icon", 'route': "/notify"},
+      { 'label' : "Messages", 'class': "fa fa-envelope snav-icon", 'route': "/" },
+      { 'label' : "Screens", 'class': "fa fa-film snav-icon", 'route': "/screens"},
+      { 'label' : "Circles", 'class': "fa fa-sun-o snav-icon", 'route': "/" },
+      { 'label' : "Settings", 'class': "fa fa-gear snav-icon", 'route': "/" },
+      { 'label' : "Feedback", 'class': "fa fa-angellist snav-icon", 'route': "/feedback" },
+      { 'label' : "Help & Support", 'class': "fa fa-question snav-icon", "route": "/" },
+      { 'label' : "Logout", 'class': "fa fa-power-off snav-icon", "route": "/logout" }
+    ];
+
+    var styles = {
+      navItem: {
+        fontSize: "12px",
+        fontWeight: "600",
+        textTransform: "uppercase",
+        lineHeight: "14px",
+        color: "#fff",
+        textShadow: "1px 1px 1px rgba(0, 0, 0, 0.4)"
+      },
+      snavIcon: {
+        color: "#0E496E !important",
+        textShadow: "1px 1px 1px rgba(0, 0, 0, 0.4)"
+      },
+      sideList: {
+        backgroundColor: APP.primary,
+        padding: "0px !important"
+      }
+    };
+
+    // header={ this.renderHeader() }
+    return (
+      <LeftNav
+        ref="sideNav"
+        open={this.props.show}
+        docked={false}
+        disableSwipeToOpen={true}
+        openRight={true}
+        style={{"backgroundColor": APP.primary}}
+      >
+        <List style={styles.sideList}>
+          {this.renderHeader()}
+          {
+            navList.map(function(item, i){
+              return <ListItem
+                        leftIcon={<FontIcon className={item.class} style={styles.snavIcon}/>}
+                        primaryText={item.label}
+                        key={i}
+                        onTouchTap={this.menuChange.bind(this, {'route': item.route, 'index': i})}
+                        style={styles.navItem}
+                        innerDivStyle={{paddingLeft: "48px"}}
+                      />
+                  }, this)
+          }
+        </List>
+      </LeftNav>
+    )
   }
 })
 

@@ -25,8 +25,8 @@ ScreenForm = React.createClass({
       screen: {
         title: 'Set Title',
         description: 'Description ...',
-        cover: () => {return '/img/froscreen.png';},
-        avatar: () => {return '/img/froscreen.png';}
+        cover: () => {return AIMG.cover;},
+        avatar: () => {return AIMG.cover;}
       }
     }
   },

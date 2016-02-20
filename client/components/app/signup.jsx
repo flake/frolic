@@ -30,7 +30,7 @@ Signup = React.createClass({
       profile: {name: fullname}
     }, function(error){
       if(error){
-        console.log("Error Signup " + error.error);
+        console.log("Error Signup " + error);
         if(error.error === "email"){
           console.log("Error email " +error.reason);
           Dialogs.alert("Email " + error.reason);

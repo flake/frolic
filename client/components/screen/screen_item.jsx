@@ -18,8 +18,8 @@ ScreenItem = React.createClass({
         plays: 0,
         fros: 0,
         followers: 0,
-        cover: () => { return "/img/froscreen.png";},
-        avatar: () => {return "/img/froscreen.png";}
+        cover: () => { return AIMG.cover;},
+        avatar: () => {return AIMG.cover;}
       }
     }
   },

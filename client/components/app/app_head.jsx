@@ -8,7 +8,12 @@ APP = {
   themeBg: "#C3D7E3",
   themeLite: "#D4EEFF",
   themeRed: "#ED2B2B"
-}
+};
+
+AIMG = {
+  avatar: '/img/defaultAvatar.png',
+  cover: '/img/frocover.jpg'
+};
 
 ThemeManager = MUI.Styles.ThemeManager;
 appPalette = {

@@ -108,6 +108,10 @@ body{
 	width: 16% !important;
 }
 
+.fro-heart{
+	color: #ED2B2B !important;
+}
+
 .date-light{
 	font-size: 12px;
 	color: #666;
@@ -235,12 +239,12 @@ body{
 	margin-top: 14px !important;
 }
 
-#sidenav-header::after{
+/*#sidenav-header::after{
 	content: "";
-	background: url('img/fravatar.jpg');
+	background: url('img/');
 	background-repeat: "no-repeat";
 	background-size: "100% auto";
-}
+}*/
 
 .procard-litem{
 	width: 49.2%;

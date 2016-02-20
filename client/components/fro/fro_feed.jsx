@@ -133,11 +133,11 @@ FroFeed = React.createClass({
       },
       heartIcon: {
         fontSize: "24px",
-        textAlign: "center"
+        textAlign: "center",
+        color: APP.themeRed
       },
       statIcon: {
         fontSize: "14px",
-        color: APP.secondary,
         textAlign: "center"
       },
       menuIcon: {
@@ -210,10 +210,13 @@ FroFeed = React.createClass({
         fontSize: "24px"
       },
       froHeart:{
-        "float": "right",
+        float: 'right',
         marginTop: "12%",
         // marginRight: "0px",
         zIndex: 9
+      },
+      reportFlag: {
+        color: APP.themeRed
       }
 
       // titleThemed:{
@@ -274,7 +277,7 @@ FroFeed = React.createClass({
           </div>
           <div style={styles.froHeart}>
             <FontIcon
-              className={"fa fa-" + this.props.hearted + " app-icon fro-action fro-heart"}
+              className={"fa fa-" + this.props.hearted + " fro-action fro-heart"}
               style={styles.heartIcon} />
           </div>
         </CardText>
@@ -282,14 +285,14 @@ FroFeed = React.createClass({
         <CardText style={styles.actionBox}>
           <div className="stat-box">
             <FontIcon
-              className="fa fa-play"
+              className="fa fa-play app-icon"
               style={styles.statIcon}>
             </FontIcon>
             <span style={{"fontSize": "14px", "marginLeft": "4px"}}>{this.props.fro.views}</span>
           </div>
           <div className="stat-box">
             <FontIcon
-              className="fa fa-heart"
+              className="fa fa-heart fro-heart"
               style={styles.statIcon}>
             </FontIcon>
             <span style={{"fontSize": "14px", "marginLeft": "4px"}}>{this.props.fro.hearts}</span>
@@ -325,7 +328,7 @@ FroFeed = React.createClass({
                 primaryText="Report or Block"
                 leftIcon={
                   <FontIcon
-                    className="fa fa-flag" style={{"color": APP.themeRed}}
+                    className="fa fa-flag" style={styles.reportFlag}
                     style={styles.itemIcon} />
                 }
                 innerDivStyle={styles.menuItem} />

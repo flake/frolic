@@ -143,7 +143,7 @@ FroInfo = React.createClass({
             <div className="frolic-stats">
               <div style={styles.statBox}>
                 <div style={styles.statStyle}>{this.props.fro.hearts} </div>
-                <FontIcon className="fa fa-heart" style={styles.fontIcon}></FontIcon>
+                <FontIcon className="fa fa-heart fro-heart" style={styles.fontIcon}></FontIcon>
                 <span style={styles.statLabel}>hearts</span>
               </div>
               <div style={styles.statBox}>
@@ -154,7 +154,7 @@ FroInfo = React.createClass({
             </div>
             <div className="frolic-stats">
               <FontIcon
-                className={"fa fa-" + this.props.hearted }
+                className={"fa fa-" + this.props.hearted + " fro-heart"}
                 style={styles.heartIcon}
                 onTouchTap={this._handleHeart}></FontIcon>
             </div>

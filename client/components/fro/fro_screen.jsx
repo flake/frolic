@@ -14,7 +14,7 @@ FroScreen = React.createClass({
   getDefaultProps: function(){
     return {
       src: "",
-      thumb: "/img/froscreen.png",
+      thumb: AIMG.cover,
       play: false
     };
   },

@@ -13,7 +13,7 @@ UserCard = React.createClass({
   getDefaultProps: function(){
     return {
       user: {
-        avatar: "/img/fravatar.jpg",
+        avatar: AIMG.avatar,
         profile: { name : "Developers", title: "Ninjas of Avatar Labs"}
       }
     }
