@@ -30,6 +30,13 @@ Template.profile.helpers({
   },
   slideIndex: function(){
     return parseInt(Session.get("slideIndex"));
+  },
+  isCircle: function(){
+    var circleMember = CircleMembers.findOne({memberId: this.userId, userId: Meteor.userId()});
+    if(circleMember)
+      return true;
+
+    return false;
   }
 });
 
@@ -41,6 +48,7 @@ Template.profile.onCreated(function(){
     self.subscribe("profile", pdata.userId);
     self.subscribe("hearted_fros", pdata.userId);
     self.subscribe("user_screens", pdata.userId);
+    self.subscribe('circle_member', pdata.userId);
   });
   // console.log("TEMPLATE Created - profile ");
   Session.set("slideIndex", 0);

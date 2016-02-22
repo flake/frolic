@@ -1,7 +1,13 @@
 <template name="usersList">
-  <div class="fromini-thumbs">
-    {{#each users}}
-      {{> proCard}}
-    {{/each}}
-  </div>
+  {{#if Template.subscriptionsReady}}
+    <div class="fromini-thumbs">
+      {{#each users}}
+        {{> proCard}}
+      {{/each}}
+    </div>
+  {{else}}
+    <div>
+      {{> React component=Loading}}
+    </div>
+  {{/if}}
 </template>

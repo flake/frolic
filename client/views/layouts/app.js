@@ -15,31 +15,26 @@ Template.appLayout.helpers({
   notifyCount: function(){
     return Notifications.find({userId: Meteor.userId(), read: false}).count();
   },
-  // AddFloatBtn: function(){
-  //   return AddFloatBtn;
-  // },
-  // AddVideoModal: function(){
-  //   return AddVideoModal;
-  // },
-  // showVideoModal: function(){
-  //   return Session.get('addVideoModal');
-  // },
+  CircleMenu: function(){
+    return CircleMenu;
+  },
+  openCircleMenu: function(){
+    return Session.get('openCircleMenu');
+  },
+  CircleNew: function(){
+    return CircleNew;
+  },
+  openCircleNew: function(){
+    return Session.get('openCircleNew');
+  },
   frosrc: function(){
     return Session.get('frosrc');
   },
-  // vidsnaps: function(){
-  //   return Session.get('vidsnaps') ? Session.get('vidsnaps'):[];
-  // },
-  // FroPop: function(){
-  //   return FroPop;
-  // },
-  // OptsModal: function(){
-  //   return OptsModal;
-  // },
-  // optsOpen: function(){
-  //   Session.setDefault('optsOpen', false);
-  //   return Session.get('optsOpen');
-  // }
+  circles: function(){
+    var docs = Circles.find({userId: Meteor.userId()}).fetch();
+    console.log("userId: " + Meteor.userId() + " circles " + docs);
+    return docs;
+  }
 });
 
 Template.appLayout.events({
@@ -83,13 +78,40 @@ Template.appLayout.onRendered(function(){
 
 Template.appLayout.onCreated(function(){
   Session.set('appTitle', 'frolic');
+  Session.set('openCircleMenu', false);
+  Session.set('openCircleNew', false);
   // Session.set('optsOpen', false);
   var self = this;
   self.autorun(function(){
     self.subscribe("profile", Meteor.userId());
     self.subscribe("hearts", Meteor.userId());
+    self.subscribe("circles");
     self.subscribe("profiles");
     self.subscribe("notifications");
     // self.subscribe("fros_fs");
   });
 });
+
+
+// AddFloatBtn: function(){
+//   return AddFloatBtn;
+// },
+// AddVideoModal: function(){
+//   return AddVideoModal;
+// },
+// showVideoModal: function(){
+//   return Session.get('addVideoModal');
+// },
+// vidsnaps: function(){
+//   return Session.get('vidsnaps') ? Session.get('vidsnaps'):[];
+// },
+// FroPop: function(){
+//   return FroPop;
+// },
+// OptsModal: function(){
+//   return OptsModal;
+// },
+// optsOpen: function(){
+//   Session.setDefault('optsOpen', false);
+//   return Session.get('optsOpen');
+// }

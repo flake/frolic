@@ -12,14 +12,12 @@ Template.screens.helpers({
   slideTabs: function(){
     return [
       {'title': 'My Screens', 'iconClass': 'fa fa-laptop slidetab-ficon', 'maticon': ''},
-      {'title': 'Playing', 'iconClass': 'fa fa-film slidetab-ficon', 'maticon': ''},
       {'title': 'Following', 'iconClass': 'material-icons', 'maticon': 'screen_share'}
     ]
   },
   slideViews: function(){
     return [
       {'template': 'userScreens', 'data': {context: "self", userId: Meteor.userId()}},
-      {'template': 'demo', 'data': {demoText: "Playing screens to be..."}},
       {'template': 'userScreens', 'data': {context: "following", userId: Meteor.userId()}}
     ]
   },

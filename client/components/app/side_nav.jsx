@@ -122,7 +122,7 @@ SideNav = React.createClass({
       { 'label' : "Notifications", 'class': "fa fa-bell-o snav-icon", 'route': "/notify"},
       { 'label' : "Messages", 'class': "fa fa-envelope snav-icon", 'route': "/" },
       { 'label' : "Screens", 'class': "fa fa-film snav-icon", 'route': "/screens"},
-      { 'label' : "Circles", 'class': "fa fa-sun-o snav-icon", 'route': "/" },
+      { 'label' : "Circles", 'class': "fa fa-sun-o snav-icon", 'route': "/circles" },
       { 'label' : "Settings", 'class': "fa fa-gear snav-icon", 'route': "/" },
       { 'label' : "Feedback", 'class': "fa fa-angellist snav-icon", 'route': "/feedback" },
       { 'label' : "Help & Support", 'class': "fa fa-question snav-icon", "route": "/" },

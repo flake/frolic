@@ -140,7 +140,7 @@ AppHead = React.createClass({
               {
                 this.props.navIcons.map(function(navicon, i){
                   if(navicon.id === "frolic-notify" && this.props.notify > 0){
-                    return <Badge style={styles.badge} badgeStyle={styles.badgeCount} badgeContent={this.props.notify} ><IconButton key={i} iconClassName={navicon.class} iconStyle={styles.navIcon} id={navicon.id} >{navicon.maticon}</IconButton></Badge>
+                    return <Badge key={i} style={styles.badge} badgeStyle={styles.badgeCount} badgeContent={this.props.notify} ><IconButton iconClassName={navicon.class} iconStyle={styles.navIcon} id={navicon.id} >{navicon.maticon}</IconButton></Badge>
                   }
                   return <IconButton key={i} iconClassName={navicon.class} iconStyle={styles.navIcon} id={navicon.id} >{navicon.maticon}</IconButton>
                 }, this)

@@ -44,7 +44,9 @@ SlideTabs = React.createClass({
   },
 
   render: function(){
-    var tabWidth = "" + $(window).width() / 3;
+    var tabCount = this.props.tabs.length;
+    var wdiv = (tabCount < 3) ? tabCount : 3;
+    var tabWidth = "" + $(window).width() / wdiv;
 
     var styles = {
       container: {
@@ -57,7 +59,7 @@ SlideTabs = React.createClass({
         backgroundColor: "#fff"
       },
       tabItem: {
-        width: tabWidth * this.props.tabs.length
+        width: tabWidth * tabCount
       },
       tabsIcon: {
         height: '100%',

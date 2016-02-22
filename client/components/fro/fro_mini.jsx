@@ -159,7 +159,7 @@ FroMini = React.createClass({
               </span>
             </FontIcon>
             <FontIcon
-              className="fa fa-heart"
+              className="fa fa-heart fro-heart"
               style={styles.miniStatIcon}>
               <span style={styles.miniStats}>
                 {this.props.fro.hearts}

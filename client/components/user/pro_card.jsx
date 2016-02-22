@@ -8,11 +8,13 @@ var {
 
 ProCard = React.createClass({
   propTypes: {
-    user: React.PropTypes.object
+    user: React.PropTypes.object,
+    circle: React.PropTypes.bool
   },
   getDefaultProps: function(){
     return {
-      user: {}
+      user: {},
+      circle: false
     }
   },
 
@@ -31,8 +33,8 @@ ProCard = React.createClass({
 
   _handleCircle: function(event){
     event.stopPropagation();
-    console.log("add to circle handle event " + event.target);
-
+    Session.set('circleMember', this.props.user._id);
+    Session.set('openCircleMenu', true);
   },
 
   _handleUser: function(event){
@@ -92,6 +94,8 @@ ProCard = React.createClass({
       }
     };
 
+    var circleIcon = (this.props.circle) ? 'check' : 'person_add';
+
     return (
       <Card
         style={styles.proCard}
@@ -119,7 +123,7 @@ ProCard = React.createClass({
               className="pro-circle-btn">
               <FontIcon
                 style={styles.proConnIcon}
-                className="material-icons">person_add</FontIcon>
+                className="material-icons">{circleIcon}</FontIcon>
             </RaisedButton>
 
         </CardText>

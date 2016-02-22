@@ -5,14 +5,14 @@ var {
   ListItem
 } = MUI;
 
-ScreensPanel = React.createClass({
+CirclePanel = React.createClass({
   //IMPORTANT SET CHILD CONTEXT
   childContextTypes: {
     muiTheme: React.PropTypes.object
   },
   getChildContext: function(){
     return {
-      muiTheme: newTheme //Manager.getMuiTheme(MUI.Styles.LightRawTheme)
+      muiTheme: newTheme
     };
   },
   getInitialState: function(){
@@ -22,7 +22,7 @@ ScreensPanel = React.createClass({
   },
 
   _handleNewBtn: function(){
-    FlowRouter.go('/screen/new');
+    Session.set('openCircleNew', true);
   },
 
   render: function(){
@@ -48,11 +48,11 @@ ScreensPanel = React.createClass({
       <Card
         style={styles.screensCard}>
         <ListItem
-          primaryText='Create new Screen'
+          primaryText='Create new Circle'
           leftIcon={
             <FontIcon
               style={styles.newIcon}
-              className="fa fa-laptop"/>
+              className="fa fa-plus"/>
           }
           onTouchTap={this._handleNewBtn}
         />
@@ -60,13 +60,3 @@ ScreensPanel = React.createClass({
     );
   }
 });
-
-// <RaisedButton
-//   secondary={true}
-//   label="New Screen"
-//   labelPosition="after"
-//   labelStyle={styles.newLabel}
-//   onTouchTap={this._handleNewBtn}
-//   style={styles.newBtn} >
-//
-// </RaisedButton>

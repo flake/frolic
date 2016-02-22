@@ -6,6 +6,12 @@
     <div id="app-body">
       {{>Template.dynamic template=content data=params}}
     </div>
+    <div>
+      {{> React component=CircleMenu circles=circles open=openCircleMenu}}
+    </div>
+    <div>
+      {{> React component=CircleNew open=openCircleNew}}
+    </div>
   {{else}}
     <div>
       {{> React component=Loading}}

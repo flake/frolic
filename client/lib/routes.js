@@ -133,7 +133,21 @@ passed.route('/profile/:userId', {
   }
 });
 
-passed.route('/circles', {});
+passed.route('/circles', {
+  name: 'circles',
+  action: function(){
+    BlazeLayout.render('appLayout', {content: 'circles'});
+  }
+});
+
+passed.route('/circle/:circleId', {
+  name: 'circle',
+  action: function(params){
+    params.context = 'circle_members';
+    BlazeLayout.render('appLayout', {content: 'usersList', params: params});
+  }
+});
+
 passed.route('/messages', {});
 passed.route('/settings', {});
 passed.route('/feedback', {

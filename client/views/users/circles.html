@@ -1,0 +1,16 @@
+<template name="circles">
+  <div class="cover-fixed">
+    <div class="padding-8 app-bg">
+      {{> React component=CirclePanel}}
+    </div>
+  </div>
+  {{#if Template.subscriptionsReady}}
+    <div class="cover-views">
+      {{> React component=MyCircles circles=circles}}
+    </div>
+  {{else}}
+    <div>
+      {{> React component=Loading}}
+    </div>
+  {{/if}}
+</template>

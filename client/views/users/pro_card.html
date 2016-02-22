@@ -1,5 +1,11 @@
 <template name="proCard">
-  <div class="procard-litem">
-    {{> React component=ProCard user=this}}
-  </div>
+  {{#if Template.subscriptionsReady}}
+    <div class="procard-litem">
+      {{> React component=ProCard user=this circle=isCircle}}
+    </div>
+  {{else}}
+    <div>
+      {{> React component=Loading}}
+    </div>
+  {{/if}}
 </template>

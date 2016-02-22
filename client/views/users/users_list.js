@@ -7,6 +7,13 @@ Template.usersList.helpers({
         var followersCurs = Followers.find({screen_id: this.screenId});
         userIds = followersCurs.map(function(f){return f.user_id});
         break;
+      case "circle_members":
+        console.log("circle Id members " + this.circleId);
+        var memberCurs = CircleMembers.find({circleId: this.circleId});
+        console.log("circle members list count " + memberCurs.count());
+        userIds = memberCurs.map(function(f){ return f.memberId});
+        console.log("circle members " + userIds);
+        break;
       default:
         console.log("no context for users...");
     }
@@ -14,8 +21,13 @@ Template.usersList.helpers({
   }
 });
 
-Template.usersList.events({
-  "click #foo": function(event, template){
+Template.usersList.onCreated(function(){
+  var pdata = Template.parentData(0);
+  var self = this;
 
-  }
+  self.autorun(function(){
+     if(pdata.circleId){
+       self.subscribe('circle_members', pdata.circleId);
+     }
+  });
 });

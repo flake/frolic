@@ -72,5 +72,13 @@ Styles = {
     lineHeight: '24px',
     color: 'rgba(255, 255, 255, 0.6)',
     minWidth: "24px"
+  },
+  dialogBody:{
+    padding: "0px !important"
+  },
+  dialogTitle: {
+    padding: "16px 16px 0 16px !important",
+    fontSize: "16px",
+    fontWeight: "500"
   }
 }

@@ -10,7 +10,8 @@ var {
 
 ProHead = React.createClass({
   propTypes: {
-    user: React.PropTypes.object
+    user: React.PropTypes.object,
+    circle: React.PropTypes.bool
   },
   getDefaultProps: function(){
     return {
@@ -28,7 +29,7 @@ ProHead = React.createClass({
     };
   },
   getInitialState: function(){
-    return { }
+    return {};
   },
 
   _handleAvatar: function(){
@@ -60,6 +61,12 @@ ProHead = React.createClass({
 
   componentDidMount: function(){
     FroActions.renderSwipes();
+  },
+
+  _handleCircle: function(){
+    console.log("[ProHead] handleCircle ");
+    Session.set('circleMember', this.props.user._id);
+    Session.set('openCircleMenu', true);
   },
 
   render: function(){
@@ -117,10 +124,12 @@ ProHead = React.createClass({
         paddingLeft: "4px"
       },
       msgIcon: {
-        fontSize: "16px",
+        fontSize: "14px",
         color: "#fff"
       }
     };
+
+    var circleIcon = (this.props.circle) ? 'check' : 'person_add';
 
     return (
       <Card style={styles.proHead}>
@@ -172,10 +181,11 @@ ProHead = React.createClass({
             labelPosition="after"
             style={styles.circleBtn}
             labelStyle={styles.circleBtnLabel}
+            onTouchTap={this._handleCircle}
             className="circle-btn btn-shadow">
             <FontIcon
               style={styles.circleIcon}
-              className="material-icons">person_add</FontIcon>
+              className="material-icons">{circleIcon}</FontIcon>
           </FlatButton>
           <FlatButton
             backgroundColor={""+APP.primary}
