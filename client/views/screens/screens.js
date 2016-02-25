@@ -11,7 +11,7 @@ Template.screens.helpers({
   },
   slideTabs: function(){
     return [
-      {'title': 'My Screens', 'iconClass': 'fa fa-laptop slidetab-ficon', 'maticon': ''},
+      {'title': 'My Screens', 'iconClass': 'fa fa-film slidetab-ficon', 'maticon': ''},
       {'title': 'Following', 'iconClass': 'material-icons', 'maticon': 'screen_share'}
     ]
   },

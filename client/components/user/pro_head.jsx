@@ -110,7 +110,11 @@ ProHead = React.createClass({
         lineHeight: "28px",
       	height: "28px",
       	border: "1px solid #66a8cc",
-        backgroundColor: "#fff"
+        backgroundColor: "#fff",
+        marginRight: "64px"
+      },
+      messageBtn:{
+        marginLeft: "64px"
       },
       circleBtnLabel: {
         fontSize: "12px",
@@ -126,6 +130,12 @@ ProHead = React.createClass({
       msgIcon: {
         fontSize: "14px",
         color: "#fff"
+      },
+      socialActions: {
+        display: circleVisi,
+        position: 'absolute',
+        top: '8px',
+        width: '100%'
       }
     };
 
@@ -174,7 +184,7 @@ ProHead = React.createClass({
             </div>
           </div>
         </CardText>
-        <CardActions style={{"display": circleVisi}}>
+        <CardActions style={styles.socialActions}>
           <FlatButton
             secondary={true}
             label="Circle"
@@ -193,6 +203,7 @@ ProHead = React.createClass({
             label="Message"
             labelPosition="after"
             labelStyle={styles.msgLabel}
+            style={styles.messageBtn}
             className="circle-btn">
             <FontIcon
               style={styles.msgIcon}

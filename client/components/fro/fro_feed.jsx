@@ -66,6 +66,10 @@ FroFeed = React.createClass({
 
   render: function(){
     var froSelect = this.props.play ? "rgba(195,215,227, 0.4)" : "#FFFFFF";
+
+    var wid = $(window).width();
+    console.log("window width " + wid);
+
     var styles = {
       froCard: {
         backgroundColor: froSelect
@@ -79,9 +83,9 @@ FroFeed = React.createClass({
         padding: "0px"
       },
       screenAvatar: {
-        marginRight: "8px",
+        marginRight: "4px",
         borderRadius: "24px",
-        verticalAlign: "middle"
+        verticalAlign: "bottom"
       },
       titleStyle: {
         fontSize: "14px",
@@ -89,8 +93,7 @@ FroFeed = React.createClass({
         paddingBottom: "0",
         color: APP.secondary,
         display: "inline-block",
-        maxWidth: "124px",
-        width: "124px",
+        width: wid * 1/3,
         whiteSpace: "nowrap",
         overflow: "hidden",
         verticalAlign: "middle"
@@ -153,10 +156,6 @@ FroFeed = React.createClass({
       menuItem:{
         paddingLeft: "48px"
       },
-      frominiThumb: {
-        width: "128px",
-        height: "72px"
-      },
       Linear: {
         display: "inline-block",
         marginRight: "4px",
@@ -169,13 +168,13 @@ FroFeed = React.createClass({
       },
       froScreen:{
         position: "relative",
-        width: "128px",
-        height: "72px"
+        width: wid * 16/45,
+        height: wid * 1/5
       },
       froThumb:{
         zIndex: 1,
-        width: "128px",
-        height: "72px"
+        width: wid * 16/45,
+        height: wid * 1/5
       },
       overlay:{
         position: "absolute",
@@ -255,7 +254,7 @@ FroFeed = React.createClass({
           </div>
           <div style={styles.froInfo}>
             <div>
-              <div id="fi-froinfo" style={{"display": "inline-block"}}>
+              <div id="fi-froinfo" style={{"display": "inline-block", "height":"32px"}}>
                 <div style={{"fontWeight": "900", "color": "#444"}} className="frolic-invoke" >{this.props.fro.title}</div>
                 <div style={styles.froDesc} className="frolic-invoke" >{this.props.fro.description}</div>
               </div>
@@ -269,7 +268,7 @@ FroFeed = React.createClass({
               avatar={
                 <Avatar
                   src={this.props.fro.screenDoc().avatar()}
-                  size={27}
+                  size={24}
                   style={styles.screenAvatar} />}
               style={styles.headerBox}
               onTouchTap={this._handleScreen} >

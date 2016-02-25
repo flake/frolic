@@ -129,12 +129,12 @@ ScreenItem = React.createClass({
         position: "absolute",
         top: "-12px",
         left: "8px",
-        border: "2px solid #fff"
+        border: "1px solid #fff"
       },
       screenOverlay: {
         paddingTop: "0 !important",
         textAlign: "right",
-        minHeight: "40px"
+        minHeight: "16px"
       }
     };
 
@@ -146,7 +146,7 @@ ScreenItem = React.createClass({
         <Avatar
           src={this.props.screen.avatar()}
           style={styles.screenAvatar}
-          size={34} />
+          size={18} />
         {
           (() => {
             if(!this.props.screen.isOwner()){

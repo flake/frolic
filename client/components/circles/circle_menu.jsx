@@ -44,11 +44,13 @@ CircleMenu = React.createClass({
     };
   },
   getInitialState: function(){
-    var states = { open : false};
+    var states = {open : false};
     this.props.circles.map(function(circle, i){
         var check = circle.isMember(Session.get('circleMember'));
         var key = circle._id;
-        states[key] = check;
+        var state = {};
+        this.states[key] = check;
+        console.log("initial check " + JSON.stringify(circle));
     }, this);
     return states;
   },
@@ -58,9 +60,6 @@ CircleMenu = React.createClass({
   //     this.setState({open: nextProps.open});
   //   }
   // },
-  componentDidMount: function(){
-
-  },
 
   _handleNewCircle: function(){
     //open new circle

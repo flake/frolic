@@ -52,7 +52,7 @@ ScreensPanel = React.createClass({
           leftIcon={
             <FontIcon
               style={styles.newIcon}
-              className="fa fa-laptop"/>
+              className="fa fa-film"/>
           }
           onTouchTap={this._handleNewBtn}
         />

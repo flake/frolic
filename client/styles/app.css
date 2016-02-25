@@ -310,8 +310,8 @@ body{
 	line-height: 28px !important;
 	height: 28px !important;
 	border: 1px solid #66a8cc !important;
-	margin: 0 16px !important;
-	width: 96px !important;
+	margin: 0;
+	width: 80px !important;
 }
 .btn-shadow{
 	box-shadow: 6px 6px 16px rgba(0, 0, 0, 0.4);
@@ -333,7 +333,7 @@ body{
 	display: inline-block;
 	font-size: 11px;
 	color: #666;
-	width: 28%;
+	width: 27%;
 }
 .screen-stats > i{
 	color: #48A1D9;
