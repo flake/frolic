@@ -98,9 +98,18 @@ FroFeed = React.createClass({
         overflow: "hidden",
         verticalAlign: "middle"
       },
+      froTitle: {
+        fontWeight: "800",
+        color: "#444",
+        paddingBottom: "8px",
+        fontSize: "12px",
+        lineHeight: "1em",
+        height: "1.6em",
+        overflow: "hidden"
+      },
       froDesc:{
-        "fontWeight": "500",
-        "color": "#666",
+        fontWeight: "500",
+        color: "#666",
         lineHeight: "1em",
         whiteSpace: "nowrap",
         overflow: "hidden"
@@ -255,8 +264,7 @@ FroFeed = React.createClass({
           <div style={styles.froInfo}>
             <div>
               <div id="fi-froinfo" style={{"display": "inline-block", "height":"32px"}}>
-                <div style={{"fontWeight": "900", "color": "#444"}} className="frolic-invoke" >{this.props.fro.title}</div>
-                <div style={styles.froDesc} className="frolic-invoke" >{this.props.fro.description}</div>
+                <div style={styles.froTitle} className="frolic-invoke" >{this.props.fro.title}</div>
               </div>
             </div>
             <CardHeader
@@ -358,3 +366,5 @@ FroFeed = React.createClass({
 //     {this.props.fro.datePublished()}
 //   </div>
 // </div>
+
+// <div style={styles.froDesc} className="frolic-invoke" >{this.props.fro.description}</div>

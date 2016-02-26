@@ -73,7 +73,8 @@ ScreenForm = React.createClass({
             console.log("FS Error: ScreenFS insert failed ", err);
             FroActions.alert(err);
           }else{
-            Session.set(Session.get('file-context'), fileObj._id);
+            Session.set('screen-fsid', fileObj._id);
+            FroActions.alert("Upload success!");
           }
         });
       }
@@ -86,11 +87,11 @@ ScreenForm = React.createClass({
           if(err){
             console.log("FS Error: ProFS insert failed ", err);
           }else{
-            Session.set(Session.get('file-context'), fileObj._id);
+            Session.set('avatar-fsid', fileObj._id);
+            FroActions.alert("Upload success!");
           }
         });
       }
-      FroActions.alert("upload success!");
     });
 
     // var fsFile = new FS.File(ifile);

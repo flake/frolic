@@ -22,9 +22,11 @@ SwipeSlides = React.createClass({
     }
   },
 
-  // getInitialState: function(){
-  //   return {};
-  // },
+  getInitialState: function(){
+    return {
+      slide: 0
+    };
+  },
 
   // componentDidUpdate: function(prevProps, prevState){
   //   console.log("Swipes prevProps " + prevProps);
@@ -32,6 +34,7 @@ SwipeSlides = React.createClass({
 
   _handleChangeSlide: function(index, fromIndex){
     Session.set("slideIndex", index);
+    $('#fro-swipes').scrollTop(0);
 
     var stabs = $('.sliding-tab');
     var tabCount = stabs.length;
@@ -71,7 +74,8 @@ SwipeSlides = React.createClass({
         <ReactSwipe
           slideToIndex={this.props.index}
           continuous={false}
-          callback={this._handleChangeSlide} >
+          callback={this._handleChangeSlide}
+          id='fro-swipes' >
           {
             this.props.views.map(function(slide, index){
               return (

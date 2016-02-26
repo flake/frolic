@@ -98,13 +98,15 @@ ProCover = React.createClass({
         position: 'absolute',
         top: 0,
         right: 0,
-        margin: '8px',
-        padding: '8px'
+        margin: '8px 18px'
       },
       editIcon:{
-        color: APP.themeBg,
+        color: '#fff',
         zIndex: 89,
-        fontSize: "24px"
+        fontSize: "21px",
+        padding: '4px',
+        borderRadius: '32px',
+        backgroundColor: APP.primary
       }
     };
 
