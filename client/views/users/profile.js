@@ -25,7 +25,7 @@ Template.profile.helpers({
       {'template': 'froList', 'data': {context: "hearted_fros", userId: this.userId}},
       {'template': 'userScreens', 'data': {context: "self", userId: this.userId}},
       {'template': 'userScreens', 'data': {context: "following", userId: this.userId}},
-      {'template': 'demo', 'data': {demoText: "slide circle"}}
+      {'template': 'usersList', 'data': {context: "user_circle", userId: this.userId}}
     ]
   },
   slideIndex: function(){

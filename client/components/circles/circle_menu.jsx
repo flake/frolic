@@ -49,7 +49,7 @@ CircleMenu = React.createClass({
         var check = circle.isMember(Session.get('circleMember'));
         var key = circle._id;
         var state = {};
-        this.states[key] = check;
+        states[key] = check;
         console.log("initial check " + JSON.stringify(circle));
     }, this);
     return states;

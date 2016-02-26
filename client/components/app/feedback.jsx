@@ -26,7 +26,7 @@ Feedback = React.createClass({
       if(error){
         console.log("feedback error " + error);
       }else{
-        Dialogs.alert("_/\\_ Thank You :)");
+        FroActions.alert("_/\\_ Thank You :)");
         FlowRouter.go("/");
       }
     });

@@ -3,6 +3,10 @@ Template.usersList.helpers({
   users: function(){
     var userIds = [];
     switch(this.context){
+      case "user_circle":
+        var cmemCurs = CircleMembers.find({userId: this.userId});
+        userIds = cmemCurs.map(function(f){return f.memberId});
+        break;
       case "screen_followers":
         var followersCurs = Followers.find({screen_id: this.screenId});
         userIds = followersCurs.map(function(f){return f.user_id});

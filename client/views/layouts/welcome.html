@@ -2,6 +2,9 @@
   <main id="welcome-layout">
     {{>Template.dynamic template=content}}
   </main>
+  <div>
+    {{> React component=FroDialog open=openFroDialog message=froMessage}}
+  </div>
 </template>
 
 <template name="welcomeBkp">

@@ -74,11 +74,12 @@ Styles = {
     minWidth: "24px"
   },
   dialogBody:{
-    padding: "0px !important"
+    padding: "8px 16px !important"
   },
   dialogTitle: {
     padding: "16px 16px 0 16px !important",
     fontSize: "16px",
-    fontWeight: "500"
+    fontWeight: "500",
+    color: APP.primary
   }
 }

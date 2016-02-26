@@ -24,7 +24,7 @@ ScreenForm = React.createClass({
       action: "new",
       screen: {
         title: 'Set Title',
-        description: 'Description ...',
+        description: '...',
         cover: () => {return AIMG.cover;},
         avatar: () => {return AIMG.cover;}
       }
@@ -60,15 +60,18 @@ ScreenForm = React.createClass({
     var ifile = event.target.files[0];
     ifile.owner = Meteor.userId();
 
+    FroActions.progress(true, 'Uploading...');
+
     readURL(event.target, function(result){
       if(Session.get('file-context') === 'screen-fsid'){
         console.log("setting cover...");
         self.setState({cover: result});
 
         ScreensFS.insert(ifile, function(err, fileObj){
+          FroActions.progress(false);
           if(err){
             console.log("FS Error: ScreenFS insert failed ", err);
-            Dialogs.alert(err);
+            FroActions.alert(err);
           }else{
             Session.set(Session.get('file-context'), fileObj._id);
           }
@@ -79,6 +82,7 @@ ScreenForm = React.createClass({
         self.setState({avatar: result});
 
         ProFS.insert(ifile, function(err, fileObj){
+          FroActions.progress(false);
           if(err){
             console.log("FS Error: ProFS insert failed ", err);
           }else{
@@ -86,7 +90,7 @@ ScreenForm = React.createClass({
           }
         });
       }
-      Dialogs.alert("upload success!");
+      FroActions.alert("upload success!");
     });
 
     // var fsFile = new FS.File(ifile);

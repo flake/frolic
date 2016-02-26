@@ -1,9 +1,10 @@
 var {
   Dialog,
+  CircularProgress,
   FlatButton
 } = MUI;
 
-FroDialog = React.createClass({
+FroSpinner = React.createClass({
   PropTypes: {
     open: React.PropTypes.bool,
     message: React.PropTypes.string
@@ -11,7 +12,7 @@ FroDialog = React.createClass({
   getDefaultProps: function(){
     return {
       open: false,
-      message: ""
+      message: 'Loading...'
     }
   },
 
@@ -25,37 +26,33 @@ FroDialog = React.createClass({
     };
   },
 
-  _handleOk: function(){
-    Session.set('openFroDialog', false);
-  },
-
   render: function(){
     // var displaySpin = (this.props.spinner) ? "inline-block" : "none";
     var styles = {
       froDialog: {
         zIndex: 299
       },
+      spinner: {
+        display: 'inline-block',
+        verticalAlign: 'middle',
+        paddingRight: '16px'
+      },
       message: {
         display: "inline-block"
       }
     };
 
-    var actions = [
-      <FlatButton
-        label="OK"
-        secondary={true}
-        onTouchTap={this._handleOk} />
-    ];
-
     return (
       <Dialog
         modal={false}
-        actions={actions}
         title={APP.title}
         titleStyle={Styles.dialogTitle}
         open={this.props.open}
         style={styles.froDialog}
         bodyStyle={Styles.dialogBody} >
+        <div style={styles.spinner}>
+          <CircularProgress mode="indeterminate" size={0.5} />
+        </div>
         <div style={styles.message}>
           {this.props.message}
         </div>

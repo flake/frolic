@@ -29,6 +29,18 @@ FroActions = {
   renderSwipes: function(){
     var vtop = $('.cover-fixed').height();
     $('.cover-views').css("top", vtop);
+  },
+
+  alert: function(message){
+    Session.set('openFroSpinner', false);
+    Session.set('froMessage', message);
+    Session.set('openFroDialog', true);
+  },
+
+  progress: function(show, message){
+    var msg = (message) ? message : 'Loading...';
+    Session.set('spinMessage', msg);
+    Session.set('openFroSpinner', show);
   }
 
   // record: function(){

@@ -34,6 +34,25 @@ Template.appLayout.helpers({
     var docs = Circles.find({userId: Meteor.userId()}).fetch();
     console.log("userId: " + Meteor.userId() + " circles " + docs);
     return docs;
+  },
+
+  FroDialog: function(){
+    return FroDialog;
+  },
+  openFroDialog: function(){
+    return Session.get('openFroDialog');
+  },
+  froMessage: function(){
+    return Session.get('froMessage');
+  },
+  FroSpinner: function(){
+    return FroSpinner;
+  },
+  spinMessage: function(){
+    return Session.get('spinMessage');
+  },
+  openFroSpinner: function(){
+    return Session.get('openFroSpinner');
   }
 });
 
@@ -80,6 +99,10 @@ Template.appLayout.onCreated(function(){
   Session.set('appTitle', 'frolic');
   Session.set('openCircleMenu', false);
   Session.set('openCircleNew', false);
+  Session.set('openFroDialog', false);
+  Session.set('froSpinner', false);
+  Session.set('froMessage', '');
+
   // Session.set('optsOpen', false);
   var self = this;
   self.autorun(function(){

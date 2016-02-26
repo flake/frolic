@@ -1,6 +1,7 @@
 // injectTapEventPlugin();
 
 APP = {
+  title: "frolic",
   primary: "#1690DB",
   secondary: "#48A1D9",
   paper: "#24242B",

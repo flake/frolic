@@ -20,12 +20,13 @@ Welcome = React.createClass({
   },
 
   _handleFacebook: function(){
-    Meteor.loginWithFacebook({ requestPermissions: ['email', 'public_profile', 'user_friends']},
-			function(err){
-				if(err){
-					return console.log(err);
-				}
-			});
+    FroActions.alert('Sorry, try other logins!');
+    // Meteor.loginWithFacebook({ requestPermissions: ['email', 'public_profile', 'user_friends']},
+		// 	function(err){
+		// 		if(err){
+		// 			return console.log(err);
+		// 		}
+		// 	});
   },
 
   _handleGoogle: function(){
@@ -35,11 +36,12 @@ Welcome = React.createClass({
       }, function(error) {
             if (error) {
                 //error handling code
-                alert(error);
+                // console.log("googleplus error " + error);
+                FroActions.alert(error);
             }else{
-              FlowRouter.reload();
               console.log("google signup success " + Meteor.userId());
-              // alert("Signed up");
+              FlowRouter.reload();
+              // FroActions.alert("Signed up");
             }
     });
   },
@@ -50,6 +52,7 @@ Welcome = React.createClass({
     Meteor.loginWithPassword(email, password, function(error){
       if(error){
         console.log("login error ", error);
+        FroActions.alert(error.reason);
       }else{
         console.log("login success " + Meteor.userId());
         FlowRouter.go('/');
@@ -76,12 +79,12 @@ Welcome = React.createClass({
         marginTop: "8px"
       },
       facebookSignup: {
-        width: "48.4%",
+        width: "48.6%",
         backgroundImage: "linear-gradient(#2953ad, #234ca2)",
         color: "#fff",
         borderRadius: "2px",
         textAlign: "left",
-        paddingLeft: "8px"
+        paddingLeft: "4px"
       },
       googleSignup: {
         width: "48%",
@@ -104,7 +107,7 @@ Welcome = React.createClass({
       },
       labelStyle: {
         textTransform: "none",
-        paddingLeft: "8%",
+        paddingLeft: "0%",
         verticalAlign: "middle"
       },
       signupMsg: {

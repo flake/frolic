@@ -1,20 +1,19 @@
 
 Template.welcomeLayout.helpers({
-  create: function(){
-
+  FroDialog: function(){
+    return FroDialog;
   },
-  rendered: function(){
-
+  openFroDialog: function(){
+    return Session.get('openFroDialog');
   },
-  destroyed: function(){
-
+  froMessage: function(){
+    return Session.get('froMessage');
   }
 });
 
-Template.welcomeLayout.events({
-  "click #foo": function(event, template){
-
-  }
+Template.welcomeLayout.onCreated(function(){
+  Session.set('openFroDialog', false);
+  Session.set('froMessage', '');
 });
 
 Template.welcomeLayout.onRendered(function(){

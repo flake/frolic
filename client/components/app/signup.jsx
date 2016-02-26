@@ -31,10 +31,11 @@ Signup = React.createClass({
     }, function(error){
       if(error){
         console.log("Error Signup " + error);
-        if(error.error === "email"){
-          console.log("Error email " +error.reason);
-          Dialogs.alert("Email " + error.reason);
-        }
+        FroActions.alert("Email " + error.reason);
+        // if(error.error === "email"){
+        //   console.log("Error email " +error.reason);
+        //   FroActions.alert("Email " + error.reason);
+        // }
       }else{
         //send verification
         console.log("Signup success");
@@ -103,7 +104,7 @@ Signup = React.createClass({
               underlineFocusStyle={{"borderColor": "#f9f9f9"}}
               ref="fullname"/>
             <TextField
-              hintText="Email or Phone"
+              hintText="Email"
               fullWidth={true}
               inputStyle={{"color": "#fff"}}
               hintStyle={{"color": "rgba(255, 255, 255, 0.4)"}}

@@ -40,13 +40,13 @@ Template.froNew.events({
     console.log("forlic clicked for upload: " + froPublish);
 
     if(template.find("#fro-title").value === ""){
-      Dialogs.alert("Give a title to your fro");
+      FroActions.alert("Give a title to your fro");
       return;
     }
 
     var screenId = template.find('#fro-screen').value;
     if((screenId === undefined) || (screenId === "0")){
-      Dialogs.alert("Add a screen to publish your fro.");
+      FroActions.alert("Add a screen to publish your fro.");
       return;
     }
 

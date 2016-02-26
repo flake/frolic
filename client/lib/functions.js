@@ -47,8 +47,10 @@ uploadFro = function(froData){
   var fsFile = new FS.File(froData);
   fsFile.owner = Meteor.userId();
   FroFS.insert(fsFile, function (err, fileObj) {
+    FroActions.progress(false);
     if (err){
-      console.log("FroFS failed!");
+      console.log("FroFS failed! " + err);
+      FroActions.alert(err);
     }
     else {
       Session.set('newFro', fileObj._id);

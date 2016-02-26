@@ -43,7 +43,7 @@ ProCard = React.createClass({
   },
 
   render: function(){
-    var userVisi = (this.props.user._id === Meteor.userId) ? "hidden" : "visible";
+    var userVisi = (this.props.user._id === Meteor.userId()) ? "hidden" : "visible";
 
     var styles = {
       avatar: {

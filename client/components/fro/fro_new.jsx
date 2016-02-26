@@ -81,7 +81,7 @@ FroNew = React.createClass({
 
     return (
       <div>
-        <form id="fro-new-form" class="validate">
+        <form id="fro-new-form" className="validate">
           <div style={styles.actionBar}>
             <TextField
               hintText="Title"
