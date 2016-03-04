@@ -58,9 +58,9 @@ SideNav = React.createClass({
     FlowRouter.go('/profile/'+this.data.currentUser._id);
   },
 
-  _handleClose: function(){
+  _handleRequestChange: function(){
+    // console.log("SideNav onRequestChange");
     Session.set('sideNav', false);
-    console.log("SideNav handleClose");
   },
 
   renderHeader: function(){
@@ -163,6 +163,7 @@ SideNav = React.createClass({
         openRight={true}
         style={{"backgroundColor": APP.primary}}
         overlayClassName="app-sidenav"
+        onRequestChange={this._handleRequestChange}
       >
         <List style={styles.sideList}>
           {this.renderHeader()}

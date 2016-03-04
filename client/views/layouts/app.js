@@ -87,10 +87,10 @@ Template.appLayout.events({
     // console.log("slideIndex from nav-tabs "+ sindex);
   },
 
-  'click .app-sidenav': function(){
-    console.log("sidenav overlay click...");
-    Session.set('sideNav', false);
-  }
+  // 'click .app-sidenav': function(){
+  //   console.log("sidenav overlay click...");
+  //   Session.set('sideNav', false);
+  // }
 });
 
 Template.appLayout.onRendered(function(){
