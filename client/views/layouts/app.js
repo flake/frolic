@@ -74,7 +74,7 @@ Template.appLayout.events({
   },
 
   'click #navicon-right': function(event, template){
-    Session.set("sideNav", !Session.get("sideNav"));
+    Session.set("sideNav", true);
   },
 
   'click .nav-tabs': function(event, template){
@@ -85,6 +85,11 @@ Template.appLayout.events({
     navTabs.removeClass("tab-active");
     navTabs.eq(sindex).addClass("tab-active");
     // console.log("slideIndex from nav-tabs "+ sindex);
+  },
+
+  'click .app-sidenav': function(){
+    console.log("sidenav overlay click...");
+    Session.set('sideNav', false);
   }
 });
 

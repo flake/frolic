@@ -36,7 +36,6 @@ matb33:collection-hooks
 momentjs:moment
 dburles:collection-helpers
 natestrauser:videojs
-meteorhacks:npm
 
 cosmos:browserify
 thereactivestack:blazetoreact
@@ -44,7 +43,7 @@ thereactivestack:blazetoreact
 #chriswessels:back-behaviour
 check
 ejson
-hybrid:dialogs
+#hybrid:dialogs
 service-configuration
 #meteorhacks:kadira
 #particle4dev:cordova-fb
@@ -56,5 +55,10 @@ mrt:smart-publish
 
 
 
-npm-container
 skinnygeek1010:validate-form
+meteorhacks:npm
+
+
+
+
+npm-container

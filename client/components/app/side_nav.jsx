@@ -58,6 +58,11 @@ SideNav = React.createClass({
     FlowRouter.go('/profile/'+this.data.currentUser._id);
   },
 
+  _handleClose: function(){
+    Session.set('sideNav', false);
+    console.log("SideNav handleClose");
+  },
+
   renderHeader: function(){
     var styles = {
       headerContainer: {
@@ -157,6 +162,7 @@ SideNav = React.createClass({
         disableSwipeToOpen={true}
         openRight={true}
         style={{"backgroundColor": APP.primary}}
+        overlayClassName="app-sidenav"
       >
         <List style={styles.sideList}>
           {this.renderHeader()}

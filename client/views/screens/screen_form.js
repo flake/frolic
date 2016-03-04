@@ -76,8 +76,8 @@ Template.screenForm.events({
 });
 
 Template.screenForm.onCreated(function(){
-  Session.set('screen-fsid', undefined);
-  Session.set('avatar-fsid', undefined);
+  Session.set('screen-fsid', AIMG.cover);
+  Session.set('avatar-fsid', AIMG.cover);
 
   var pdata = Template.parentData(0);
   var self = this;

@@ -101,7 +101,7 @@ FroScreen = React.createClass({
   _handleTimeUpdate: function(e){
     var froPlayer = videojs('fro-player');
     if(froPlayer.currentTime() >= 6 && !this.state.played){
-      console.log("video viewed for morethan 6secs");
+      // console.log("video viewed for morethan 6secs");
       Meteor.call("newPlay", Session.get("froPlay"), function(e, r){});
       this.setState({played: true});
     }

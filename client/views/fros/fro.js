@@ -118,6 +118,7 @@ Template.fro.onCreated(function(){
   var self = this;
   console.log("fro on-created _id: "+pdata.froId);
   if(pdata.froId !== "new"){
+    Session.set('froPlay', pdata.froId);
     self.autorun(function(){
       self.subscribe("fro_heart", pdata.froId);
       self.subscribe("fro_screen", pdata.froId);
