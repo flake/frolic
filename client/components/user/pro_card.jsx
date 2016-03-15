@@ -94,7 +94,7 @@ ProCard = React.createClass({
       }
     };
 
-    var circleIcon = (this.props.circle) ? 'check' : 'person_add';
+    var circleIcon = (this.props.user.isCircle) ? 'check' : 'person_add';
 
     return (
       <Card
