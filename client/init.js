@@ -13,10 +13,10 @@ Meteor.startup(function(){
     }
   });
 
-  ValidateForm.config({
-    debug: true,
-    rootLayout: 'appLayout'
-  });
+  // ValidateForm.config({
+  //   debug: true,
+  //   rootLayout: 'appLayout'
+  // });
   // window.onpopstate = function(){
   //   if(history.state && history.state.initial === true){
   //     //navigator.app.exitApp();

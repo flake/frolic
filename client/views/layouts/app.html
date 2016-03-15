@@ -1,8 +1,8 @@
 <template name="appLayout">
+  <nav class="fixed-nav-bar">
+    {{> React component=AppHead appTitle=title navIcons=params.navicons sideNav=sideNav notify=notifyCount}}
+  </nav>
   {{#if Template.subscriptionsReady}}
-    <nav class="fixed-nav-bar">
-      {{> React component=AppHead appTitle=title navIcons=params.navicons sideNav=sideNav notify=notifyCount}}
-    </nav>
     <div id="app-body">
       {{>Template.dynamic template=content data=params}}
     </div>
@@ -19,7 +19,7 @@
       {{> React component=FroSpinner open=openFroSpinner message=spinMessage}}
     </div>
   {{else}}
-    <div>
+    <div class="loading-head">
       {{> React component=Loading}}
     </div>
   {{/if}}
