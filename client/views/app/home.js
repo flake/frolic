@@ -1,7 +1,8 @@
 Template.home.helpers({
   fros: function(){
     // console.log("Frolics count: " + Frolics.find().count());
-    return Fros.find({}, {sort: {createdAt: -1}});
+    return Fros.find({}, {limit: 10, sort: {createdAt: -1}});
+    // return Fros.findFromPublication('fros_home', {}, {limit: 10});
   },
   FroScreen: function(){
     return FroScreen;

@@ -22,7 +22,6 @@ kadira:flow-router
 kadira:blaze-layout
 
 accounts-password
-flake:login-cordova-google
 #accounts-facebook
 
 aldeed:collection2
@@ -62,3 +61,5 @@ meteorhacks:npm
 
 
 npm-container
+flake:login-cordova-google
+percolate:find-from-publication
