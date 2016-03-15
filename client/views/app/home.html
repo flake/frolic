@@ -6,5 +6,11 @@
     {{#each fros}}
       {{> _fro}}
     {{/each}}
+
+    {{#if moreFros}}
+      <div id="show-more-fros">
+        {{> React component=Loading }}
+      </div>
+    {{/if}}
   </div>
 </template>

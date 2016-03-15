@@ -343,3 +343,10 @@ body{
 	background-color: "#C3D7E3";
 }
 .notify-read{}
+
+.loading-head{
+	padding: 80px 0 !important;
+}
+.loading-full{
+	padding: 45% 0 !important;
+}

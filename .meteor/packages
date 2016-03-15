@@ -49,17 +49,10 @@ service-configuration
 #hedcet:cordova-google-plus-native-sign-in
 webapp
 browser-policy
-mrt:smart-publish
+#mrt:smart-publish
 
-
-
-
-skinnygeek1010:validate-form
+#skinnygeek1010:validate-form
 meteorhacks:npm
-
-
-
 
 npm-container
 flake:login-cordova-google
-percolate:find-from-publication

@@ -31,7 +31,14 @@ FroFeed = React.createClass({
     };
   },
   getInitialState: function(){
-    return { };
+    return {
+      play: false
+    };
+  },
+
+  componentDidUpdate: function(prevProps, prevState){
+    if(prevProps.play !== this.props.play)
+      this.setState({play: this.props.play});
   },
 
   // togglePlay: function(){
@@ -59,16 +66,17 @@ FroFeed = React.createClass({
   },
 
   _handleFro: function(froId){
-    console.log("handleFro " + froId);
+    // console.log("handleFro " + froId);
+    this.setState({play : true});
     Session.set("froPlay", froId);
     Session.set("isPlaying", true);
   },
 
   render: function(){
-    var froSelect = this.props.play ? "rgba(195,215,227, 0.4)" : "#FFFFFF";
+    var froSelect = this.state.play ? "rgba(195,215,227, 0.4)" : "#FFFFFF";
 
     var wid = $(window).width();
-    console.log("window width " + wid);
+    // console.log("window width " + wid);
 
     var styles = {
       froCard: {

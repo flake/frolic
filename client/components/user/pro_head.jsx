@@ -161,10 +161,10 @@ ProHead = React.createClass({
 
           <div className="pro-stats">
             <div style={styles.proName}>
-              {this.props.user.profile.plays}
+              {this.props.user.profile.fros}
             </div>
             <div style={styles.proLine}>
-              <i className="fa fa-play" ></i>&nbsp;&nbsp;plays
+              <i className="fa fa-video-camera" ></i>&nbsp;&nbsp;fros
             </div>
           </div>
           <div className="pro-stats">

@@ -25,11 +25,13 @@ Loading = React.createClass({
     };
   },
   render: function(){
+
+    // marginTop: "45% !important"
     var styles = {
       container: {
         textAlign: "center",
         height: "100%",
-        marginTop: "45% !important"
+        marginTop: "8% !important"
       },
       overlay: {
         position: "fixed",

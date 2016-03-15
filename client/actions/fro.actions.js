@@ -1,10 +1,11 @@
 FroActions = {
   whatsapp: function(fro){
-    var msg = 'a fro via frolic\n';
+    var msg = fro.title + '\n';
     var img = fro.thumbSrc(); /* img */
     var url = "http://frolicplay.com/" + fro._id; /* url */
     var whatsUp = function(){
       console.log('share ok');
+      Meteor.call('froShare', fro._id, function(){});
     };
     var whatsFail = function(errormsg){
       console.log(errormsg);
@@ -14,11 +15,12 @@ FroActions = {
 
   nativeShare: function(fro){
     // console.log("social share handle... ");
-    var msg = 'a fro via frolic\n';
+    var msg = fro.title + '\n';
     var img = fro.thumbSrc(); /* img */
     var url = "http://frolicplay.com/"+fro._id; /* url */
     var whatsUp = function(){
       console.log('share ok');
+      Meteor.call('froShare', fro._id, function(){});
     };
     var whatsFail = function(errormsg){
       console.log(errormsg);

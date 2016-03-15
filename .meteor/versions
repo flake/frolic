@@ -87,14 +87,12 @@ momentjs:moment@2.11.2
 mongo@1.1.3
 mongo-id@1.0.1
 mongo-livedata@1.0.9
-mrt:smart-publish@0.2.1
 natestrauser:videojs@4.10.0
 npm-bcrypt@0.7.8_2
 npm-container@1.2.0
 npm-mongo@1.4.39_1
 observe-sequence@1.0.7
 ordered-dict@1.0.4
-percolate:find-from-publication@0.1.0
 promise@0.5.1
 raix:eventemitter@0.1.3
 random@1.0.5
@@ -113,7 +111,6 @@ routepolicy@1.0.6
 service-configuration@1.0.5
 session@1.1.1
 sha@1.0.4
-skinnygeek1010:validate-form@0.4.0
 spacebars@1.0.7
 spacebars-compiler@1.0.7
 srp@1.0.4

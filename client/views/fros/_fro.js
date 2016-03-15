@@ -63,3 +63,9 @@ Template._fro.onCreated(function(){
     // self.subscribe("fro_fs", pdata.fsId);
   });
 });
+
+// Template._fro.onRendered(function(){
+//   var windowTop = $(window).scrollTop();
+//   console.log("fro rendered window top " + windowTop);
+//   $(window).scrollTop(windowTop + 100);
+// })
