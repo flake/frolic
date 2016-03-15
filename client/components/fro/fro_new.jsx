@@ -36,6 +36,12 @@ FroNew = React.createClass({
     }
   },
 
+  componentDidMount: function(){
+    if(this.props.screens[0]){
+      this.setState({value: this.props.screens[0]._id});
+    }
+  },
+
   _handleScreens(event, index, value){
     this.setState({value: value});
     if(value === 0){
@@ -49,7 +55,8 @@ FroNew = React.createClass({
 
     var styles = {
       screensMenu:{
-        width: "100%"
+        width: "100%",
+        textAlign: "left"
       },
       scrollBox: {
         overflowX: "scroll",
