@@ -46,7 +46,7 @@ Template.froNew.events({
 
     var screenId = template.find('#fro-screen').value;
     if((screenId === undefined) || (screenId === "0")){
-      FroActions.alert("Add a screen to publish your fro.");
+      FroActions.alert("Choose a screen to publish your fro.");
       return;
     }
 

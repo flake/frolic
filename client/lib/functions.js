@@ -51,8 +51,7 @@ uploadFro = function(froData){
     if (err){
       console.log("FroFS failed! " + err);
       FroActions.alert(err);
-    }
-    else {
+    }else {
       Session.set('newFro', fileObj._id);
       FlowRouter.go('/fro/new');
       console.log("file upload success: "+ JSON.toString(fileObj));

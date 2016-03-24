@@ -13,7 +13,7 @@ Template.froList.helpers({
       case 'hearted_fros':
         var heartsCurs = Hearts.find({userId: this.userId, valid: true});
         froIds = heartsCurs.map(function(f){ return f.froId;});
-        console.log("hearted froIds " + froIds);
+        // console.log("hearted froIds " + froIds);
         froQuery = {_id: {$in: froIds}};
         break;
       default:

@@ -37,7 +37,7 @@ froReady = function(fileEntry){
       console.log("FroTrans fro size: "+ (fileObj.size)/1024);
       var reader = new FileReader();
       reader.onloadend = function(){
-        console.log("fro loaded " + this.result);
+        // console.log("fro loaded " + this.result);
         // var fileURL = (URL || webkitURL).createObjectURL(new Blob([this.result], {type: file.type}));
         // invokePlayer(this.result);
         uploadFro(this.result);
